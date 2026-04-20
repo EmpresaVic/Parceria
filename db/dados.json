@@ -14,6 +14,21 @@
         "bebidas": true,
         "usuarios": true
       }
+    },
+    {
+      "id": "mo6ne6o693g",
+      "nome": "teste",
+      "senhaHash": "170842",
+      "permissoes": {
+        "dashboard": true,
+        "pedido": true,
+        "resumo": true,
+        "pessoas": true,
+        "pratos": true,
+        "acomps": true,
+        "bebidas": true,
+        "usuarios": true
+      }
     }
   ]
 }
