@@ -127,5 +127,41 @@
       "rgEnc": "YV1PS1BwanwDAR8E",
       "rgMask": "11.***.***-*"
     }
+  ],
+  "pedidos": [
+    {
+      "id": "mo6nkfflkdt",
+      "data": "2026-04-20",
+      "pessoaId": "mo6njkwjmx7",
+      "pessoaNome": "Teste",
+      "pessoaSetor": "GCM",
+      "pratoId": "mo6niphwyic",
+      "pratoNome": "Frango Grelhado",
+      "pratoValor": 25.5,
+      "acTotal": 0,
+      "totalPedido": 25.5,
+      "acomps": [
+        {
+          "nome": "Batata Frita",
+          "valor": 0,
+          "fixo": true
+        },
+        {
+          "nome": "Arroz Branco",
+          "valor": 0
+        },
+        {
+          "nome": "Feijão Carioca",
+          "valor": 0
+        },
+        {
+          "nome": "Farofa",
+          "valor": 0
+        }
+      ],
+      "bebidas": [],
+      "obs": "",
+      "criadoEm": "2026-04-20T03:46:07.521Z"
+    }
   ]
 }
