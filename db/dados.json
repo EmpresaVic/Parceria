@@ -69,5 +69,12 @@
       "nome": "Legumes Grelhados",
       "valor": 0
     }
+  ],
+  "acompsFixos": [
+    {
+      "id": "mo6ng4fiek8",
+      "nome": "Batata Frita",
+      "desc": ""
+    }
   ]
 }
