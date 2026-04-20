@@ -162,6 +162,22 @@
       "bebidas": [],
       "obs": "",
       "criadoEm": "2026-04-20T03:46:07.521Z"
+    },
+    {
+      "id": "mo6npi4aa73",
+      "data": "2026-04-20",
+      "pessoaId": "mo6njkwjmx7",
+      "pessoaNome": "Teste",
+      "pessoaSetor": "GCM",
+      "pratoId": "mo6niphwyic",
+      "pratoNome": "Frango Grelhado",
+      "pratoValor": 25.5,
+      "acTotal": 0,
+      "totalPedido": 25.5,
+      "acomps": [],
+      "bebidas": [],
+      "obs": "bem passado",
+      "criadoEm": "2026-04-20T03:50:04.282Z"
     }
   ]
 }
