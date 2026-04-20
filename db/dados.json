@@ -178,6 +178,45 @@
       "bebidas": [],
       "obs": "bem passado",
       "criadoEm": "2026-04-20T03:50:04.282Z"
+    },
+    {
+      "id": "mo6nq23a4dy",
+      "data": "2026-04-20",
+      "pessoaId": "mo6njkwjmx7",
+      "pessoaNome": "Teste",
+      "pessoaSetor": "GCM",
+      "pratoId": "mo6niphwyic",
+      "pratoNome": "Frango Grelhado",
+      "pratoValor": 25.5,
+      "acTotal": 0,
+      "totalPedido": 25.5,
+      "acomps": [
+        {
+          "nome": "Legumes Saute",
+          "valor": 0,
+          "fixo": true
+        },
+        {
+          "nome": "Arroz Branco",
+          "valor": 0
+        },
+        {
+          "nome": "Feijão Carioca",
+          "valor": 0
+        },
+        {
+          "nome": "Farofa",
+          "valor": 0
+        }
+      ],
+      "bebidas": [
+        {
+          "nome": "Pepsi  Pet 200 ml",
+          "valor": 0
+        }
+      ],
+      "obs": "",
+      "criadoEm": "2026-04-20T03:50:30.166Z"
     }
   ]
 }
