@@ -116,5 +116,16 @@
         "Farofa"
       ]
     }
+  ],
+  "pessoas": [
+    {
+      "id": "mo6njkwjmx7",
+      "nome": "Teste",
+      "setor": "GCM",
+      "cpfEnc": "YFpQVFN1dmMEAgoYGmQ=",
+      "cpfMask": "061.***.***-**",
+      "rgEnc": "YV1PS1BwanwDAR8E",
+      "rgMask": "11.***.***-*"
+    }
   ]
 }
