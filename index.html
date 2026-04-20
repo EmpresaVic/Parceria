@@ -1,0 +1,2046 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Controle de Refeições — Parceria Adm Plaza</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f0f0f0;
+  --surface: #ffffff;
+  --surface2: #e8e8e8;
+  --border: #d0cfc8;
+  --gold: #a07828;
+  --gold-light: #c49a3a;
+  --gold-dim: #b89050;
+  --cream: #2a2520;
+  --red: #c04a3a;
+  --green: #3a7a4a;
+  --blue: #3a6f98;
+  --blue-light: #2a5f88;
+  --text: #1a1816;
+  --text-dim: #7a7567;
+  --radius: 12px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+
+header {
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 12px; padding: 14px 28px;
+  border-bottom: 1px solid var(--border); background: var(--surface);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06); position: sticky; top: 0; z-index: 100;
+}
+.logo { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 900; color: var(--gold); white-space: nowrap; }
+.logo span { color: var(--cream); }
+
+nav { display: flex; gap: 4px; flex-wrap: wrap; background: var(--surface2); padding: 4px; border-radius: 10px; border: 1px solid var(--border); }
+nav button { padding: 7px 13px; border: none; background: transparent; color: var(--text-dim); font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 500; border-radius: 7px; cursor: pointer; white-space: nowrap; transition: all 0.18s ease; }
+nav button:hover { color: var(--text); background: rgba(0,0,0,0.07); }
+nav button.active { background: var(--gold); color: #fff; font-weight: 600; box-shadow: 0 2px 8px rgba(160,120,40,0.25); }
+
+main { max-width: 1100px; margin: 0 auto; padding: 32px 24px; }
+.page { display: none; }
+.page.active { display: block; }
+
+.page-title { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 700; color: var(--cream); margin-bottom: 4px; border-left: 4px solid var(--gold); padding-left: 12px; }
+.page-sub { font-size: 14px; color: var(--text-dim); margin-bottom: 24px; padding-left: 16px; }
+
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px; margin-bottom: 20px; box-shadow: 0 1px 4px rgba(0,0,0,0.05); transition: box-shadow 0.2s; }
+.card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.09); }
+.card-title { font-family: 'Playfair Display', serif; font-size: 16px; color: var(--gold); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+.card-title::before { content: ''; display: block; width: 3px; height: 16px; background: var(--gold); border-radius: 2px; }
+
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+@media(max-width: 700px) { .grid2 { grid-template-columns: 1fr; } }
+
+.field { display: flex; flex-direction: column; gap: 5px; margin-bottom: 14px; }
+.field label { font-size: 11px; font-weight: 600; color: var(--text-dim); letter-spacing: 0.5px; text-transform: uppercase; }
+input[type=text], input[type=number], input[type=date], input[type=password], select {
+  background: var(--surface2); border: 1px solid var(--border); border-radius: 8px;
+  padding: 9px 13px; color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 14px; outline: none; width: 100%;
+  transition: all 0.18s ease;
+}
+input:focus, select:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(160,120,40,0.12); }
+select option { background: var(--surface2); }
+.field-hint { font-size: 11px; color: var(--text-dim); margin-top: 2px; }
+.field-error { font-size: 11px; color: var(--red); margin-top: 2px; display: none; }
+.field-error.visible { display: block; }
+
+.btn { display: inline-flex; align-items: center; gap: 7px; padding: 9px 18px; border: none; border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.18s ease; }
+.btn-gold { background: var(--gold); color: #fff; }
+.btn-gold:hover { background: var(--gold-light); }
+.btn-blue { background: var(--blue); color: #fff; }
+.btn-blue:hover { background: #5a8fb8; }
+.btn-ghost { background: transparent; border: 1px solid var(--border); color: var(--text-dim); }
+.btn-ghost:hover { border-color: var(--gold-dim); color: var(--gold); }
+.btn-ghost-blue { background: transparent; border: 1px solid var(--blue); color: var(--blue-light); }
+.btn-ghost-blue:hover { background: var(--blue); color: #fff; }
+.btn-danger { background: transparent; border: 1px solid var(--red); color: var(--red); padding: 4px 10px; font-size: 12px; }
+.btn-danger:hover { background: var(--red); color: #fff; }
+.btn-print { background: transparent; border: 1px solid var(--blue); color: var(--blue-light); padding: 4px 10px; font-size: 12px; }
+.btn-print:hover { background: var(--blue); color: #fff; }
+.btn-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
+.btn-sm { padding: 5px 11px; font-size: 12px; }
+
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th { text-align: left; padding: 9px 13px; color: var(--text-dim); font-size: 11px; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; border-bottom: 1px solid var(--border); }
+td { padding: 10px 13px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+tr:hover td { background: rgba(0,0,0,0.02); }
+tr:last-child td { border-bottom: none; }
+
+.badge { display: inline-block; padding: 3px 9px; border-radius: 20px; font-size: 11px; font-weight: 600; }
+.badge-gold { background: rgba(160,120,40,0.12); color: var(--gold); }
+.badge-green { background: rgba(58,122,74,0.12); color: var(--green); }
+.badge-blue { background: rgba(58,111,152,0.12); color: var(--blue-light); }
+.badge-red { background: rgba(192,74,58,0.12); color: var(--red); }
+
+.empty { text-align: center; padding: 40px; color: var(--text-dim); font-size: 14px; }
+.empty .ico { font-size: 32px; display: block; margin-bottom: 8px; }
+
+/* Acompanhamentos */
+.acomp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 8px; }
+.acomp-check { display: flex; align-items: center; gap: 9px; padding: 9px 12px; border: 1px solid var(--border); border-radius: 8px; cursor: pointer; user-select: none; transition: all 0.18s; }
+.acomp-check:hover { border-color: var(--gold-dim); }
+.acomp-check.sel { border-color: var(--gold); background: rgba(160,120,40,0.08); }
+.acomp-check.dis { opacity: 0.4; cursor: not-allowed; }
+.chk { width: 17px; height: 17px; border: 2px solid var(--border); border-radius: 4px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.acomp-check.sel .chk { background: var(--gold); border-color: var(--gold); }
+.chk-mark { color: #fff; font-size: 10px; font-weight: 700; }
+.acomp-val { font-size: 11px; color: var(--gold); margin-left: auto; white-space: nowrap; }
+.limit-info { font-size: 12px; color: var(--text-dim); margin-bottom: 10px; }
+.limit-info b { color: var(--gold); }
+
+/* Stats */
+.stats-row { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 24px; }
+.stat-box { flex: 1; min-width: 130px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px; box-shadow: 0 1px 4px rgba(0,0,0,0.05); }
+.stat-box .val { font-family: 'Playfair Display', serif; font-size: 26px; color: var(--gold); font-weight: 700; }
+.stat-box .lbl { font-size: 12px; color: var(--text-dim); margin-top: 3px; }
+
+.resumo-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin-bottom: 20px; box-shadow: 0 1px 4px rgba(0,0,0,0.05); transition: box-shadow 0.2s; }
+.resumo-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.09); }
+.resumo-head { padding: 13px 18px; background: var(--surface2); border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+.resumo-head strong { font-family: 'Playfair Display', serif; font-size: 15px; color: var(--cream); }
+.resumo-total { font-family: 'Playfair Display', serif; font-size: 18px; color: var(--gold); font-weight: 700; }
+
+.date-row { display: flex; align-items: flex-end; gap: 10px; flex-wrap: wrap; margin-bottom: 16px; }
+.date-row .field { margin-bottom: 0; }
+.date-sep { color: var(--text-dim); font-size: 13px; padding-bottom: 10px; }
+
+/* Toast */
+#toast { position: fixed; bottom: 20px; right: 20px; background: var(--green); color: #fff; padding: 11px 18px; border-radius: 8px; font-size: 13px; font-weight: 500; opacity: 0; pointer-events: none; transition: opacity 0.3s; z-index: 9999; }
+#toast.show { opacity: 1; }
+
+/* Modals */
+#modal-senha, #modal-print, #modal-preview, #modal-ghcfg, #modal-edit-perm {
+  display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 2000; align-items: center; justify-content: center;
+}
+#modal-senha.open, #modal-print.open, #modal-preview.open, #modal-ghcfg.open, #modal-edit-perm.open { display: flex; }
+.modal-inner { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; max-width: 420px; width: 92%; }
+.modal-inner h3 { font-family: 'Playfair Display', serif; color: var(--gold); margin-bottom: 12px; font-size: 18px; }
+
+.senha-box { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 32px; max-width: 340px; width: 90%; text-align: center; }
+.senha-box h3 { font-family: 'Playfair Display', serif; color: var(--gold); margin-bottom: 8px; font-size: 20px; }
+.senha-box p { font-size: 13px; color: var(--text-dim); margin-bottom: 20px; }
+.senha-input { background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 11px 13px; color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 18px; outline: none; width: 100%; text-align: center; letter-spacing: 6px; margin-bottom: 16px; }
+.senha-input:focus { border-color: var(--gold); }
+.senha-error { color: var(--red); font-size: 13px; margin-bottom: 12px; min-height: 18px; }
+.senha-btns { display: flex; gap: 10px; justify-content: center; }
+
+.modal-box { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; max-width: 400px; width: 90%; }
+.modal-box h3 { font-family: 'Playfair Display', serif; color: var(--gold); margin-bottom: 14px; font-size: 17px; }
+.print-opt { display: flex; align-items: center; gap: 12px; padding: 13px; border: 1px solid var(--border); border-radius: 8px; margin-bottom: 9px; cursor: pointer; transition: border-color 0.18s; }
+.print-opt:hover { border-color: var(--gold-dim); background: rgba(160,120,40,0.04); }
+.print-opt .ico { font-size: 22px; }
+.print-opt strong { display: block; font-size: 13px; color: var(--cream); }
+.print-opt span { font-size: 11px; color: var(--text-dim); }
+.modal-foot { display: flex; justify-content: flex-end; margin-top: 16px; }
+
+#modal-preview .preview-box { background: #fff; border-radius: 8px; max-height: 90vh; overflow-y: auto; box-shadow: 0 20px 60px rgba(0,0,0,0.5); min-width: 340px; }
+.preview-toolbar { background: #222; padding: 10px 14px; display: flex; gap: 8px; align-items: center; border-radius: 8px 8px 0 0; position: sticky; top: 0; }
+.preview-toolbar span { color: #aaa; font-size: 13px; flex: 1; }
+.preview-content { padding: 14px; }
+
+/* Receipts */
+.recibo { font-family: 'Courier New', monospace; font-size: 13px; color: #000; background: #fff; width: 100%; max-width: 226px; margin: 0 auto; padding: 10px 6px; line-height: 1.55; font-weight: 600; }
+.r-logo { text-align: center; font-size: 17px; font-weight: 900; letter-spacing: 2px; color: #000; }
+.r-sub { text-align: center; font-size: 11px; color: #000; font-weight: 600; }
+.r-sep { border: none; border-top: 1.5px dashed #000; margin: 5px 0; }
+.r-sep2 { border: none; border-top: 2.5px solid #000; margin: 5px 0; }
+.r-row { display: flex; justify-content: space-between; color: #000; }
+.r-lbl { font-weight: 900; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 5px; color: #000; }
+.r-ind { padding-left: 8px; color: #000; }
+.r-tot { font-size: 15px; font-weight: 900; color: #000; }
+.r-ctr { text-align: center; color: #000; }
+.r-sm { font-size: 11px; color: #111; }
+#print-area { display: none; }
+
+/* GitHub config */
+.ghcfg-box { background: var(--surface); border: 1px solid var(--gold-dim); border-radius: var(--radius); padding: 28px; max-width: 460px; width: 95%; }
+.ghcfg-box h3 { font-family: 'Playfair Display', serif; color: var(--gold); margin-bottom: 6px; font-size: 20px; }
+.gh-status-bar { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+#gh-status { font-size: 12px; font-weight: 600; }
+
+/* Login */
+#login-screen { display: none; position: fixed; inset: 0; background: linear-gradient(135deg, #f5f3ef 0%, #ede9e1 100%); z-index: 9999; align-items: center; justify-content: center; flex-direction: column; }
+#login-screen.open { display: flex; }
+.login-box { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 44px 40px; max-width: 380px; width: 90%; text-align: center; box-shadow: 0 8px 40px rgba(0,0,0,0.12); }
+.login-logo { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 900; color: var(--gold); margin-bottom: 4px; }
+.login-logo span { color: var(--cream); }
+.login-sub { font-size: 13px; color: var(--text-dim); margin-bottom: 28px; }
+.login-field { display: flex; flex-direction: column; gap: 5px; margin-bottom: 14px; text-align: left; }
+.login-field label { font-size: 11px; font-weight: 600; color: var(--text-dim); letter-spacing: 0.5px; text-transform: uppercase; }
+.login-input { background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 11px 14px; color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 14px; outline: none; width: 100%; transition: all 0.18s; }
+.login-input:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(160,120,40,0.12); }
+.login-error { color: var(--red); font-size: 12px; min-height: 18px; margin-bottom: 10px; }
+.login-btn { width: 100%; padding: 11px; border: none; border-radius: 8px; background: var(--gold); color: #fff; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 700; cursor: pointer; letter-spacing: 0.5px; transition: all 0.18s; box-shadow: 0 2px 8px rgba(160,120,40,0.25); }
+.login-btn:hover { background: var(--gold-light); box-shadow: 0 4px 16px rgba(160,120,40,0.35); transform: translateY(-1px); }
+.login-user-info { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-dim); }
+.login-user-info strong { color: var(--cream); }
+.btn-logout { background: transparent; border: 1px solid var(--border); color: var(--text-dim); padding: 5px 12px; font-size: 12px; border-radius: 6px; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.18s; }
+.btn-logout:hover { border-color: var(--red); color: var(--red); }
+
+/* Usuários page */
+#page-usuarios .user-item { display: flex; align-items: flex-start; justify-content: space-between; padding: 13px 16px; border: 1px solid var(--border); border-radius: 10px; margin-bottom: 10px; background: var(--surface); transition: all 0.18s; }
+#page-usuarios .user-item:hover { border-color: var(--gold-dim); box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+#page-usuarios .user-item .uname { font-weight: 700; color: var(--cream); font-size: 15px; }
+#page-usuarios .user-item .urole { font-size: 11px; color: var(--text-dim); margin-top: 2px; }
+.perm-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(155px, 1fr)); gap: 7px; margin-top: 10px; }
+.perm-item { display: flex; align-items: center; gap: 8px; padding: 8px 12px; border: 1px solid var(--border); border-radius: 8px; cursor: pointer; user-select: none; font-size: 13px; transition: all 0.18s; }
+.perm-item:hover { border-color: var(--gold-dim); background: rgba(160,120,40,0.05); }
+.perm-item input[type=checkbox] { width: 16px; height: 16px; accent-color: var(--gold); cursor: pointer; flex-shrink: 0; }
+
+/* Dashboard */
+.dash-month-nav { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; }
+.dash-month-nav h2 { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--cream); flex: 1; text-align: center; }
+.dash-month-btn { background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 7px 14px; cursor: pointer; font-size: 13px; font-family: 'DM Sans', sans-serif; color: var(--text-dim); transition: all 0.18s; }
+.dash-month-btn:hover { border-color: var(--gold-dim); color: var(--gold); }
+.chart-bar-wrap { display: flex; align-items: flex-end; gap: 5px; height: 120px; margin: 10px 0; }
+.chart-bar { flex: 1; border-radius: 6px 6px 0 0; background: var(--gold); opacity: 0.7; min-height: 3px; transition: height 0.4s ease, opacity 0.2s; cursor: pointer; }
+.chart-bar:hover { opacity: 1; }
+.chart-labels { display: flex; gap: 5px; }
+.chart-label { flex: 1; text-align: center; font-size: 10px; color: var(--text-dim); overflow: hidden; }
+.dash-top-list { display: flex; flex-direction: column; gap: 8px; }
+.dash-top-item { display: flex; align-items: center; gap: 12px; padding: 10px 14px; background: var(--surface2); border-radius: 8px; border: 1px solid var(--border); }
+.dash-rank { font-family: 'Playfair Display', serif; font-size: 18px; color: var(--gold); font-weight: 700; min-width: 28px; }
+.dash-top-name { flex: 1; font-size: 14px; font-weight: 500; color: var(--cream); }
+.dash-top-val { font-size: 13px; color: var(--text-dim); }
+
+/* Foto prato */
+.foto-upload-area { border: 2px dashed var(--border); border-radius: 10px; padding: 18px; text-align: center; cursor: pointer; transition: border-color 0.2s; min-height: 80px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 6px; }
+.foto-upload-area:hover { border-color: var(--gold-dim); }
+.foto-ico { font-size: 26px; }
+.foto-txt { font-size: 12px; color: var(--text-dim); }
+.prato-card-row { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border); }
+.prato-card-row:last-child { border-bottom: none; }
+.prato-thumb { width: 52px; height: 52px; object-fit: cover; border-radius: 8px; border: 1px solid var(--border); flex-shrink: 0; }
+.prato-thumb-ph { width: 52px; height: 52px; border-radius: 8px; border: 1px solid var(--border); background: var(--surface2); display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; }
+.prato-info { flex: 1; }
+.prato-info strong { font-size: 14px; color: var(--text); }
+
+/* Total pedido */
+.total-pedido { background: rgba(160,120,40,0.07); border: 1px solid rgba(160,120,40,0.25); border-radius: 8px; padding: 10px 14px; margin-bottom: 14px; display: flex; justify-content: space-between; align-items: center; }
+.total-pedido .lbl { font-size: 12px; color: var(--text-dim); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+.total-pedido .val { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--gold); font-weight: 700; }
+
+/* Acomp resumo sel */
+#acomp-resumo-sel { display: none; margin-top: 12px; background: rgba(58,122,74,0.08); border: 1px solid #3a7a4a55; border-radius: 8px; padding: 10px 13px; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--surface2); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--gold-dim); }
+
+/* Print */
+@media print {
+  body > header, body > main, #modal-print, #modal-preview, #modal-senha, #toast, #login-screen { display: none !important; }
+  #print-area { display: block !important; background: #fff !important; color: #000 !important; width: fit-content !important; margin: 0 !important; padding: 0 !important; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+  .recibo { color: #000 !important; font-weight: 600 !important; -webkit-filter: contrast(1.4) !important; filter: contrast(1.4) !important; }
+  .recibo * { color: #000 !important; }
+  .r-sep, .r-sep2 { border-color: #000 !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- LOGIN SCREEN -->
+<div id="login-screen" class="open">
+  <div class="login-box">
+    <div class="login-logo">Controle Refeição <span>Parceria Plaza</span></div>
+    <div class="login-sub">Faça login para acessar o sistema</div>
+    <div class="login-field">
+      <label>Usuário</label>
+      <input type="text" class="login-input" id="login-user" placeholder="Digite seu usuário" autocomplete="username" onkeydown="if(event.key==='Enter')document.getElementById('login-pass').focus()">
+    </div>
+    <div class="login-field">
+      <label>Senha</label>
+      <input type="password" class="login-input" id="login-pass" placeholder="Digite sua senha" autocomplete="current-password" onkeydown="if(event.key==='Enter')fazerLogin()">
+    </div>
+    <div class="login-error" id="login-error"></div>
+    <button class="login-btn" onclick="fazerLogin()">🔑 Entrar</button>
+  </div>
+</div>
+
+<header>
+  <div class="logo">Controle Refeição <span>Parceria Adm Plaza</span></div>
+  <nav id="main-nav">
+    <button class="active" onclick="showPage('dashboard',this)">📈 Dashboard</button>
+    <button onclick="showPage('pedido',this)">📋 Novo Pedido</button>
+    <button onclick="showPage('resumo',this)">📊 Resumo</button>
+    <button onclick="showPage('pessoas',this)">👤 Pessoas</button>
+    <button onclick="showPage('pratos',this)">🍽️ Pratos</button>
+    <button onclick="showPage('acomps',this)">🥗 Acompanhamentos</button>
+    <button onclick="showPage('bebidas',this)">🥤 Bebidas</button>
+    <button id="nav-btn-usuarios" onclick="showPage('usuarios',this)">🔐 Usuários</button>
+  </nav>
+  <div class="gh-status-bar">
+    <div class="login-user-info" id="header-user-info" style="display:none;">
+      <span>👤 <strong id="header-username"></strong></span>
+      <button class="btn-logout" onclick="fazerLogout()">Sair</button>
+    </div>
+    <span id="gh-status" style="color:#a07828;font-size:12px;font-weight:600;">⏳ Carregando...</span>
+    <button class="btn btn-ghost-blue btn-sm" onclick="abrirGHConfig()" title="Configurar GitHub">⚙️ GitHub</button>
+    <button class="btn btn-ghost-blue btn-sm" onclick="sincronizar()" title="Sincronizar">🔄 Sync</button>
+  </div>
+</header>
+
+<main>
+
+<!-- DASHBOARD -->
+<div id="page-dashboard" class="page active">
+  <h1 class="page-title">Dashboard</h1>
+  <p class="page-sub">Visão geral de pedidos e faturamento.</p>
+
+  <div class="dash-month-nav">
+    <button class="dash-month-btn" onclick="dashMesAnterior()">◀ Anterior</button>
+    <h2 id="dash-mes-label">—</h2>
+    <button class="dash-month-btn" onclick="dashMesProximo()">Próximo ▶</button>
+  </div>
+
+  <div class="stats-row" id="dash-stats">
+    <div class="stat-box"><div class="val" id="dash-st-pedidos">—</div><div class="lbl">Pedidos no mês</div></div>
+    <div class="stat-box"><div class="val" id="dash-st-pessoas">—</div><div class="lbl">Parceiros atendidos</div></div>
+    <div class="stat-box"><div class="val" id="dash-st-total">—</div><div class="lbl">Faturamento do mês</div></div>
+    <div class="stat-box"><div class="val" id="dash-st-ticket">—</div><div class="lbl">Ticket médio</div></div>
+  </div>
+
+  <div class="grid2">
+    <div class="card">
+      <div class="card-title">Pedidos por Dia</div>
+      <div class="chart-bar-wrap" id="dash-chart-bars"></div>
+      <div class="chart-labels" id="dash-chart-labels"></div>
+    </div>
+    <div class="card">
+      <div class="card-title">Top 5 Parceiros do Mês</div>
+      <div class="dash-top-list" id="dash-top-pessoas"></div>
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="card">
+      <div class="card-title">Top Pratos do Mês</div>
+      <div class="dash-top-list" id="dash-top-pratos"></div>
+    </div>
+    <div class="card">
+      <div class="card-title">Resumo por Semana</div>
+      <div id="dash-semanas"></div>
+    </div>
+  </div>
+</div>
+
+<!-- PEDIDO -->
+<div id="page-pedido" class="page">
+  <h1 class="page-title">Registrar Pedido</h1>
+  <p class="page-sub">Selecione o parceiro, o prato, acompanhamentos e bebida.</p>
+  <div class="grid2">
+    <div class="card">
+      <div class="card-title">Dados do Pedido</div>
+      <div class="field"><label>Parceiro</label><select id="ped-pessoa"></select></div>
+      <div class="field"><label>Prato Principal</label><select id="ped-prato" onchange="onPratoChange()"></select></div>
+      <div id="prato-badge" style="margin-bottom:12px;display:none;"><span class="badge badge-gold" id="prato-badge-val"></span></div>
+      <div id="prato-foto-box" style="display:none;margin-bottom:14px;">
+        <img id="prato-foto-img" src="" alt="Foto do prato" style="width:100%;max-height:180px;object-fit:cover;border-radius:10px;border:1px solid var(--border);">
+      </div>
+      <div class="field"><label>Data do Pedido</label><input type="date" id="ped-data"></div>
+      <div class="field">
+        <label>Observação (impresso na comanda)</label>
+        <textarea id="ped-obs" rows="2" placeholder="Ex.: Sem cebola, molho à parte..." style="background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:9px 13px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:14px;outline:none;width:100%;resize:vertical;" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='var(--border)'"></textarea>
+      </div>
+      <div class="total-pedido" id="total-pedido-box" style="display:none;">
+        <span class="lbl">💰 Total do Pedido</span>
+        <span class="val" id="total-pedido-val">R$ 0,00</span>
+      </div>
+    </div>
+    <div>
+      <div class="card" id="acomp-card" style="margin-bottom:14px;">
+        <div class="card-title">🥗 Acompanhamento</div>
+        <div id="acomp-fixo-section" style="display:none;margin-bottom:14px;">
+          <div style="font-size:11px;font-weight:600;color:var(--gold);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;">📌 Acompanhamentos Fixos <span id="acomp-fixo-limit-txt" style="font-weight:400;color:var(--text-dim);text-transform:none;letter-spacing:0;"></span></div>
+          <div class="acomp-grid" id="acomp-fixo-lista"></div>
+        </div>
+        <div id="acomp-divisor" style="display:none;border-top:1px dashed var(--border);margin-bottom:12px;padding-top:12px;">
+          <div style="font-size:11px;font-weight:600;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;">🥗 Acompanhamentos Avulsos</div>
+        </div>
+        <p class="limit-info" id="acomp-limit-info" style="margin-bottom:8px;">Selecione <b>no máximo 1</b> acompanhamento</p>
+        <div class="acomp-grid" id="acomp-lista"></div>
+        <div id="acomp-resumo-sel">
+          <div style="font-size:11px;font-weight:600;color:var(--green);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px;">✅ Selecionados</div>
+          <div id="acomp-resumo-lista" style="font-size:13px;color:var(--text);line-height:1.8;"></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">🥤 Bebida</div>
+        <p class="limit-info">Selecione <b>no máximo 1</b> bebida</p>
+        <div class="acomp-grid" id="bebida-lista"></div>
+      </div>
+    </div>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-blue" onclick="registrar(true)">🖨️ Registrar e Imprimir</button>
+    <button class="btn btn-ghost" onclick="limparForm()">↺ Limpar</button>
+  </div>
+</div>
+
+<!-- RESUMO -->
+<div id="page-resumo" class="page">
+  <h1 class="page-title">Resumo de Pedidos</h1>
+  <p class="page-sub">Visualize pedidos e faturamento por período.</p>
+  <div class="date-row">
+    <div class="field"><label>Data inicial</label><input type="date" id="res-de"></div>
+    <div class="date-sep">até</div>
+    <div class="field"><label>Data final</label><input type="date" id="res-ate"></div>
+    <button class="btn btn-gold" onclick="gerarResumo()">🔍 Gerar Resumo</button>
+    <button class="btn btn-ghost" onclick="verTodos()">Ver Todos</button>
+    <button class="btn btn-ghost-blue" onclick="imprimirRelatorio()">🖨️ Imprimir</button>
+  </div>
+  <div style="display:flex;gap:14px;flex-wrap:wrap;margin-bottom:20px;align-items:flex-end;">
+    <div class="field" style="margin-bottom:0;flex:1;min-width:180px;">
+      <label>Filtrar por Pessoa</label>
+      <select id="res-pessoa" onchange="aplicarFiltros()"><option value="">— Todas —</option></select>
+    </div>
+    <div class="field" style="margin-bottom:0;flex:1;min-width:180px;">
+      <label>Filtrar por Prato</label>
+      <select id="res-prato" onchange="aplicarFiltros()"><option value="">— Todos —</option></select>
+    </div>
+    <button class="btn btn-ghost btn-sm" onclick="limparFiltros()">✕ Limpar Filtros</button>
+  </div>
+  <div class="stats-row" id="stats-row" style="display:none;">
+    <div class="stat-box"><div class="val" id="st-pedidos">0</div><div class="lbl">Pedidos</div></div>
+    <div class="stat-box"><div class="val" id="st-pessoas">0</div><div class="lbl">Pessoas atendidas</div></div>
+    <div class="stat-box"><div class="val" id="st-total">R$ 0,00</div><div class="lbl">Total do período</div></div>
+  </div>
+  <div id="resumo-body"><div class="empty"><span class="ico">📊</span>Selecione um período e clique em Gerar Resumo.</div></div>
+</div>
+
+<!-- PESSOAS -->
+<div id="page-pessoas" class="page">
+  <h1 class="page-title">Cadastro de Parceiros</h1>
+  <p class="page-sub">Gerencie os parceiros/colaboradores do sistema.</p>
+  <div class="grid2">
+    <div class="card">
+      <div class="card-title">Novo Parceiro</div>
+      <div class="field">
+        <label>Nome Completo</label>
+        <input type="text" id="p-nome" placeholder="Ex.: João da Silva">
+      </div>
+      <div class="field">
+        <label>Setor (opcional)</label>
+        <input type="text" id="p-setor" placeholder="Ex.: Loja 12 — Moda">
+      </div>
+      <div class="field">
+        <label>CPF</label>
+        <input type="text" id="p-cpf" placeholder="000.000.000-00" maxlength="14" oninput="mascaraCPF(this)">
+        <span class="field-hint">Armazenado de forma segura (criptografado)</span>
+        <span class="field-error" id="p-cpf-erro">CPF inválido</span>
+      </div>
+      <div class="field">
+        <label>RG (opcional)</label>
+        <input type="text" id="p-rg" placeholder="00.000.000-0" maxlength="12" oninput="mascaraRG(this)">
+        <span class="field-hint">Armazenado de forma segura (criptografado)</span>
+        <span class="field-error" id="p-rg-erro">RG inválido</span>
+      </div>
+      <button class="btn btn-gold" onclick="addPessoa()">+ Adicionar Parceiro</button>
+    </div>
+    <div class="card">
+      <div class="card-title">Cadastrados</div>
+      <div id="lista-pessoas"><div class="empty"><span class="ico">👤</span>Nenhum parceiro</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- PRATOS -->
+<div id="page-pratos" class="page">
+  <h1 class="page-title">Cadastro de Pratos</h1>
+  <p class="page-sub">Defina os pratos, seus valores, foto e acompanhamentos vinculados.</p>
+  <div class="grid2">
+    <div class="card">
+      <div class="card-title">Novo Prato</div>
+      <div class="field"><label>Nome</label><input type="text" id="pr-nome" placeholder="Ex.: Frango Grelhado"></div>
+      <div class="field"><label>Valor (R$)</label><input type="number" id="pr-valor" placeholder="0,00" step="0.01" min="0"></div>
+      <input type="hidden" id="pr-modalidade" value="max3">
+      <div class="field" id="pr-fixo-toggle-wrap">
+        <label style="display:flex;align-items:center;gap:10px;cursor:pointer;user-select:none;">
+          <input type="checkbox" id="pr-tem-fixo" onchange="onPrFixoChange()" style="width:auto;accent-color:var(--gold);width:17px;height:17px;">
+          <span>📌 Este prato possui <strong>acompanhamento fixo</strong></span>
+        </label>
+      </div>
+      <div id="pr-fixo-sel-wrap" style="display:none;margin-bottom:14px;">
+        <div style="background:rgba(160,120,40,0.08);border:1px solid var(--gold-dim);border-radius:10px;padding:14px;">
+          <div style="font-size:11px;font-weight:600;color:var(--gold);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:10px;">📌 Acompanhamento Fixo</div>
+          <div id="pr-fixo-lista" style="display:flex;flex-direction:column;gap:7px;"></div>
+        </div>
+      </div>
+      <div id="pr-avulso-sel-wrap" style="margin-bottom:14px;">
+        <div style="background:rgba(58,111,152,0.07);border:1px solid var(--blue);border-radius:10px;padding:14px;">
+          <div style="font-size:11px;font-weight:600;color:var(--blue-light);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;">🥗 Acompanhamentos Avulsos disponíveis</div>
+          <div id="pr-avulso-lista" style="display:flex;flex-direction:column;gap:7px;"></div>
+        </div>
+      </div>
+      <div class="field">
+        <label>Foto do Prato (opcional)</label>
+        <div class="foto-upload-area" id="foto-upload-area" onclick="document.getElementById('pr-foto').click()">
+          <div id="foto-preview-wrap"><span class="foto-ico">📷</span><span class="foto-txt">Clique para adicionar foto</span></div>
+          <img id="foto-preview-img" style="display:none;max-width:100%;max-height:140px;border-radius:8px;object-fit:cover;">
+        </div>
+        <input type="file" id="pr-foto" accept="image/*" style="display:none;" onchange="previewFoto(this)">
+        <button class="btn btn-ghost btn-sm" id="btn-remover-foto" style="display:none;margin-top:6px;" onclick="removerFoto()">✕ Remover foto</button>
+      </div>
+      <button class="btn btn-gold" onclick="addPrato()">+ Adicionar Prato</button>
+    </div>
+    <div class="card">
+      <div class="card-title">Cadastrados</div>
+      <div id="lista-pratos"><div class="empty"><span class="ico">🍽️</span>Nenhum prato</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ACOMPANHAMENTOS -->
+<div id="page-acomps" class="page">
+  <h1 class="page-title">Acompanhamentos</h1>
+  <p class="page-sub">Cadastre acompanhamentos avulsos e acompanhamentos fixos vinculados a pratos.</p>
+  <div class="grid2" style="margin-bottom:28px;">
+    <div class="card">
+      <div class="card-title">Novo Acompanhamento</div>
+      <div class="field"><label>Nome</label><input type="text" id="ac-nome" placeholder="Ex.: Arroz Branco"></div>
+      <div class="field"><label>Valor adicional (R$)</label><input type="number" id="ac-valor" placeholder="0,00" step="0.01" min="0" value="0"></div>
+      <button class="btn btn-gold" onclick="addAcomp()">+ Adicionar</button>
+    </div>
+    <div class="card">
+      <div class="card-title">Cadastrados</div>
+      <div id="lista-acomps"><div class="empty"><span class="ico">🥗</span>Nenhum acompanhamento</div></div>
+    </div>
+  </div>
+  <div style="border-top:2px solid var(--gold-dim);padding-top:24px;">
+    <h2 style="font-family:'Playfair Display',serif;font-size:20px;color:var(--gold);margin-bottom:4px;">📌 Acompanhamentos Fixos</h2>
+    <p style="font-size:13px;color:var(--text-dim);margin-bottom:20px;">Vinculados diretamente a pratos — sem substituição.</p>
+    <div class="grid2">
+      <div class="card" style="border-color:var(--gold-dim);">
+        <div class="card-title">Novo Fixo</div>
+        <div class="field"><label>Nome</label><input type="text" id="acf-nome" placeholder="Ex.: Arroz + Feijão + Salada"></div>
+        <div class="field"><label>Descrição (opcional)</label><input type="text" id="acf-desc" placeholder="Ex.: Acompanhamento padrão do executivo"></div>
+        <button class="btn btn-gold" onclick="addAcompFixo()">📌 Adicionar Fixo</button>
+      </div>
+      <div class="card" style="border-color:var(--gold-dim);">
+        <div class="card-title">Fixos Cadastrados</div>
+        <div id="lista-acomps-fixos"><div class="empty"><span class="ico">📌</span>Nenhum fixo</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BEBIDAS -->
+<div id="page-bebidas" class="page">
+  <h1 class="page-title">Bebidas</h1>
+  <p class="page-sub">Cadastre as bebidas disponíveis.</p>
+  <div class="grid2">
+    <div class="card">
+      <div class="card-title">Nova Bebida</div>
+      <div class="field"><label>Nome</label><input type="text" id="beb-nome" placeholder="Ex.: Suco de Laranja"></div>
+      <div class="field"><label>Valor adicional (R$)</label><input type="number" id="beb-valor" placeholder="0,00" step="0.01" min="0" value="0"></div>
+      <button class="btn btn-gold" onclick="addBebida()">+ Adicionar</button>
+    </div>
+    <div class="card">
+      <div class="card-title">Cadastradas</div>
+      <div id="lista-bebidas"><div class="empty"><span class="ico">🥤</span>Nenhuma bebida</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- USUÁRIOS -->
+<div id="page-usuarios" class="page">
+  <h1 class="page-title">Gerenciar Usuários</h1>
+  <p class="page-sub">Cadastre usuários e defina permissões de acesso por módulo.</p>
+  <div class="grid2">
+    <div class="card">
+      <div class="card-title">Novo Usuário</div>
+      <div class="field"><label>Nome de Usuário</label><input type="text" id="usr-nome" placeholder="Ex.: operador01" autocomplete="off"></div>
+      <div class="field"><label>Senha</label><input type="password" id="usr-senha" placeholder="Mínimo 4 caracteres" autocomplete="new-password"></div>
+      <div class="field"><label>Confirmar Senha</label><input type="password" id="usr-senha2" placeholder="Repita a senha" autocomplete="new-password"></div>
+      <div class="field">
+        <label>Perfil de Acesso</label>
+        <select id="usr-perfil" onchange="onPerfilChange()">
+          <option value="personalizado">Personalizado</option>
+          <option value="admin">Administrador (tudo)</option>
+          <option value="operador">Operador (pedido + resumo)</option>
+          <option value="consulta">Consulta (somente resumo)</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Permissões por Módulo</label>
+        <div class="perm-grid" id="perm-novo-grid">
+          <label class="perm-item"><input type="checkbox" name="perm-novo" value="dashboard" checked> 📈 Dashboard</label>
+          <label class="perm-item"><input type="checkbox" name="perm-novo" value="pedido" checked> 📋 Novo Pedido</label>
+          <label class="perm-item"><input type="checkbox" name="perm-novo" value="resumo" checked> 📊 Resumo</label>
+          <label class="perm-item"><input type="checkbox" name="perm-novo" value="pessoas"> 👤 Pessoas</label>
+          <label class="perm-item"><input type="checkbox" name="perm-novo" value="pratos"> 🍽️ Pratos</label>
+          <label class="perm-item"><input type="checkbox" name="perm-novo" value="acomps"> 🥗 Acompanhamentos</label>
+          <label class="perm-item"><input type="checkbox" name="perm-novo" value="bebidas"> 🥤 Bebidas</label>
+          <label class="perm-item"><input type="checkbox" name="perm-novo" value="usuarios"> 🔐 Usuários</label>
+        </div>
+      </div>
+      <button class="btn btn-gold" onclick="addUsuario()">+ Adicionar Usuário</button>
+    </div>
+    <div class="card">
+      <div class="card-title">Usuários Cadastrados</div>
+      <div id="lista-usuarios"><div class="empty"><span class="ico">🔐</span>Nenhum usuário</div></div>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<!-- MODAL EDITAR PERMISSÕES -->
+<div id="modal-edit-perm">
+  <div class="modal-inner" style="max-width:500px;">
+    <h3>🔐 Editar Permissões</h3>
+    <p style="font-size:13px;color:var(--text-dim);margin-bottom:16px;" id="edit-perm-usuario-nome"></p>
+    <div class="perm-grid" id="edit-perm-grid"></div>
+    <div class="btn-row" style="margin-top:20px;">
+      <button class="btn btn-gold" onclick="salvarPermissoes(_editPermId)">✓ Salvar</button>
+      <button class="btn btn-ghost" onclick="document.getElementById('modal-edit-perm').classList.remove('open')">Cancelar</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL SENHA LEGADO -->
+<div id="modal-senha">
+  <div class="senha-box">
+    <h3>🔒 Área Restrita</h3>
+    <p>Digite a senha para continuar.</p>
+    <input type="password" class="senha-input" id="senha-input" placeholder="••••" maxlength="10" onkeydown="if(event.key==='Enter')verificarSenha()">
+    <div class="senha-error" id="senha-error"></div>
+    <div class="senha-btns">
+      <button class="btn btn-ghost" onclick="fecharSenha()">Cancelar</button>
+      <button class="btn btn-gold" onclick="verificarSenha()">Entrar</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL IMPRESSÃO -->
+<div id="modal-print">
+  <div class="modal-box">
+    <h3>🖨️ Formato de Impressão</h3>
+    <div class="print-opt" onclick="executarImpressao('80mm')">
+      <div class="ico">🧾</div>
+      <div><strong>Bobina 60mm (não fiscal)</strong><br><span>Impressoras térmicas</span></div>
+    </div>
+    <div class="print-opt" onclick="executarImpressao('a4')">
+      <div class="ico">📄</div>
+      <div><strong>Folha A4</strong><br><span>Impressoras comuns</span></div>
+    </div>
+    <div class="print-opt" id="opt-excel" onclick="executarImpressao('excel')" style="display:none;">
+      <div class="ico">📊</div>
+      <div><strong>Planilha Excel (.xlsx)</strong><br><span>Download com dados formatados</span></div>
+    </div>
+    <div class="modal-foot"><button class="btn btn-ghost" onclick="fecharModal()">Cancelar</button></div>
+  </div>
+</div>
+
+<!-- MODAL PREVIEW -->
+<div id="modal-preview">
+  <div class="preview-box">
+    <div class="preview-toolbar">
+      <span id="preview-titulo">Pré-visualização</span>
+      <button onclick="fecharPreview()" style="background:transparent;border:1px solid #555;color:#aaa;padding:5px 12px;border-radius:5px;cursor:pointer;font-size:12px;">✕ Fechar</button>
+      <button onclick="confirmarImpressao()" style="background:#3a6f98;color:#fff;border:none;padding:7px 14px;border-radius:5px;cursor:pointer;font-size:13px;font-weight:600;">🖨️ Imprimir</button>
+    </div>
+    <div class="preview-content" id="preview-content"></div>
+  </div>
+</div>
+
+<!-- MODAL GITHUB -->
+<div id="modal-ghcfg">
+  <div class="ghcfg-box">
+    <h3>⚙️ Configuração GitHub</h3>
+    <p style="font-size:13px;color:var(--text-dim);margin-bottom:20px;">Salve os dados no GitHub para acessar de qualquer computador.</p>
+    <div class="field"><label>Usuário GitHub</label><input type="text" id="gh-user" placeholder="seu-usuario"></div>
+    <div class="field"><label>Repositório</label><input type="text" id="gh-repo" placeholder="controle-plaza-db"></div>
+    <div class="field"><label>Branch</label><input type="text" id="gh-branch" placeholder="main" value="main"></div>
+    <div class="field"><label>Token (ghp_...)</label><input type="password" id="gh-token" placeholder="ghp_xxxxxxxxxxxx"></div>
+    <div style="margin-bottom:16px;"><span id="gh-test-status" style="font-size:12px;"></span></div>
+    <div class="btn-row">
+      <button class="btn btn-gold" onclick="salvarGHConfig()">✓ Salvar e Conectar</button>
+      <button class="btn btn-ghost" onclick="fecharGHConfig()">Cancelar</button>
+      <button class="btn btn-ghost btn-sm" onclick="limparGHConfig()" style="margin-left:auto;color:var(--red);border-color:var(--red);">🗑️ Desconectar</button>
+    </div>
+    <p style="font-size:11px;color:var(--text-dim);margin-top:14px;">Token salvo apenas localmente (localStorage). Dados em <code style="color:var(--gold)">db/dados.json</code>.</p>
+  </div>
+</div>
+
+<div id="print-area"></div>
+<div id="toast"></div>
+
+<script>
+/* =================================================================
+   CONTROLE DE REFEIÇÕES — PARCERIA ADM PLAZA v15
+   Funcionalidades: Login, GitHub sync, Dashboard mensal, Módulo
+   de Usuários com permissões, CPF/RG validados e criptografados,
+   Acompanhamentos fixos/avulsos, Foto de prato, Bebidas separadas,
+   Impressão 80mm/A4/Excel.
+   ================================================================= */
+
+/* ─── SheetJS ─── */
+(function(){ var s=document.createElement('script'); s.src='https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js'; document.head.appendChild(s); })();
+
+var STORAGE_KEY = 'plaza_db';
+var GH_CFG_KEY  = 'plaza_gh_cfg';
+var GH_FILE     = 'db/dados.json';
+var _cache = {};
+var _usuarioLogado = null;
+var _editPermId = null;
+
+/* ─────────────────────────────────────────────
+   CRIPTOGRAFIA SIMPLES (XOR + Base64)
+   Protege CPF/RG contra leitura casual no localStorage/GitHub.
+   Para segurança real, use backend. Aqui é ofuscação razoável
+   para dados sensíveis em ambiente local.
+   ───────────────────────────────────────────── */
+var CRYPTO_KEY = 'PlazaADM2025#'; // chave fixa de ofuscação
+
+function _encrypt(str) {
+  if (!str) return '';
+  try {
+    var result = '';
+    for (var i = 0; i < str.length; i++) {
+      result += String.fromCharCode(str.charCodeAt(i) ^ CRYPTO_KEY.charCodeAt(i % CRYPTO_KEY.length));
+    }
+    return btoa(unescape(encodeURIComponent(result)));
+  } catch(e) { return btoa(str); }
+}
+
+function _decrypt(enc) {
+  if (!enc) return '';
+  try {
+    var decoded = decodeURIComponent(escape(atob(enc)));
+    var result = '';
+    for (var i = 0; i < decoded.length; i++) {
+      result += String.fromCharCode(decoded.charCodeAt(i) ^ CRYPTO_KEY.charCodeAt(i % CRYPTO_KEY.length));
+    }
+    return result;
+  } catch(e) { try { return atob(enc); } catch(e2) { return enc; } }
+}
+
+/* ─────────────────────────────────────────────
+   VALIDAÇÃO CPF / RG
+   ───────────────────────────────────────────── */
+function validarCPF(cpf) {
+  var c = cpf.replace(/\D/g, '');
+  if (c.length !== 11) return false;
+  if (/^(\d)\1+$/.test(c)) return false;
+  var soma = 0;
+  for (var i = 0; i < 9; i++) soma += parseInt(c[i]) * (10 - i);
+  var r = 11 - (soma % 11);
+  if (r >= 10) r = 0;
+  if (r !== parseInt(c[9])) return false;
+  soma = 0;
+  for (var i = 0; i < 10; i++) soma += parseInt(c[i]) * (11 - i);
+  r = 11 - (soma % 11);
+  if (r >= 10) r = 0;
+  return r === parseInt(c[10]);
+}
+
+function validarRG(rg) {
+  var c = rg.replace(/\D/g, '');
+  return c.length >= 7 && c.length <= 9;
+}
+
+function mascaraCPF(el) {
+  var v = el.value.replace(/\D/g, '').substring(0, 11);
+  if (v.length > 9) v = v.replace(/(\d{3})(\d{3})(\d{3})(\d{1,2})/, '$1.$2.$3-$4');
+  else if (v.length > 6) v = v.replace(/(\d{3})(\d{3})(\d{1,3})/, '$1.$2.$3');
+  else if (v.length > 3) v = v.replace(/(\d{3})(\d{1,3})/, '$1.$2');
+  el.value = v;
+  var err = document.getElementById('p-cpf-erro');
+  if (err) err.classList.toggle('visible', v.length >= 14 && !validarCPF(v));
+}
+
+function mascaraRG(el) {
+  var v = el.value.replace(/\D/g, '').substring(0, 9);
+  if (v.length > 8) v = v.replace(/(\d{2})(\d{3})(\d{3})(\d{1})/, '$1.$2.$3-$4');
+  else if (v.length > 5) v = v.replace(/(\d{2})(\d{3})(\d{1,3})/, '$1.$2.$3');
+  else if (v.length > 2) v = v.replace(/(\d{2})(\d{1,3})/, '$1.$2');
+  el.value = v;
+  var err = document.getElementById('p-rg-erro');
+  if (err) err.classList.toggle('visible', v.length >= 7 && !validarRG(v));
+}
+
+/* ─────────────────────────────────────────────
+   HASH DE SENHA
+   ───────────────────────────────────────────── */
+function _hashSenha(s) {
+  var h = 0;
+  for (var i = 0; i < s.length; i++) { h = ((h << 5) - h) + s.charCodeAt(i); h |= 0; }
+  return h.toString(16);
+}
+
+/* ─────────────────────────────────────────────
+   GITHUB API
+   ───────────────────────────────────────────── */
+var GH = {
+  getCfg: function() { try { return JSON.parse(localStorage.getItem(GH_CFG_KEY) || 'null') || {}; } catch(e) { return {}; } },
+  saveCfg: function(obj) { localStorage.setItem(GH_CFG_KEY, JSON.stringify(obj)); },
+  isConfigured: function() { var c = GH.getCfg(); return !!(c.user && c.repo && c.branch && c.token); },
+  _url: function() { var c = GH.getCfg(); return 'https://api.github.com/repos/'+c.user+'/'+c.repo+'/contents/'+GH_FILE+'?ref='+c.branch; },
+  _headers: function() { var c = GH.getCfg(); return { 'Authorization':'token '+c.token, 'Accept':'application/vnd.github.v3+json', 'Content-Type':'application/json' }; },
+  read: async function() {
+    try {
+      var resp = await fetch(GH._url(), { headers: GH._headers() });
+      if (resp.status === 404) return { content: null, sha: null };
+      if (!resp.ok) throw new Error('HTTP ' + resp.status);
+      var data = await resp.json();
+      var rawB64 = (data.content || '').replace(/\n/g,'').trim();
+      if (!rawB64) return { content: null, sha: data.sha };
+      var json = '';
+      try { json = decodeURIComponent(escape(atob(rawB64))); } catch(e) { json = atob(rawB64); }
+      json = json.trim();
+      if (!json) return { content: null, sha: data.sha };
+      var parsed = null;
+      try { parsed = JSON.parse(json); } catch(e) { return { content: null, sha: data.sha }; }
+      return { content: parsed, sha: data.sha };
+    } catch(e) { console.error('GH read error:', e); throw e; }
+  },
+  write: async function(dados, sha) {
+    var c = GH.getCfg();
+    var json = JSON.stringify(dados, null, 2);
+    var b64; try { b64 = btoa(unescape(encodeURIComponent(json))); } catch(e) { b64 = btoa(json); }
+    var body = { message: 'Atualização — ' + new Date().toLocaleString('pt-BR'), content: b64, branch: c.branch };
+    if (sha) body.sha = sha;
+    var resp = await fetch('https://api.github.com/repos/'+c.user+'/'+c.repo+'/contents/'+GH_FILE, { method:'PUT', headers:GH._headers(), body:JSON.stringify(body) });
+    if (!resp.ok) { var err = await resp.json().catch(function(){ return {}; }); throw new Error((err.message||'Erro ao salvar')+' (HTTP '+resp.status+')'); }
+    var result = await resp.json();
+    return result.content.sha;
+  },
+  test: async function() {
+    try {
+      var c = GH.getCfg();
+      var resp = await fetch('https://api.github.com/repos/'+c.user+'/'+c.repo, { headers: GH._headers() });
+      if (resp.status === 401) return { ok:false, msg:'Token inválido.' };
+      if (resp.status === 404) return { ok:false, msg:'Repositório não encontrado.' };
+      if (!resp.ok) return { ok:false, msg:'Erro HTTP '+resp.status };
+      return { ok:true, msg:'Conectado com sucesso!' };
+    } catch(e) { return { ok:false, msg:'Erro de rede: '+e.message }; }
+  }
+};
+
+var _currentSha = null;
+
+/* ─────────────────────────────────────────────
+   DB: interface de acesso aos dados
+   ───────────────────────────────────────────── */
+var DB = {
+  uid: function() { return Date.now().toString(36) + Math.random().toString(36).slice(2,5); },
+  get: function(k) { return _cache[k] ? JSON.parse(JSON.stringify(_cache[k])) : []; },
+  set: function(k, v, callback) { _cache[k] = v; _persistir(callback); },
+  loadAll: async function(callback) {
+    if (GH.isConfigured()) {
+      try {
+        var result = await GH.read();
+        if (result && result.content) {
+          _cache = result.content; _currentSha = result.sha;
+        } else {
+          _carregarLocalStorage(); _currentSha = result ? result.sha : null;
+          try { _currentSha = await GH.write(_cache, _currentSha); } catch(e) {}
+        }
+      } catch(e) {
+        _carregarLocalStorage();
+        if (callback) callback(new Error('GitHub indisponível'));
+        return;
+      }
+    } else { _carregarLocalStorage(); }
+    if (callback) callback(null);
+  }
+};
+
+var CFG = {
+  get: function() { return JSON.parse(localStorage.getItem('plaza_cfg') || '{}'); },
+  set: function(obj) { var c = CFG.get(); for(var k in obj) c[k]=obj[k]; localStorage.setItem('plaza_cfg', JSON.stringify(c)); }
+};
+
+function _carregarLocalStorage() {
+  try { var raw = localStorage.getItem(STORAGE_KEY); if (raw) _cache = JSON.parse(raw); else _cache = {}; }
+  catch(e) { _cache = {}; }
+}
+
+function _persistir(callback) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(_cache));
+  if (!GH.isConfigured()) { if (callback) callback(null); return; }
+  GH.write(_cache, _currentSha).then(function(sha) {
+    _currentSha = sha;
+    _atualizarStatusGH(true);
+    if (callback) callback(null);
+  }).catch(function(e) {
+    console.warn('GH write error:', e.message);
+    if (callback) callback(e);
+  });
+}
+
+/* ─────────────────────────────────────────────
+   USUÁRIOS & LOGIN
+   ───────────────────────────────────────────── */
+function _getUsuarios() {
+  var lista = _cache['usuarios'];
+  if (!Array.isArray(lista) || lista.length === 0) return [];
+  return JSON.parse(JSON.stringify(lista));
+}
+
+function _setUsuarios(lista, callback) { DB.set('usuarios', lista, callback); }
+
+async function fazerLogin() {
+  var user = document.getElementById('login-user').value.trim();
+  var pass = document.getElementById('login-pass').value;
+  var errEl = document.getElementById('login-error');
+  var btn = document.querySelector('#login-screen .login-btn');
+  if (!user || !pass) { errEl.textContent = 'Preencha usuário e senha.'; return; }
+  errEl.textContent = '';
+  btn.textContent = '⏳ Verificando...';
+  btn.disabled = true;
+  try { await DB.loadAll(function(){}); } catch(e) {}
+  btn.textContent = '🔑 Entrar';
+  btn.disabled = false;
+  var usuarios = _getUsuarios();
+  if (!usuarios.length) {
+    usuarios.push({ id:'admin', nome:'admin', senhaHash:_hashSenha('1234'), permissoes: { dashboard:true,pedido:true,resumo:true,pessoas:true,pratos:true,acomps:true,bebidas:true,usuarios:true } });
+    _setUsuarios(usuarios);
+  }
+  var encontrado = null;
+  for (var i = 0; i < usuarios.length; i++) {
+    if (usuarios[i].nome.toLowerCase() === user.toLowerCase() && usuarios[i].senhaHash === _hashSenha(pass)) { encontrado = usuarios[i]; break; }
+  }
+  if (!encontrado) {
+    errEl.textContent = '❌ Usuário ou senha incorretos.';
+    document.getElementById('login-pass').value = '';
+    document.getElementById('login-pass').focus();
+    return;
+  }
+  _usuarioLogado = encontrado;
+  document.getElementById('login-screen').classList.remove('open');
+  document.getElementById('header-username').textContent = encontrado.nome;
+  document.getElementById('header-user-info').style.display = 'flex';
+  errEl.textContent = '';
+  aplicarPermissoesNav();
+  sincronizar();
+}
+
+function fazerLogout() {
+  if (!confirm('Deseja sair do sistema?')) return;
+  _usuarioLogado = null;
+  document.getElementById('header-user-info').style.display = 'none';
+  document.getElementById('login-user').value = '';
+  document.getElementById('login-pass').value = '';
+  document.getElementById('login-error').textContent = '';
+  document.querySelectorAll('#main-nav button').forEach(function(b){ b.style.display=''; });
+  document.getElementById('login-screen').classList.add('open');
+  setTimeout(function(){ document.getElementById('login-user').focus(); }, 100);
+}
+
+function aplicarPermissoesNav() {
+  var perms = _usuarioLogado ? _usuarioLogado.permissoes : null;
+  if (!perms) return;
+  document.querySelectorAll('#main-nav button').forEach(function(btn){
+    var onclick = btn.getAttribute('onclick') || '';
+    var match = onclick.match(/showPage\('([^']+)'/);
+    if (match) {
+      var mod = match[1];
+      if (mod === 'pedido') { btn.style.display = ''; return; }
+      btn.style.display = perms[mod] ? '' : 'none';
+    }
+  });
+}
+
+function onPerfilChange() {
+  var perfil = document.getElementById('usr-perfil').value;
+  var checks = document.querySelectorAll('#perm-novo-grid input[type=checkbox]');
+  var perms = { admin: { dashboard:true,pedido:true,resumo:true,pessoas:true,pratos:true,acomps:true,bebidas:true,usuarios:true },
+                operador: { dashboard:true,pedido:true,resumo:true,pessoas:false,pratos:false,acomps:false,bebidas:false,usuarios:false },
+                consulta: { dashboard:true,pedido:false,resumo:true,pessoas:false,pratos:false,acomps:false,bebidas:false,usuarios:false } };
+  if (perms[perfil]) {
+    checks.forEach(function(ch){ ch.checked = perms[perfil][ch.value] || false; });
+  }
+}
+
+function addUsuario() {
+  var nome  = document.getElementById('usr-nome').value.trim();
+  var senha = document.getElementById('usr-senha').value;
+  var senha2= document.getElementById('usr-senha2').value;
+  if (!nome) { toast('Informe o nome de usuário.','#c04a3a'); return; }
+  if (senha.length < 4) { toast('Senha deve ter ao menos 4 caracteres.','#c04a3a'); return; }
+  if (senha !== senha2) { toast('As senhas não coincidem.','#c04a3a'); return; }
+  var lista = _getUsuarios();
+  for (var i=0;i<lista.length;i++) { if(lista[i].nome.toLowerCase()===nome.toLowerCase()){ toast('Usuário já existe.','#c04a3a'); return; } }
+  var permChecks = document.querySelectorAll('#perm-novo-grid input[type=checkbox]');
+  var permissoes = {};
+  permChecks.forEach(function(ch){ permissoes[ch.value] = ch.checked; });
+  permissoes['pedido'] = true;
+  lista.push({ id: DB.uid(), nome:nome, senhaHash:_hashSenha(senha), permissoes:permissoes });
+  document.getElementById('usr-nome').value='';
+  document.getElementById('usr-senha').value='';
+  document.getElementById('usr-senha2').value='';
+  toast('💾 Salvando usuário...','#3a6f98');
+  _setUsuarios(lista, function(){ toast('✓ Usuário cadastrado!'); });
+  renderUsuarios();
+}
+
+function delUsuario(id) {
+  var lista = _getUsuarios();
+  if (lista.length <= 1) { toast('Deve haver ao menos um usuário.','#c04a3a'); return; }
+  var alvo = lista.find(function(u){ return u.id===id; });
+  if (_usuarioLogado && alvo && alvo.nome===_usuarioLogado.nome) { toast('Não é possível remover o usuário logado.','#c04a3a'); return; }
+  if (!confirm('Remover usuário?')) return;
+  _setUsuarios(lista.filter(function(u){ return u.id!==id; }), function(){ toast('Usuário removido.'); });
+  renderUsuarios();
+}
+
+function abrirEditPerm(id) {
+  var lista = _getUsuarios();
+  var u = lista.find(function(u){ return u.id===id; });
+  if (!u) return;
+  _editPermId = id;
+  document.getElementById('edit-perm-usuario-nome').textContent = 'Editando permissões de: ' + u.nome;
+  var modulos = [
+    {k:'dashboard',l:'📈 Dashboard'},{k:'pedido',l:'📋 Novo Pedido'},{k:'resumo',l:'📊 Resumo'},
+    {k:'pessoas',l:'👤 Pessoas'},{k:'pratos',l:'🍽️ Pratos'},{k:'acomps',l:'🥗 Acompanhamentos'},
+    {k:'bebidas',l:'🥤 Bebidas'},{k:'usuarios',l:'🔐 Usuários'}
+  ];
+  var h = '';
+  modulos.forEach(function(m){
+    var checked = (u.permissoes && u.permissoes[m.k]) ? 'checked' : '';
+    h += '<label class="perm-item"><input type="checkbox" class="ep-check" data-mod="'+m.k+'" '+checked+'> '+m.l+'</label>';
+  });
+  document.getElementById('edit-perm-grid').innerHTML = h;
+  document.getElementById('modal-edit-perm').classList.add('open');
+}
+
+function salvarPermissoes(id) {
+  var lista = _getUsuarios();
+  var u = lista.find(function(x){ return x.id===id; });
+  if (!u) return;
+  var checks = document.querySelectorAll('#modal-edit-perm .ep-check');
+  var permissoes = {};
+  checks.forEach(function(ch){ permissoes[ch.getAttribute('data-mod')] = ch.checked; });
+  permissoes['pedido'] = true;
+  u.permissoes = permissoes;
+  document.getElementById('modal-edit-perm').classList.remove('open');
+  toast('💾 Salvando permissões...','#3a6f98');
+  _setUsuarios(lista, function(){ toast('✓ Permissões atualizadas!'); });
+  renderUsuarios();
+  if (_usuarioLogado && _usuarioLogado.id === id) { _usuarioLogado.permissoes = permissoes; aplicarPermissoesNav(); }
+}
+
+function renderUsuarios() {
+  var lista = _getUsuarios();
+  var el = document.getElementById('lista-usuarios');
+  if (!lista.length) { el.innerHTML='<div class="empty"><span class="ico">🔐</span>Nenhum usuário</div>'; return; }
+  var modulos = [
+    {k:'dashboard',l:'📈 Dashboard'},{k:'pedido',l:'📋 Pedido'},{k:'resumo',l:'📊 Resumo'},
+    {k:'pessoas',l:'👤 Pessoas'},{k:'pratos',l:'🍽️ Pratos'},{k:'acomps',l:'🥗 Acomp.'},
+    {k:'bebidas',l:'🥤 Bebidas'},{k:'usuarios',l:'🔐 Usuários'}
+  ];
+  var h = '';
+  lista.forEach(function(u){
+    var isMe = _usuarioLogado && u.nome === _usuarioLogado.nome;
+    var perms = u.permissoes || null;
+    var permTags = '';
+    if (perms) {
+      var ativos = modulos.filter(function(m){ return perms[m.k]; }).map(function(m){ return '<span class="badge badge-gold">'+m.l+'</span>'; });
+      permTags = '<div style="display:flex;flex-wrap:wrap;gap:5px;margin-top:8px;">'+ativos.join('')+'</div>';
+    }
+    h += '<div class="user-item">'
+      + '<div style="flex:1;">'
+      + '<div class="uname">'+u.nome+(isMe?' <span style="font-size:10px;color:var(--green);font-weight:600;">(você)</span>':'')+'</div>'
+      + permTags
+      + '</div>'
+      + '<div style="display:flex;gap:7px;align-items:flex-start;margin-left:10px;">'
+      + '<button class="btn btn-sm btn-ghost-blue" onclick="abrirEditPerm(\''+u.id+'\')">✏️ Perm</button>'
+      + (!isMe ? '<button class="btn-danger btn" onclick="delUsuario(\''+u.id+'\')" style="padding:5px 10px;font-size:11px;">✕</button>' : '')
+      + '</div>'
+      + '</div>';
+  });
+  el.innerHTML = h;
+}
+
+/* ─────────────────────────────────────────────
+   SINCRONIZAR
+   ───────────────────────────────────────────── */
+async function sincronizar() {
+  _atualizarStatusGH(null);
+  try {
+    await DB.loadAll(function(err){
+      if (err) { _atualizarStatusGH(false); } else { _atualizarStatusGH(true); }
+    });
+    _atualizarStatusGH(true);
+    renderDashboard();
+  } catch(e) { _atualizarStatusGH(false); }
+}
+
+function _atualizarStatusGH(ok) {
+  var el = document.getElementById('gh-status');
+  if (ok === null) { el.textContent = '⏳ Sincronizando...'; el.style.color = '#a07828'; return; }
+  if (!GH.isConfigured()) { el.textContent = '📦 Local'; el.style.color = '#7a7567'; return; }
+  if (ok) { el.textContent = '✅ GitHub'; el.style.color = '#3a7a4a'; }
+  else { el.textContent = '⚠️ Offline'; el.style.color = '#c04a3a'; }
+}
+
+/* ─────────────────────────────────────────────
+   GITHUB CONFIG MODAL
+   ───────────────────────────────────────────── */
+function abrirGHConfig() {
+  var c = GH.getCfg();
+  document.getElementById('gh-user').value = c.user || '';
+  document.getElementById('gh-repo').value = c.repo || '';
+  document.getElementById('gh-branch').value = c.branch || 'main';
+  document.getElementById('gh-token').value = c.token || '';
+  document.getElementById('gh-test-status').textContent = '';
+  document.getElementById('modal-ghcfg').classList.add('open');
+}
+function fecharGHConfig() { document.getElementById('modal-ghcfg').classList.remove('open'); }
+async function salvarGHConfig() {
+  var cfg = { user:document.getElementById('gh-user').value.trim(), repo:document.getElementById('gh-repo').value.trim(), branch:document.getElementById('gh-branch').value.trim()||'main', token:document.getElementById('gh-token').value.trim() };
+  if (!cfg.user||!cfg.repo||!cfg.token) { document.getElementById('gh-test-status').textContent='❌ Preencha usuário, repositório e token.'; return; }
+  GH.saveCfg(cfg);
+  document.getElementById('gh-test-status').textContent='⏳ Testando conexão...';
+  var r = await GH.test();
+  document.getElementById('gh-test-status').textContent = r.ok ? '✅ '+r.msg : '❌ '+r.msg;
+  document.getElementById('gh-test-status').style.color = r.ok ? '#3a7a4a' : '#c04a3a';
+  if (r.ok) { fecharGHConfig(); sincronizar(); }
+}
+function limparGHConfig() {
+  if (!confirm('Desconectar do GitHub?')) return;
+  localStorage.removeItem(GH_CFG_KEY); _currentSha = null;
+  fecharGHConfig(); _atualizarStatusGH(false); toast('GitHub desconectado.');
+}
+
+/* ─────────────────────────────────────────────
+   NAVEGAÇÃO
+   ───────────────────────────────────────────── */
+function showPage(name, btn) {
+  document.querySelectorAll('.page').forEach(function(p){ p.classList.remove('active'); });
+  document.querySelectorAll('#main-nav button').forEach(function(b){ b.classList.remove('active'); });
+  document.getElementById('page-' + name).classList.add('active');
+  if (btn) btn.classList.add('active');
+  if (name === 'dashboard') renderDashboard();
+  if (name === 'pedido') initPedido();
+  if (name === 'resumo') { initResumo(); populaFiltros(); }
+  if (name === 'pessoas') renderPessoas();
+  if (name === 'pratos') { renderPratos(); document.getElementById('pr-avulso-sel-wrap').style.display='block'; renderPrAvulsoLista(); }
+  if (name === 'acomps') { renderAcomps(); renderAcompsFixos(); }
+  if (name === 'bebidas') renderBebidas();
+  if (name === 'usuarios') renderUsuarios();
+}
+
+function toast(msg, cor) {
+  var el = document.getElementById('toast');
+  el.textContent = msg; el.style.background = cor || '#3a7a4a';
+  el.classList.add('show'); setTimeout(function(){ el.classList.remove('show'); }, 2800);
+}
+
+/* ─────────────────────────────────────────────
+   DASHBOARD
+   ───────────────────────────────────────────── */
+var _dashMes = null; // { year, month } — 0-indexed month
+
+function dashMesAtual() {
+  var now = new Date();
+  if (!_dashMes) _dashMes = { year: now.getFullYear(), month: now.getMonth() };
+  return _dashMes;
+}
+function dashMesAnterior() { var m = dashMesAtual(); m.month--; if (m.month < 0) { m.month = 11; m.year--; } _dashMes = m; renderDashboard(); }
+function dashMesProximo() { var m = dashMesAtual(); m.month++; if (m.month > 11) { m.month = 0; m.year++; } _dashMes = m; renderDashboard(); }
+
+function renderDashboard() {
+  var m = dashMesAtual();
+  var meses = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+  document.getElementById('dash-mes-label').textContent = meses[m.month] + ' ' + m.year;
+
+  var prefixo = m.year + '-' + String(m.month + 1).padStart(2,'0');
+  var pedidos = DB.get('pedidos').filter(function(p){ return (p.data||'').startsWith(prefixo); });
+
+  var total = 0, uniqMap = {};
+  pedidos.forEach(function(p){ var tv = p.totalPedido !== undefined ? p.totalPedido : p.pratoValor; total += tv; uniqMap[p.pessoaId] = 1; });
+  var uniq = Object.keys(uniqMap).length;
+  var ticket = pedidos.length ? total / pedidos.length : 0;
+
+  document.getElementById('dash-st-pedidos').textContent = pedidos.length;
+  document.getElementById('dash-st-pessoas').textContent = uniq;
+  document.getElementById('dash-st-total').textContent = moeda(total);
+  document.getElementById('dash-st-ticket').textContent = moeda(ticket);
+
+  // Gráfico de barras por dia
+  var diasNoMes = new Date(m.year, m.month + 1, 0).getDate();
+  var porDia = {};
+  for (var d = 1; d <= diasNoMes; d++) porDia[d] = 0;
+  pedidos.forEach(function(p){
+    var dia = parseInt((p.data||'').split('-')[2]);
+    if (dia) porDia[dia] = (porDia[dia]||0) + 1;
+  });
+  var maxDia = Math.max.apply(null, Object.values(porDia)) || 1;
+  var barsH = '', labsH = '';
+  for (var d = 1; d <= diasNoMes; d++) {
+    var h = Math.round((porDia[d] / maxDia) * 100);
+    var title = fmtData(prefixo + '-' + String(d).padStart(2,'0')) + ': ' + porDia[d] + ' pedido(s)';
+    barsH += '<div class="chart-bar" style="height:'+h+'%;" title="'+title+'"></div>';
+    if (d % 5 === 0 || d === 1) labsH += '<div class="chart-label">'+d+'</div>';
+    else labsH += '<div class="chart-label"></div>';
+  }
+  document.getElementById('dash-chart-bars').innerHTML = barsH;
+  document.getElementById('dash-chart-labels').innerHTML = labsH;
+
+  // Top 5 pessoas
+  var porPessoa = {};
+  pedidos.forEach(function(p){
+    if (!porPessoa[p.pessoaId]) porPessoa[p.pessoaId] = { nome:p.pessoaNome, total:0, qtd:0 };
+    var tv = p.totalPedido !== undefined ? p.totalPedido : p.pratoValor;
+    porPessoa[p.pessoaId].total += tv;
+    porPessoa[p.pessoaId].qtd++;
+  });
+  var sortPessoas = Object.values(porPessoa).sort(function(a,b){ return b.qtd - a.qtd; }).slice(0,5);
+  var topPH = '';
+  if (!sortPessoas.length) { topPH = '<div class="empty" style="padding:20px;"><span class="ico">👤</span>Sem pedidos neste mês</div>'; }
+  else sortPessoas.forEach(function(p,i){
+    topPH += '<div class="dash-top-item"><div class="dash-rank">'+(i+1)+'</div><div class="dash-top-name">'+p.nome+'</div><div class="dash-top-val">'+p.qtd+' pedidos · '+moeda(p.total)+'</div></div>';
+  });
+  document.getElementById('dash-top-pessoas').innerHTML = topPH;
+
+  // Top pratos
+  var porPrato = {};
+  pedidos.forEach(function(p){
+    if (!porPrato[p.pratoNome]) porPrato[p.pratoNome] = 0;
+    porPrato[p.pratoNome]++;
+  });
+  var sortPratos = Object.entries(porPrato).sort(function(a,b){ return b[1]-a[1]; }).slice(0,5);
+  var topPtH = '';
+  if (!sortPratos.length) { topPtH = '<div class="empty" style="padding:20px;"><span class="ico">🍽️</span>Sem pedidos neste mês</div>'; }
+  else sortPratos.forEach(function(entry,i){
+    topPtH += '<div class="dash-top-item"><div class="dash-rank">'+(i+1)+'</div><div class="dash-top-name">'+entry[0]+'</div><div class="dash-top-val">'+entry[1]+' pedidos</div></div>';
+  });
+  document.getElementById('dash-top-pratos').innerHTML = topPtH;
+
+  // Resumo por semana
+  var semanas = [{n:'1ª semana',ini:1,fim:7},{n:'2ª semana',ini:8,fim:14},{n:'3ª semana',ini:15,fim:21},{n:'4ª semana',ini:22,fim:diasNoMes}];
+  var semH = '';
+  semanas.forEach(function(s){
+    var qsem = 0, tsem = 0;
+    pedidos.forEach(function(p){
+      var dia = parseInt((p.data||'').split('-')[2]);
+      if (dia >= s.ini && dia <= s.fim) { qsem++; tsem += (p.totalPedido !== undefined ? p.totalPedido : p.pratoValor); }
+    });
+    semH += '<div style="display:flex;justify-content:space-between;align-items:center;padding:10px 14px;border:1px solid var(--border);border-radius:8px;margin-bottom:8px;background:var(--surface2);">'
+      + '<div><div style="font-weight:600;font-size:13px;color:var(--cream);">'+s.n+'</div><div style="font-size:11px;color:var(--text-dim);">dias '+s.ini+' a '+s.fim+'</div></div>'
+      + '<div style="text-align:right;"><div class="badge badge-gold">'+qsem+' pedidos</div><div style="font-size:12px;color:var(--text-dim);margin-top:3px;">'+moeda(tsem)+'</div></div>'
+      + '</div>';
+  });
+  document.getElementById('dash-semanas').innerHTML = semH || '<div class="empty" style="padding:20px;"><span class="ico">📅</span>Sem dados</div>';
+}
+
+/* ─────────────────────────────────────────────
+   PESSOAS
+   ───────────────────────────────────────────── */
+function addPessoa() {
+  var nome  = document.getElementById('p-nome').value.trim();
+  var setor = document.getElementById('p-setor').value.trim();
+  var cpfRaw= document.getElementById('p-cpf').value.trim();
+  var rgRaw = document.getElementById('p-rg').value.trim();
+  if (!nome) { toast('Informe o nome.','#c04a3a'); return; }
+  if (cpfRaw && !validarCPF(cpfRaw)) { toast('CPF inválido. Verifique os dígitos.','#c04a3a'); return; }
+  if (rgRaw && !validarRG(rgRaw)) { toast('RG inválido.','#c04a3a'); return; }
+  var lista = DB.get('pessoas');
+  // Verifica duplicidade de CPF
+  if (cpfRaw) {
+    var cpfNum = cpfRaw.replace(/\D/g,'');
+    for (var i=0;i<lista.length;i++) {
+      if (lista[i].cpfHash && _decrypt(lista[i].cpfEnc).replace(/\D/g,'') === cpfNum) { toast('CPF já cadastrado para outro parceiro.','#c04a3a'); return; }
+    }
+  }
+  var novo = { id:DB.uid(), nome:nome, setor:setor };
+  if (cpfRaw) { novo.cpfEnc = _encrypt(cpfRaw); novo.cpfMask = cpfRaw.slice(0,3)+'.***.***-**'; }
+  if (rgRaw)  { novo.rgEnc  = _encrypt(rgRaw);  novo.rgMask  = rgRaw.slice(0,2)+'.***.***-*'; }
+  lista.push(novo);
+  DB.set('pessoas', lista);
+  document.getElementById('p-nome').value='';
+  document.getElementById('p-setor').value='';
+  document.getElementById('p-cpf').value='';
+  document.getElementById('p-rg').value='';
+  renderPessoas();
+  toast('Parceiro adicionado!');
+}
+
+function delPessoa(id) {
+  if (!confirm('Remover?')) return;
+  DB.set('pessoas', DB.get('pessoas').filter(function(x){ return x.id!==id; }));
+  renderPessoas();
+}
+
+function renderPessoas() {
+  var lista = DB.get('pessoas');
+  var el = document.getElementById('lista-pessoas');
+  if (!lista.length) { el.innerHTML='<div class="empty"><span class="ico">👤</span>Nenhum parceiro</div>'; return; }
+  var h = '<table><thead><tr><th>Nome</th><th>Setor</th><th>CPF</th><th>RG</th><th></th></tr></thead><tbody>';
+  lista.forEach(function(p){
+    h += '<tr>'
+      + '<td><strong>'+p.nome+'</strong></td>'
+      + '<td>'+(p.setor||'—')+'</td>'
+      + '<td>'+(p.cpfMask ? '<span class="badge badge-blue">'+p.cpfMask+'</span>' : '—')+'</td>'
+      + '<td>'+(p.rgMask  ? '<span class="badge badge-blue">'+p.rgMask+'</span>'  : '—')+'</td>'
+      + '<td><button class="btn btn-danger" onclick="delPessoa(\''+p.id+'\')">✕</button></td>'
+      + '</tr>';
+  });
+  el.innerHTML = h + '</tbody></table>';
+}
+
+/* ─────────────────────────────────────────────
+   FOTO DO PRATO
+   ───────────────────────────────────────────── */
+var _fotoBase64 = null;
+function previewFoto(input) {
+  if (!input.files || !input.files[0]) return;
+  var reader = new FileReader();
+  reader.onload = function(e) {
+    _fotoBase64 = e.target.result;
+    document.getElementById('foto-preview-img').src = _fotoBase64;
+    document.getElementById('foto-preview-img').style.display = 'block';
+    document.getElementById('foto-preview-wrap').style.display = 'none';
+    document.getElementById('btn-remover-foto').style.display = 'inline-flex';
+  };
+  reader.readAsDataURL(input.files[0]);
+}
+function removerFoto() {
+  _fotoBase64 = null;
+  document.getElementById('pr-foto').value='';
+  document.getElementById('foto-preview-img').style.display='none';
+  document.getElementById('foto-preview-wrap').style.display='flex';
+  document.getElementById('btn-remover-foto').style.display='none';
+}
+
+/* ─────────────────────────────────────────────
+   PRATOS
+   ───────────────────────────────────────────── */
+function addPrato() {
+  var nome = document.getElementById('pr-nome').value.trim();
+  var valor = parseFloat(document.getElementById('pr-valor').value);
+  var modalidade = document.getElementById('pr-modalidade').value;
+  if (!nome) { toast('Informe o nome.','#c04a3a'); return; }
+  if (isNaN(valor)||valor<0) { toast('Valor inválido.','#c04a3a'); return; }
+  var temFixo = document.getElementById('pr-tem-fixo').checked;
+  var acompFixoIds = [], acompFixoNomes = [];
+  if (temFixo) {
+    var checks = document.querySelectorAll('input[name="pr-fixo-check"]:checked');
+    if (!checks.length) { toast('Selecione pelo menos 1 acompanhamento fixo.','#c04a3a'); return; }
+    var listaFixos = DB.get('acompsFixos');
+    checks.forEach(function(ch){
+      acompFixoIds.push(ch.value);
+      var f = listaFixos.find(function(x){ return x.id===ch.value; });
+      if (f) acompFixoNomes.push(f.nome);
+    });
+  }
+  var acompAvulsoIds = [], acompAvulsoNomes = [];
+  if (modalidade !== 'sem') {
+    var avulsoChecks = document.querySelectorAll('input[name="pr-avulso-check"]:checked');
+    var listaAvulsos = DB.get('acomps');
+    avulsoChecks.forEach(function(ch){
+      acompAvulsoIds.push(ch.value);
+      var a = listaAvulsos.find(function(x){ return x.id===ch.value; });
+      if (a) acompAvulsoNomes.push(a.nome);
+    });
+  }
+  var lista = DB.get('pratos');
+  lista.push({ id:DB.uid(), nome:nome, valor:valor, foto:_fotoBase64||null, modalidadeAcomp:modalidade, temAcompFixo:temFixo, acompFixoIds:acompFixoIds, acompFixoNomes:acompFixoNomes, acompAvulsoIds:acompAvulsoIds, acompAvulsoNomes:acompAvulsoNomes });
+  DB.set('pratos', lista);
+  document.getElementById('pr-nome').value='';
+  document.getElementById('pr-valor').value='';
+  document.getElementById('pr-modalidade').value='max3';
+  document.getElementById('pr-tem-fixo').checked=false;
+  document.getElementById('pr-fixo-sel-wrap').style.display='none';
+  document.getElementById('pr-avulso-sel-wrap').style.display='block';
+  renderPrAvulsoLista();
+  removerFoto();
+  renderPratos();
+  toast('Prato adicionado!');
+}
+
+function delPrato(id) {
+  if (!confirm('Remover?')) return;
+  DB.set('pratos', DB.get('pratos').filter(function(x){ return x.id!==id; }));
+  renderPratos();
+}
+
+function renderPratos() {
+  var lista = DB.get('pratos');
+  var el = document.getElementById('lista-pratos');
+  if (!lista.length) { el.innerHTML='<div class="empty"><span class="ico">🍽️</span>Nenhum prato</div>'; return; }
+  var h = '';
+  lista.forEach(function(p){
+    var thumb = p.foto ? '<img class="prato-thumb" src="'+p.foto+'" alt="foto">' : '<div class="prato-thumb-ph">🍽️</div>';
+    var fixoBadge = '';
+    if (p.temAcompFixo && p.acompFixoNomes && p.acompFixoNomes.length) fixoBadge = ' <span class="badge badge-gold">📌 '+p.acompFixoNomes.join(', ')+'</span>';
+    var avulsoBadge = '';
+    if (p.acompAvulsoNomes && p.acompAvulsoNomes.length) avulsoBadge = '<br><span class="badge badge-blue">🥗 '+p.acompAvulsoNomes.join(', ')+'</span>';
+    else if (p.modalidadeAcomp !== 'sem') avulsoBadge = '<br><span style="font-size:11px;color:var(--text-dim);">🥗 todos disponíveis</span>';
+    h += '<div class="prato-card-row">'+thumb
+      + '<div class="prato-info"><strong>'+p.nome+'</strong><br>'
+      + '<span class="badge badge-gold">'+moeda(p.valor)+'</span>'
+      + fixoBadge + avulsoBadge + '</div>'
+      + '<button class="btn btn-danger" onclick="delPrato(\''+p.id+'\')">✕</button></div>';
+  });
+  el.innerHTML = h;
+}
+
+function onPrFixoChange() {
+  var checked = document.getElementById('pr-tem-fixo').checked;
+  var selWrap = document.getElementById('pr-fixo-sel-wrap');
+  if (!checked) { selWrap.style.display='none'; return; }
+  selWrap.style.display='block';
+  renderPrFixoLista();
+}
+
+function renderPrFixoLista() {
+  var lista = DB.get('acompsFixos');
+  var el = document.getElementById('pr-fixo-lista');
+  if (!lista.length) { el.innerHTML='<p style="color:var(--text-dim);font-size:13px;">Nenhum acomp. fixo cadastrado.</p>'; return; }
+  var h = '';
+  lista.forEach(function(a){
+    h += '<label style="display:flex;align-items:center;gap:10px;padding:9px 12px;border:1px solid var(--border);border-radius:8px;cursor:pointer;background:var(--surface);margin-bottom:5px;">'
+      + '<input type="checkbox" name="pr-fixo-check" value="'+a.id+'" style="accent-color:var(--gold);width:15px;height:15px;">'
+      + '<strong style="font-size:13px;">'+a.nome+'</strong>'+(a.desc?'<span style="font-size:11px;color:var(--text-dim);">'+a.desc+'</span>':'')+'</label>';
+  });
+  el.innerHTML = h;
+}
+
+function renderPrAvulsoLista() {
+  var lista = DB.get('acomps');
+  var el = document.getElementById('pr-avulso-lista');
+  if (!lista.length) { el.innerHTML='<p style="color:var(--text-dim);font-size:13px;">Nenhum acomp. avulso cadastrado.</p>'; return; }
+  var h = '';
+  lista.forEach(function(a){
+    var vLabel = (a.valor && a.valor>0) ? ' <span style="color:var(--gold);font-size:11px;">(+'+moeda(a.valor)+')</span>' : ' <span style="color:var(--text-dim);font-size:11px;">(Incluso)</span>';
+    h += '<label style="display:flex;align-items:center;gap:10px;padding:9px 12px;border:1px solid var(--border);border-radius:8px;cursor:pointer;background:var(--surface);margin-bottom:5px;">'
+      + '<input type="checkbox" name="pr-avulso-check" value="'+a.id+'" style="accent-color:var(--blue-light);width:15px;height:15px;">'
+      + a.nome + vLabel + '</label>';
+  });
+  el.innerHTML = h;
+}
+
+/* ─────────────────────────────────────────────
+   ACOMPANHAMENTOS
+   ───────────────────────────────────────────── */
+function addAcomp() {
+  var nome = document.getElementById('ac-nome').value.trim();
+  var valor = parseFloat(document.getElementById('ac-valor').value) || 0;
+  if (!nome) { toast('Informe o nome.','#c04a3a'); return; }
+  var lista = DB.get('acomps');
+  lista.push({ id:DB.uid(), nome:nome, valor:valor });
+  DB.set('acomps', lista);
+  document.getElementById('ac-nome').value='';
+  document.getElementById('ac-valor').value='0';
+  renderAcomps();
+  toast('Acompanhamento adicionado!');
+}
+function delAcomp(id) {
+  if (!confirm('Remover?')) return;
+  DB.set('acomps', DB.get('acomps').filter(function(x){ return x.id!==id; }));
+  renderAcomps();
+}
+function renderAcomps() {
+  var lista = DB.get('acomps');
+  var el = document.getElementById('lista-acomps');
+  if (!lista.length) { el.innerHTML='<div class="empty"><span class="ico">🥗</span>Nenhum acompanhamento</div>'; return; }
+  var h='<table><thead><tr><th>Nome</th><th>Valor adicional</th><th></th></tr></thead><tbody>';
+  lista.forEach(function(a){
+    var vLabel = (a.valor && a.valor>0) ? '<span class="badge badge-gold">+'+moeda(a.valor)+'</span>' : '<span style="color:var(--text-dim);font-size:12px;">Incluso</span>';
+    h+='<tr><td>'+a.nome+'</td><td>'+vLabel+'</td><td><button class="btn btn-danger" onclick="delAcomp(\''+a.id+'\')">✕</button></td></tr>';
+  });
+  el.innerHTML = h+'</tbody></table>';
+}
+
+function addAcompFixo() {
+  var nome = document.getElementById('acf-nome').value.trim();
+  var desc = document.getElementById('acf-desc').value.trim();
+  if (!nome) { toast('Informe o nome.','#c04a3a'); return; }
+  var lista = DB.get('acompsFixos');
+  lista.push({ id:DB.uid(), nome:nome, desc:desc });
+  DB.set('acompsFixos', lista);
+  document.getElementById('acf-nome').value='';
+  document.getElementById('acf-desc').value='';
+  renderAcompsFixos();
+  toast('Acompanhamento fixo adicionado!');
+}
+function delAcompFixo(id) {
+  if (!confirm('Remover?')) return;
+  DB.set('acompsFixos', DB.get('acompsFixos').filter(function(x){ return x.id!==id; }));
+  renderAcompsFixos();
+}
+function renderAcompsFixos() {
+  var lista = DB.get('acompsFixos');
+  var el = document.getElementById('lista-acomps-fixos');
+  if (!el) return;
+  if (!lista.length) { el.innerHTML='<div class="empty"><span class="ico">📌</span>Nenhum fixo</div>'; return; }
+  var h='<table><thead><tr><th>Nome</th><th>Descrição</th><th></th></tr></thead><tbody>';
+  lista.forEach(function(a){
+    h+='<tr><td><strong>'+a.nome+'</strong></td><td style="color:var(--text-dim);font-size:12px;">'+(a.desc||'—')+'</td><td><button class="btn btn-danger" onclick="delAcompFixo(\''+a.id+'\')">✕</button></td></tr>';
+  });
+  el.innerHTML = h+'</tbody></table>';
+}
+
+/* ─────────────────────────────────────────────
+   BEBIDAS
+   ───────────────────────────────────────────── */
+function addBebida() {
+  var nome = document.getElementById('beb-nome').value.trim();
+  var valor = parseFloat(document.getElementById('beb-valor').value) || 0;
+  if (!nome) { toast('Informe o nome.','#c04a3a'); return; }
+  var lista = DB.get('bebidas');
+  lista.push({ id:DB.uid(), nome:nome, valor:valor });
+  DB.set('bebidas', lista);
+  document.getElementById('beb-nome').value='';
+  document.getElementById('beb-valor').value='0';
+  renderBebidas();
+  toast('Bebida adicionada!');
+}
+function delBebida(id) {
+  if (!confirm('Remover?')) return;
+  DB.set('bebidas', DB.get('bebidas').filter(function(x){ return x.id!==id; }));
+  renderBebidas();
+}
+function renderBebidas() {
+  var lista = DB.get('bebidas');
+  var el = document.getElementById('lista-bebidas');
+  if (!lista.length) { el.innerHTML='<div class="empty"><span class="ico">🥤</span>Nenhuma bebida</div>'; return; }
+  var h='<table><thead><tr><th>Nome</th><th>Valor</th><th></th></tr></thead><tbody>';
+  lista.forEach(function(b){
+    var vLabel = (b.valor && b.valor>0) ? '<span class="badge badge-gold">+'+moeda(b.valor)+'</span>' : '<span style="color:var(--text-dim);font-size:12px;">Incluso</span>';
+    h+='<tr><td>'+b.nome+'</td><td>'+vLabel+'</td><td><button class="btn btn-danger" onclick="delBebida(\''+b.id+'\')">✕</button></td></tr>';
+  });
+  el.innerHTML = h+'</tbody></table>';
+}
+
+/* ─────────────────────────────────────────────
+   PEDIDO
+   ───────────────────────────────────────────── */
+function initPedido() {
+  document.getElementById('ped-data').value = hoje();
+  var pessoas = DB.get('pessoas');
+  var sel = document.getElementById('ped-pessoa');
+  sel.innerHTML = '<option value="">— Selecione um parceiro —</option>';
+  pessoas.forEach(function(p){ sel.innerHTML += '<option value="'+p.id+'">'+p.nome+(p.setor?' ('+p.setor+')':'')+'</option>'; });
+  var pratos = DB.get('pratos');
+  var selP = document.getElementById('ped-prato');
+  selP.innerHTML = '<option value="">— Selecione um prato —</option>';
+  pratos.forEach(function(p){ selP.innerHTML += '<option value="'+p.id+'" data-v="'+p.valor+'">'+p.nome+' — '+moeda(p.valor)+'</option>'; });
+  renderAcompPedido(null, false, [], []);
+  renderBebidaPedido();
+}
+
+function onPratoChange() {
+  var sel = document.getElementById('ped-prato');
+  var opt = sel.options[sel.selectedIndex];
+  if (!opt || !opt.value) {
+    document.getElementById('prato-badge').style.display='none';
+    document.getElementById('prato-foto-box').style.display='none';
+    renderAcompPedido(null, false, [], []);
+    document.getElementById('total-pedido-box').style.display='none';
+    return;
+  }
+  var pratos = DB.get('pratos');
+  var prato = pratos.find(function(p){ return p.id===opt.value; });
+  if (!prato) return;
+  document.getElementById('prato-badge-val').textContent = moeda(prato.valor);
+  document.getElementById('prato-badge').style.display='block';
+  if (prato.foto) {
+    document.getElementById('prato-foto-img').src = prato.foto;
+    document.getElementById('prato-foto-box').style.display='block';
+  } else {
+    document.getElementById('prato-foto-box').style.display='none';
+  }
+  var maxAcomp = prato.modalidadeAcomp==='max3'?3:prato.modalidadeAcomp==='max2'?2:prato.modalidadeAcomp==='sem'?0:1;
+  renderAcompPedido(prato.id, prato.temAcompFixo, prato.acompFixoIds||[], prato.acompAvulsoIds, maxAcomp);
+  calcularTotalPedido();
+}
+
+function renderAcompPedido(pratoId, temFixo, fixoIds, avulsoIds, maxAcomp) {
+  maxAcomp = maxAcomp !== undefined ? maxAcomp : 1;
+  var acomps = DB.get('acomps');
+  var acompsFixos = DB.get('acompsFixos');
+  var fixoSection = document.getElementById('acomp-fixo-section');
+  var fixoLista = document.getElementById('acomp-fixo-lista');
+  var fixoLimitTxt = document.getElementById('acomp-fixo-limit-txt');
+  var ca = document.getElementById('acomp-lista');
+  var limitInfo = document.getElementById('acomp-limit-info');
+  var divisor = document.getElementById('acomp-divisor');
+
+  // Fixos
+  var fixosDisponiveis = [];
+  if (temFixo && fixoIds && fixoIds.length) {
+    fixoIds.forEach(function(fid){ var f = acompsFixos.find(function(x){ return x.id===fid; }); if(f) fixosDisponiveis.push(f); });
+  }
+  if (fixosDisponiveis.length) {
+    fixoSection.style.display='block';
+    if (fixoLimitTxt) fixoLimitTxt.textContent='(selecione até 1)';
+    var hf='';
+    fixosDisponiveis.forEach(function(af){
+      hf+='<div class="acomp-check" id="acf-ped-'+af.id+'" data-v="0" data-tipo="acomp-fixo" data-max="1" data-nome="'+af.nome.replace(/"/g,'&quot;')+'" onclick="toggleItem(\'acf-ped-'+af.id+'\',\'acomp-fixo\',1);atualizarResumoAcomp()">'
+        +'<div class="chk"><span class="chk-mark">✓</span></div><span>'+af.nome+'</span><span class="acomp-val">📌 Fixo</span></div>';
+    });
+    fixoLista.innerHTML=hf;
+  } else { fixoSection.style.display='none'; if(fixoLista) fixoLista.innerHTML=''; }
+
+  // Avulsos
+  var avulsosDisponiveis = [];
+  if (Array.isArray(avulsoIds) && avulsoIds.length) {
+    avulsoIds.forEach(function(aid){ var a = acomps.find(function(x){ return x.id===aid; }); if(a) avulsosDisponiveis.push(a); });
+  } else if (Array.isArray(avulsoIds) && avulsoIds.length === 0 && pratoId) {
+    avulsosDisponiveis = [];
+  } else {
+    avulsosDisponiveis = acomps;
+  }
+
+  divisor.style.display = (fixosDisponiveis.length && avulsosDisponiveis.length) ? 'block' : 'none';
+
+  if (maxAcomp > 0 && avulsosDisponiveis.length) {
+    if (limitInfo) {
+      limitInfo.style.display='block';
+      var lmsg = maxAcomp>=3 ? 'Selecione <b>até 3</b> acomp. avulsos' : maxAcomp===2 ? 'Selecione <b>até 2</b> acomp. avulsos' : 'Selecione <b>no máximo 1</b> acomp.';
+      limitInfo.innerHTML=lmsg;
+    }
+    var h='';
+    avulsosDisponiveis.forEach(function(a){
+      var vl = (a.valor&&a.valor>0)?'+'+moeda(a.valor):'Incluso';
+      h+='<div class="acomp-check" id="ac-'+a.id+'" data-v="'+(a.valor||0)+'" data-tipo="acomp" data-max="'+maxAcomp+'" data-nome="'+a.nome.replace(/"/g,'&quot;')+'" onclick="toggleItem(\'ac-'+a.id+'\',\'acomp\','+maxAcomp+');atualizarResumoAcomp()">'
+        +'<div class="chk"><span class="chk-mark">✓</span></div><span>'+a.nome+'</span><span class="acomp-val">'+vl+'</span></div>';
+    });
+    ca.innerHTML=h;
+  } else {
+    if (limitInfo) limitInfo.style.display='none';
+    ca.innerHTML='';
+  }
+}
+
+function renderBebidaPedido() {
+  var bebidas = DB.get('bebidas');
+  var el = document.getElementById('bebida-lista');
+  if (!bebidas.length) { el.innerHTML='<p style="font-size:13px;color:var(--text-dim);">Nenhuma bebida cadastrada.</p>'; return; }
+  var h='';
+  bebidas.forEach(function(b){
+    var vl = (b.valor&&b.valor>0)?'+'+moeda(b.valor):'Incluso';
+    h+='<div class="acomp-check" id="beb-'+b.id+'" data-v="'+(b.valor||0)+'" data-tipo="bebida" data-max="1" data-nome="'+b.nome.replace(/"/g,'&quot;')+'" onclick="toggleItem(\'beb-'+b.id+'\',\'bebida\',1);calcularTotalPedido()">'
+      +'<div class="chk"><span class="chk-mark">✓</span></div><span>'+b.nome+'</span><span class="acomp-val">'+vl+'</span></div>';
+  });
+  el.innerHTML=h;
+}
+
+function atualizarResumoAcomp() {
+  var resumoSel = document.getElementById('acomp-resumo-sel');
+  var resumoLista = document.getElementById('acomp-resumo-lista');
+  var fixosSel = document.querySelectorAll('.acomp-check[data-tipo="acomp-fixo"].sel');
+  var avulsosSel = document.querySelectorAll('.acomp-check[data-tipo="acomp"].sel');
+  if (!fixosSel.length && !avulsosSel.length) { resumoSel.style.display='none'; return; }
+  resumoSel.style.display='block';
+  var h='';
+  fixosSel.forEach(function(el){ var n=el.getAttribute('data-nome')||''; h+='<div>📌 '+n+'</div>'; });
+  avulsosSel.forEach(function(el){
+    var n=el.getAttribute('data-nome')||''; var v=parseFloat(el.getAttribute('data-v'))||0;
+    h+='<div>🥗 '+n+(v>0?' <span style="color:var(--gold);font-size:11px;">+'+moeda(v)+'</span>':'')+'</div>';
+  });
+  resumoLista.innerHTML=h;
+  calcularTotalPedido();
+}
+
+function toggleItem(elId, tipo, maxSel) {
+  var el = document.getElementById(elId);
+  if (!el || el.classList.contains('dis')) return;
+  var max = maxSel || 1;
+  var isSelected = el.classList.contains('sel');
+  var all = document.querySelectorAll('.acomp-check[data-tipo="'+tipo+'"]');
+  if (max === 1) { all.forEach(function(a){ a.classList.remove('sel'); }); if (!isSelected) el.classList.add('sel'); }
+  else {
+    if (isSelected) { el.classList.remove('sel'); }
+    else {
+      var selCount = 0; all.forEach(function(a){ if(a.classList.contains('sel')) selCount++; });
+      if (selCount >= max) { toast('Máximo de '+max+' acompanhamentos atingido.','#a07828'); return; }
+      el.classList.add('sel');
+    }
+  }
+  calcularTotalPedido();
+}
+
+function calcularTotalPedido() {
+  var sel = document.getElementById('ped-prato');
+  var opt = sel.options[sel.selectedIndex];
+  var totalBox = document.getElementById('total-pedido-box');
+  var totalVal = document.getElementById('total-pedido-val');
+  if (!opt || !opt.value) { totalBox.style.display='none'; return; }
+  var pratoValor = parseFloat(opt.getAttribute('data-v')) || 0;
+  var acTotal = 0;
+  document.querySelectorAll('.acomp-check[data-tipo="acomp"].sel, .acomp-check[data-tipo="acomp-fixo"].sel, .acomp-check[data-tipo="bebida"].sel').forEach(function(el){
+    acTotal += parseFloat(el.getAttribute('data-v')) || 0;
+  });
+  totalVal.textContent = moeda(pratoValor + acTotal);
+  totalBox.style.display = 'flex';
+}
+
+function limparForm() {
+  document.getElementById('ped-pessoa').value='';
+  document.getElementById('ped-prato').value='';
+  document.getElementById('ped-data').value=hoje();
+  document.querySelectorAll('.acomp-check').forEach(function(el){ el.classList.remove('sel','dis'); });
+  document.getElementById('acomp-fixo-section').style.display='none';
+  document.getElementById('acomp-resumo-sel').style.display='none';
+  document.getElementById('acomp-divisor').style.display='none';
+  var obs=document.getElementById('ped-obs'); if(obs) obs.value='';
+  document.getElementById('total-pedido-box').style.display='none';
+  document.getElementById('prato-foto-box').style.display='none';
+  renderAcompPedido(null, false, [], []);
+}
+
+function registrar(imprimir) {
+  var pessoaId = document.getElementById('ped-pessoa').value;
+  var pratoId  = document.getElementById('ped-prato').value;
+  var data     = document.getElementById('ped-data').value;
+  if (!pessoaId) { toast('Selecione um parceiro.','#c04a3a'); return; }
+  if (!pratoId)  { toast('Selecione um prato.','#c04a3a'); return; }
+  if (!data)     { toast('Informe a data.','#c04a3a'); return; }
+  var pessoas = DB.get('pessoas'), pessoa = pessoas.find(function(p){ return p.id===pessoaId; });
+  var pratos  = DB.get('pratos'),  prato  = pratos.find(function(p){ return p.id===pratoId; });
+  var todosAc = DB.get('acomps'), todosAcFixos = DB.get('acompsFixos'), todosBeb = DB.get('bebidas');
+  var acSel = [];
+  document.querySelectorAll('.acomp-check[data-tipo="acomp-fixo"].sel').forEach(function(el){
+    var fid = el.id.replace('acf-ped-','');
+    var f = todosAcFixos.find(function(x){ return x.id===fid; });
+    if (f) acSel.push({ nome:f.nome, valor:0, fixo:true });
+  });
+  document.querySelectorAll('.acomp-check[data-tipo="acomp"].sel').forEach(function(el){
+    var aid = el.id.replace('ac-','');
+    var a = todosAc.find(function(x){ return x.id===aid; });
+    if (a) acSel.push({ nome:a.nome, valor:a.valor||0 });
+  });
+  var bebSel = [];
+  document.querySelectorAll('.acomp-check[data-tipo="bebida"].sel').forEach(function(el){
+    var bid = el.id.replace('beb-','');
+    var b = todosBeb.find(function(x){ return x.id===bid; });
+    if (b) bebSel.push({ nome:b.nome, valor:b.valor||0 });
+  });
+  var acTotal = 0;
+  acSel.forEach(function(a){ acTotal+=a.valor; });
+  bebSel.forEach(function(b){ acTotal+=b.valor; });
+  var totalPedido = prato.valor + acTotal;
+  var obsVal = (document.getElementById('ped-obs').value||'').trim();
+  var novo = { id:DB.uid(), data:data, pessoaId:pessoaId, pessoaNome:pessoa.nome, pessoaSetor:pessoa.setor||'', pratoId:pratoId, pratoNome:prato.nome, pratoValor:prato.valor, acTotal:acTotal, totalPedido:totalPedido, acomps:acSel, bebidas:bebSel, obs:obsVal, criadoEm:new Date().toISOString() };
+  var pedidos = DB.get('pedidos'); pedidos.push(novo); DB.set('pedidos', pedidos);
+  limparForm();
+  toast('✓ Pedido registrado!');
+  if (imprimir) { _payload = {tipo:'pedido',dados:novo}; abrirModal(); }
+}
+
+/* ─────────────────────────────────────────────
+   RESUMO / FILTROS
+   ───────────────────────────────────────────── */
+var _pedidosFiltrados = [];
+
+function initResumo() {
+  var h = hoje();
+  document.getElementById('res-de').value = h;
+  document.getElementById('res-ate').value = h;
+  gerarResumo();
+}
+
+function populaFiltros() {
+  var pessoas = DB.get('pessoas');
+  var pratos = DB.get('pratos');
+  var sPessoa = document.getElementById('res-pessoa');
+  var sPrato  = document.getElementById('res-prato');
+  var vp = sPessoa.value, vpr = sPrato.value;
+  sPessoa.innerHTML = '<option value="">— Todas —</option>';
+  sPrato.innerHTML  = '<option value="">— Todos —</option>';
+  pessoas.forEach(function(p){ sPessoa.innerHTML += '<option value="'+p.id+'">'+p.nome+'</option>'; });
+  pratos.forEach(function(p){  sPrato.innerHTML  += '<option value="'+p.id+'">'+p.nome+'</option>'; });
+  sPessoa.value = vp; sPrato.value = vpr;
+}
+
+function gerarResumo() {
+  var de = document.getElementById('res-de').value;
+  var ate = document.getElementById('res-ate').value;
+  if (!de && !ate) { toast('Informe ao menos uma data.','#c04a3a'); return; }
+  var ini = de||ate, fim = ate||de;
+  if (ini > fim) { toast('Data inicial maior que a final.','#c04a3a'); return; }
+  _pedidosFiltrados = DB.get('pedidos').filter(function(p){ return p.data>=ini && p.data<=fim; });
+  populaFiltros();
+  aplicarFiltros();
+}
+
+function verTodos() { _pedidosFiltrados = DB.get('pedidos'); populaFiltros(); aplicarFiltros(); }
+
+function aplicarFiltros() {
+  var pessoa = document.getElementById('res-pessoa').value;
+  var prato  = document.getElementById('res-prato').value;
+  var resultado = _pedidosFiltrados;
+  if (pessoa) resultado = resultado.filter(function(p){ return p.pessoaId===pessoa; });
+  if (prato)  resultado = resultado.filter(function(p){ return p.pratoId===prato; });
+  var label = '';
+  var de = document.getElementById('res-de').value, ate = document.getElementById('res-ate').value;
+  if (de && ate) label = de===ate ? fmtData(de) : fmtData(de)+' a '+fmtData(ate);
+  renderResumo(resultado, label);
+}
+
+function limparFiltros() {
+  document.getElementById('res-pessoa').value='';
+  document.getElementById('res-prato').value='';
+  aplicarFiltros();
+}
+
+function renderResumo(pedidos, label) {
+  var body = document.getElementById('resumo-body');
+  var stats = document.getElementById('stats-row');
+  if (!pedidos.length) { stats.style.display='none'; body.innerHTML='<div class="empty"><span class="ico">🔍</span>Nenhum pedido encontrado.</div>'; return; }
+  var total = 0, uniqMap = {};
+  pedidos.forEach(function(p){ var tv = p.totalPedido!==undefined?p.totalPedido:p.pratoValor; total+=tv; uniqMap[p.pessoaId]=1; });
+  var uniq = Object.keys(uniqMap).length;
+  document.getElementById('st-pedidos').textContent=pedidos.length;
+  document.getElementById('st-pessoas').textContent=uniq;
+  document.getElementById('st-total').textContent=moeda(total);
+  stats.style.display='flex';
+  var grupos={};
+  pedidos.forEach(function(p){ var d=p.data; if(!grupos[d]) grupos[d]=[]; grupos[d].push(p); });
+  var datas=Object.keys(grupos).sort(function(a,b){ return b.localeCompare(a); });
+  var h='';
+  datas.forEach(function(d){
+    var ps=grupos[d], tot=0;
+    ps.forEach(function(p){ tot += p.totalPedido!==undefined?p.totalPedido:p.pratoValor; });
+    var rows='';
+    ps.forEach(function(p){
+      var tv = p.totalPedido!==undefined?p.totalPedido:p.pratoValor;
+      var acHtmlRes='';
+      if (Array.isArray(p.acomps)&&p.acomps.length) {
+        p.acomps.forEach(function(ac){ var n=typeof ac==='object'?ac.nome:ac; var v=typeof ac==='object'&&ac.valor>0?'<span style="color:var(--gold);font-size:11px;margin-left:3px;">+'+moeda(ac.valor)+'</span>':''; acHtmlRes+='<div>'+n+v+'</div>'; });
+      } else { acHtmlRes='<span style="color:var(--text-dim)">—</span>'; }
+      var bebHtml = '';
+      if (Array.isArray(p.bebidas)&&p.bebidas.length) {
+        p.bebidas.forEach(function(b){ var n=typeof b==='object'?b.nome:b; bebHtml+='<div>🥤 '+n+'</div>'; });
+      }
+      rows += '<tr>'
+        + '<td><strong>'+p.pessoaNome+'</strong>'+(p.pessoaSetor?'<br><small style="color:var(--text-dim)">'+p.pessoaSetor+'</small>':'')+'</td>'
+        + '<td>'+p.pratoNome+'</td>'
+        + '<td style="font-size:12px;">'+acHtmlRes+'</td>'
+        + '<td style="font-size:12px;">'+(bebHtml||'—')+'</td>'
+        + '<td style="font-weight:700;color:var(--gold);white-space:nowrap;">'+moeda(tv)+'</td>'
+        + '<td style="text-align:right;"><button class="btn-print btn btn-sm" onclick="imprimirPedido(\''+p.id+'\')">🖨️</button></td>'
+        + '</tr>';
+    });
+    h += '<div class="resumo-card">'
+      + '<div class="resumo-head"><strong>📅 '+fmtData(d)+'</strong><span class="resumo-total">'+moeda(tot)+'</span></div>'
+      + '<table><thead><tr><th>Parceiro</th><th>Prato</th><th>Acomp.</th><th>Bebida</th><th>Total</th><th></th></tr></thead><tbody>'+rows+'</tbody></table>'
+      + '</div>';
+  });
+  body.innerHTML = h;
+}
+
+/* ─────────────────────────────────────────────
+   IMPRESSÃO
+   ───────────────────────────────────────────── */
+var _payload = null, _formato = '80mm', _navBtnResumo = null;
+var _pedidosParaRelatorio = null;
+
+function abrirModal() {
+  document.getElementById('opt-excel').style.display = (_payload && _payload.tipo==='relatorio') ? 'block' : 'none';
+  document.getElementById('modal-print').classList.add('open');
+}
+function fecharModal() { document.getElementById('modal-print').classList.remove('open'); }
+function fecharPreview() { document.getElementById('modal-preview').classList.remove('open'); }
+
+function executarImpressao(fmt) {
+  fecharModal();
+  if (!_payload) return;
+  if (fmt === 'excel' && _payload.tipo === 'relatorio') { gerarExcel(_payload.pedidos, _payload.label); return; }
+  var html = _payload.tipo === 'pedido' ? htmlComanda(_payload.dados, fmt) : htmlRelatorio(_payload.pedidos, _payload.label, fmt);
+  document.getElementById('preview-titulo').textContent = _payload.tipo === 'pedido' ? 'Comanda #' + DB.get('pedidos').length : 'Relatório';
+  document.getElementById('preview-content').innerHTML = html;
+  document.getElementById('modal-preview').classList.add('open');
+}
+
+function confirmarImpressao() {
+  var html = document.getElementById('preview-content').innerHTML;
+  document.getElementById('print-area').innerHTML = html;
+  document.getElementById('modal-preview').classList.remove('open');
+  setTimeout(function(){ window.print(); }, 100);
+}
+
+function imprimirPedido(id) {
+  var pedidos = DB.get('pedidos');
+  var p = pedidos.find(function(x){ return x.id===id; });
+  if (!p) return;
+  _payload = {tipo:'pedido',dados:p}; abrirModal();
+}
+
+function imprimirRelatorio() {
+  var pedidos = _pedidosFiltrados.length ? _pedidosFiltrados : DB.get('pedidos');
+  var de = document.getElementById('res-de').value, ate = document.getElementById('res-ate').value;
+  var label = (de && ate) ? (de===ate?fmtData(de):fmtData(de)+' a '+fmtData(ate)) : 'Geral';
+  _payload = {tipo:'relatorio', pedidos:pedidos, label:label};
+  abrirModal();
+}
+
+function gerarExcel(pedidos, label) {
+  if (!window.XLSX) { toast('Aguarde — carregando Excel...','#3a6f98'); return; }
+  var rows = [['#','Data','Parceiro','Setor','Prato','Acompanhamentos','Bebidas','Obs','Total']];
+  pedidos.forEach(function(p,i){
+    var acNms = Array.isArray(p.acomps)?p.acomps.map(function(a){return typeof a==='object'?a.nome:a;}).join(', '):'';
+    var bebNms = Array.isArray(p.bebidas)?p.bebidas.map(function(b){return typeof b==='object'?b.nome:b;}).join(', '):'';
+    var tv = p.totalPedido!==undefined?p.totalPedido:p.pratoValor;
+    rows.push([i+1,fmtData(p.data),p.pessoaNome,p.pessoaSetor||'',p.pratoNome,acNms,bebNms,p.obs||'',tv]);
+  });
+  var wb = XLSX.utils.book_new();
+  var ws = XLSX.utils.aoa_to_sheet(rows);
+  XLSX.utils.book_append_sheet(wb, ws, 'Pedidos');
+  XLSX.writeFile(wb, 'relatorio_plaza_'+label.replace(/\s/g,'_')+'.xlsx');
+}
+
+/* ─────────────────────────────────────────────
+   SENHA LEGADO
+   ───────────────────────────────────────────── */
+function abrirSenha() {
+  document.getElementById('senha-input').value='';
+  document.getElementById('senha-error').textContent='';
+  document.getElementById('modal-senha').classList.add('open');
+  setTimeout(function(){ document.getElementById('senha-input').focus(); },100);
+}
+function fecharSenha() { document.getElementById('modal-senha').classList.remove('open'); }
+function verificarSenha() {
+  var v = document.getElementById('senha-input').value;
+  if (v==='1234') { fecharSenha(); }
+  else { document.getElementById('senha-error').textContent='❌ Senha incorreta.'; document.getElementById('senha-input').value=''; document.getElementById('senha-input').focus(); }
+}
+
+/* ─────────────────────────────────────────────
+   HTML COMANDA
+   ───────────────────────────────────────────── */
+function htmlComanda(p, fmt) {
+  var empresa = CFG.get().empresa || 'PARCERIA ADM PLAZA';
+  var pedidos = DB.get('pedidos');
+  var num = pedidos.findIndex(function(x){ return x.id===p.id; }) + 1;
+  var hora = p.criadoEm ? new Date(p.criadoEm).toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'}) : '--:--';
+  var acNomes=[], acTotal=0;
+  if(Array.isArray(p.acomps)) p.acomps.forEach(function(a){ var n=typeof a==='object'?a.nome:a; acNomes.push(n); if(typeof a==='object'&&a.valor) acTotal+=a.valor; });
+  var bebNomes=[];
+  if(Array.isArray(p.bebidas)) p.bebidas.forEach(function(b){ var n=typeof b==='object'?b.nome:b; bebNomes.push(n); if(typeof b==='object'&&b.valor) acTotal+=b.valor; });
+  var totalPedido = p.totalPedido!==undefined?p.totalPedido:p.pratoValor;
+  var obs = p.obs||'';
+  var acHtml=''; acNomes.forEach(function(n){ acHtml+='<div class="r-ind">• '+n+'</div>'; });
+  var bebHtml=''; bebNomes.forEach(function(n){ bebHtml+='<div class="r-ind">• '+n+'</div>'; });
+  if(fmt==='80mm') return '<div class="recibo">'
+    +'<div class="r-logo">'+empresa+'</div>'
+    +'<div class="r-sub">PARCERIA - ADM PLAZA</div>'
+    +'<hr class="r-sep2">'
+    +'<div class="r-row"><span class="r-lbl">Pedido Nº</span><span>#'+num+'</span></div>'
+    +'<div class="r-row"><span>Data:</span><span>'+fmtData(p.data)+'</span></div>'
+    +'<div class="r-row"><span>Hora:</span><span>'+hora+'</span></div>'
+    +'<hr class="r-sep"><div class="r-lbl">PARCEIRO</div>'
+    +'<div class="r-ind">'+p.pessoaNome+(p.pessoaSetor?' — '+p.pessoaSetor:'')+'</div>'
+    +'<hr class="r-sep"><div class="r-lbl">Prato Principal</div>'
+    +'<div class="r-row r-ind"><span>'+p.pratoNome+'</span><span>'+moeda(p.pratoValor)+'</span></div>'
+    +(acNomes.length?'<hr class="r-sep"><div class="r-lbl">Acompanhamento</div>'+acHtml:'')
+    +(bebNomes.length?'<hr class="r-sep"><div class="r-lbl">Bebida</div>'+bebHtml:'')
+    +(acTotal>0?'<hr class="r-sep"><div class="r-row r-ind"><span>Subtotal extras</span><span>'+moeda(acTotal)+'</span></div>':'')
+    +(obs?'<hr class="r-sep"><div class="r-lbl">Observação</div><div class="r-ind" style="font-size:12px;">'+obs+'</div>':'')
+    +'<hr class="r-sep2"><div class="r-row r-tot"><span>TOTAL</span><span>'+moeda(totalPedido)+'</span></div>'
+    +'<hr class="r-sep"><div class="r-ctr r-sm">Documento não fiscal</div>'
+    +'<div class="r-ctr r-sm">SOMENTE O PARCEIRO PODE RETIRAR A REFEIÇÃO NO BALCÃO</div></div>';
+  var acA4=''; acNomes.forEach(function(n){ acA4+='<div style="padding-left:8px;">• '+n+'</div>'; });
+  var bebA4=''; bebNomes.forEach(function(n){ bebA4+='<div style="padding-left:8px;">• '+n+'</div>'; });
+  return '<div style="font-family:Courier New,monospace;padding:36px;max-width:580px;margin:0 auto;color:#000;font-size:13px;">'
+    +'<div style="text-align:center;margin-bottom:18px;border-bottom:2px solid #000;padding-bottom:14px;"><div style="font-size:20px;font-weight:700;letter-spacing:3px;">'+empresa+'</div><div>PARCERIA ADM PLAZA</div></div>'
+    +'<table style="width:100%;font-size:13px;margin-bottom:10px;"><tr><td><b>Pedido:</b></td><td>#'+num+'</td></tr><tr><td><b>Data:</b></td><td>'+fmtData(p.data)+'</td></tr><tr><td><b>Hora:</b></td><td>'+hora+'</td></tr></table>'
+    +'<hr style="border-top:1px dashed #000;margin:10px 0;"><div style="font-weight:700;font-size:11px;margin-bottom:5px;">PARCEIRO</div>'
+    +'<div style="padding-left:8px;font-size:14px;">'+p.pessoaNome+(p.pessoaSetor?' — '+p.pessoaSetor:'')+'</div>'
+    +'<hr style="border-top:1px dashed #000;margin:10px 0;"><div style="font-weight:700;font-size:11px;margin-bottom:5px;">PRATO PRINCIPAL</div>'
+    +'<div style="display:flex;justify-content:space-between;padding-left:8px;">'+p.pratoNome+'<span>'+moeda(p.pratoValor)+'</span></div>'
+    +(acNomes.length?'<hr style="border-top:1px dashed #000;margin:10px 0;"><div style="font-weight:700;font-size:11px;margin-bottom:5px;">ACOMPANHAMENTO</div>'+acA4:'')
+    +(bebNomes.length?'<hr style="border-top:1px dashed #000;margin:10px 0;"><div style="font-weight:700;font-size:11px;margin-bottom:5px;">BEBIDA</div>'+bebA4:'')
+    +(acTotal>0?'<div style="display:flex;justify-content:space-between;padding-left:8px;font-size:12px;color:#666;"><span>Subtotal extras</span><span>'+moeda(acTotal)+'</span></div>':'')
+    +(obs?'<hr style="border-top:1px dashed #000;margin:10px 0;"><div style="font-weight:700;font-size:11px;margin-bottom:5px;">OBSERVAÇÃO</div><div style="padding-left:8px;font-size:13px;font-style:italic;">'+obs+'</div>':'')
+    +'<hr style="border:2px solid #000;margin:10px 0;">'
+    +'<div style="display:flex;justify-content:space-between;font-size:17px;font-weight:700;"><span>TOTAL</span><span>'+moeda(totalPedido)+'</span></div>'
+    +'<hr style="border-top:1px dashed #000;margin:10px 0;">'
+    +'<div style="text-align:center;font-size:11px;color:#888;">Documento não fiscal — SOMENTE O PARCEIRO PODE RETIRAR A REFEIÇÃO NO BALCÃO</div></div>';
+}
+
+function htmlRelatorio(pedidos, label, fmt) {
+  var empresa = CFG.get().empresa || 'PARCERIA ADM PLAZA';
+  var total=0, uniqMap={};
+  pedidos.forEach(function(p){ var tv=p.totalPedido!==undefined?p.totalPedido:p.pratoValor; total+=tv; uniqMap[p.pessoaId]=1; });
+  var uniq = Object.keys(uniqMap).length;
+  var titulo = label ? 'Relatório: '+label : 'Relatório Geral';
+  var grupos={};
+  pedidos.forEach(function(p){ var d=p.data; if(!grupos[d]) grupos[d]=[]; grupos[d].push(p); });
+  var datas = Object.keys(grupos).sort();
+  if (fmt==='80mm') {
+    var h='<div class="recibo"><div class="r-logo">'+empresa+'</div><div class="r-sub">PARCERIA ADM PLAZA</div><hr class="r-sep2"><div class="r-ctr" style="font-weight:700;font-size:12px;">'+titulo.toUpperCase()+'</div><div class="r-ctr r-sm">Emitido: '+new Date().toLocaleString('pt-BR')+'</div><hr class="r-sep">';
+    datas.forEach(function(d){ var ps=grupos[d], tot=0; ps.forEach(function(p){ var tv=p.totalPedido!==undefined?p.totalPedido:p.pratoValor; tot+=tv; }); h+='<div class="r-lbl">📅 '+fmtData(d)+'</div>'; ps.forEach(function(p){ var tv=p.totalPedido!==undefined?p.totalPedido:p.pratoValor; h+='<div class="r-row r-ind"><span>'+p.pessoaNome.split(' ')[0]+'</span><span>'+moeda(tv)+'</span></div><div class="r-ind r-sm">'+p.pratoNome+'</div>'; }); h+='<div class="r-row" style="font-weight:700"><span>Subtotal '+fmtData(d)+'</span><span>'+moeda(tot)+'</span></div><hr class="r-sep">'; });
+    h+='<div class="r-row r-tot"><span>TOTAL GERAL</span><span>'+moeda(total)+'</span></div><div class="r-row"><span>Pedidos:</span><span>'+pedidos.length+'</span></div><div class="r-row"><span>Parceiros:</span><span>'+uniq+'</span></div><hr class="r-sep"><div class="r-ctr r-sm">Documento não fiscal — SOMENTE O PARCEIRO PODE RETIRAR A REFEIÇÃO NO BALCÃO</div><br></div>';
+    return h;
+  }
+  var seq=1, rows='';
+  datas.forEach(function(d){ var ps=grupos[d],tot=0; ps.forEach(function(p){ tot+=p.totalPedido!==undefined?p.totalPedido:p.pratoValor; }); rows+='<tr style="background:#f0f0f0"><td colspan="6" style="padding:7px 10px;font-weight:700;font-size:12px;border:1px solid #ccc">📅 '+fmtData(d)+' — '+ps.length+' pedido(s)</td></tr>'; ps.forEach(function(p){ var tv=p.totalPedido!==undefined?p.totalPedido:p.pratoValor; var acNms=Array.isArray(p.acomps)?p.acomps.map(function(a){return typeof a==='object'?a.nome:a;}).join(', '):''; var bebNms=Array.isArray(p.bebidas)?p.bebidas.map(function(b){return typeof b==='object'?b.nome:b;}).join(', '):''; rows+='<tr><td style="padding:7px 10px;border:1px solid #e0e0e0">'+seq+'</td><td style="padding:7px 10px;border:1px solid #e0e0e0">'+p.pessoaNome+(p.pessoaSetor?'<br><small style="color:#888">'+p.pessoaSetor+'</small>':'')+'</td><td style="padding:7px 10px;border:1px solid #e0e0e0">'+p.pratoNome+'</td><td style="padding:7px 10px;border:1px solid #e0e0e0">'+(acNms||'—')+'</td><td style="padding:7px 10px;border:1px solid #e0e0e0">'+(bebNms||'—')+'</td><td style="padding:7px 10px;border:1px solid #e0e0e0;text-align:right">'+moeda(tv)+'</td></tr>'; seq++; }); rows+='<tr style="background:#e8e8e8"><td colspan="5" style="padding:7px 10px;border:1px solid #ccc;text-align:right;font-weight:700">Subtotal '+fmtData(d)+':</td><td style="padding:7px 10px;border:1px solid #ccc;text-align:right;font-weight:700">'+moeda(tot)+'</td></tr>'; });
+  return '<div style="font-family:Arial,sans-serif;padding:28px;color:#000;font-size:13px;">'
+    +'<div style="text-align:center;margin-bottom:18px;border-bottom:2px solid #000;padding-bottom:14px;"><div style="font-size:19px;font-weight:700;letter-spacing:2px;">'+empresa+'</div><div style="font-size:14px;margin-top:3px;">'+titulo+'</div><div style="font-size:11px;color:#666;">Emitido: '+new Date().toLocaleString('pt-BR')+'</div></div>'
+    +'<div style="display:flex;gap:28px;margin-bottom:18px;font-size:13px;"><span><b>Pedidos:</b> '+pedidos.length+'</span><span><b>Parceiros:</b> '+uniq+'</span><span><b>Total:</b> <b>'+moeda(total)+'</b></span></div>'
+    +'<table style="width:100%;border-collapse:collapse;font-size:13px;"><thead><tr style="background:#222;color:#fff;"><th style="padding:8px 10px;border:1px solid #333">#</th><th style="padding:8px 10px;border:1px solid #333">Parceiro</th><th style="padding:8px 10px;border:1px solid #333">Prato</th><th style="padding:8px 10px;border:1px solid #333">Acompanhamento</th><th style="padding:8px 10px;border:1px solid #333">Bebida</th><th style="padding:8px 10px;border:1px solid #333;text-align:right">Total</th></tr></thead><tbody>'+rows+'</tbody><tfoot><tr style="background:#222;color:#fff;"><td colspan="5" style="padding:9px 10px;border:1px solid #333;text-align:right;font-size:14px;font-weight:700">TOTAL GERAL</td><td style="padding:9px 10px;border:1px solid #333;text-align:right;font-size:14px;font-weight:700">'+moeda(total)+'</td></tr></tfoot></table>'
+    +'<div style="margin-top:18px;text-align:center;font-size:11px;color:#888;">Documento não fiscal — SOMENTE O PARCEIRO PODE RETIRAR A REFEIÇÃO NO BALCÃO</div></div>';
+}
+
+/* ─────────────────────────────────────────────
+   HELPERS
+   ───────────────────────────────────────────── */
+function hoje() { var d=new Date(); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
+function moeda(v){ return 'R$ '+(v||0).toFixed(2).replace('.',','); }
+function fmtData(iso){ if(!iso)return''; var p=iso.split('-'); return p[2]+'/'+p[1]+'/'+p[0]; }
+
+/* ─────────────────────────────────────────────
+   MIGRAÇÃO localStorage legado → novo cache
+   ───────────────────────────────────────────── */
+function migrarDadosLegados() {
+  var keys = ['pessoas','pratos','pedidos','acomps','acompsFixos','bebidas'];
+  keys.forEach(function(k){
+    if (!_cache[k] || !_cache[k].length) {
+      var legado = localStorage.getItem('mp2_'+k);
+      if (legado) { try { _cache[k] = JSON.parse(legado); } catch(e){} }
+    }
+  });
+}
+
+/* ─────────────────────────────────────────────
+   INIT
+   ───────────────────────────────────────────── */
+(function init(){
+  _carregarLocalStorage();
+  migrarDadosLegados();
+  _atualizarStatusGH(GH.isConfigured() ? null : false);
+  // Mostra tela de login
+  document.getElementById('login-screen').classList.add('open');
+  setTimeout(function(){ document.getElementById('login-user').focus(); }, 150);
+  // Tenta sync silencioso em background
+  if (GH.isConfigured()) {
+    DB.loadAll(function(err){ _atualizarStatusGH(!err); renderDashboard(); });
+  } else {
+    _atualizarStatusGH(false);
+  }
+})();
+</script>
+</body>
+</html>
