@@ -22,12 +22,12 @@
       "permissoes": {
         "dashboard": true,
         "pedido": true,
-        "resumo": true,
-        "pessoas": true,
-        "pratos": true,
-        "acomps": true,
-        "bebidas": true,
-        "usuarios": true
+        "resumo": false,
+        "pessoas": false,
+        "pratos": false,
+        "acomps": false,
+        "bebidas": false,
+        "usuarios": false
       }
     }
   ],
