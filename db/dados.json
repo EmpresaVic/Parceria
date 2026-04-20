@@ -47,5 +47,12 @@
       "nome": "Pepsi  Pet 200 ml",
       "valor": 0
     }
+  ],
+  "acomps": [
+    {
+      "id": "mo6nfeqx16u",
+      "nome": "Arroz Branco",
+      "valor": 0
+    }
   ]
 }
