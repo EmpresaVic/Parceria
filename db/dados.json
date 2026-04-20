@@ -1,0 +1,19 @@
+{
+  "usuarios": [
+    {
+      "id": "admin",
+      "nome": "admin",
+      "senhaHash": "170842",
+      "permissoes": {
+        "dashboard": true,
+        "pedido": true,
+        "resumo": true,
+        "pessoas": true,
+        "pratos": true,
+        "acomps": true,
+        "bebidas": true,
+        "usuarios": true
+      }
+    }
+  ]
+}
