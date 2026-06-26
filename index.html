@@ -177,6 +177,8 @@ tr:last-child td { border-bottom: none; }
 #modal-importar-backup.open { display: flex; }
 #modal-gh-sync-cfg { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 1200; align-items: center; justify-content: center; }
 #modal-gh-sync-cfg.open { display: flex; }
+#modal-mesclar-pessoas { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 1200; align-items: center; justify-content: center; }
+#modal-mesclar-pessoas.open { display: flex; }
 .import-resumo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; margin-bottom: 14px; }
 .import-resumo-item { background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px; }
 .import-resumo-item .lbl { font-size: 10px; font-weight: 600; color: var(--text-dim); letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 4px; }
@@ -213,7 +215,7 @@ tr:last-child td { border-bottom: none; }
     height: auto !important;
     background: #fff !important;
   }
-  body > header, body > main, #modal-print, #modal-preview, #modal-senha, #modal-backup-cfg, #modal-importar-backup, #modal-gh-sync-cfg, #toast { display: none !important; }
+  body > header, body > main, #modal-print, #modal-preview, #modal-senha, #modal-backup-cfg, #modal-importar-backup, #modal-gh-sync-cfg, #modal-mesclar-pessoas, #toast { display: none !important; }
   #print-area {
     display: block !important;
     background: #fff !important;
@@ -424,7 +426,8 @@ tr:last-child td { border-bottom: none; }
   <p class="page-sub">Gerencie os colaboradores.</p>
   <div class="grid2">
     <div class="card">
-      <div class="card-title">Nova Pessoa</div>
+      <div class="card-title" id="p-form-titulo">Nova Pessoa</div>
+      <input type="hidden" id="p-edit-id" value="">
       <div class="field"><label>Nome Completo</label><input type="text" id="p-nome" placeholder="Ex.: João da Silva"></div>
       <div class="field">
         <label>Setor <span style="color:var(--red);font-size:10px;">★ Obrigatório</span></label>
@@ -435,10 +438,17 @@ tr:last-child td { border-bottom: none; }
           <option value="MKT">MKT</option>
         </select>
       </div>
-      <button class="btn btn-gold" onclick="addPessoa()">+ Adicionar</button>
+      <div class="btn-row">
+        <button class="btn btn-gold" id="p-btn-salvar" onclick="addPessoa()">+ Adicionar</button>
+        <button class="btn btn-ghost" id="p-btn-cancelar" style="display:none;" onclick="cancelarEdicaoPessoa()">✕ Cancelar edição</button>
+      </div>
+      <p style="font-size:11px;color:var(--text-dim);margin-top:10px;">ℹ️ Ao editar, pedidos <strong>já registrados</strong> continuam mostrando o nome/setor de quando foram feitos — apenas pedidos futuros usarão os dados corrigidos.</p>
     </div>
     <div class="card">
-      <div class="card-title">Cadastradas</div>
+      <div class="card-title" style="display:flex;align-items:center;justify-content:space-between;gap:10px;">
+        <span>Cadastradas</span>
+        <button class="btn btn-ghost-blue" style="font-size:11px;padding:5px 10px;" onclick="abrirModalMesclarPessoas()" title="Unificar dois cadastros da mesma pessoa em um só, transferindo os pedidos">🔗 Mesclar Duplicados</button>
+      </div>
       <div id="lista-pessoas"><div class="empty"><span class="ico">👤</span>Nenhuma pessoa</div></div>
     </div>
   </div>
@@ -693,10 +703,78 @@ tr:last-child td { border-bottom: none; }
   </div>
 </div>
 
+<!-- MESCLAR PESSOAS DUPLICADAS MODAL -->
+<div id="modal-mesclar-pessoas">
+  <div class="modal-box" style="max-width:560px;">
+    <h3>🔗 Mesclar Cadastros Duplicados</h3>
+    <p style="font-size:13px;color:var(--text-dim);margin-bottom:16px;">
+      Use isto quando a mesma pessoa foi cadastrada duas vezes por engano (ex.: em setores
+      diferentes). Escolha qual cadastro é o <strong>correto</strong> (vai ficar) e qual é o
+      <strong>duplicado</strong> (vai ser removido). Todos os pedidos do duplicado — inclusive
+      os já registrados — passam a ficar com o nome e o setor do cadastro correto.
+    </p>
+    <div class="field" style="margin-bottom:10px;">
+      <label>✅ Cadastro correto (vai permanecer)</label>
+      <select id="mesclar-pessoa-correta" onchange="atualizarPreviewMesclarPessoas()"></select>
+    </div>
+    <div class="field" style="margin-bottom:6px;">
+      <label>🗑️ Cadastro duplicado (será removido)</label>
+      <select id="mesclar-pessoa-duplicada" onchange="atualizarPreviewMesclarPessoas()"></select>
+    </div>
+    <div id="mesclar-preview" style="font-size:13px;margin:14px 0;"></div>
+    <div class="modal-foot" style="justify-content:space-between;">
+      <button class="btn btn-ghost" onclick="fecharModalMesclarPessoas()">Cancelar</button>
+      <button class="btn btn-gold" id="btn-confirmar-mesclagem" onclick="confirmarMesclagemPessoas()" disabled>✅ Mesclar Cadastros</button>
+    </div>
+  </div>
+</div>
+
 <div id="print-area"></div>
 <div id="toast"></div>
 
 <script>
+/* =========================================================
+   TRAVA DE SEGURANÇA — SYNC GITHUB NUNCA EM AMBIENTE PÚBLICO
+   =========================================================
+   Este app permite configurar um Personal Access Token do GitHub para
+   sincronização automática. Isso só é seguro quando o arquivo roda
+   localmente (file://) ou numa máquina pessoal (localhost / IP de rede
+   local) — o token fica só no localStorage daquele navegador específico.
+
+   Se este MESMO arquivo for hospedado publicamente (GitHub Pages,
+   Netlify, qualquer domínio público), qualquer visitante poderia abrir
+   o DevTools e ler um token eventualmente salvo ali. Por isso, em
+   domínios públicos, a sincronização com GitHub é DESATIVADA por
+   completo nesta sessão: a função fica inoperante e a UI correspondente
+   é escondida — independentemente de já existir ou não uma configuração
+   salva. Qualquer token herdado de uma configuração feita nesse domínio
+   também é removido automaticamente. O restante do app (pedidos, pratos,
+   backup local/download) continua funcionando normalmente.
+   ========================================================= */
+var _AMBIENTE_PUBLICO = (function() {
+  var protocolo = window.location.protocol || '';
+  if(protocolo === 'file:') return false; // uso local direto do arquivo: sempre seguro
+  var h = window.location.hostname || '';
+  if(!h || h === 'localhost' || h === '127.0.0.1') return false; // ambiente local de desenvolvimento
+  if(/^(10\.|192\.168\.|172\.(1[6-9]|2[0-9]|3[0-1])\.)/.test(h)) return false; // IP de rede local privada
+  return true; // qualquer outro domínio (ex.: *.github.io) é tratado como público
+})();
+
+(function() {
+  if(!_AMBIENTE_PUBLICO) return;
+  try {
+    var raw = localStorage.getItem('mp_cfg');
+    if(raw) {
+      var c = JSON.parse(raw);
+      if(c && c.ghToken) {
+        c.ghToken = '';
+        localStorage.setItem('mp_cfg', JSON.stringify(c));
+        console.error('Token do GitHub removido automaticamente: este arquivo está sendo acessado por um domínio público (' + window.location.hostname + '). Tokens nunca devem ficar salvos nesse contexto. Configure a sincronização apenas ao abrir o arquivo localmente (file://) ou em rede privada.');
+      }
+    }
+  } catch(e) {}
+})();
+
 /* =========================================================
    SheetJS CDN for Excel export
    ========================================================= */
@@ -758,13 +836,13 @@ var GitHubSync = (function(){
   function cfg() {
     var c = CFG.get();
     return {
-      ativo: !!(c.ghOwner && c.ghRepo && c.ghToken),
+      ativo: !_AMBIENTE_PUBLICO && !!(c.ghOwner && c.ghRepo && c.ghToken),
       owner: c.ghOwner || '',
       repo: c.ghRepo || '',
       branch: c.ghBranch || 'main',
       caminho: c.ghCaminho || 'db/dados.json',
       pastaFotos: c.ghPastaFotos || 'db/fotos',
-      token: c.ghToken || ''
+      token: _AMBIENTE_PUBLICO ? '' : (c.ghToken || '')
     };
   }
 
@@ -1074,9 +1152,32 @@ function verificarSenha() {
 function addPessoa() {
   var nome = document.getElementById('p-nome').value.trim();
   var setor = document.getElementById('p-setor').value;
+  var editId = document.getElementById('p-edit-id').value;
   if(!nome) { toast('Informe o nome.','#c04a3a'); return; }
   if(!setor) { toast('Selecione o setor.','#c04a3a'); return; }
   var lista = DB.get('pessoas');
+
+  if(editId) {
+    // Modo edição: atualiza o registro existente, preservando o id (e
+    // qualquer outro campo que a pessoa eventualmente já tivesse) — assim
+    // pedidos já registrados continuam corretamente vinculados a ela.
+    var encontrada = false;
+    for(var i=0;i<lista.length;i++) {
+      if(lista[i].id === editId) {
+        lista[i].nome = nome;
+        lista[i].setor = setor;
+        encontrada = true;
+        break;
+      }
+    }
+    if(!encontrada) { toast('Pessoa não encontrada (pode ter sido removida).','#c04a3a'); cancelarEdicaoPessoa(); return; }
+    DB.set('pessoas', lista);
+    cancelarEdicaoPessoa(); // limpa o formulário e volta ao modo "Nova Pessoa"
+    renderPessoas();
+    toast('✅ Cadastro atualizado!');
+    return;
+  }
+
   lista.push({ id:DB.uid(), nome:nome, setor:setor });
   DB.set('pessoas', lista);
   document.getElementById('p-nome').value = '';
@@ -1084,10 +1185,147 @@ function addPessoa() {
   renderPessoas();
   toast('Pessoa adicionada!');
 }
+
+/* Carrega os dados de uma pessoa existente no formulário "Nova Pessoa",
+   que passa a funcionar como "Editar Pessoa" até a edição ser concluída
+   ou cancelada. Não altera nada até o usuário clicar em Salvar. */
+function editarPessoa(id) {
+  var pessoa = DB.get('pessoas').find(function(p){ return p.id === id; });
+  if(!pessoa) { toast('Pessoa não encontrada.','#c04a3a'); return; }
+  document.getElementById('p-edit-id').value = pessoa.id;
+  document.getElementById('p-nome').value = pessoa.nome || '';
+  document.getElementById('p-setor').value = pessoa.setor || '';
+  document.getElementById('p-form-titulo').textContent = '✏️ Editar Pessoa';
+  document.getElementById('p-btn-salvar').textContent = '💾 Salvar Alterações';
+  document.getElementById('p-btn-cancelar').style.display = 'inline-flex';
+  try { document.getElementById('p-nome').scrollIntoView({ behavior: 'smooth', block: 'center' }); } catch(e) {}
+  document.getElementById('p-nome').focus();
+}
+
+function cancelarEdicaoPessoa() {
+  document.getElementById('p-edit-id').value = '';
+  document.getElementById('p-nome').value = '';
+  document.getElementById('p-setor').value = '';
+  document.getElementById('p-form-titulo').textContent = 'Nova Pessoa';
+  document.getElementById('p-btn-salvar').textContent = '+ Adicionar';
+  document.getElementById('p-btn-cancelar').style.display = 'none';
+}
+
+/* =========================================================
+   MESCLAR PESSOAS DUPLICADAS
+   ========================================================= */
+/* Resolve o caso de uma mesma pessoa ter sido cadastrada duas vezes (ex.:
+   em setores diferentes por engano). O usuário escolhe qual cadastro é o
+   CORRETO (permanece) e qual é o DUPLICADO (será removido). Todos os
+   pedidos do duplicado são reatribuídos ao cadastro correto — incluindo
+   a correção retroativa de pessoaNome/pessoaSetor nesses pedidos, para
+   que relatórios e o resumo diário deixem de mostrar a pessoa "dividida"
+   entre dois registros. */
+
+function abrirModalMesclarPessoas() {
+  var pessoas = DB.get('pessoas');
+  if(pessoas.length < 2) {
+    toast('É preciso ter ao menos 2 pessoas cadastradas para mesclar.', '#c04a3a');
+    return;
+  }
+  var selCorreta = document.getElementById('mesclar-pessoa-correta');
+  var selDuplicada = document.getElementById('mesclar-pessoa-duplicada');
+  var opcoes = '<option value="">— Selecione —</option>';
+  for(var i=0;i<pessoas.length;i++) {
+    opcoes += '<option value="'+pessoas[i].id+'">'+escHtmlBackup(pessoas[i].nome)+' ('+(pessoas[i].setor||'sem setor')+')</option>';
+  }
+  selCorreta.innerHTML = opcoes;
+  selDuplicada.innerHTML = opcoes;
+  document.getElementById('mesclar-preview').innerHTML = '';
+  document.getElementById('btn-confirmar-mesclagem').disabled = true;
+  document.getElementById('modal-mesclar-pessoas').classList.add('open');
+}
+
+function fecharModalMesclarPessoas() {
+  document.getElementById('modal-mesclar-pessoas').classList.remove('open');
+}
+
+function _contarPedidosDaPessoa(pessoaId) {
+  return DB.get('pedidos').filter(function(p){ return p.pessoaId === pessoaId; }).length;
+}
+
+function atualizarPreviewMesclarPessoas() {
+  var idCorreta = document.getElementById('mesclar-pessoa-correta').value;
+  var idDuplicada = document.getElementById('mesclar-pessoa-duplicada').value;
+  var preview = document.getElementById('mesclar-preview');
+  var btn = document.getElementById('btn-confirmar-mesclagem');
+
+  if(!idCorreta || !idDuplicada) { preview.innerHTML = ''; btn.disabled = true; return; }
+  if(idCorreta === idDuplicada) {
+    preview.innerHTML = '<div class="import-warn">⚠️ Selecione dois cadastros diferentes — não é possível mesclar uma pessoa com ela mesma.</div>';
+    btn.disabled = true;
+    return;
+  }
+
+  var pessoas = DB.get('pessoas');
+  var correta = pessoas.find(function(p){ return p.id === idCorreta; });
+  var duplicada = pessoas.find(function(p){ return p.id === idDuplicada; });
+  if(!correta || !duplicada) { preview.innerHTML = ''; btn.disabled = true; return; }
+
+  var qtdPedidosDuplicada = _contarPedidosDaPessoa(idDuplicada);
+  var qtdPedidosCorreta = _contarPedidosDaPessoa(idCorreta);
+
+  preview.innerHTML =
+    '<div class="import-resumo-grid">'
+    + '<div class="import-resumo-item"><div class="lbl">Permanece</div><div style="font-weight:700;color:var(--green);">'+escHtmlBackup(correta.nome)+'</div><div style="font-size:12px;color:var(--text-dim);">Setor: '+(correta.setor||'—')+' · '+qtdPedidosCorreta+' pedido(s) já tem</div></div>'
+    + '<div class="import-resumo-item"><div class="lbl">Será removido</div><div style="font-weight:700;color:var(--red);">'+escHtmlBackup(duplicada.nome)+'</div><div style="font-size:12px;color:var(--text-dim);">Setor: '+(duplicada.setor||'—')+' · '+qtdPedidosDuplicada+' pedido(s) serão transferidos</div></div>'
+    + '</div>'
+    + '<div class="import-warn">⚠️ Os '+qtdPedidosDuplicada+' pedido(s) de "'+escHtmlBackup(duplicada.nome)+'" passarão a contar para "'+escHtmlBackup(correta.nome)+'" ('+(correta.setor||'sem setor')+'), inclusive nos relatórios e recibos já emitidos. Esta ação não pode ser desfeita automaticamente.</div>';
+  btn.disabled = false;
+}
+
+function confirmarMesclagemPessoas() {
+  var idCorreta = document.getElementById('mesclar-pessoa-correta').value;
+  var idDuplicada = document.getElementById('mesclar-pessoa-duplicada').value;
+  if(!idCorreta || !idDuplicada || idCorreta === idDuplicada) return;
+
+  var pessoas = DB.get('pessoas');
+  var correta = pessoas.find(function(p){ return p.id === idCorreta; });
+  var duplicada = pessoas.find(function(p){ return p.id === idDuplicada; });
+  if(!correta || !duplicada) { toast('Erro: cadastro não encontrado.', '#c04a3a'); return; }
+
+  if(!confirm('Confirma mesclar "'+duplicada.nome+'" ('+(duplicada.setor||'sem setor')+') em "'+correta.nome+'" ('+(correta.setor||'sem setor')+')? Esta ação não pode ser desfeita automaticamente.')) return;
+
+  // 1) Reatribui todos os pedidos do cadastro duplicado para o correto,
+  //    corrigindo também o "retrato histórico" (pessoaNome/pessoaSetor)
+  //    que cada pedido guarda — é isso que faz os relatórios pararem de
+  //    mostrar a pessoa dividida em dois registros.
+  var pedidos = DB.get('pedidos');
+  var qtdTransferidos = 0;
+  for(var i=0;i<pedidos.length;i++) {
+    if(pedidos[i].pessoaId === idDuplicada) {
+      pedidos[i].pessoaId = idCorreta;
+      pedidos[i].pessoaNome = correta.nome;
+      pedidos[i].pessoaSetor = correta.setor || '';
+      qtdTransferidos++;
+    }
+  }
+  DB.set('pedidos', pedidos);
+
+  // 2) Remove o cadastro duplicado.
+  var pessoasFinal = DB.get('pessoas').filter(function(p){ return p.id !== idDuplicada; });
+  DB.set('pessoas', pessoasFinal);
+
+  // se algum dos dois estava em edição no formulário, limpa para evitar inconsistência
+  var editId = document.getElementById('p-edit-id').value;
+  if(editId === idDuplicada || editId === idCorreta) cancelarEdicaoPessoa();
+
+  fecharModalMesclarPessoas();
+  renderPessoas();
+  toast('✅ Mesclagem concluída: '+qtdTransferidos+' pedido(s) transferido(s) para "'+correta.nome+'".');
+}
+
 function delPessoa(id) {
   if(!confirm('Remover?')) return;
   var lista = DB.get('pessoas').filter(function(x){ return x.id!==id; });
   DB.set('pessoas', lista);
+  // se a pessoa removida estava sendo editada, volta o formulário ao normal
+  if(document.getElementById('p-edit-id').value === id) cancelarEdicaoPessoa();
   renderPessoas();
 }
 function renderPessoas() {
@@ -1097,7 +1335,10 @@ function renderPessoas() {
   var h = '<table><thead><tr><th>Nome</th><th>Setor</th><th></th></tr></thead><tbody>';
   for(var i=0;i<lista.length;i++){
     var p=lista[i];
-    h+='<tr><td>'+p.nome+'</td><td>'+(p.setor||'—')+'</td><td><button class="btn btn-danger" onclick="delPessoa(\''+p.id+'\')">✕</button></td></tr>';
+    h+='<tr><td>'+p.nome+'</td><td>'+(p.setor||'—')+'</td><td style="white-space:nowrap;">'
+      +'<button class="btn btn-ghost-blue" style="padding:4px 9px;font-size:12px;margin-right:5px;" onclick="editarPessoa(\''+p.id+'\')" title="Editar cadastro">✏️</button>'
+      +'<button class="btn btn-danger" onclick="delPessoa(\''+p.id+'\')" title="Remover">✕</button>'
+      +'</td></tr>';
   }
   el.innerHTML = h+'</tbody></table>';
 }
@@ -2797,6 +3038,10 @@ function fecharModalBackupCfg() {
 /* ---- configuração de sincronização com GitHub (UI) ---- */
 
 function abrirModalGitHubSyncCfg() {
+  if(_AMBIENTE_PUBLICO) {
+    toast('🔒 A sincronização com GitHub não pode ser configurada quando este arquivo é acessado por um link público. Abra o arquivo localmente (no seu computador) para configurar.', '#c04a3a');
+    return;
+  }
   var c = GitHubSync.cfg();
   document.getElementById('gh-cfg-owner').value = c.owner;
   document.getElementById('gh-cfg-repo').value = c.repo;
@@ -3448,6 +3693,15 @@ function fmtData(iso){ if(!iso) return ''; var p=iso.split('-'); return p[2]+'/'
   try { initPedido(); } catch(e) { console.error('Init initPedido:', e); }
   try { renderAcompsFixos(); } catch(e) { console.error('Init renderAcompsFixos:', e); }
   try { verificarBackupDiario(); } catch(e) { console.error('Init verificarBackupDiario:', e); }
+  // Em ambiente público, some com o botão de Sync GitHub — a função já fica
+  // bloqueada de qualquer forma, mas escondê-lo evita confusão e a tentação
+  // de configurar um token onde nunca deve ficar salvo.
+  try {
+    if(_AMBIENTE_PUBLICO) {
+      var btnSync = document.querySelector('button[onclick="abrirModalGitHubSyncCfg()"]');
+      if(btnSync) btnSync.style.display = 'none';
+    }
+  } catch(e) { console.error('Init ocultar botão Sync GitHub:', e); }
 })();
 </script>
 </body>
