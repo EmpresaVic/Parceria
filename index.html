@@ -161,43 +161,17 @@ tr:last-child td { border-bottom: none; }
 .preview-toolbar span { color: #aaa; font-size: 13px; flex: 1; }
 .preview-content { padding: 14px; }
 
-/* BACKUP */
-#modal-backup-cfg { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 1200; align-items: center; justify-content: center; }
-#modal-backup-cfg.open { display: flex; }
-.backup-info-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px 24px; margin-bottom: 20px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px; }
-.backup-info-left { display: flex; flex-wrap: wrap; gap: 26px; align-items: center; }
-.backup-info-item .lbl { font-size: 11px; font-weight: 600; color: var(--text-dim); letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 3px; }
-.backup-info-item .val { font-size: 14px; color: var(--cream); font-weight: 600; }
-.backup-status-ok { color: var(--green); }
-.backup-status-erro { color: var(--red); }
-.backup-folder-tag { font-size: 11px; color: var(--text-dim); margin-top: 2px; }
-
-/* IMPORTAR BACKUP */
-#modal-importar-backup { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 1200; align-items: center; justify-content: center; }
-#modal-importar-backup.open { display: flex; }
-#modal-gh-sync-cfg { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 1200; align-items: center; justify-content: center; }
-#modal-gh-sync-cfg.open { display: flex; }
-.import-resumo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; margin-bottom: 14px; }
-.import-resumo-item { background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px; }
-.import-resumo-item .lbl { font-size: 10px; font-weight: 600; color: var(--text-dim); letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 4px; }
-.import-resumo-item .nums { display: flex; align-items: baseline; gap: 6px; }
-.import-resumo-item .novo { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: var(--green); }
-.import-resumo-item .ignorado { font-size: 11px; color: var(--text-dim); }
-.import-warn { font-size: 12px; color: var(--gold); background: rgba(160,120,40,0.1); border: 1px solid var(--gold-dim); border-radius: 8px; padding: 10px 12px; margin-bottom: 14px; }
-.import-empty { font-size: 13px; color: var(--text-dim); padding: 10px 2px; }
-
-.recibo { font-family: 'Courier New', monospace; font-size: 13px; color: #000; background: #fff; width: 100%; max-width: 226px; margin: 0 auto; padding: 10px 6px; line-height: 1.55; font-weight: 700; }
+.recibo { font-family: 'Courier New', monospace; font-size: 13px; color: #000; background: #fff; width: 100%; max-width: 226px; margin: 0 auto; padding: 10px 6px; line-height: 1.55; font-weight: 600; }
 .r-logo { text-align: center; font-size: 17px; font-weight: 900; letter-spacing: 2px; color: #000; }
-.r-sub { text-align: center; font-size: 11px; color: #000; font-weight: 700; }
-.r-sep { border: none; border-top: 2px dashed #000; margin: 5px 0; }
-.r-sep2 { border: none; border-top: 3px solid #000; margin: 5px 0; }
+.r-sub { text-align: center; font-size: 11px; color: #000; font-weight: 600; }
+.r-sep { border: none; border-top: 1.5px dashed #000; margin: 5px 0; }
+.r-sep2 { border: none; border-top: 2.5px solid #000; margin: 5px 0; }
 .r-row { display: flex; justify-content: space-between; }
 .r-lbl { font-weight: 900; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 5px; color: #000; }
 .r-ind { padding-left: 8px; }
 .r-tot { font-size: 15px; font-weight: 900; }
 .r-ctr { text-align: center; }
-.r-sm { font-size: 11px; color: #000; font-weight: 700; }
-.r-setor-badge { display:inline-block; background:#000; color:#fff; font-weight:900; font-size:12px; padding:2px 8px; border-radius:3px; letter-spacing:1px; margin-top:2px; }
+.r-sm { font-size: 11px; color: #000; font-weight: 600; }
 
 #print-area { display: none; }
 
@@ -213,7 +187,7 @@ tr:last-child td { border-bottom: none; }
     height: auto !important;
     background: #fff !important;
   }
-  body > header, body > main, #modal-print, #modal-preview, #modal-senha, #modal-backup-cfg, #modal-importar-backup, #modal-gh-sync-cfg, #toast { display: none !important; }
+  body > header, body > main, #modal-print, #modal-preview, #modal-senha, #toast { display: none !important; }
   #print-area {
     display: block !important;
     background: #fff !important;
@@ -227,22 +201,15 @@ tr:last-child td { border-bottom: none; }
   /* Força impressão mais escura em impressoras térmicas */
   .recibo {
     color: #000 !important;
-    font-weight: 700 !important;
-    -webkit-filter: contrast(1.6) brightness(0.85) !important;
-    filter: contrast(1.6) brightness(0.85) !important;
+    font-weight: 600 !important;
+    -webkit-filter: contrast(1.4) !important;
+    filter: contrast(1.4) !important;
   }
   .recibo * {
     color: #000 !important;
-    font-weight: 700 !important;
   }
   .r-sep, .r-sep2 {
     border-color: #000 !important;
-  }
-  .r-setor-badge {
-    background: #000 !important;
-    color: #fff !important;
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
   }
 }
 
@@ -290,16 +257,7 @@ tr:last-child td { border-bottom: none; }
   <div class="grid2">
     <div class="card">
       <div class="card-title">Dados do Pedido</div>
-      <div class="field">
-        <label>Setor <span style="color:var(--red);font-size:10px;">★ Obrigatório</span></label>
-        <select id="ped-setor" onchange="onSetorChange()">
-          <option value="">— Selecione o Setor —</option>
-          <option value="GCM">GCM</option>
-          <option value="ECO">ECO</option>
-          <option value="MKT">MKT</option>
-        </select>
-      </div>
-      <div class="field"><label>Pessoa</label><select id="ped-pessoa" disabled style="opacity:0.5;cursor:not-allowed;"></select></div>
+      <div class="field"><label>Pessoa</label><select id="ped-pessoa"></select></div>
       <div class="field"><label>Prato Principal</label><select id="ped-prato" onchange="onPratoChange()"></select></div>
       <div id="prato-badge" style="margin-bottom:12px;display:none;"><span class="badge badge-gold" id="prato-badge-val"></span></div>
       <div id="prato-foto-box" style="display:none;margin-bottom:14px;">
@@ -360,56 +318,9 @@ tr:last-child td { border-bottom: none; }
     <div class="field"><label>Data inicial</label><input type="date" id="res-de"></div>
     <div class="date-sep">até</div>
     <div class="field"><label>Data final</label><input type="date" id="res-ate"></div>
-    <div class="field"><label>Setor</label>
-      <select id="res-setor" style="min-width:120px;">
-        <option value="">Todos</option>
-        <option value="GCM">GCM</option>
-        <option value="ECO">ECO</option>
-        <option value="MKT">MKT</option>
-      </select>
-    </div>
     <button class="btn btn-gold" onclick="gerarResumo()">Gerar Resumo</button>
     <button class="btn btn-ghost" onclick="verTodos()">Ver Todos</button>
     <button class="btn btn-ghost-blue" onclick="imprimirRelatorio()">🖨️ Imprimir</button>
-    <button class="btn btn-blue" onclick="executarBackupCompleto('manual')">💾 Backup Completo</button>
-    <button class="btn btn-ghost" onclick="abrirModalBackupCfg()" title="Configurar pasta de backup">⚙️ Pasta de Backup</button>
-    <button class="btn btn-ghost-blue" onclick="document.getElementById('input-importar-backup').click()" title="Importar backup de outra máquina, sem apagar dados locais">⬆️ Importar Backup</button>
-    <input type="file" id="input-importar-backup" accept=".json,application/json" style="display:none;" onchange="onSelecionarArquivoImportacao(event)">
-    <button class="btn btn-ghost" onclick="abrirModalGitHubSyncCfg()" title="Configurar sincronização automática com GitHub">🔗 Sync GitHub</button>
-  </div>
-  <div class="backup-info-card" id="gh-sync-card" style="display:none;">
-    <div class="backup-info-left">
-      <div class="backup-info-item">
-        <div class="lbl">Sincronização GitHub</div>
-        <div class="val" id="gh-sync-status">—</div>
-      </div>
-      <div class="backup-info-item">
-        <div class="lbl">Repositório</div>
-        <div class="val" id="gh-sync-repo">—</div>
-      </div>
-    </div>
-    <button class="btn btn-ghost-blue" style="font-size:11px;padding:6px 12px;" onclick="GitHubSync.sincronizarAgoraForcado(function(err){ atualizarBadgeSyncGitHub(); if(err) toast('❌ Falha ao sincronizar: '+err.message, '#c04a3a'); else toast('✅ Sincronizado com o GitHub.'); })">🔄 Sincronizar agora</button>
-  </div>
-  <div class="backup-info-card">
-    <div class="backup-info-left">
-      <div class="backup-info-item">
-        <div class="lbl">Último Backup</div>
-        <div class="val" id="bk-info-data">—</div>
-      </div>
-      <div class="backup-info-item">
-        <div class="lbl">Tipo</div>
-        <div class="val" id="bk-info-tipo">—</div>
-      </div>
-      <div class="backup-info-item">
-        <div class="lbl">Status</div>
-        <div class="val" id="bk-info-status">—</div>
-      </div>
-      <div class="backup-info-item">
-        <div class="lbl">Espaço usado</div>
-        <div class="val" id="bk-info-espaco">—</div>
-      </div>
-    </div>
-    <div class="backup-folder-tag" id="bk-info-pasta"></div>
   </div>
   <div class="stats-row" id="stats-row" style="display:none;">
     <div class="stat-box"><div class="val" id="st-pedidos">0</div><div class="lbl">Pedidos</div></div>
@@ -426,15 +337,7 @@ tr:last-child td { border-bottom: none; }
     <div class="card">
       <div class="card-title">Nova Pessoa</div>
       <div class="field"><label>Nome Completo</label><input type="text" id="p-nome" placeholder="Ex.: João da Silva"></div>
-      <div class="field">
-        <label>Setor <span style="color:var(--red);font-size:10px;">★ Obrigatório</span></label>
-        <select id="p-setor">
-          <option value="">— Selecione o Setor —</option>
-          <option value="GCM">GCM</option>
-          <option value="ECO">ECO</option>
-          <option value="MKT">MKT</option>
-        </select>
-      </div>
+      <div class="field"><label>Setor (opcional)</label><input type="text" id="p-setor" placeholder="Ex.: Produção"></div>
       <button class="btn btn-gold" onclick="addPessoa()">+ Adicionar</button>
     </div>
     <div class="card">
@@ -498,10 +401,7 @@ tr:last-child td { border-bottom: none; }
       <button class="btn btn-gold" onclick="addPrato()">+ Adicionar</button>
     </div>
     <div class="card">
-      <div class="card-title" style="display:flex;align-items:center;justify-content:space-between;gap:10px;">
-        <span>Cadastrados</span>
-        <button class="btn btn-ghost-blue" style="font-size:11px;padding:5px 10px;" onclick="otimizarFotosPratosSalvos()" title="Recomprime fotos já cadastradas que estão grandes, liberando espaço no armazenamento local">🗜️ Otimizar fotos salvas</button>
-      </div>
+      <div class="card-title">Cadastrados</div>
       <div id="lista-pratos"><div class="empty"><span class="ico">🍽️</span>Nenhum prato</div></div>
     </div>
   </div>
@@ -607,92 +507,6 @@ tr:last-child td { border-bottom: none; }
   </div>
 </div>
 
-<!-- BACKUP CONFIG MODAL -->
-<div id="modal-backup-cfg">
-  <div class="modal-box">
-    <h3>💾 Configurar Pasta de Backup</h3>
-    <p style="font-size:13px;color:var(--text-dim);margin-bottom:16px;">
-      Em navegadores compatíveis (Chrome/Edge), você pode escolher uma pasta fixa do computador
-      para onde os arquivos de backup serão salvos automaticamente. Se o navegador não suportar
-      essa função, o backup continuará funcionando normalmente via download do arquivo .json.
-    </p>
-    <div class="btn-row" style="margin-bottom:6px;">
-      <button class="btn btn-gold" onclick="escolherPastaBackup()">📁 Escolher Pasta</button>
-      <button class="btn btn-ghost" onclick="limparPastaBackup()">✕ Remover Pasta</button>
-    </div>
-    <div id="backup-pasta-status" style="font-size:12px;color:var(--text-dim);margin-top:10px;"></div>
-    <div class="modal-foot"><button class="btn btn-ghost" onclick="fecharModalBackupCfg()">Fechar</button></div>
-  </div>
-</div>
-
-<!-- IMPORTAR BACKUP MODAL -->
-<div id="modal-importar-backup">
-  <div class="modal-box" style="max-width:520px;">
-    <h3>⬆️ Importar Backup de Outra Máquina</h3>
-    <p style="font-size:13px;color:var(--text-dim);margin-bottom:16px;">
-      A importação é <strong>aditiva e segura</strong>: apenas os registros que ainda não existem
-      neste computador serão adicionados. Nada que já está cadastrado aqui será apagado, sobrescrito
-      ou alterado.
-    </p>
-    <div id="importar-backup-preview"></div>
-    <div class="modal-foot" style="justify-content:space-between;">
-      <button class="btn btn-ghost" onclick="fecharModalImportarBackup()">Cancelar</button>
-      <button class="btn btn-gold" id="btn-confirmar-importacao" onclick="confirmarImportacaoBackup()">✅ Importar Dados Novos</button>
-    </div>
-  </div>
-</div>
-
-<!-- GITHUB SYNC CONFIG MODAL -->
-<div id="modal-gh-sync-cfg">
-  <div class="modal-box" style="max-width:520px;">
-    <h3>🔗 Sincronização com GitHub</h3>
-    <p style="font-size:13px;color:var(--text-dim);margin-bottom:16px;">
-      Os dados continuam salvos instantaneamente neste computador. Com a sincronização
-      configurada, o sistema também envia automaticamente uma cópia para um repositório
-      do GitHub, alguns segundos depois de cada alteração — sem precisar clicar em nada.
-      As fotos dos pratos são enviadas como arquivos separados (não ficam no JSON).
-    </p>
-    <div class="field" style="margin-bottom:10px;">
-      <label>Usuário/Organização (owner)</label>
-      <input type="text" id="gh-cfg-owner" placeholder="Ex.: EmpresaVic">
-    </div>
-    <div class="field" style="margin-bottom:10px;">
-      <label>Repositório</label>
-      <input type="text" id="gh-cfg-repo" placeholder="Ex.: Parceria">
-    </div>
-    <div class="field" style="margin-bottom:10px;">
-      <label>Branch</label>
-      <input type="text" id="gh-cfg-branch" placeholder="main" value="main">
-    </div>
-    <div class="field" style="margin-bottom:10px;">
-      <label>Caminho do arquivo de dados</label>
-      <input type="text" id="gh-cfg-caminho" placeholder="db/dados.json" value="db/dados.json">
-    </div>
-    <div class="field" style="margin-bottom:10px;">
-      <label>Pasta das fotos</label>
-      <input type="text" id="gh-cfg-pasta-fotos" placeholder="db/fotos" value="db/fotos">
-    </div>
-    <div class="field" style="margin-bottom:6px;">
-      <label>Personal Access Token (escopo de escrita no repositório)</label>
-      <input type="password" id="gh-cfg-token" placeholder="ghp_..." autocomplete="off">
-    </div>
-    <p style="font-size:11px;color:var(--text-dim);margin-bottom:14px;">
-      ⚠️ O token é salvo apenas neste navegador (nunca é enviado ao repositório). Como o
-      repositório é público, qualquer pessoa com este token teria acesso de escrita — guarde-o
-      com o mesmo cuidado de uma senha, e revogue no GitHub se este computador for compartilhado.
-    </p>
-    <div id="gh-cfg-msg" style="font-size:12px;margin-bottom:10px;"></div>
-    <div class="modal-foot" style="justify-content:space-between;flex-wrap:wrap;gap:8px;">
-      <button class="btn btn-ghost" onclick="fecharModalGitHubSyncCfg()">Fechar</button>
-      <div style="display:flex;gap:8px;">
-        <button class="btn btn-ghost" onclick="limparConfigGitHubSync()">✕ Desativar</button>
-        <button class="btn btn-ghost-blue" onclick="testarConexaoGitHubSync()">🔍 Testar conexão</button>
-        <button class="btn btn-gold" onclick="salvarConfigGitHubSync()">💾 Salvar</button>
-      </div>
-    </div>
-  </div>
-</div>
-
 <div id="print-area"></div>
 <div id="toast"></div>
 
@@ -708,295 +522,13 @@ tr:last-child td { border-bottom: none; }
 
 var DB = {
   get: function(k) { return JSON.parse(localStorage.getItem('mp2_' + k) || '[]'); },
-  set: function(k, v) {
-    localStorage.setItem('mp2_' + k, JSON.stringify(v));
-    // Toda gravação local agenda automaticamente uma sincronização com o
-    // GitHub em segundo plano (com debounce — ver GitHubSync.agendarSync).
-    // Isso cobre pessoas, pratos, pedidos, acompanhamentos, acompFixos e
-    // bebidas, já que todas essas listas passam por DB.set.
-    try { GitHubSync.agendarSync(); } catch(e) { console.error('Erro ao agendar sync GitHub:', e); }
-  },
+  set: function(k, v) { localStorage.setItem('mp2_' + k, JSON.stringify(v)); },
   uid: function() { return Date.now().toString(36) + Math.random().toString(36).slice(2,5); }
 };
 var CFG = {
   get: function() { return JSON.parse(localStorage.getItem('mp_cfg') || '{}'); },
   set: function(obj) { var c = CFG.get(); for(var k in obj) c[k]=obj[k]; localStorage.setItem('mp_cfg', JSON.stringify(c)); }
 };
-
-/* =========================================================
-   GITHUB SYNC — persistência em segundo plano via GitHub Contents API
-   =========================================================
-   Estratégia (decidida deliberadamente, não é o ideal genérico):
-   - localStorage continua sendo a gravação instantânea (zero latência,
-     funciona offline). O GitHub é uma cópia sincronizada em segundo
-     plano, pensada para um único usuário/máquina por vez (sem resolução
-     de merge concorrente — apenas detecção de conflito por SHA).
-   - As mudanças são agrupadas: várias alterações em sequência (ex.:
-     cadastrar 5 pessoas rapidamente) resultam em UMA gravação no GitHub,
-     não cinco. Isso é feito com debounce (espera SUGESTAO_DEBOUNCE_MS de
-     inatividade antes de gravar) e com fila (se já houver uma gravação
-     em andamento quando uma nova mudança chegar, ela entra na fila e é
-     processada depois, sem perder a alteração).
-   - Fotos de pratos são SEMPRE arquivos separados em db/fotos/<id>.jpg,
-     nunca embutidas em base64 no dados.json. O JSON guarda só o nome do
-     arquivo (campo `foto`, ex.: "fotos/abc123.jpg"). Isso é o que o
-     usuário pediu explicitamente, e também é o que mantém o dados.json
-     pequeno e rápido de sincronizar.
-   - O token de acesso do GitHub NUNCA é embutido neste arquivo HTML.
-     Ele é digitado uma única vez na tela de Configuração de Sincronização
-     e fica salvo apenas no localStorage desta máquina (chave mp_cfg,
-     dentro do objeto de configuração), nunca enviado para o repositório.
-*/
-var GitHubSync = (function(){
-
-  var SUGESTAO_DEBOUNCE_MS = 6000; // espera 6s de inatividade antes de sincronizar
-  var debounceTimer = null;
-  var syncEmAndamento = false;
-  var syncPendenteDeNovo = false; // true se algo mudou DURANTE uma sincronização em curso
-  var ultimoShaConhecido = null;  // SHA do dados.json na última leitura/gravação bem-sucedida
-
-  function cfg() {
-    var c = CFG.get();
-    return {
-      ativo: !!(c.ghOwner && c.ghRepo && c.ghToken),
-      owner: c.ghOwner || '',
-      repo: c.ghRepo || '',
-      branch: c.ghBranch || 'main',
-      caminho: c.ghCaminho || 'db/dados.json',
-      pastaFotos: c.ghPastaFotos || 'db/fotos',
-      token: c.ghToken || ''
-    };
-  }
-
-  function apiUrlConteudo(caminho) {
-    var c = cfg();
-    return 'https://api.github.com/repos/' + c.owner + '/' + c.repo + '/contents/' + caminho;
-  }
-
-  function headersAuth() {
-    var c = cfg();
-    return {
-      'Authorization': 'Bearer ' + c.token,
-      'Accept': 'application/vnd.github+json',
-      'X-GitHub-Api-Version': '2022-11-28'
-    };
-  }
-
-  function setStatus(status, detalhe) {
-    // status: 'idle' | 'syncing' | 'ok' | 'erro' | 'desativado'
-    try {
-      localStorage.setItem('mp2_gh_sync_status', JSON.stringify({
-        status: status, detalhe: detalhe || '', em: new Date().toISOString()
-      }));
-    } catch(e) {}
-    try { if(typeof atualizarBadgeSyncGitHub === 'function') atualizarBadgeSyncGitHub(); } catch(e) {}
-  }
-
-  function getStatus() {
-    try { return JSON.parse(localStorage.getItem('mp2_gh_sync_status') || 'null'); }
-    catch(e) { return null; }
-  }
-
-  /* Monta o payload atual a partir das chaves locais — mesma lógica de
-     dados usada no backup, mas sem o envelope de "backup manual", já que
-     aqui é o estado vivo sincronizado continuamente. */
-  function montarPayloadAtual() {
-    return {
-      app: 'controle-refeicoes-parceria-plaza',
-      versaoFormato: 1,
-      atualizadoEm: new Date().toISOString(),
-      chaves: {
-        mp2_pessoas: DB.get('pessoas'),
-        mp2_pratos: DB.get('pratos'),
-        mp2_acomps: DB.get('acomps'),
-        mp2_acompsFixos: DB.get('acompsFixos'),
-        mp2_bebidas: DB.get('bebidas'),
-        mp2_pedidos: DB.get('pedidos')
-      }
-    };
-  }
-
-  function base64EncodeUnicode(str) {
-    // btoa não lida bem com UTF-8 fora do intervalo Latin1; este wrapper
-    // resolve isso para nomes com acentos, emojis em nomes de prato, etc.
-    return btoa(unescape(encodeURIComponent(str)));
-  }
-
-  function base64DecodeUnicode(b64) {
-    return decodeURIComponent(escape(atob(b64)));
-  }
-
-  /* Lê o arquivo atual no GitHub (para obter o SHA necessário para
-     atualizar, e opcionalmente o conteúdo). Retorna null se o arquivo
-     ainda não existir (404), o que é um caso normal na primeira sync. */
-  function lerArquivoAtual(caminho, callback) {
-    var c = cfg();
-    fetch(apiUrlConteudo(caminho) + '?ref=' + encodeURIComponent(c.branch), {
-      headers: headersAuth()
-    }).then(function(resp) {
-      if(resp.status === 404) { callback(null, null); return; }
-      if(!resp.ok) { resp.text().then(function(t){ callback(new Error('GitHub GET '+resp.status+': '+t), null); }); return; }
-      resp.json().then(function(json) {
-        callback(null, json); // json.sha, json.content (base64), etc.
-      });
-    }).catch(function(err) { callback(err, null); });
-  }
-
-  /* Grava (cria ou atualiza) um arquivo via Contents API. Se shaAtual for
-     null, tenta criar; o GitHub responde com erro claro se já existir
-     (nesse caso quem chama deve relSer/ler de novo e tentar com o SHA certo). */
-  function gravarArquivo(caminho, conteudoBase64, mensagemCommit, shaAtual, callback) {
-    var c = cfg();
-    var body = {
-      message: mensagemCommit,
-      content: conteudoBase64,
-      branch: c.branch
-    };
-    if(shaAtual) body.sha = shaAtual;
-    fetch(apiUrlConteudo(caminho), {
-      method: 'PUT',
-      headers: Object.assign({'Content-Type':'application/json'}, headersAuth()),
-      body: JSON.stringify(body)
-    }).then(function(resp) {
-      resp.json().then(function(json) {
-        if(!resp.ok) {
-          var err = new Error('GitHub PUT ' + resp.status + ': ' + (json && json.message || JSON.stringify(json)));
-          err.status = resp.status;
-          err.githubBody = json;
-          callback(err, null);
-          return;
-        }
-        callback(null, json);
-      });
-    }).catch(function(err) { callback(err, null); });
-  }
-
-  /* Sincroniza o dados.json: lê o SHA atual no GitHub, grava o payload
-     novo. Se o SHA mudou desde a última vez que ESTE app gravou (alguém/
-     algo alterou o arquivo por fora), avisa via status em vez de
-     sobrescrever silenciosamente — como é uso de uma máquina por vez,
-     isso normalmente só acontece se você editou manualmente no GitHub. */
-  function sincronizarDadosJson(callback) {
-    var c = cfg();
-    lerArquivoAtual(c.caminho, function(err, arquivoAtual) {
-      if(err) { callback(err); return; }
-
-      if(arquivoAtual && ultimoShaConhecido && arquivoAtual.sha !== ultimoShaConhecido) {
-        var erroConflito = new Error('O arquivo dados.json foi alterado no GitHub por fora deste app (SHA diferente do esperado). Sincronização pausada para não sobrescrever essa mudança.');
-        erroConflito.conflito = true;
-        callback(erroConflito);
-        return;
-      }
-
-      var payload = montarPayloadAtual();
-      var conteudo = base64EncodeUnicode(JSON.stringify(payload, null, 2));
-      var sha = arquivoAtual ? arquivoAtual.sha : null;
-
-      gravarArquivo(c.caminho, conteudo, 'Sync automático — ' + new Date().toLocaleString('pt-BR'), sha, function(err2, resultado) {
-        if(err2) { callback(err2); return; }
-        ultimoShaConhecido = resultado.content.sha;
-        callback(null, resultado);
-      });
-    });
-  }
-
-  /* Sobe a foto de um prato como arquivo separado em db/fotos/<id>.jpg.
-     Recebe um dataURL (já comprimido por _comprimirImagemDataUrl) e o id
-     do prato; retorna, via callback, o CAMINHO RELATIVO do arquivo (para
-     ser salvo no campo `foto` do prato) — nunca o base64 em si. */
-  function subirFotoPrato(idPrato, dataUrlJpeg, callback) {
-    var c = cfg();
-    if(!c.ativo) { callback(new Error('Sincronização com GitHub não está configurada.')); return; }
-    var nomeArquivo = 'prato_' + idPrato + '.jpg';
-    var caminho = c.pastaFotos + '/' + nomeArquivo;
-    var base64Puro = dataUrlJpeg.split(',')[1] || ''; // remove o prefixo "data:image/jpeg;base64,"
-
-    lerArquivoAtual(caminho, function(err, arquivoAtual) {
-      if(err) { callback(err); return; }
-      var sha = arquivoAtual ? arquivoAtual.sha : null;
-      gravarArquivo(caminho, base64Puro, 'Foto do prato ' + idPrato, sha, function(err2, resultado) {
-        if(err2) { callback(err2); return; }
-        callback(null, c.pastaFotos + '/' + nomeArquivo);
-      });
-    });
-  }
-
-  /* Roda a sincronização agora, processando a fila de pendências geradas
-     enquanto uma sync anterior estava em andamento. */
-  function executarSyncAgora() {
-    if(syncEmAndamento) { syncPendenteDeNovo = true; return; }
-    var c = cfg();
-    if(!c.ativo) { setStatus('desativado'); return; }
-
-    syncEmAndamento = true;
-    setStatus('syncing');
-    sincronizarDadosJson(function(err) {
-      syncEmAndamento = false;
-      if(err) {
-        setStatus('erro', err.message);
-        console.error('Falha ao sincronizar com GitHub:', err);
-      } else {
-        setStatus('ok');
-      }
-      if(syncPendenteDeNovo) {
-        syncPendenteDeNovo = false;
-        agendarSync(); // re-agenda para capturar a mudança que chegou durante a sync
-      }
-    });
-  }
-
-  function agendarSync() {
-    var c = cfg();
-    if(!c.ativo) return; // sincronização desligada/não configurada: não faz nada
-    if(debounceTimer) clearTimeout(debounceTimer);
-    debounceTimer = setTimeout(executarSyncAgora, SUGESTAO_DEBOUNCE_MS);
-  }
-
-  /* Sincronização manual imediata (ex.: botão "Sincronizar agora"),
-     pulando o debounce. */
-  function sincronizarAgoraForcado(callback) {
-    if(debounceTimer) { clearTimeout(debounceTimer); debounceTimer = null; }
-    var c = cfg();
-    if(!c.ativo) { if(callback) callback(new Error('Sincronização não configurada.')); return; }
-    syncEmAndamento = true;
-    setStatus('syncing');
-    sincronizarDadosJson(function(err) {
-      syncEmAndamento = false;
-      if(err) { setStatus('erro', err.message); } else { setStatus('ok'); }
-      if(callback) callback(err);
-    });
-  }
-
-  /* Importa o dados.json do GitHub para o localStorage local (usado na
-     configuração inicial em uma máquina nova, ou para restaurar). NÃO é
-     aditivo como a importação de backup local — isso é uma carga inicial
-     explícita, então avisa claramente que vai SUBSTITUIR os dados locais. */
-  function carregarDoGitHub(callback) {
-    var c = cfg();
-    if(!c.ativo) { callback(new Error('Sincronização não configurada.')); return; }
-    lerArquivoAtual(c.caminho, function(err, arquivoAtual) {
-      if(err) { callback(err); return; }
-      if(!arquivoAtual) { callback(new Error('Nenhum dados.json encontrado no repositório ainda.')); return; }
-      try {
-        var payload = JSON.parse(base64DecodeUnicode(arquivoAtual.content.replace(/\n/g,'')));
-        ultimoShaConhecido = arquivoAtual.sha;
-        callback(null, payload);
-      } catch(e) {
-        callback(new Error('Não foi possível interpretar o dados.json do GitHub: ' + e.message));
-      }
-    });
-  }
-
-  return {
-    cfg: cfg,
-    agendarSync: agendarSync,
-    sincronizarAgoraForcado: sincronizarAgoraForcado,
-    subirFotoPrato: subirFotoPrato,
-    carregarDoGitHub: carregarDoGitHub,
-    getStatus: getStatus,
-    setStatus: setStatus
-  };
-})();
 
 var _payload = null;
 var _formato = '80mm';
@@ -1073,9 +605,8 @@ function verificarSenha() {
    ========================================================= */
 function addPessoa() {
   var nome = document.getElementById('p-nome').value.trim();
-  var setor = document.getElementById('p-setor').value;
+  var setor = document.getElementById('p-setor').value.trim();
   if(!nome) { toast('Informe o nome.','#c04a3a'); return; }
-  if(!setor) { toast('Selecione o setor.','#c04a3a'); return; }
   var lista = DB.get('pessoas');
   lista.push({ id:DB.uid(), nome:nome, setor:setor });
   DB.set('pessoas', lista);
@@ -1107,150 +638,15 @@ function renderPessoas() {
    ========================================================= */
 var _fotoBase64 = null;
 
-/* Reduz uma imagem (dataURL) para no máximo LADO_MAX px no maior lado e
-   reexporta como JPEG com a qualidade indicada. Isso evita que fotos de
-   celular (2-4 MB / 30-70 KB em base64) inchem o localStorage e estourem
-   a quota de armazenamento, especialmente ao importar backups de outra
-   máquina (onde várias fotos chegam de uma vez). */
-function _comprimirImagemDataUrl(dataUrl, callback) {
-  var LADO_MAX = 480;
-  var QUALIDADE = 0.72;
-  var img = new Image();
-  img.onload = function() {
-    var w = img.width, h = img.height;
-    if(w > LADO_MAX || h > LADO_MAX) {
-      if(w >= h) { h = Math.round(h * (LADO_MAX / w)); w = LADO_MAX; }
-      else { w = Math.round(w * (LADO_MAX / h)); h = LADO_MAX; }
-    }
-    var canvas = document.createElement('canvas');
-    canvas.width = w; canvas.height = h;
-    var ctx = canvas.getContext('2d');
-    ctx.fillStyle = '#ffffff'; // evita fundo preto em PNGs com transparência ao virar JPEG
-    ctx.fillRect(0, 0, w, h);
-    ctx.drawImage(img, 0, 0, w, h);
-    try {
-      callback(canvas.toDataURL('image/jpeg', QUALIDADE));
-    } catch(e) {
-      console.error('Erro ao comprimir imagem, usando original:', e);
-      callback(dataUrl); // fallback: se o canvas falhar por algum motivo, mantém a imagem original
-    }
-  };
-  img.onerror = function() {
-    callback(dataUrl); // fallback: se a imagem não carregar no <img>, mantém o dataURL original
-  };
-  img.src = dataUrl;
-}
-
-/* Só recomprime se a foto já estiver acima de um limite de tamanho (em
-   caracteres do dataURL, ~bytes). Fotos novas (cadastradas pela própria
-   previewFoto) já saem pequenas, então isso evita reprocessar/perder
-   qualidade de algo que já está OK. Usado tanto para "limpar" fotos
-   antigas salvas localmente quanto para fotos vindas de um backup. */
-function _comprimirSeNecessario(dataUrl, callback) {
-  var LIMITE_CARACTERES = 60000; // ~60KB em base64; acima disso, vale a pena recomprimir
-  if(!dataUrl || typeof dataUrl !== 'string' || dataUrl.length <= LIMITE_CARACTERES) {
-    callback(dataUrl, false); // não precisou comprimir
-    return;
-  }
-  _comprimirImagemDataUrl(dataUrl, function(comprimida) {
-    callback(comprimida, true); // foi recomprimida
-  });
-}
-
-/* Percorre uma lista de pratos e recomprime, em paralelo, as fotos que
-   ainda estiverem grandes. Não modifica a lista original; chama callback
-   com (listaResultado, quantidadeRecomprimidas) quando tudo finalizar.
-   Se a lista estiver vazia ou nenhuma foto precisar de ajuste, o callback
-   é chamado de forma assíncrona mesmo assim (setTimeout 0), para manter
-   o comportamento consistente para quem chama. */
-function _recomprimirFotosDePratos(listaPratos, callback) {
-  if(!Array.isArray(listaPratos) || listaPratos.length === 0) {
-    setTimeout(function(){ callback(listaPratos, 0); }, 0);
-    return;
-  }
-  var resultado = new Array(listaPratos.length);
-  var pendentes = listaPratos.length;
-  var totalRecomprimidas = 0;
-  var finalizouTudo = false;
-
-  function checarFim() {
-    pendentes--;
-    if(pendentes <= 0 && !finalizouTudo) {
-      finalizouTudo = true;
-      callback(resultado, totalRecomprimidas);
-    }
-  }
-
-  for(var i=0;i<listaPratos.length;i++) {
-    (function(idx) {
-      var prato = listaPratos[idx];
-      if(!prato || !prato.foto) {
-        resultado[idx] = prato;
-        checarFim();
-        return;
-      }
-      _comprimirSeNecessario(prato.foto, function(fotoFinal, foiComprimida) {
-        if(foiComprimida) {
-          // não muta o objeto original — gera uma cópia só com a foto trocada
-          var copia = {};
-          for(var k in prato) { copia[k] = prato[k]; }
-          copia.foto = fotoFinal;
-          resultado[idx] = copia;
-          totalRecomprimidas++;
-        } else {
-          resultado[idx] = prato;
-        }
-        checarFim();
-      });
-    })(i);
-  }
-}
-
-/* Recomprime as fotos dos pratos JÁ SALVOS localmente (localStorage).
-   Útil para "limpar" cadastros antigos feitos antes desta versão, sem
-   precisar recadastrar nada — o usuário só clica em um botão. */
-function otimizarFotosPratosSalvos() {
-  var lista = DB.get('pratos');
-  if(!lista.length) { toast('Nenhum prato cadastrado ainda.'); return; }
-  toast('🗜️ Otimizando fotos, aguarde...', '#3a6f98');
-  _recomprimirFotosDePratos(lista, function(listaFinal, qtd) {
-    if(qtd === 0) {
-      toast('✅ Nenhuma foto precisava de otimização — tudo já está leve.');
-      return;
-    }
-    DB.set('pratos', listaFinal);
-    renderPratos();
-    toast('✅ '+qtd+' foto(s) de prato otimizada(s) com sucesso. Espaço liberado no armazenamento local.');
-  });
-}
-
-/* O campo `foto` de um prato pode estar em dois formatos, por
-   compatibilidade com dados antigos:
-   - "data:image/..." (base64 embutido, formato usado antes da integração
-     com GitHub, ou quando a sincronização não está configurada)
-   - "fotos/prato_xxx.jpg" ou "db/fotos/prato_xxx.jpg" (caminho relativo de
-     um arquivo já sincronizado no repositório)
-   Esta função decide a URL correta para usar num <img src="...">. */
-function resolverUrlFoto(foto) {
-  if(!foto) return '';
-  if(foto.indexOf('data:') === 0) return foto; // base64 legado, usa direto
-  var c = GitHubSync.cfg();
-  if(!c.owner || !c.repo) return ''; // sem config de repo, não há como montar a URL
-  var caminho = foto.indexOf('/') === 0 ? foto.slice(1) : foto;
-  return 'https://raw.githubusercontent.com/' + c.owner + '/' + c.repo + '/' + c.branch + '/' + caminho;
-}
-
 function previewFoto(input) {
   if(!input.files || !input.files[0]) return;
   var reader = new FileReader();
   reader.onload = function(e) {
-    _comprimirImagemDataUrl(e.target.result, function(comprimida) {
-      _fotoBase64 = comprimida;
-      document.getElementById('foto-preview-img').src = _fotoBase64;
-      document.getElementById('foto-preview-img').style.display = 'block';
-      document.getElementById('foto-preview-wrap').style.display = 'none';
-      document.getElementById('btn-remover-foto').style.display = 'inline-flex';
-    });
+    _fotoBase64 = e.target.result;
+    document.getElementById('foto-preview-img').src = _fotoBase64;
+    document.getElementById('foto-preview-img').style.display = 'block';
+    document.getElementById('foto-preview-wrap').style.display = 'none';
+    document.getElementById('btn-remover-foto').style.display = 'inline-flex';
   };
   reader.readAsDataURL(input.files[0]);
 }
@@ -1305,45 +701,19 @@ function addPrato() {
   }
 
   var lista = DB.get('pratos');
-  var novoId = DB.uid();
-  var pratoBase = { id:novoId, nome:nome, valor:valor, foto:null, modalidadeAcomp: modalidade, temAcompFixo: temFixo, acompFixoIds: acompFixoIds, acompFixoNomes: acompFixoNomes, acompAvulsoIds: acompAvulsoIds, acompAvulsoNomes: acompAvulsoNomes };
-
-  function finalizarCadastroPrato(fotoFinal) {
-    pratoBase.foto = fotoFinal;
-    lista.push(pratoBase);
-    DB.set('pratos', lista);
-    document.getElementById('pr-nome').value='';
-    document.getElementById('pr-valor').value='';
-    document.getElementById('pr-modalidade').value='max3';
-    document.getElementById('pr-tem-fixo').checked=false;
-    document.getElementById('pr-fixo-sel-wrap').style.display='none';
-    document.getElementById('pr-fixo-toggle-wrap').style.display='block';
-    document.getElementById('pr-avulso-sel-wrap').style.display='block';
-    renderPrAvulsoLista();
-    removerFoto();
-    renderPratos();
-    toast('Prato adicionado!');
-  }
-
-  if(_fotoBase64 && GitHubSync.cfg().ativo) {
-    // Sincronização com GitHub configurada: a foto vai como arquivo
-    // separado em db/fotos/, e o prato só guarda o caminho relativo —
-    // não o base64 (mantém o dados.json pequeno, como decidido).
-    toast('📤 Enviando foto para o GitHub, aguarde...', '#3a6f98');
-    GitHubSync.subirFotoPrato(novoId, _fotoBase64, function(err, caminhoRelativo) {
-      if(err) {
-        console.error('Falha ao subir foto do prato para o GitHub:', err);
-        toast('⚠️ Prato salvo, mas a foto não pôde ser enviada ao GitHub agora ('+err.message+'). Tente novamente mais tarde em Pratos.', '#a07828');
-        finalizarCadastroPrato(null);
-        return;
-      }
-      finalizarCadastroPrato(caminhoRelativo);
-    });
-  } else {
-    // Sem sincronização configurada: comportamento local de sempre
-    // (foto embutida em base64, já comprimida por previewFoto).
-    finalizarCadastroPrato(_fotoBase64 || null);
-  }
+  lista.push({ id:DB.uid(), nome:nome, valor:valor, foto:_fotoBase64||null, modalidadeAcomp: modalidade, temAcompFixo: temFixo, acompFixoIds: acompFixoIds, acompFixoNomes: acompFixoNomes, acompAvulsoIds: acompAvulsoIds, acompAvulsoNomes: acompAvulsoNomes });
+  DB.set('pratos', lista);
+  document.getElementById('pr-nome').value='';
+  document.getElementById('pr-valor').value='';
+  document.getElementById('pr-modalidade').value='max3';
+  document.getElementById('pr-tem-fixo').checked=false;
+  document.getElementById('pr-fixo-sel-wrap').style.display='none';
+  document.getElementById('pr-fixo-toggle-wrap').style.display='block';
+  document.getElementById('pr-avulso-sel-wrap').style.display='block';
+  renderPrAvulsoLista();
+  removerFoto();
+  renderPratos();
+  toast('Prato adicionado!');
 }
 function delPrato(id) {
   if(!confirm('Remover?')) return;
@@ -1360,7 +730,7 @@ function renderPratos() {
   for(var i=0;i<lista.length;i++){
     var p=lista[i];
     var thumb = p.foto
-      ? '<img class="prato-thumb" src="'+resolverUrlFoto(p.foto)+'" alt="foto" loading="lazy">'
+      ? '<img class="prato-thumb" src="'+p.foto+'" alt="foto">'
       : '<div class="prato-thumb-ph">🍽️</div>';
     var mod = p.modalidadeAcomp || 'max1';
     var modLabel = modalLabels[mod] || mod;
@@ -1563,38 +933,17 @@ function renderBebidas() {
 /* =========================================================
    PEDIDO
    ========================================================= */
-function onSetorChange() {
-  var setor = document.getElementById('ped-setor').value;
-  var selP = document.getElementById('ped-pessoa');
-  if(!setor) {
-    selP.innerHTML = '<option value="">— Selecione o Setor primeiro —</option>';
-    selP.disabled = true;
-    selP.style.opacity = '0.5';
-    selP.style.cursor = 'not-allowed';
-    return;
-  }
-  var pessoas = DB.get('pessoas').filter(function(p){ return p.setor === setor; });
-  var hP = '<option value="">— Selecione a Pessoa —</option>';
-  for(var i=0;i<pessoas.length;i++) hP+='<option value="'+pessoas[i].id+'">'+pessoas[i].nome+'</option>';
-  selP.innerHTML = hP;
-  selP.disabled = false;
-  selP.style.opacity = '1';
-  selP.style.cursor = 'pointer';
-}
-
 function initPedido() {
+  var pessoas = DB.get('pessoas');
   var pratos  = DB.get('pratos');
   var acomps  = DB.get('acomps');
   var bebidas = DB.get('bebidas');
 
-  // Reset setor and pessoa
-  var selSetor = document.getElementById('ped-setor');
   var selP = document.getElementById('ped-pessoa');
-  selSetor.value = '';
-  selP.innerHTML = '<option value="">— Selecione o Setor primeiro —</option>';
-  selP.disabled = true;
-  selP.style.opacity = '0.5';
-  selP.style.cursor = 'not-allowed';
+  var curP = selP.value;
+  var hP = '<option value="">— Selecione —</option>';
+  for(var i=0;i<pessoas.length;i++) hP+='<option value="'+pessoas[i].id+'">'+pessoas[i].nome+(pessoas[i].setor?' · '+pessoas[i].setor:'')+'</option>';
+  selP.innerHTML=hP; selP.value=curP;
 
   var selPr = document.getElementById('ped-prato');
   var curPr = selPr.value;
@@ -1644,7 +993,7 @@ function onPratoChange() {
     badge.style.display='block';
     var foto = opt.getAttribute('data-foto');
     if(foto && foto.length > 5){
-      fotoImg.src = resolverUrlFoto(foto);
+      fotoImg.src = foto;
       fotoBox.style.display = 'block';
     } else {
       fotoBox.style.display = 'none';
@@ -1830,11 +1179,7 @@ function calcularTotalPedido() {
 }
 
 function limparForm() {
-  document.getElementById('ped-setor').value='';
-  document.getElementById('ped-pessoa').innerHTML='<option value="">— Selecione o Setor primeiro —</option>';
-  document.getElementById('ped-pessoa').disabled=true;
-  document.getElementById('ped-pessoa').style.opacity='0.5';
-  document.getElementById('ped-pessoa').style.cursor='not-allowed';
+  document.getElementById('ped-pessoa').value='';
   document.getElementById('ped-prato').value='';
   document.getElementById('ped-data').value=hoje();
   var all=document.querySelectorAll('.acomp-check');
@@ -1853,8 +1198,6 @@ function registrar(imprimir) {
   var pessoaId=document.getElementById('ped-pessoa').value;
   var pratoId=document.getElementById('ped-prato').value;
   var data=document.getElementById('ped-data').value;
-  var setorSel=document.getElementById('ped-setor').value;
-  if(!setorSel){ toast('Selecione o setor.','#c04a3a'); return; }
   if(!pessoaId){ toast('Selecione uma pessoa.','#c04a3a'); return; }
   if(!pratoId){ toast('Selecione um prato.','#c04a3a'); return; }
   if(!data){ toast('Informe a data.','#c04a3a'); return; }
@@ -1910,7 +1253,7 @@ function registrar(imprimir) {
   var totalPedido=prato.valor+acTotal;
 
   var obsVal = (document.getElementById('ped-obs').value||'').trim();
-  var novo={ id:DB.uid(), data:data, pessoaId:pessoaId, pessoaNome:pessoa.nome, pessoaSetor:setorSel||pessoa.setor||'', pratoId:pratoId, pratoNome:prato.nome, pratoValor:prato.valor, acTotal:acTotal, totalPedido:totalPedido, acomps:acSel, bebidas:bebSel, obs:obsVal, criadoEm:new Date().toISOString() };
+  var novo={ id:DB.uid(), data:data, pessoaId:pessoaId, pessoaNome:pessoa.nome, pessoaSetor:pessoa.setor||'', pratoId:pratoId, pratoNome:prato.nome, pratoValor:prato.valor, acTotal:acTotal, totalPedido:totalPedido, acomps:acSel, bebidas:bebSel, obs:obsVal, criadoEm:new Date().toISOString() };
   var pedidos=DB.get('pedidos'); pedidos.push(novo); DB.set('pedidos',pedidos);
   limparForm();
   toast('✓ Pedido registrado!');
@@ -1924,29 +1267,20 @@ function initResumo() {
   var h=hoje();
   document.getElementById('res-de').value=h;
   document.getElementById('res-ate').value=h;
-  atualizarInfoBackup();
-  atualizarBadgeSyncGitHub();
 }
 
 function gerarResumo() {
   var de=document.getElementById('res-de').value;
   var ate=document.getElementById('res-ate').value;
-  var setor=document.getElementById('res-setor').value;
   if(!de&&!ate){ toast('Informe ao menos uma data.','#c04a3a'); return; }
   var ini=de||ate, fim=ate||de;
   if(ini>fim){ toast('Data inicial maior que a final.','#c04a3a'); return; }
-  var pedidos=DB.get('pedidos').filter(function(p){ return p.data>=ini&&p.data<=fim&&(!setor||p.pessoaSetor===setor); });
+  var pedidos=DB.get('pedidos').filter(function(p){ return p.data>=ini&&p.data<=fim; });
   var label=ini===fim?fmtData(ini):fmtData(ini)+' a '+fmtData(fim);
-  if(setor) label+=' ['+setor+']';
   renderResumo(pedidos,label);
 }
 
-function verTodos() { 
-  var setor=document.getElementById('res-setor').value;
-  var pedidos=DB.get('pedidos').filter(function(p){ return !setor||p.pessoaSetor===setor; });
-  var label=setor?'Todos os períodos ['+setor+']':null;
-  renderResumo(pedidos,label);
-}
+function verTodos() { renderResumo(DB.get('pedidos'),null); }
 
 function renderResumo(pedidos, label) {
   var body=document.getElementById('resumo-body');
@@ -1990,25 +1324,16 @@ function renderResumo(pedidos, label) {
         }
       } else { acHtmlRes='<span style="color:var(--text-dim)">—</span>'; }
       rows+='<tr>'
-        +'<td><strong>'+p.pessoaNome+'</strong></td>'
-        +'<td style="text-align:center;">'+(p.pessoaSetor?'<span style="display:inline-block;background:var(--cream);color:var(--gold);border:1px solid var(--gold-dim);font-weight:700;font-size:11px;padding:2px 8px;border-radius:4px;letter-spacing:1px;">'+p.pessoaSetor+'</span>':'<span style="color:var(--text-dim)">—</span>')+'</td>'
+        +'<td><strong>'+p.pessoaNome+'</strong>'+(p.pessoaSetor?'<br><small style="color:var(--text-dim)">'+p.pessoaSetor+'</small>':'')+'</td>'
         +'<td>'+p.pratoNome+'<br><small style="color:var(--text-dim)">'+moeda(p.pratoValor)+'</small></td>'
         +'<td>'+acHtmlRes+'</td>'
         +'<td><span class="badge badge-gold">'+moeda(tv3)+'</span></td>'
-        +'<td style="text-align:center;"><button class="btn btn-ghost-blue" style="padding:4px 10px;font-size:12px;" onclick="reimprimirPedido(\''+p.id+'\')">🖨️ Reimprimir</button></td>'
         +'</tr>';
     }
     h+='<div class="resumo-card"><div class="resumo-head"><strong>📅 '+fmtData(d)+'</strong><div style="text-align:right"><div style="font-size:11px;color:var(--text-dim)">'+ps.length+' pedido(s)</div><div class="resumo-total">'+moeda(tot)+'</div></div></div>'
-      +'<table><thead><tr><th>Pessoa</th><th>Setor</th><th>Prato</th><th>Acompanhamentos</th><th>Total</th><th>Ação</th></tr></thead><tbody>'+rows+'</tbody></table></div>';
+      +'<table><thead><tr><th>Pessoa</th><th>Prato</th><th>Acompanhamentos</th><th>Total</th></tr></thead><tbody>'+rows+'</tbody></table></div>';
   }
   body.innerHTML=h;
-}
-
-function reimprimirPedido(id) {
-  var pedido = DB.get('pedidos').find(function(p){ return p.id===id; });
-  if(!pedido){ toast('Pedido não encontrado.','#c04a3a'); return; }
-  _payload={tipo:'pedido',dados:pedido};
-  abrirModal();
 }
 
 /* =========================================================
@@ -2017,10 +1342,9 @@ function reimprimirPedido(id) {
 function imprimirRelatorio() {
   var de=document.getElementById('res-de').value;
   var ate=document.getElementById('res-ate').value;
-  var setor=document.getElementById('res-setor').value;
   var pedidos, label;
-  if(de||ate){ var ini=de||ate,fim=ate||de; pedidos=DB.get('pedidos').filter(function(p){ return p.data>=ini&&p.data<=fim&&(!setor||p.pessoaSetor===setor); }); label=ini===fim?fmtData(ini):fmtData(ini)+' a '+fmtData(fim); if(setor) label+=' ['+setor+']'; }
-  else { pedidos=DB.get('pedidos').filter(function(p){ return !setor||p.pessoaSetor===setor; }); label=setor?'Todos ['+setor+']':null; }
+  if(de||ate){ var ini=de||ate,fim=ate||de; pedidos=DB.get('pedidos').filter(function(p){ return p.data>=ini&&p.data<=fim; }); label=ini===fim?fmtData(ini):fmtData(ini)+' a '+fmtData(fim); }
+  else { pedidos=DB.get('pedidos'); label=null; }
   if(!pedidos.length){ toast('Nenhum pedido para imprimir.','#c04a3a'); return; }
   _payload={tipo:'relatorio',dados:pedidos,label:label};
   // show excel option only for relatório
@@ -2516,8 +1840,7 @@ function htmlPedido(p,fmt) {
     +'<div class="r-row"><span>Hora:</span><span>'+hora+'</span></div>'
     +'<hr class="r-sep">'
     +'<div class="r-lbl">CLIENTE</div>'
-    +'<div class="r-ind">'+p.pessoaNome+'</div>'
-    +(p.pessoaSetor?'<div class="r-ind"><span class="r-setor-badge">'+p.pessoaSetor+'</span></div>':'')
+    +'<div class="r-ind">'+p.pessoaNome+(p.pessoaSetor?' — '+p.pessoaSetor:'')+'</div>'
     +'<hr class="r-sep">'
     +'<div class="r-lbl">Prato Principal</div>'
     +'<div class="r-row r-ind"><span>'+p.pratoNome+'</span><span>'+moeda(p.pratoValor)+'</span></div>'
@@ -2537,18 +1860,17 @@ function htmlPedido(p,fmt) {
   var bebA4='';
   for(var i=0;i<bebNomes.length;i++) bebA4+='<div style="padding-left:8px;">• '+bebNomes[i]+'</div>';
   return '<div style="font-family:Courier New,monospace;padding:36px;max-width:580px;margin:0 auto;color:#000;font-size:13px;">'
-    +'<div style="text-align:center;margin-bottom:18px;border-bottom:3px solid #000;padding-bottom:14px;">'
+    +'<div style="text-align:center;margin-bottom:18px;border-bottom:2px solid #000;padding-bottom:14px;">'
     +'<div style="font-size:20px;font-weight:700;letter-spacing:3px;">'+empresa+'</div>'
     +'<div>PARCERIA ADM PLAZA - Controle de Refeições</div></div>'
     +'<table style="width:100%;font-size:13px;margin-bottom:10px;">'
     +'<tr><td><b>Pedido:</b></td><td>#'+num+'</td></tr>'
     +'<tr><td><b>Data:</b></td><td>'+fmtData(p.data)+'</td></tr>'
     +'<tr><td><b>Hora:</b></td><td>'+hora+'</td></tr></table>'
-    +'<hr style="border-top:2px dashed #000;margin:10px 0;">'
-    +'<div style="font-weight:900;font-size:11px;margin-bottom:5px;">CLIENTE</div>'
-    +'<div style="padding-left:8px;font-size:14px;font-weight:700;">'+p.pessoaNome+'</div>'
-    +(p.pessoaSetor?'<div style="padding-left:8px;margin-top:4px;"><span style="display:inline-block;background:#000;color:#fff;font-weight:900;font-size:12px;padding:2px 10px;border-radius:3px;letter-spacing:1px;">'+p.pessoaSetor+'</span></div>':'')
-    +'<hr style="border-top:2px dashed #000;margin:10px 0;">'
+    +'<hr style="border-top:1px dashed #000;margin:10px 0;">'
+    +'<div style="font-weight:700;font-size:11px;margin-bottom:5px;">CLIENTE</div>'
+    +'<div style="padding-left:8px;font-size:14px;">'+p.pessoaNome+(p.pessoaSetor?' — '+p.pessoaSetor:'')+'</div>'
+    +'<hr style="border-top:1px dashed #000;margin:10px 0;">'
     +'<div style="font-weight:700;font-size:11px;margin-bottom:5px;">PRATO PRINCIPAL</div>'
     +'<div style="display:flex;justify-content:space-between;padding-left:8px;">'+p.pratoNome+'<span>'+moeda(p.pratoValor)+'</span></div>'
     +(acNomes.length?'<hr style="border-top:1px dashed #000;margin:10px 0;"><div style="font-weight:700;font-size:11px;margin-bottom:5px;">ACOMPANHAMENTO</div>'+acA4:'')
@@ -2583,7 +1905,7 @@ function htmlRelatorio(pedidos,label,fmt) {
       h+='<div class="r-lbl">📅 '+fmtData(d)+'</div>';
       for(var i=0;i<ps.length;i++){
         var tv3=ps[i].totalPedido!==undefined?ps[i].totalPedido:ps[i].pratoValor;
-        h+='<div class="r-row r-ind"><span>'+ps[i].pessoaNome.split(' ')[0]+(ps[i].pessoaSetor?' ['+ps[i].pessoaSetor+']':'')+'</span><span>'+moeda(tv3)+'</span></div><div class="r-ind r-sm">'+ps[i].pratoNome+'</div>';
+        h+='<div class="r-row r-ind"><span>'+ps[i].pessoaNome.split(' ')[0]+'</span><span>'+moeda(tv3)+'</span></div><div class="r-ind r-sm">'+ps[i].pratoNome+'</div>';
       }
       h+='<div class="r-row" style="font-weight:700"><span>Subtotal '+fmtData(d)+'</span><span>'+moeda(tot)+'</span></div><hr class="r-sep">';
     }
@@ -2595,777 +1917,22 @@ function htmlRelatorio(pedidos,label,fmt) {
   for(var di=0;di<datas.length;di++){
     var d=datas[di]; var ps=grupos[d]; var tot=0;
     for(var i=0;i<ps.length;i++){ var tv4=ps[i].totalPedido!==undefined?ps[i].totalPedido:ps[i].pratoValor; tot+=tv4; }
-    rows+='<tr style="background:#f0f0f0"><td colspan="7" style="padding:7px 10px;font-weight:700;font-size:12px;border:1px solid #ccc">📅 '+fmtData(d)+' — '+ps.length+' pedido(s)</td></tr>';
+    rows+='<tr style="background:#f0f0f0"><td colspan="6" style="padding:7px 10px;font-weight:700;font-size:12px;border:1px solid #ccc">📅 '+fmtData(d)+' — '+ps.length+' pedido(s)</td></tr>';
     for(var i=0;i<ps.length;i++){
       var p=ps[i];
       var tv5=p.totalPedido!==undefined?p.totalPedido:p.pratoValor;
       var acNms = Array.isArray(p.acomps)?p.acomps.map(function(a){return typeof a==='object'?a.nome:a;}).join(', '):'';
       var bebNms = Array.isArray(p.bebidas)?p.bebidas.map(function(b){return typeof b==='object'?b.nome:b;}).join(', '):'';
-      var setorBadge = p.pessoaSetor?'<span style="display:inline-block;background:#222;color:#fff;font-weight:700;font-size:10px;padding:1px 6px;border-radius:3px;">'+p.pessoaSetor+'</span>':'—';
-      rows+='<tr><td style="padding:7px 10px;border:1px solid #e0e0e0">'+seq+'</td><td style="padding:7px 10px;border:1px solid #e0e0e0">'+p.pessoaNome+'</td><td style="padding:7px 10px;border:1px solid #e0e0e0;text-align:center">'+setorBadge+'</td><td style="padding:7px 10px;border:1px solid #e0e0e0">'+p.pratoNome+'</td><td style="padding:7px 10px;border:1px solid #e0e0e0">'+(acNms||'—')+'</td><td style="padding:7px 10px;border:1px solid #e0e0e0">'+(bebNms||'—')+'</td><td style="padding:7px 10px;border:1px solid #e0e0e0;text-align:right">'+moeda(tv5)+'</td></tr>';
+      rows+='<tr><td style="padding:7px 10px;border:1px solid #e0e0e0">'+seq+'</td><td style="padding:7px 10px;border:1px solid #e0e0e0">'+p.pessoaNome+(p.pessoaSetor?'<br><small style="color:#888">'+p.pessoaSetor+'</small>':'')+'</td><td style="padding:7px 10px;border:1px solid #e0e0e0">'+p.pratoNome+'</td><td style="padding:7px 10px;border:1px solid #e0e0e0">'+(acNms||'—')+'</td><td style="padding:7px 10px;border:1px solid #e0e0e0">'+(bebNms||'—')+'</td><td style="padding:7px 10px;border:1px solid #e0e0e0;text-align:right">'+moeda(tv5)+'</td></tr>';
       seq++;
     }
-    rows+='<tr style="background:#e8e8e8"><td colspan="6" style="padding:7px 10px;border:1px solid #ccc;text-align:right;font-weight:700">Subtotal '+fmtData(d)+':</td><td style="padding:7px 10px;border:1px solid #ccc;text-align:right;font-weight:700">'+moeda(tot)+'</td></tr>';
+    rows+='<tr style="background:#e8e8e8"><td colspan="5" style="padding:7px 10px;border:1px solid #ccc;text-align:right;font-weight:700">Subtotal '+fmtData(d)+':</td><td style="padding:7px 10px;border:1px solid #ccc;text-align:right;font-weight:700">'+moeda(tot)+'</td></tr>';
   }
   return '<div style="font-family:Arial,sans-serif;padding:28px;color:#000;font-size:13px;">'
     +'<div style="text-align:center;margin-bottom:18px;border-bottom:2px solid #000;padding-bottom:14px;"><div style="font-size:19px;font-weight:700;letter-spacing:2px;">'+empresa+'</div><div style="font-size:14px;margin-top:3px;">'+titulo+'</div><div style="font-size:11px;color:#666;">Emitido: '+new Date().toLocaleString('pt-BR')+'</div></div>'
     +'<div style="display:flex;gap:28px;margin-bottom:18px;font-size:13px;"><span><b>Pedidos:</b> '+pedidos.length+'</span><span><b>Pessoas:</b> '+uniq+'</span><span><b>Total:</b> <b>'+moeda(total)+'</b></span></div>'
-    +'<table style="width:100%;border-collapse:collapse;font-size:13px;"><thead><tr style="background:#222;color:#fff;"><th style="padding:8px 10px;border:1px solid #333">#</th><th style="padding:8px 10px;border:1px solid #333">Colaborador</th><th style="padding:8px 10px;border:1px solid #333;text-align:center">Setor</th><th style="padding:8px 10px;border:1px solid #333">Prato</th><th style="padding:8px 10px;border:1px solid #333">Acompanhamento</th><th style="padding:8px 10px;border:1px solid #333">Bebida</th><th style="padding:8px 10px;border:1px solid #333;text-align:right">Total</th></tr></thead><tbody>'+rows+'</tbody><tfoot><tr style="background:#222;color:#fff;"><td colspan="6" style="padding:9px 10px;border:1px solid #333;text-align:right;font-size:14px;font-weight:700">TOTAL GERAL</td><td style="padding:9px 10px;border:1px solid #333;text-align:right;font-size:14px;font-weight:700">'+moeda(total)+'</td></tr></tfoot></table>'
+    +'<table style="width:100%;border-collapse:collapse;font-size:13px;"><thead><tr style="background:#222;color:#fff;"><th style="padding:8px 10px;border:1px solid #333">#</th><th style="padding:8px 10px;border:1px solid #333">Colaborador</th><th style="padding:8px 10px;border:1px solid #333">Prato</th><th style="padding:8px 10px;border:1px solid #333">Acompanhamento</th><th style="padding:8px 10px;border:1px solid #333">Bebida</th><th style="padding:8px 10px;border:1px solid #333;text-align:right">Total</th></tr></thead><tbody>'+rows+'</tbody><tfoot><tr style="background:#222;color:#fff;"><td colspan="5" style="padding:9px 10px;border:1px solid #333;text-align:right;font-size:14px;font-weight:700">TOTAL GERAL</td><td style="padding:9px 10px;border:1px solid #333;text-align:right;font-size:14px;font-weight:700">'+moeda(total)+'</td></tr></tfoot></table>'
     +'<div style="margin-top:18px;text-align:center;font-size:11px;color:#888;">Documento não fiscal — SOMENTE O PARCEIRO PODE RETIRAR A REFEIÇÃO NO BALCÃO</div></div>';
-}
-
-/* =========================================================
-   BACKUP COMPLETO
-   ========================================================= */
-
-/* Chaves novas no localStorage:
-   - mp2_backup_history     : array com os últimos 30 backups (metadados + resumo de
-                              quantidades; NUNCA o payload completo — ver nota acima)
-   - mp2_backup_last_daily  : data (YYYY-MM-DD) do último backup diário automático
-   - mp2_backup_last_status : { data, hora, origem, status, arquivo } do último backup (qualquer origem)
-   - mp2_backup_config      : { pastaConfigurada: bool } (o handle da pasta em si não é serializável
-                               e fica apenas em memória / IndexedDB do navegador via _backupDirHandle)
-*/
-
-var BACKUP_MAX_HISTORICO = 30;
-var _backupDirHandle = null; // handle da pasta escolhida via File System Access API (somente em memória)
-
-/* ---- coleta e montagem do payload ---- */
-
-function coletarDadosCompletos() {
-  return {
-    cfg: CFG.get(),
-    pessoas: DB.get('pessoas'),
-    pratos: DB.get('pratos'),
-    acomps: DB.get('acomps'),
-    acompsFixos: DB.get('acompsFixos'),
-    bebidas: DB.get('bebidas'),
-    pedidos: DB.get('pedidos')
-  };
-}
-
-function gerarPayloadBackup(origem) {
-  var dados = coletarDadosCompletos();
-  var agora = new Date();
-  return {
-    app: 'Controle Refeições Parceria Adm Plaza',
-    versaoBackup: 1,
-    geradoEm: agora.toISOString(),
-    origem: origem || 'manual',
-    dataLocal: hoje(),
-    horaLocal: agora.toTimeString().slice(0,8),
-    chavesLocalStorage: {
-      mp_cfg: dados.cfg,
-      mp2_pessoas: dados.pessoas,
-      mp2_pratos: dados.pratos,
-      mp2_acomps: dados.acomps,
-      mp2_acompsFixos: dados.acompsFixos,
-      mp2_bebidas: dados.bebidas,
-      mp2_pedidos: dados.pedidos
-    },
-    resumo: {
-      totalPessoas: dados.pessoas.length,
-      totalPratos: dados.pratos.length,
-      totalAcomps: dados.acomps.length,
-      totalAcompsFixos: dados.acompsFixos.length,
-      totalBebidas: dados.bebidas.length,
-      totalPedidos: dados.pedidos.length
-    }
-  };
-}
-
-function formatarNomeArquivoBackup(payload) {
-  var d = new Date();
-  var pad = function(n){ return String(n).padStart(2,'0'); };
-  var stamp = d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate())+'-'+pad(d.getHours())+pad(d.getMinutes())+pad(d.getSeconds());
-  var empresa = (payload && payload.chavesLocalStorage && payload.chavesLocalStorage.mp_cfg && payload.chavesLocalStorage.mp_cfg.empresa) || '';
-  var base = 'backup-controle-refeicoes';
-  if(empresa) {
-    var slug = empresa.toLowerCase()
-      .normalize('NFD').replace(/[\u0300-\u036f]/g,'') // remove acentos
-      .replace(/[^a-z0-9]+/g,'-')
-      .replace(/^-+|-+$/g,'');
-    if(slug) base = 'backup-' + slug;
-  }
-  return base + '-' + stamp + '.json';
-}
-
-/* ---- download tradicional do arquivo JSON ---- */
-
-function baixarArquivoBackup(payload, nomeArquivo) {
-  try {
-    var json = JSON.stringify(payload, null, 2);
-    var blob = new Blob([json], { type: 'application/json' });
-    var url = URL.createObjectURL(blob);
-    var a = document.createElement('a');
-    a.href = url;
-    a.download = nomeArquivo;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    setTimeout(function(){ URL.revokeObjectURL(url); }, 1500);
-    return true;
-  } catch(e) {
-    console.error('Falha ao baixar arquivo de backup:', e);
-    return false;
-  }
-}
-
-/* ---- File System Access API (opcional/progressivo) ---- */
-
-function suportaFileSystemAccess() {
-  return typeof window.showDirectoryPicker === 'function';
-}
-
-function escolherPastaBackup() {
-  if(!suportaFileSystemAccess()) {
-    toast('Seu navegador não suporta escolher pasta. O backup será feito por download.', '#c04a3a');
-    atualizarStatusPastaModal();
-    return;
-  }
-  window.showDirectoryPicker({ id: 'backupControleRefeicoes', mode: 'readwrite' }).then(function(handle){
-    _backupDirHandle = handle;
-    CFG.set({ backupPastaConfigurada: true, backupPastaNome: handle.name });
-    toast('Pasta de backup configurada com sucesso!');
-    atualizarStatusPastaModal();
-    atualizarInfoBackup();
-  }).catch(function(err){
-    // usuário cancelou a seleção ou permissão negada — não bloqueia o backup normal
-    if(err && err.name !== 'AbortError') console.error('Erro ao escolher pasta de backup:', err);
-  });
-}
-
-function limparPastaBackup() {
-  _backupDirHandle = null;
-  CFG.set({ backupPastaConfigurada: false, backupPastaNome: '' });
-  toast('Pasta de backup removida. Voltando ao download tradicional.');
-  atualizarStatusPastaModal();
-  atualizarInfoBackup();
-}
-
-/* Tenta gravar o arquivo na pasta escolhida (se houver handle válido em memória).
-   Retorna true se conseguiu salvar na pasta, false se precisa cair para download. */
-function salvarArquivoNaPasta(payload, nomeArquivo) {
-  return new Promise(function(resolve){
-    if(!_backupDirHandle || !suportaFileSystemAccess()) { resolve(false); return; }
-    _backupDirHandle.requestPermission({ mode: 'readwrite' }).then(function(perm){
-      if(perm !== 'granted') { resolve(false); return; }
-      return _backupDirHandle.getFileHandle(nomeArquivo, { create: true }).then(function(fileHandle){
-        return fileHandle.createWritable();
-      }).then(function(writable){
-        return writable.write(JSON.stringify(payload, null, 2)).then(function(){
-          return writable.close();
-        });
-      }).then(function(){
-        resolve(true);
-      });
-    }).catch(function(err){
-      console.error('Falha ao salvar backup na pasta escolhida:', err);
-      resolve(false);
-    });
-  });
-}
-
-function atualizarStatusPastaModal() {
-  var el = document.getElementById('backup-pasta-status');
-  if(!el) return;
-  var cfg = CFG.get();
-  if(cfg.backupPastaConfigurada && cfg.backupPastaNome) {
-    el.innerHTML = '📁 Pasta preferida: <strong>' + escHtmlBackup(cfg.backupPastaNome) + '</strong>'
-      + (_backupDirHandle
-          ? '<br><span style="color:var(--green)">✅ Ativa nesta sessão — os próximos backups serão salvos aqui.</span>'
-          : '<br><span style="color:var(--gold)">⚠️ Por segurança, o navegador exige escolher a pasta novamente em cada nova sessão. Clique em "Escolher Pasta" para reativar.</span>')
-      + (suportaFileSystemAccess() ? '' : '<br><span style="color:var(--red)">⚠️ Este navegador não suporta mais o acesso direto à pasta — o backup usará download.</span>');
-  } else {
-    el.innerHTML = 'Nenhuma pasta configurada. Os backups serão baixados normalmente pelo navegador.';
-  }
-}
-
-function escHtmlBackup(s) {
-  return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-}
-
-function abrirModalBackupCfg() {
-  atualizarStatusPastaModal();
-  document.getElementById('modal-backup-cfg').classList.add('open');
-}
-
-function fecharModalBackupCfg() {
-  document.getElementById('modal-backup-cfg').classList.remove('open');
-}
-
-/* ---- configuração de sincronização com GitHub (UI) ---- */
-
-function abrirModalGitHubSyncCfg() {
-  var c = GitHubSync.cfg();
-  document.getElementById('gh-cfg-owner').value = c.owner;
-  document.getElementById('gh-cfg-repo').value = c.repo;
-  document.getElementById('gh-cfg-branch').value = c.branch || 'main';
-  document.getElementById('gh-cfg-caminho').value = c.caminho || 'db/dados.json';
-  document.getElementById('gh-cfg-pasta-fotos').value = c.pastaFotos || 'db/fotos';
-  document.getElementById('gh-cfg-token').value = c.token;
-  document.getElementById('gh-cfg-msg').innerHTML = '';
-  document.getElementById('modal-gh-sync-cfg').classList.add('open');
-}
-
-function fecharModalGitHubSyncCfg() {
-  document.getElementById('modal-gh-sync-cfg').classList.remove('open');
-}
-
-function _lerFormularioGitHubSyncCfg() {
-  return {
-    ghOwner: document.getElementById('gh-cfg-owner').value.trim(),
-    ghRepo: document.getElementById('gh-cfg-repo').value.trim(),
-    ghBranch: document.getElementById('gh-cfg-branch').value.trim() || 'main',
-    ghCaminho: document.getElementById('gh-cfg-caminho').value.trim() || 'db/dados.json',
-    ghPastaFotos: document.getElementById('gh-cfg-pasta-fotos').value.trim() || 'db/fotos',
-    ghToken: document.getElementById('gh-cfg-token').value.trim()
-  };
-}
-
-function salvarConfigGitHubSync() {
-  var dados = _lerFormularioGitHubSyncCfg();
-  if(!dados.ghOwner || !dados.ghRepo || !dados.ghToken) {
-    document.getElementById('gh-cfg-msg').innerHTML = '<span style="color:var(--red)">⚠️ Preencha ao menos usuário/organização, repositório e token.</span>';
-    return;
-  }
-  CFG.set(dados);
-  document.getElementById('gh-cfg-msg').innerHTML = '<span style="color:var(--green)">✅ Configuração salva. A sincronização automática já está ativa.</span>';
-  atualizarBadgeSyncGitHub();
-  GitHubSync.agendarSync();
-}
-
-function limparConfigGitHubSync() {
-  if(!confirm('Desativar a sincronização com GitHub neste computador? Os dados locais não serão apagados.')) return;
-  CFG.set({ ghOwner:'', ghRepo:'', ghBranch:'', ghCaminho:'', ghPastaFotos:'', ghToken:'' });
-  document.getElementById('gh-cfg-owner').value = '';
-  document.getElementById('gh-cfg-repo').value = '';
-  document.getElementById('gh-cfg-token').value = '';
-  document.getElementById('gh-cfg-msg').innerHTML = '<span style="color:var(--text-dim)">Sincronização desativada.</span>';
-  atualizarBadgeSyncGitHub();
-}
-
-function testarConexaoGitHubSync() {
-  // Salva temporariamente o que está no formulário para testar com os
-  // valores atuais da tela, mesmo que ainda não tenham sido salvos.
-  var dados = _lerFormularioGitHubSyncCfg();
-  if(!dados.ghOwner || !dados.ghRepo || !dados.ghToken) {
-    document.getElementById('gh-cfg-msg').innerHTML = '<span style="color:var(--red)">⚠️ Preencha usuário/organização, repositório e token antes de testar.</span>';
-    return;
-  }
-  var cfgAnterior = CFG.get();
-  CFG.set(dados);
-  document.getElementById('gh-cfg-msg').innerHTML = '🔍 Testando conexão...';
-  GitHubSync.carregarDoGitHub(function(err, payload) {
-    if(err && !/Nenhum dados\.json encontrado/.test(err.message)) {
-      document.getElementById('gh-cfg-msg').innerHTML = '<span style="color:var(--red)">❌ '+escHtmlBackup(err.message)+'</span>';
-      return;
-    }
-    var msg = payload
-      ? '✅ Conexão OK. Encontrado um dados.json existente no repositório (será detectado como conflito se for diferente do que este app já sincronizou).'
-      : '✅ Conexão OK. Repositório acessível; o arquivo de dados ainda não existe (será criado na primeira sincronização).';
-    document.getElementById('gh-cfg-msg').innerHTML = '<span style="color:var(--green)">'+msg+'</span>';
-  });
-}
-
-/* Atualiza o card de status de sincronização no Resumo Diário. Chamado
-   automaticamente pelo GitHubSync sempre que o status muda, e também
-   sempre que a página de Resumo é aberta. */
-function atualizarBadgeSyncGitHub() {
-  var card = document.getElementById('gh-sync-card');
-  if(!card) return;
-  var c = GitHubSync.cfg();
-  if(!c.ativo) { card.style.display = 'none'; return; }
-  card.style.display = 'flex';
-
-  var elRepo = document.getElementById('gh-sync-repo');
-  if(elRepo) elRepo.textContent = c.owner + '/' + c.repo + ' (' + c.branch + ')';
-
-  var elStatus = document.getElementById('gh-sync-status');
-  if(!elStatus) return;
-  var st = GitHubSync.getStatus();
-  if(!st) { elStatus.innerHTML = '<span style="color:var(--text-dim)">Aguardando primeira sincronização...</span>'; return; }
-  var quando = new Date(st.em).toLocaleString('pt-BR');
-  if(st.status === 'syncing') {
-    elStatus.innerHTML = '<span style="color:var(--gold)">🔄 Sincronizando...</span>';
-  } else if(st.status === 'ok') {
-    elStatus.innerHTML = '<span style="color:var(--green)">✅ Sincronizado às '+quando+'</span>';
-  } else if(st.status === 'erro') {
-    elStatus.innerHTML = '<span style="color:var(--red)" title="'+escHtmlBackup(st.detalhe)+'">⚠️ Erro às '+quando+' — passe o mouse para detalhes</span>';
-  } else {
-    elStatus.innerHTML = '<span style="color:var(--text-dim)">—</span>';
-  }
-}
-
-/* ---- histórico local de backups (redundância) ----
-   IMPORTANTE: este histórico guarda apenas METADADOS de cada backup
-   (data, hora, origem, nome do arquivo, status, e um resumo de quantidades).
-   NUNCA guarda o payload completo (pessoas/pratos/pedidos/fotos) — isso
-   duplicaria, a cada backup, todos os dados que já estão salvos nas
-   chaves mp2_pessoas/mp2_pratos/etc., inchando o localStorage sem motivo
-   e podendo, com o tempo, estourar a quota do navegador sozinho. */
-
-function salvarBackupNoHistoricoLocal(payload, nomeArquivo, status) {
-  try {
-    var hist = JSON.parse(localStorage.getItem('mp2_backup_history') || '[]');
-    var ck = (payload && payload.chavesLocalStorage) || {};
-    hist.unshift({
-      id: DB.uid(),
-      data: payload.dataLocal,
-      hora: payload.horaLocal,
-      origem: payload.origem,
-      arquivo: nomeArquivo,
-      status: status || 'sucesso',
-      resumo: {
-        pessoas: (ck.mp2_pessoas || []).length,
-        pratos: (ck.mp2_pratos || []).length,
-        acomps: (ck.mp2_acomps || []).length,
-        acompsFixos: (ck.mp2_acompsFixos || []).length,
-        bebidas: (ck.mp2_bebidas || []).length,
-        pedidos: (ck.mp2_pedidos || []).length
-      }
-    });
-    if(hist.length > BACKUP_MAX_HISTORICO) hist = hist.slice(0, BACKUP_MAX_HISTORICO);
-    localStorage.setItem('mp2_backup_history', JSON.stringify(hist));
-    return true;
-  } catch(e) {
-    console.error('Falha ao salvar histórico local de backup:', e);
-    return false;
-  }
-}
-
-/* Log "seguro": tenta console.log e nunca deixa uma chamada de log quebrar
-   o fluxo que a envolve. Algumas extensões de navegador ou ambientes
-   restringem partes do objeto console (ex.: console.info ausente), e isso
-   não deve nunca ser tratado como uma falha real da operação em si. */
-function _logSeguro() {
-  try {
-    if(typeof console !== 'undefined' && typeof console.log === 'function') {
-      console.log.apply(console, arguments);
-    }
-  } catch(e) { /* intencionalmente vazio: log nunca deve propagar erro */ }
-}
-
-/* Migração one-time: se a máquina já tem um histórico antigo (de versões
-   anteriores) guardando o payload completo dentro de cada item, substitui
-   por entradas leves (sem payload), liberando o espaço imediatamente —
-   sem que o usuário precise fazer nada manualmente. Roda silenciosamente
-   na inicialização do app; é seguro chamar sempre, pois não tem efeito
-   se o histórico já estiver no formato novo. */
-function migrarHistoricoBackupAntigo() {
-  var histLimpo = null;
-  var precisaMigrar = false;
-
-  // Etapa 1: ler e transformar os dados. Se isto falhar (ex.: JSON
-  // corrompido), realmente não há nada de seguro a fazer além de
-  // descartar o histórico antigo — por isso o catch abaixo remove a chave.
-  try {
-    var raw = localStorage.getItem('mp2_backup_history');
-    if(!raw) return;
-    var hist = JSON.parse(raw);
-    if(!Array.isArray(hist) || !hist.length) return;
-    histLimpo = hist.map(function(item) {
-      if(item && item.payload !== undefined) {
-        precisaMigrar = true;
-        var ck = (item.payload && item.payload.chavesLocalStorage) || {};
-        return {
-          id: item.id,
-          data: item.data,
-          hora: item.hora,
-          origem: item.origem,
-          arquivo: item.arquivo,
-          status: item.status,
-          resumo: {
-            pessoas: (ck.mp2_pessoas || []).length,
-            pratos: (ck.mp2_pratos || []).length,
-            acomps: (ck.mp2_acomps || []).length,
-            acompsFixos: (ck.mp2_acompsFixos || []).length,
-            bebidas: (ck.mp2_bebidas || []).length,
-            pedidos: (ck.mp2_pedidos || []).length
-          }
-        };
-      }
-      return item;
-    });
-  } catch(e) {
-    // Histórico corrompido ou ilegível: não há transformação segura possível.
-    // O histórico é só um registro de auditoria (não dado operacional), e
-    // seu acúmulo indevido é justamente a causa do problema de espaço —
-    // então descartá-lo aqui é a saída mais segura.
-    _logSeguro('Falha ao ler/transformar histórico de backup, removendo histórico antigo:', e);
-    try { localStorage.removeItem('mp2_backup_history'); } catch(e2) {}
-    return;
-  }
-
-  // Etapa 2: gravar o resultado. Isolada da etapa 1 para que qualquer
-  // problema aqui (ex.: quota momentaneamente excedida) não acione,
-  // por engano, a remoção do histórico — só registra o erro e tenta de
-  // novo na próxima inicialização.
-  if(precisaMigrar) {
-    try {
-      localStorage.setItem('mp2_backup_history', JSON.stringify(histLimpo));
-      _logSeguro('Histórico de backup local migrado: payloads duplicados removidos, espaço liberado.');
-    } catch(e) {
-      _logSeguro('Falha ao gravar histórico de backup migrado (tentará novamente na próxima abertura):', e);
-    }
-  }
-}
-
-function registrarStatusUltimoBackup(payload, nomeArquivo, status) {
-  var info = {
-    data: payload.dataLocal,
-    hora: payload.horaLocal,
-    origem: payload.origem,
-    arquivo: nomeArquivo,
-    status: status || 'sucesso'
-  };
-  localStorage.setItem('mp2_backup_last_status', JSON.stringify(info));
-  return info;
-}
-
-/* ---- execução do backup completo (usado pelo botão manual e pela rotina diária) ---- */
-
-function executarBackupCompleto(origem) {
-  try {
-    var payload = gerarPayloadBackup(origem);
-    var nomeArquivo = formatarNomeArquivoBackup(payload);
-
-    salvarArquivoNaPasta(payload, nomeArquivo).then(function(salvouNaPasta){
-      if(!salvouNaPasta) baixarArquivoBackup(payload, nomeArquivo);
-      salvarBackupNoHistoricoLocal(payload, nomeArquivo, 'sucesso');
-      registrarStatusUltimoBackup(payload, nomeArquivo, 'sucesso');
-      if(origem === 'diario') localStorage.setItem('mp2_backup_last_daily', payload.dataLocal);
-      atualizarInfoBackup();
-      toast(origem === 'diario' ? '💾 Backup diário automático concluído!' : '💾 Backup completo gerado com sucesso!');
-    }).catch(function(err){
-      console.error('Erro ao executar backup completo:', err);
-      // mesmo se a tentativa de salvar na pasta falhar de forma inesperada, ainda tentamos o download
-      baixarArquivoBackup(payload, nomeArquivo);
-      salvarBackupNoHistoricoLocal(payload, nomeArquivo, 'erro');
-      registrarStatusUltimoBackup(payload, nomeArquivo, 'erro');
-      atualizarInfoBackup();
-      toast('⚠️ Backup gerado com avisos. Verifique o arquivo baixado.', '#c04a3a');
-    });
-  } catch(e) {
-    console.error('Erro ao gerar backup completo:', e);
-    registrarStatusUltimoBackup({ dataLocal: hoje(), horaLocal: new Date().toTimeString().slice(0,8), origem: origem||'manual' }, '—', 'erro');
-    atualizarInfoBackup();
-    toast('❌ Erro ao gerar backup. Tente novamente.', '#c04a3a');
-  }
-}
-
-/* ---- verificação e disparo do backup diário automático ---- */
-
-function verificarBackupDiario() {
-  var ultimaData = localStorage.getItem('mp2_backup_last_daily');
-  if(ultimaData === hoje()) return; // já houve backup automático hoje
-  executarBackupCompleto('diario');
-}
-
-/* ---- restauração (preparada, não exposta na UI por padrão) ---- */
-
-function restaurarBackup(payload) {
-  if(!payload || !payload.chavesLocalStorage) {
-    toast('Arquivo de backup inválido.', '#c04a3a');
-    return false;
-  }
-  try {
-    var ck = payload.chavesLocalStorage;
-    if(ck.mp_cfg !== undefined) localStorage.setItem('mp_cfg', JSON.stringify(ck.mp_cfg));
-    if(ck.mp2_pessoas !== undefined) DB.set('pessoas', ck.mp2_pessoas);
-    if(ck.mp2_pratos !== undefined) DB.set('pratos', ck.mp2_pratos);
-    if(ck.mp2_acomps !== undefined) DB.set('acomps', ck.mp2_acomps);
-    if(ck.mp2_acompsFixos !== undefined) DB.set('acompsFixos', ck.mp2_acompsFixos);
-    if(ck.mp2_bebidas !== undefined) DB.set('bebidas', ck.mp2_bebidas);
-    if(ck.mp2_pedidos !== undefined) DB.set('pedidos', ck.mp2_pedidos);
-    toast('✅ Backup restaurado. Recarregue a página para ver os dados.');
-    return true;
-  } catch(e) {
-    console.error('Erro ao restaurar backup:', e);
-    toast('❌ Erro ao restaurar backup.', '#c04a3a');
-    return false;
-  }
-}
-
-/* =========================================================
-   IMPORTAÇÃO ADITIVA DE BACKUP (DE OUTRA MÁQUINA)
-   ========================================================= */
-/* Objetivo: trazer para esta máquina os registros que existem em um backup
-   gerado em OUTRA máquina, sem jamais apagar ou sobrescrever o que já está
-   salvo localmente. A regra é sempre "merge por id":
-   - se o id do registro do backup já existe localmente -> mantém o local, ignora o do backup;
-   - se o id do registro do backup NÃO existe localmente -> adiciona.
-   Pedidos seguem a mesma regra (nunca removidos, apenas complementados).
-   A configuração (mp_cfg) NUNCA é alterada automaticamente por esta rotina. */
-
-var _importPayloadPendente = null; // payload do backup selecionado, aguardando confirmação do usuário
-
-var BACKUP_LISTAS_IMPORTAVEIS = [
-  { chave: 'mp2_pessoas',     dbKey: 'pessoas',     label: 'Pessoas' },
-  { chave: 'mp2_acomps',      dbKey: 'acomps',      label: 'Acompanhamentos' },
-  { chave: 'mp2_acompsFixos', dbKey: 'acompsFixos', label: 'Acompanhamentos Fixos' },
-  { chave: 'mp2_bebidas',     dbKey: 'bebidas',     label: 'Bebidas' },
-  { chave: 'mp2_pratos',      dbKey: 'pratos',      label: 'Pratos' },
-  { chave: 'mp2_pedidos',     dbKey: 'pedidos',     label: 'Pedidos' }
-];
-
-function onSelecionarArquivoImportacao(ev) {
-  var input = ev.target;
-  var file = input.files && input.files[0];
-  input.value = ''; // permite selecionar o mesmo arquivo de novo depois
-  if(!file) return;
-
-  var reader = new FileReader();
-  reader.onload = function(e) {
-    var payload;
-    try {
-      payload = JSON.parse(e.target.result);
-    } catch(err) {
-      toast('❌ Arquivo inválido. Selecione um .json de backup gerado por este sistema.', '#c04a3a');
-      return;
-    }
-    if(!payload || !payload.chavesLocalStorage) {
-      toast('❌ Este arquivo não tem o formato esperado de backup.', '#c04a3a');
-      return;
-    }
-
-    // Antes de analisar o backup, recomprime as fotos de pratos que vierem
-    // grandes (comum em backups gerados antes desta versão, ou feitos em
-    // outra máquina). Isso evita que o backup estoure a quota do
-    // localStorage só por causa de fotos, sem precisar de nenhuma ação
-    // manual do usuário.
-    var pratosBackup = (payload.chavesLocalStorage && payload.chavesLocalStorage.mp2_pratos) || [];
-    if(!Array.isArray(pratosBackup) || pratosBackup.length === 0) {
-      _importPayloadPendente = payload;
-      abrirModalImportarBackup(payload);
-      return;
-    }
-
-    toast('🗜️ Preparando backup (otimizando fotos), aguarde...', '#3a6f98');
-    _recomprimirFotosDePratos(pratosBackup, function(listaFinal, qtd) {
-      payload.chavesLocalStorage.mp2_pratos = listaFinal;
-      _importPayloadPendente = payload;
-      abrirModalImportarBackup(payload);
-    });
-  };
-  reader.onerror = function() {
-    toast('❌ Não foi possível ler o arquivo selecionado.', '#c04a3a');
-  };
-  reader.readAsText(file);
-}
-
-/* Calcula, para uma lista local e uma lista do backup, quais ids do backup
-   ainda não existem localmente. Retorna { novos: [...], ignorados: N }. */
-function calcularDiferencaPorId(listaLocal, listaBackup) {
-  var idsLocais = {};
-  for(var i=0;i<listaLocal.length;i++) {
-    if(listaLocal[i] && listaLocal[i].id !== undefined) idsLocais[listaLocal[i].id] = true;
-  }
-  var novos = [];
-  var ignorados = 0;
-  for(var j=0;j<listaBackup.length;j++) {
-    var item = listaBackup[j];
-    if(!item || item.id === undefined) continue; // ignora registros sem id (não é seguro mesclar)
-    if(idsLocais[item.id]) { ignorados++; }
-    else { novos.push(item); }
-  }
-  return { novos: novos, ignorados: ignorados };
-}
-
-/* Monta o plano de importação (somente leitura/análise — não grava nada ainda) */
-function calcularPlanoImportacao(payload) {
-  var plano = { itens: [], totalNovos: 0, totalIgnorados: 0 };
-  for(var i=0;i<BACKUP_LISTAS_IMPORTAVEIS.length;i++) {
-    var def = BACKUP_LISTAS_IMPORTAVEIS[i];
-    var listaBackup = (payload.chavesLocalStorage && payload.chavesLocalStorage[def.chave]) || [];
-    var listaLocal = DB.get(def.dbKey);
-    var diff = calcularDiferencaPorId(listaLocal, Array.isArray(listaBackup) ? listaBackup : []);
-    plano.itens.push({ dbKey: def.dbKey, label: def.label, novos: diff.novos, qtdNovos: diff.novos.length, qtdIgnorados: diff.ignorados });
-    plano.totalNovos += diff.novos.length;
-    plano.totalIgnorados += diff.ignorados;
-  }
-  return plano;
-}
-
-function abrirModalImportarBackup(payload) {
-  var plano = calcularPlanoImportacao(payload);
-  var box = document.getElementById('importar-backup-preview');
-  var btnConfirmar = document.getElementById('btn-confirmar-importacao');
-
-  var html = '';
-  if(plano.totalNovos === 0) {
-    html += '<div class="import-empty">🔍 Nenhum registro novo encontrado neste backup — todos os dados já existem nesta máquina (comparado por ID). Nada será alterado.</div>';
-  } else {
-    html += '<div class="import-resumo-grid">';
-    for(var i=0;i<plano.itens.length;i++) {
-      var it = plano.itens[i];
-      if(it.qtdNovos === 0 && it.qtdIgnorados === 0) continue;
-      html += '<div class="import-resumo-item">'
-        + '<div class="lbl">'+it.label+'</div>'
-        + '<div class="nums"><span class="novo">+'+it.qtdNovos+'</span>'
-        + (it.qtdIgnorados>0 ? '<span class="ignorado">'+it.qtdIgnorados+' já existiam</span>' : '')
-        + '</div></div>';
-    }
-    html += '</div>';
-    html += '<div class="import-warn">⚠️ Apenas os <strong>'+plano.totalNovos+' registro(s) novo(s)</strong> acima serão adicionados. '
-      + (plano.totalIgnorados>0 ? plano.totalIgnorados+' registro(s) já existente(s) nesta máquina serão mantidos exatamente como estão. ' : '')
-      + 'Nenhum dado local será apagado ou sobrescrito.</div>';
-  }
-  html += '<div style="font-size:11px;color:var(--text-dim);">Backup selecionado: gerado em '+(payload.dataLocal?fmtData(payload.dataLocal):'—')+' '+(payload.horaLocal||'')+' ('+(payload.origem||'—')+')</div>';
-
-  box.innerHTML = html;
-  btnConfirmar.style.display = plano.totalNovos === 0 ? 'none' : 'inline-flex';
-  document.getElementById('modal-importar-backup').classList.add('open');
-}
-
-function fecharModalImportarBackup() {
-  document.getElementById('modal-importar-backup').classList.remove('open');
-  _importPayloadPendente = null;
-}
-
-/* Testa se é possível gravar um valor sob uma chave de teste no localStorage,
-   sem afetar nenhuma chave real do sistema. Usado para verificar, ANTES de
-   alterar qualquer dado de fato, se a importação vai estourar a quota do
-   navegador (comum quando o backup tem muitas fotos em base64). */
-function _localStorageComportaValor(chaveTeste, valorString) {
-  try {
-    localStorage.setItem(chaveTeste, valorString);
-    localStorage.removeItem(chaveTeste);
-    return true;
-  } catch(e) {
-    return false;
-  }
-}
-
-/* Verifica, para cada lista que será alterada, se a versão final (dados locais
-   + novos do backup) cabe no localStorage. Não grava nada — apenas testa.
-   Retorna { ok:true } ou { ok:false, dbKey, label } indicando onde faltou espaço. */
-function verificarEspacoParaImportacao(plano) {
-  var CHAVE_TESTE = '__mp2_teste_quota__';
-  for(var i=0;i<plano.itens.length;i++) {
-    var it = plano.itens[i];
-    if(it.qtdNovos === 0) continue;
-    var listaLocalAtual = DB.get(it.dbKey);
-    var listaFinal = listaLocalAtual.concat(it.novos);
-    var serializado = JSON.stringify(listaFinal);
-    if(!_localStorageComportaValor(CHAVE_TESTE, serializado)) {
-      return { ok: false, dbKey: it.dbKey, label: it.label };
-    }
-  }
-  // limpeza de segurança, caso algo tenha ficado para trás
-  try { localStorage.removeItem(CHAVE_TESTE); } catch(e) {}
-  return { ok: true };
-}
-
-/* Grava de fato os registros novos, SEM tocar nos já existentes.
-   Antes de gravar qualquer coisa, verifica se há espaço suficiente —
-   se não houver, não altera NADA e sinaliza o motivo (evita ficar com
-   uma importação "pela metade"). */
-function aplicarImportacaoAditiva(payload) {
-  var plano = calcularPlanoImportacao(payload);
-
-  var espaco = verificarEspacoParaImportacao(plano);
-  if(!espaco.ok) {
-    var err = new Error('Espaço insuficiente no armazenamento local para importar "'+espaco.label+'".');
-    err.semEspaco = true;
-    err.labelSemEspaco = espaco.label;
-    throw err;
-  }
-
-  var totalAplicado = 0;
-  for(var i=0;i<plano.itens.length;i++) {
-    var it = plano.itens[i];
-    if(it.qtdNovos === 0) continue;
-    var listaLocalAtual = DB.get(it.dbKey);
-    var listaFinal = listaLocalAtual.concat(it.novos); // apenas concatena os novos; nada local é removido
-    DB.set(it.dbKey, listaFinal);
-    totalAplicado += it.qtdNovos;
-  }
-  return totalAplicado;
-}
-
-function confirmarImportacaoBackup() {
-  if(!_importPayloadPendente) { fecharModalImportarBackup(); return; }
-  try {
-    var totalAplicado = aplicarImportacaoAditiva(_importPayloadPendente);
-    fecharModalImportarBackup();
-    toast('✅ Importação concluída: '+totalAplicado+' registro(s) novo(s) adicionado(s). Nenhum dado local foi apagado.');
-    // atualiza as telas que dependem das listas, se estiverem na página atual
-    try { if(document.getElementById('page-pessoas').classList.contains('active')) renderPessoas(); } catch(e){}
-    try { if(document.getElementById('page-pratos').classList.contains('active')) { renderPratos(); renderPrAvulsoLista(); } } catch(e){}
-    try { if(document.getElementById('page-acomps').classList.contains('active')) { renderAcomps(); renderAcompsFixos(); } } catch(e){}
-    try { if(document.getElementById('page-bebidas').classList.contains('active')) renderBebidas(); } catch(e){}
-  } catch(e) {
-    console.error('Erro ao aplicar importação aditiva:', e);
-    if(e && e.semEspaco) {
-      toast('❌ Sem espaço de armazenamento para importar "'+e.labelSemEspaco+'". Nenhuma alteração foi salva. Tente liberar espaço (ex.: fotos de pratos muito grandes) ou importar em partes.', '#c04a3a');
-    } else {
-      toast('❌ Erro ao importar. Nenhuma alteração foi salva.', '#c04a3a');
-    }
-  }
-}
-
-/* Estimativa de quota total do localStorage. Navegadores não expõem o
-   limite real diretamente; usar um valor de referência conservador
-   (5MB, comum em origens file:// no Chrome) é suficiente para alertar
-   o usuário ANTES que ele tente uma operação e receba um erro. */
-var ESPACO_LOCALSTORAGE_REFERENCIA_BYTES = 5 * 1024 * 1024;
-
-function calcularEspacoUsadoLocalStorage() {
-  var total = 0;
-  try {
-    for(var i=0;i<localStorage.length;i++) {
-      var k = localStorage.key(i);
-      var v = localStorage.getItem(k) || '';
-      total += k.length + v.length;
-    }
-  } catch(e) { console.error('Erro ao calcular espaço usado no localStorage:', e); }
-  return total;
-}
-
-function _fmtBytes(n) {
-  if(n < 1024) return n + ' B';
-  if(n < 1024*1024) return (n/1024).toFixed(0) + ' KB';
-  return (n/(1024*1024)).toFixed(2) + ' MB';
-}
-
-/* ---- painel informativo no Resumo Diário ---- */
-
-function atualizarInfoBackup() {
-  var elData = document.getElementById('bk-info-data');
-  var elTipo = document.getElementById('bk-info-tipo');
-  var elStatus = document.getElementById('bk-info-status');
-  var elPasta = document.getElementById('bk-info-pasta');
-  var elEspaco = document.getElementById('bk-info-espaco');
-  if(!elData) return; // página ainda não renderizada
-
-  var infoRaw = localStorage.getItem('mp2_backup_last_status');
-  if(!infoRaw) {
-    elData.textContent = 'Nenhum backup realizado ainda';
-    elTipo.textContent = '—';
-    elStatus.textContent = '—';
-  } else {
-    var info = JSON.parse(infoRaw);
-    elData.textContent = fmtData(info.data) + ' às ' + (info.hora||'').slice(0,5);
-    elTipo.textContent = info.origem === 'diario' ? '🔄 Diário (automático)' : '✋ Manual';
-    elStatus.innerHTML = info.status === 'sucesso'
-      ? '<span class="backup-status-ok">✅ Sucesso</span>'
-      : '<span class="backup-status-erro">⚠️ Erro</span>';
-  }
-
-  if(elEspaco) {
-    var usado = calcularEspacoUsadoLocalStorage();
-    var pct = Math.round((usado / ESPACO_LOCALSTORAGE_REFERENCIA_BYTES) * 100);
-    var cor = pct >= 85 ? '#c04a3a' : (pct >= 60 ? '#a07828' : 'inherit');
-    elEspaco.innerHTML = '<span style="color:'+cor+';font-weight:'+(pct>=60?'700':'inherit')+';">'
-      + _fmtBytes(usado) + ' (~' + pct + '% de ~5MB)' + '</span>'
-      + (pct >= 85 ? ' ⚠️' : '');
-  }
-
-  var cfg = CFG.get();
-  elPasta.textContent = (cfg.backupPastaConfigurada && cfg.backupPastaNome)
-    ? '📁 Pasta preferida: ' + cfg.backupPastaNome + (_backupDirHandle ? ' (ativa nesta sessão)' : ' (selecione novamente para reativar)')
-    : '📁 Sem pasta configurada (usando download)';
 }
 
 /* =========================================================
@@ -3377,17 +1944,10 @@ function fmtData(iso){ if(!iso) return ''; var p=iso.split('-'); return p[2]+'/'
 
 /* INIT */
 (function(){
-  // Migração de espaço: roda primeiro, antes de qualquer outra coisa, para
-  // liberar imediatamente o espaço ocupado por históricos de backup antigos
-  // que guardavam o payload completo (bug corrigido nesta versão).
-  try { migrarHistoricoBackupAntigo(); } catch(e) { console.error('Init migrarHistoricoBackupAntigo:', e); }
-  try {
-    var cfg=CFG.get();
-    if(cfg.empresa) document.getElementById('cfg-empresa').value=cfg.empresa;
-  } catch(e) { console.error('Init cfg-empresa:', e); }
-  try { initPedido(); } catch(e) { console.error('Init initPedido:', e); }
-  try { renderAcompsFixos(); } catch(e) { console.error('Init renderAcompsFixos:', e); }
-  try { verificarBackupDiario(); } catch(e) { console.error('Init verificarBackupDiario:', e); }
+  var cfg=CFG.get();
+  if(cfg.empresa) document.getElementById('cfg-empresa').value=cfg.empresa;
+  initPedido();
+  renderAcompsFixos();
 })();
 </script>
 </body>
