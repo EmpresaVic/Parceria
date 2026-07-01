@@ -2162,10 +2162,62 @@ function registrar(imprimir) {
 /* =========================================================
    RESUMO
    ========================================================= */
+
+// Setores que o cadastro (Pessoas/Pedidos) sempre oferece, mesmo que ainda não
+// existam registros para eles. Além destes, o filtro do Resumo Diário também
+// passa a incluir automaticamente qualquer outro setor que já exista nos
+// dados (ex.: setores de versões antigas do sistema, como "baladacar",
+// "market", "Junta Militar" etc.), para que relatórios antigos continuem
+// filtráveis por setor mesmo depois de o cadastro ter sido padronizado.
+var SETORES_PADRAO = ['GCM','ECO','MKT'];
+
+// Normaliza um valor de setor para comparação (remove espaços nas pontas e
+// ignora diferença de maiúsculas/minúsculas), assim "ECO", "eco" e "Eco " são
+// tratados como o mesmo setor no filtro.
+function normSetor(s){ return (s||'').toString().trim().toUpperCase(); }
+
+// Varre pessoas e pedidos (dados atuais no localStorage, incluindo o que foi
+// trazido de backups importados) e devolve a lista de setores distintos já
+// utilizados alguma vez, em ordem alfabética.
+function obterSetoresDisponiveis() {
+  var vistos = {};
+  var lista = [];
+  function add(raw) {
+    var n = normSetor(raw);
+    if(!n || vistos[n]) return;
+    vistos[n] = true;
+    lista.push(n);
+  }
+  SETORES_PADRAO.forEach(add);
+  var pedidos = DB.get('pedidos');
+  for(var i=0;i<pedidos.length;i++) add(pedidos[i].pessoaSetor);
+  var pessoas = DB.get('pessoas');
+  for(var i=0;i<pessoas.length;i++) add(pessoas[i].setor);
+  lista.sort(function(a,b){ return a.localeCompare(b,'pt-BR'); });
+  return lista;
+}
+
+// Reconstrói o <select> de setor do Resumo Diário com todos os setores
+// realmente encontrados nos dados (cadastrados agora ou em versões antigas),
+// preservando a seleção atual quando possível.
+function popularSelectSetorResumo() {
+  var sel = document.getElementById('res-setor');
+  if(!sel) return;
+  var atual = sel.value;
+  var setores = obterSetoresDisponiveis();
+  var html = '<option value="">Todos</option>';
+  for(var i=0;i<setores.length;i++){
+    html += '<option value="'+setores[i]+'">'+setores[i]+'</option>';
+  }
+  sel.innerHTML = html;
+  if(setores.indexOf(atual) !== -1) sel.value = atual;
+}
+
 function initResumo() {
   var h=hoje();
   document.getElementById('res-de').value=h;
   document.getElementById('res-ate').value=h;
+  popularSelectSetorResumo();
   _ultimoResumo=null; // força novo Gerar Resumo antes de qualquer impressão
   atualizarInfoBackup();
   atualizarBadgeSyncGitHub();
@@ -2174,19 +2226,19 @@ function initResumo() {
 function gerarResumo() {
   var de=document.getElementById('res-de').value;
   var ate=document.getElementById('res-ate').value;
-  var setor=document.getElementById('res-setor').value;
+  var setor=normSetor(document.getElementById('res-setor').value);
   if(!de&&!ate){ toast('Informe ao menos uma data.','#c04a3a'); return; }
   var ini=de||ate, fim=ate||de;
   if(ini>fim){ toast('Data inicial maior que a final.','#c04a3a'); return; }
-  var pedidos=DB.get('pedidos').filter(function(p){ return p.data>=ini&&p.data<=fim&&(!setor||p.pessoaSetor===setor); });
+  var pedidos=DB.get('pedidos').filter(function(p){ return p.data>=ini&&p.data<=fim&&(!setor||normSetor(p.pessoaSetor)===setor); });
   var label=ini===fim?fmtData(ini):fmtData(ini)+' a '+fmtData(fim);
   if(setor) label+=' ['+setor+']';
   renderResumo(pedidos,label);
 }
 
-function verTodos() { 
-  var setor=document.getElementById('res-setor').value;
-  var pedidos=DB.get('pedidos').filter(function(p){ return !setor||p.pessoaSetor===setor; });
+function verTodos() {
+  var setor=normSetor(document.getElementById('res-setor').value);
+  var pedidos=DB.get('pedidos').filter(function(p){ return !setor||normSetor(p.pessoaSetor)===setor; });
   var label=setor?'Todos os períodos ['+setor+']':null;
   renderResumo(pedidos,label);
 }
@@ -2274,9 +2326,9 @@ function imprimirRelatorio() {
   } else {
     var de=document.getElementById('res-de').value;
     var ate=document.getElementById('res-ate').value;
-    var setor=document.getElementById('res-setor').value;
-    if(de||ate){ var ini=de||ate,fim=ate||de; pedidos=DB.get('pedidos').filter(function(p){ return p.data>=ini&&p.data<=fim&&(!setor||p.pessoaSetor===setor); }); label=ini===fim?fmtData(ini):fmtData(ini)+' a '+fmtData(fim); if(setor) label+=' ['+setor+']'; }
-    else { pedidos=DB.get('pedidos').filter(function(p){ return !setor||p.pessoaSetor===setor; }); label=setor?'Todos ['+setor+']':null; }
+    var setor=normSetor(document.getElementById('res-setor').value);
+    if(de||ate){ var ini=de||ate,fim=ate||de; pedidos=DB.get('pedidos').filter(function(p){ return p.data>=ini&&p.data<=fim&&(!setor||normSetor(p.pessoaSetor)===setor); }); label=ini===fim?fmtData(ini):fmtData(ini)+' a '+fmtData(fim); if(setor) label+=' ['+setor+']'; }
+    else { pedidos=DB.get('pedidos').filter(function(p){ return !setor||normSetor(p.pessoaSetor)===setor; }); label=setor?'Todos ['+setor+']':null; }
   }
   if(!pedidos.length){ toast('Nenhum pedido para imprimir. Gere o resumo primeiro.','#c04a3a'); return; }
   _payload={tipo:'relatorio',dados:pedidos,label:label};
