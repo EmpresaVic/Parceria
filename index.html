@@ -1078,6 +1078,7 @@ var GitHubSync = (function(){
 
 var _payload = null;
 var _formato = '80mm';
+var _ultimoResumo = null; // guarda exatamente o conjunto de pedidos exibido na tela de Resumo Diário (WYSIWYG na impressão)
 var _navBtnResumo = null;
 
 function showPage(name, btn) {
@@ -2165,6 +2166,7 @@ function initResumo() {
   var h=hoje();
   document.getElementById('res-de').value=h;
   document.getElementById('res-ate').value=h;
+  _ultimoResumo=null; // força novo Gerar Resumo antes de qualquer impressão
   atualizarInfoBackup();
   atualizarBadgeSyncGitHub();
 }
@@ -2192,6 +2194,10 @@ function verTodos() {
 function renderResumo(pedidos, label) {
   var body=document.getElementById('resumo-body');
   var stats=document.getElementById('stats-row');
+  // Guarda exatamente o que está sendo exibido nesta tela, para que "Imprimir"
+  // sempre gere o relatório com base no mesmo conjunto de pedidos que o usuário
+  // está vendo (evita divergência entre a contagem na tela e a impressão).
+  _ultimoResumo = { pedidos: pedidos.slice(), label: label };
   if(!pedidos.length){ stats.style.display='none'; body.innerHTML='<div class="empty"><span class="ico">🔍</span>Nenhum pedido encontrado.</div>'; return; }
 
   var total=0; var uniqMap={};
@@ -2256,13 +2262,23 @@ function reimprimirPedido(id) {
    IMPRESSÃO
    ========================================================= */
 function imprimirRelatorio() {
-  var de=document.getElementById('res-de').value;
-  var ate=document.getElementById('res-ate').value;
-  var setor=document.getElementById('res-setor').value;
   var pedidos, label;
-  if(de||ate){ var ini=de||ate,fim=ate||de; pedidos=DB.get('pedidos').filter(function(p){ return p.data>=ini&&p.data<=fim&&(!setor||p.pessoaSetor===setor); }); label=ini===fim?fmtData(ini):fmtData(ini)+' a '+fmtData(fim); if(setor) label+=' ['+setor+']'; }
-  else { pedidos=DB.get('pedidos').filter(function(p){ return !setor||p.pessoaSetor===setor; }); label=setor?'Todos ['+setor+']':null; }
-  if(!pedidos.length){ toast('Nenhum pedido para imprimir.','#c04a3a'); return; }
+  // Imprime exatamente o que está sendo exibido no Resumo Diário (o resultado do
+  // último "Gerar Resumo" / "Ver Todos"), em vez de refiltrar os pedidos do zero.
+  // Isso evita divergência entre a quantidade mostrada na tela e a impressão —
+  // por exemplo quando "Ver Todos" (que ignora as datas) foi usado para gerar o
+  // resumo em tela, mas os campos de data ainda continham um período diferente.
+  if(_ultimoResumo){
+    pedidos=_ultimoResumo.pedidos;
+    label=_ultimoResumo.label;
+  } else {
+    var de=document.getElementById('res-de').value;
+    var ate=document.getElementById('res-ate').value;
+    var setor=document.getElementById('res-setor').value;
+    if(de||ate){ var ini=de||ate,fim=ate||de; pedidos=DB.get('pedidos').filter(function(p){ return p.data>=ini&&p.data<=fim&&(!setor||p.pessoaSetor===setor); }); label=ini===fim?fmtData(ini):fmtData(ini)+' a '+fmtData(fim); if(setor) label+=' ['+setor+']'; }
+    else { pedidos=DB.get('pedidos').filter(function(p){ return !setor||p.pessoaSetor===setor; }); label=setor?'Todos ['+setor+']':null; }
+  }
+  if(!pedidos.length){ toast('Nenhum pedido para imprimir. Gere o resumo primeiro.','#c04a3a'); return; }
   _payload={tipo:'relatorio',dados:pedidos,label:label};
   // show excel option only for relatório
   document.getElementById('opt-excel').style.display='flex';
