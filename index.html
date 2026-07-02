@@ -362,13 +362,20 @@ tr:last-child td { border-bottom: none; }
     <div class="field"><label>Data inicial</label><input type="date" id="res-de"></div>
     <div class="date-sep">até</div>
     <div class="field"><label>Data final</label><input type="date" id="res-ate"></div>
-    <div class="field"><label>Setor</label>
-      <select id="res-setor" style="min-width:120px;">
-        <option value="">Todos</option>
-        <option value="GCM">GCM</option>
-        <option value="ECO">ECO</option>
-        <option value="MKT">MKT</option>
-      </select>
+    <div class="field" style="position:relative;">
+      <label>Setor</label>
+      <button type="button" class="btn btn-ghost" id="res-setor-btn" style="min-width:170px;text-align:left;" onclick="toggleSetorPanel()">Todos ▾</button>
+      <div id="res-setor-panel" style="display:none;position:absolute;top:100%;left:0;z-index:50;background:var(--card,#fff);border:1px solid var(--border);border-radius:8px;padding:10px;min-width:230px;max-height:280px;overflow-y:auto;box-shadow:0 6px 18px rgba(0,0,0,0.18);">
+        <p style="font-size:11px;color:var(--text-dim);margin:0 0 8px;">Marque um ou mais setores para juntá-los no mesmo filtro/relatório (ex.: "MARKETING" + "MKT" + "MARKET").</p>
+        <div style="display:flex;justify-content:space-between;margin-bottom:8px;font-size:11px;">
+          <a href="#" style="color:var(--gold);" onclick="event.preventDefault();marcarTodosSetores(true)">Marcar todos</a>
+          <a href="#" style="color:var(--red);" onclick="event.preventDefault();marcarTodosSetores(false)">Limpar</a>
+        </div>
+        <div id="res-setor-checks"></div>
+        <div style="margin-top:10px;text-align:right;">
+          <button type="button" class="btn btn-gold" style="padding:5px 12px;font-size:12px;" onclick="aplicarFiltroSetor()">Aplicar</button>
+        </div>
+      </div>
     </div>
     <button class="btn btn-gold" onclick="gerarResumo()">Gerar Resumo</button>
     <button class="btn btn-ghost" onclick="verTodos()">Ver Todos</button>
@@ -2197,27 +2204,85 @@ function obterSetoresDisponiveis() {
   return lista;
 }
 
-// Reconstrói o <select> de setor do Resumo Diário com todos os setores
-// realmente encontrados nos dados (cadastrados agora ou em versões antigas),
-// preservando a seleção atual quando possível.
-function popularSelectSetorResumo() {
-  var sel = document.getElementById('res-setor');
-  if(!sel) return;
-  var atual = sel.value;
+// Setores atualmente marcados no filtro (checkboxes). Lista vazia = "Todos".
+// Permite marcar vários setores de uma vez (ex.: "MARKETING" + "MKT" +
+// "MARKET") para juntá-los como se fossem um único setor no resumo/impressão.
+var _setoresSelecionados = [];
+
+// Reconstrói a lista de checkboxes de setor do Resumo Diário com todos os
+// setores realmente encontrados nos dados (cadastrados agora ou em versões
+// antigas), preservando a seleção atual quando possível.
+function renderizarChecklistSetor() {
+  var cont = document.getElementById('res-setor-checks');
+  if(!cont) return;
   var setores = obterSetoresDisponiveis();
-  var html = '<option value="">Todos</option>';
+  // remove da seleção qualquer setor que não exista mais nos dados
+  _setoresSelecionados = _setoresSelecionados.filter(function(s){ return setores.indexOf(s)!==-1; });
+  var html = '';
   for(var i=0;i<setores.length;i++){
-    html += '<option value="'+setores[i]+'">'+setores[i]+'</option>';
+    var s = setores[i];
+    var sel = _setoresSelecionados.indexOf(s)!==-1 ? ' sel' : '';
+    html += '<div class="acomp-check setor-chk'+sel+'" data-setor="'+s+'" onclick="toggleSetorCheck(this)" style="padding:7px 10px;margin-bottom:4px;">'
+      + '<div class="chk"><span class="chk-mark">✓</span></div>'
+      + '<span>'+s+'</span>'
+      + '</div>';
   }
-  sel.innerHTML = html;
-  if(setores.indexOf(atual) !== -1) sel.value = atual;
+  cont.innerHTML = html || '<div style="font-size:12px;color:var(--text-dim)">Nenhum setor encontrado.</div>';
+  atualizarBotaoSetorLabel();
 }
+
+function toggleSetorCheck(el) {
+  el.classList.toggle('sel');
+  var s = el.getAttribute('data-setor');
+  var idx = _setoresSelecionados.indexOf(s);
+  if(el.classList.contains('sel')){ if(idx===-1) _setoresSelecionados.push(s); }
+  else { if(idx!==-1) _setoresSelecionados.splice(idx,1); }
+  atualizarBotaoSetorLabel();
+}
+
+function marcarTodosSetores(marcar) {
+  var els = document.querySelectorAll('#res-setor-checks .setor-chk');
+  _setoresSelecionados = [];
+  for(var i=0;i<els.length;i++){
+    if(marcar){ els[i].classList.add('sel'); _setoresSelecionados.push(els[i].getAttribute('data-setor')); }
+    else { els[i].classList.remove('sel'); }
+  }
+  atualizarBotaoSetorLabel();
+}
+
+function atualizarBotaoSetorLabel() {
+  var btn = document.getElementById('res-setor-btn');
+  if(!btn) return;
+  if(_setoresSelecionados.length===0) btn.textContent='Todos ▾';
+  else if(_setoresSelecionados.length===1) btn.textContent=_setoresSelecionados[0]+' ▾';
+  else btn.textContent=_setoresSelecionados.length+' setores ▾';
+}
+
+function toggleSetorPanel() {
+  var p = document.getElementById('res-setor-panel');
+  if(!p) return;
+  p.style.display = (p.style.display==='none'||!p.style.display) ? 'block' : 'none';
+}
+
+function aplicarFiltroSetor() {
+  var p = document.getElementById('res-setor-panel');
+  if(p) p.style.display='none';
+}
+
+// fecha o painel de setores ao clicar fora dele
+document.addEventListener('click', function(ev){
+  var panel = document.getElementById('res-setor-panel');
+  var btn = document.getElementById('res-setor-btn');
+  if(!panel || panel.style.display==='none' || panel.style.display==='') return;
+  if(panel.contains(ev.target) || (btn && btn.contains(ev.target))) return;
+  panel.style.display='none';
+});
 
 function initResumo() {
   var h=hoje();
   document.getElementById('res-de').value=h;
   document.getElementById('res-ate').value=h;
-  popularSelectSetorResumo();
+  renderizarChecklistSetor();
   _ultimoResumo=null; // força novo Gerar Resumo antes de qualquer impressão
   atualizarInfoBackup();
   atualizarBadgeSyncGitHub();
@@ -2226,20 +2291,20 @@ function initResumo() {
 function gerarResumo() {
   var de=document.getElementById('res-de').value;
   var ate=document.getElementById('res-ate').value;
-  var setor=normSetor(document.getElementById('res-setor').value);
+  var setores=_setoresSelecionados;
   if(!de&&!ate){ toast('Informe ao menos uma data.','#c04a3a'); return; }
   var ini=de||ate, fim=ate||de;
   if(ini>fim){ toast('Data inicial maior que a final.','#c04a3a'); return; }
-  var pedidos=DB.get('pedidos').filter(function(p){ return p.data>=ini&&p.data<=fim&&(!setor||normSetor(p.pessoaSetor)===setor); });
+  var pedidos=DB.get('pedidos').filter(function(p){ return p.data>=ini&&p.data<=fim&&(!setores.length||setores.indexOf(normSetor(p.pessoaSetor))!==-1); });
   var label=ini===fim?fmtData(ini):fmtData(ini)+' a '+fmtData(fim);
-  if(setor) label+=' ['+setor+']';
+  if(setores.length) label+=' ['+setores.join(' + ')+']';
   renderResumo(pedidos,label);
 }
 
 function verTodos() {
-  var setor=normSetor(document.getElementById('res-setor').value);
-  var pedidos=DB.get('pedidos').filter(function(p){ return !setor||normSetor(p.pessoaSetor)===setor; });
-  var label=setor?'Todos os períodos ['+setor+']':null;
+  var setores=_setoresSelecionados;
+  var pedidos=DB.get('pedidos').filter(function(p){ return !setores.length||setores.indexOf(normSetor(p.pessoaSetor))!==-1; });
+  var label=setores.length?'Todos os períodos ['+setores.join(' + ')+']':null;
   renderResumo(pedidos,label);
 }
 
@@ -2326,9 +2391,9 @@ function imprimirRelatorio() {
   } else {
     var de=document.getElementById('res-de').value;
     var ate=document.getElementById('res-ate').value;
-    var setor=normSetor(document.getElementById('res-setor').value);
-    if(de||ate){ var ini=de||ate,fim=ate||de; pedidos=DB.get('pedidos').filter(function(p){ return p.data>=ini&&p.data<=fim&&(!setor||normSetor(p.pessoaSetor)===setor); }); label=ini===fim?fmtData(ini):fmtData(ini)+' a '+fmtData(fim); if(setor) label+=' ['+setor+']'; }
-    else { pedidos=DB.get('pedidos').filter(function(p){ return !setor||normSetor(p.pessoaSetor)===setor; }); label=setor?'Todos ['+setor+']':null; }
+    var setores=_setoresSelecionados;
+    if(de||ate){ var ini=de||ate,fim=ate||de; pedidos=DB.get('pedidos').filter(function(p){ return p.data>=ini&&p.data<=fim&&(!setores.length||setores.indexOf(normSetor(p.pessoaSetor))!==-1); }); label=ini===fim?fmtData(ini):fmtData(ini)+' a '+fmtData(fim); if(setores.length) label+=' ['+setores.join(' + ')+']'; }
+    else { pedidos=DB.get('pedidos').filter(function(p){ return !setores.length||setores.indexOf(normSetor(p.pessoaSetor))!==-1; }); label=setores.length?'Todos ['+setores.join(' + ')+']':null; }
   }
   if(!pedidos.length){ toast('Nenhum pedido para imprimir. Gere o resumo primeiro.','#c04a3a'); return; }
   _payload={tipo:'relatorio',dados:pedidos,label:label};
