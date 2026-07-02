@@ -2353,7 +2353,9 @@ function renderResumo(pedidos, label) {
           acHtmlRes+='<div style="line-height:1.6">'+acNm+acVl+'</div>';
         }
       } else { acHtmlRes='<span style="color:var(--text-dim)">—</span>'; }
+      var numPedRes='#'+p.id.slice(-6).toUpperCase();
       rows+='<tr>'
+        +'<td><span class="badge" style="background:var(--cream);color:var(--gold-dim);font-weight:700;letter-spacing:0.5px;">'+numPedRes+'</span></td>'
         +'<td><strong>'+p.pessoaNome+'</strong></td>'
         +'<td style="text-align:center;">'+(p.pessoaSetor?'<span style="display:inline-block;background:var(--cream);color:var(--gold);border:1px solid var(--gold-dim);font-weight:700;font-size:11px;padding:2px 8px;border-radius:4px;letter-spacing:1px;">'+p.pessoaSetor+'</span>':'<span style="color:var(--text-dim)">—</span>')+'</td>'
         +'<td>'+p.pratoNome+'<br><small style="color:var(--text-dim)">'+moeda(p.pratoValor)+'</small></td>'
@@ -2363,7 +2365,7 @@ function renderResumo(pedidos, label) {
         +'</tr>';
     }
     h+='<div class="resumo-card"><div class="resumo-head"><strong>📅 '+fmtData(d)+'</strong><div style="text-align:right"><div style="font-size:11px;color:var(--text-dim)">'+ps.length+' pedido(s)</div><div class="resumo-total">'+moeda(tot)+'</div></div></div>'
-      +'<table><thead><tr><th>Pessoa</th><th>Setor</th><th>Prato</th><th>Acompanhamentos</th><th>Total</th><th>Ação</th></tr></thead><tbody>'+rows+'</tbody></table></div>';
+      +'<table><thead><tr><th>Nº Pedido</th><th>Pessoa</th><th>Setor</th><th>Prato</th><th>Acompanhamentos</th><th>Total</th><th>Ação</th></tr></thead><tbody>'+rows+'</tbody></table></div>';
   }
   body.innerHTML=h;
 }
@@ -2553,26 +2555,26 @@ function gerarExcel(pedidos, label) {
      ABA 1 — PEDIDOS DETALHADOS
      ================================================================ */
   var ws1 = {};
-  ws1['!ref'] = 'A1:K1'; // will expand
+  ws1['!ref'] = 'A1:L1'; // will expand
 
-  var COLS1 = ['A','B','C','D','E','F','G','H','I','J','K'];
-  ws1['!cols'] = [{wch:5},{wch:12},{wch:30},{wch:16},{wch:28},{wch:16},{wch:22},{wch:16},{wch:16},{wch:16},{wch:14}];
+  var COLS1 = ['A','B','C','D','E','F','G','H','I','J','K','L'];
+  ws1['!cols'] = [{wch:5},{wch:14},{wch:12},{wch:30},{wch:16},{wch:28},{wch:16},{wch:22},{wch:16},{wch:16},{wch:16},{wch:14}];
 
   // Row 1 — Title banner
   setVal(ws1,'A1',empresa,'s',S(fntTitle,COR.darkBg,aCenter,null,null));
   for(var ci=1;ci<COLS1.length;ci++) setVal(ws1,COLS1[ci]+'1','','s',S(null,COR.darkBg,null,null,null));
-  mergeCells(ws1,'A1:K1');
+  mergeCells(ws1,'A1:L1');
 
   // Row 2 — subtitle
   setVal(ws1,'A2',titulo+' | Emitido em: '+emitidoEm,'s',S(fntSub,COR.darkBg,aCenter,null,null));
   for(var ci=1;ci<COLS1.length;ci++) setVal(ws1,COLS1[ci]+'2','','s',S(null,COR.darkBg,null,null,null));
-  mergeCells(ws1,'A2:K2');
+  mergeCells(ws1,'A2:L2');
 
   // Row 3 — blank spacer
   for(var ci=0;ci<COLS1.length;ci++) setVal(ws1,COLS1[ci]+'3','','s',S(null,'F0EAD8',null,null,null));
 
   // Row 4 — column headers
-  var hdrLabels=['#','Data','Colaborador','Setor','Prato Principal','Vl. Prato','Acompanhamentos','Vl. Acomps','Vl. Acomps Total','Total Pedido','% do Total'];
+  var hdrLabels=['#','Nº Pedido','Data','Colaborador','Setor','Prato Principal','Vl. Prato','Acompanhamentos','Vl. Acomps','Vl. Acomps Total','Total Pedido','% do Total'];
   for(var ci=0;ci<COLS1.length;ci++){
     setVal(ws1,COLS1[ci]+'4',hdrLabels[ci],'s',S(fntHdr,COR.darkBg,aCenterW,bdrMedBot,null));
   }
@@ -2590,8 +2592,8 @@ function gerarExcel(pedidos, label) {
     var dayTot=0; for(var i=0;i<ps.length;i++){ dayTot+=ps[i].totalPedido!==undefined?ps[i].totalPedido:ps[i].pratoValor; }
     setVal(ws1,'A'+dataRow,dayLabel,'s',S(fntDay,COR.dayBand,aLeft,bdrAll,null));
     for(var ci=1;ci<COLS1.length-1;ci++) setVal(ws1,COLS1[ci]+dataRow,'','s',S(null,COR.dayBand,null,bdrAll,null));
-    setVal(ws1,'K'+dataRow,dayTot,'n',S(fntDay,COR.dayBand,aRight,bdrAll,numBRL));
-    mergeCells(ws1,'A'+dataRow+':J'+dataRow);
+    setVal(ws1,'L'+dataRow,dayTot,'n',S(fntDay,COR.dayBand,aRight,bdrAll,numBRL));
+    mergeCells(ws1,'A'+dataRow+':K'+dataRow);
     ws1['!rows'].push({hpt:18});
     dataRow++;
 
@@ -2603,28 +2605,30 @@ function gerarExcel(pedidos, label) {
       var pedTot=p.totalPedido!==undefined?p.totalPedido:p.pratoValor;
       var pct=grandTotal>0?pedTot/grandTotal:0;
       var bg=i%2===0?COR.white:COR.gray1;
+      var numPedXls='#'+p.id.slice(-6).toUpperCase();
 
       setVal(ws1,'A'+dataRow,seq,'n',S(fntData,bg,aCenter,bdrAll,numInt));
-      setVal(ws1,'B'+dataRow,fmtData(p.data),'s',S(fntData,bg,aCenter,bdrAll,null));
-      setVal(ws1,'C'+dataRow,p.pessoaNome+(p.pessoaSetor?' · '+p.pessoaSetor:''),'s',S(fntData,bg,aLeft,bdrAll,null));
-      setVal(ws1,'D'+dataRow,p.pessoaSetor||'—','s',S(fntData,bg,aLeft,bdrAll,null));
-      setVal(ws1,'E'+dataRow,p.pratoNome,'s',S(fntData,bg,aLeft,bdrAll,null));
-      setVal(ws1,'F'+dataRow,p.pratoValor,'n',S(fntData,bg,aRight,bdrAll,numBRL));
-      setVal(ws1,'G'+dataRow,acNm||'—','s',S(fntData,bg,aLeft,bdrAll,null));
-      setVal(ws1,'H'+dataRow,acVlDet,'s',S(fntData,bg,aLeft,bdrAll,null));
-      setVal(ws1,'I'+dataRow,acTot,'n',S(acTot>0?fntGreen:fntData,bg,aRight,bdrAll,numBRL));
-      setVal(ws1,'J'+dataRow,pedTot,'n',S({bold:true,name:'Arial',sz:10,color:{rgb:COR.darkText}},bg,aRight,bdrAll,numBRL));
-      setVal(ws1,'K'+dataRow,pct,'n',S(fntData,bg,aRight,bdrAll,numPct));
+      setVal(ws1,'B'+dataRow,numPedXls,'s',S(fntData,bg,aCenter,bdrAll,null));
+      setVal(ws1,'C'+dataRow,fmtData(p.data),'s',S(fntData,bg,aCenter,bdrAll,null));
+      setVal(ws1,'D'+dataRow,p.pessoaNome+(p.pessoaSetor?' · '+p.pessoaSetor:''),'s',S(fntData,bg,aLeft,bdrAll,null));
+      setVal(ws1,'E'+dataRow,p.pessoaSetor||'—','s',S(fntData,bg,aLeft,bdrAll,null));
+      setVal(ws1,'F'+dataRow,p.pratoNome,'s',S(fntData,bg,aLeft,bdrAll,null));
+      setVal(ws1,'G'+dataRow,p.pratoValor,'n',S(fntData,bg,aRight,bdrAll,numBRL));
+      setVal(ws1,'H'+dataRow,acNm||'—','s',S(fntData,bg,aLeft,bdrAll,null));
+      setVal(ws1,'I'+dataRow,acVlDet,'s',S(fntData,bg,aLeft,bdrAll,null));
+      setVal(ws1,'J'+dataRow,acTot,'n',S(acTot>0?fntGreen:fntData,bg,aRight,bdrAll,numBRL));
+      setVal(ws1,'K'+dataRow,pedTot,'n',S({bold:true,name:'Arial',sz:10,color:{rgb:COR.darkText}},bg,aRight,bdrAll,numBRL));
+      setVal(ws1,'L'+dataRow,pct,'n',S(fntData,bg,aRight,bdrAll,numPct));
       ws1['!rows'].push({hpt:16});
       seq++; dataRow++;
     }
 
     // Subtotal row
     setVal(ws1,'A'+dataRow,'','s',S(null,COR.goldLight,null,bdrSub,null));
-    setVal(ws1,'B'+dataRow,'Subtotal','s',S(fntSub2,COR.goldLight,aRight,bdrSub,null));
-    mergeCells(ws1,'A'+dataRow+':I'+dataRow);
-    setVal(ws1,'J'+dataRow,dayTot,'n',S({bold:true,name:'Arial',sz:10,color:{rgb:COR.goldDark}},COR.goldLight,aRight,bdrSub,numBRL));
-    setVal(ws1,'K'+dataRow,grandTotal>0?dayTot/grandTotal:0,'n',S(fntSub2,COR.goldLight,aRight,bdrSub,numPct));
+    setVal(ws1,'C'+dataRow,'Subtotal','s',S(fntSub2,COR.goldLight,aRight,bdrSub,null));
+    mergeCells(ws1,'A'+dataRow+':J'+dataRow);
+    setVal(ws1,'K'+dataRow,dayTot,'n',S({bold:true,name:'Arial',sz:10,color:{rgb:COR.goldDark}},COR.goldLight,aRight,bdrSub,numBRL));
+    setVal(ws1,'L'+dataRow,grandTotal>0?dayTot/grandTotal:0,'n',S(fntSub2,COR.goldLight,aRight,bdrSub,numPct));
     ws1['!rows'].push({hpt:16});
     dataRow++;
 
@@ -2636,13 +2640,13 @@ function gerarExcel(pedidos, label) {
 
   // Grand Total row
   setVal(ws1,'A'+dataRow,'','s',S(fntTotal,COR.darkBg,null,bdrThickTop,null));
-  setVal(ws1,'B'+dataRow,'TOTAL GERAL','s',S(fntTotal,COR.darkBg,aLeft,bdrThickTop,null));
-  mergeCells(ws1,'A'+dataRow+':I'+dataRow);
-  setVal(ws1,'J'+dataRow,grandTotal,'n',S({bold:true,name:'Arial',sz:13,color:{rgb:COR.gold}},COR.darkBg,aRight,bdrThickTop,numBRL));
-  setVal(ws1,'K'+dataRow,pedidos.length,'n',S({bold:true,name:'Arial',sz:10,color:{rgb:COR.cream}},COR.darkBg,aCenter,bdrThickTop,numInt+' pedidos'));
+  setVal(ws1,'C'+dataRow,'TOTAL GERAL','s',S(fntTotal,COR.darkBg,aLeft,bdrThickTop,null));
+  mergeCells(ws1,'A'+dataRow+':J'+dataRow);
+  setVal(ws1,'K'+dataRow,grandTotal,'n',S({bold:true,name:'Arial',sz:13,color:{rgb:COR.gold}},COR.darkBg,aRight,bdrThickTop,numBRL));
+  setVal(ws1,'L'+dataRow,pedidos.length,'n',S({bold:true,name:'Arial',sz:10,color:{rgb:COR.cream}},COR.darkBg,aCenter,bdrThickTop,numInt+' pedidos'));
   ws1['!rows'].push({hpt:22});
 
-  ws1['!ref'] = 'A1:K'+dataRow;
+  ws1['!ref'] = 'A1:L'+dataRow;
   ws1['!freeze'] = {xSplit:0,ySplit:4};
   XLSX.utils.book_append_sheet(wb, ws1, '📋 Pedidos Detalhados');
 
@@ -2957,7 +2961,8 @@ function htmlRelatorio(pedidos,label,fmt) {
       h+='<div class="r-lbl">📅 '+fmtData(d)+'</div>';
       for(var i=0;i<ps.length;i++){
         var tv3=ps[i].totalPedido!==undefined?ps[i].totalPedido:ps[i].pratoValor;
-        h+='<div class="r-row r-ind"><span>'+ps[i].pessoaNome.split(' ')[0]+(ps[i].pessoaSetor?' ['+ps[i].pessoaSetor+']':'')+'</span><span>'+moeda(tv3)+'</span></div><div class="r-ind r-sm">'+ps[i].pratoNome+'</div>';
+        var numPed80='#'+ps[i].id.slice(-6).toUpperCase();
+        h+='<div class="r-row r-ind"><span>'+ps[i].pessoaNome.split(' ')[0]+(ps[i].pessoaSetor?' ['+ps[i].pessoaSetor+']':'')+'</span><span>'+moeda(tv3)+'</span></div><div class="r-ind r-sm">'+numPed80+' · '+ps[i].pratoNome+'</div>';
       }
       h+='<div class="r-row" style="font-weight:700"><span>Subtotal '+fmtData(d)+'</span><span>'+moeda(tot)+'</span></div><hr class="r-sep">';
     }
@@ -2976,15 +2981,16 @@ function htmlRelatorio(pedidos,label,fmt) {
       var acNms = Array.isArray(p.acomps)?p.acomps.map(function(a){return typeof a==='object'?a.nome:a;}).join(', '):'';
       var bebNms = Array.isArray(p.bebidas)?p.bebidas.map(function(b){return typeof b==='object'?b.nome:b;}).join(', '):'';
       var setorBadge = p.pessoaSetor?'<span style="display:inline-block;background:#222;color:#fff;font-weight:700;font-size:10px;padding:1px 6px;border-radius:3px;">'+p.pessoaSetor+'</span>':'—';
-      rows+='<tr><td style="padding:7px 10px;border:1px solid #e0e0e0">'+seq+'</td><td style="padding:7px 10px;border:1px solid #e0e0e0">'+p.pessoaNome+'</td><td style="padding:7px 10px;border:1px solid #e0e0e0;text-align:center">'+setorBadge+'</td><td style="padding:7px 10px;border:1px solid #e0e0e0">'+p.pratoNome+'</td><td style="padding:7px 10px;border:1px solid #e0e0e0">'+(acNms||'—')+'</td><td style="padding:7px 10px;border:1px solid #e0e0e0">'+(bebNms||'—')+'</td><td style="padding:7px 10px;border:1px solid #e0e0e0;text-align:right">'+moeda(tv5)+'</td></tr>';
+      var numPedRel = '#'+p.id.slice(-6).toUpperCase();
+      rows+='<tr><td style="padding:7px 10px;border:1px solid #e0e0e0">'+seq+'</td><td style="padding:7px 10px;border:1px solid #e0e0e0;font-weight:700">'+numPedRel+'</td><td style="padding:7px 10px;border:1px solid #e0e0e0">'+p.pessoaNome+'</td><td style="padding:7px 10px;border:1px solid #e0e0e0;text-align:center">'+setorBadge+'</td><td style="padding:7px 10px;border:1px solid #e0e0e0">'+p.pratoNome+'</td><td style="padding:7px 10px;border:1px solid #e0e0e0">'+(acNms||'—')+'</td><td style="padding:7px 10px;border:1px solid #e0e0e0">'+(bebNms||'—')+'</td><td style="padding:7px 10px;border:1px solid #e0e0e0;text-align:right">'+moeda(tv5)+'</td></tr>';
       seq++;
     }
-    rows+='<tr style="background:#e8e8e8"><td colspan="6" style="padding:7px 10px;border:1px solid #ccc;text-align:right;font-weight:700">Subtotal '+fmtData(d)+':</td><td style="padding:7px 10px;border:1px solid #ccc;text-align:right;font-weight:700">'+moeda(tot)+'</td></tr>';
+    rows+='<tr style="background:#e8e8e8"><td colspan="7" style="padding:7px 10px;border:1px solid #ccc;text-align:right;font-weight:700">Subtotal '+fmtData(d)+':</td><td style="padding:7px 10px;border:1px solid #ccc;text-align:right;font-weight:700">'+moeda(tot)+'</td></tr>';
   }
   return '<div style="font-family:Arial,sans-serif;padding:28px;color:#000;font-size:13px;">'
     +'<div style="text-align:center;margin-bottom:18px;border-bottom:2px solid #000;padding-bottom:14px;"><div style="font-size:19px;font-weight:700;letter-spacing:2px;">'+empresa+'</div><div style="font-size:14px;margin-top:3px;">'+titulo+'</div><div style="font-size:11px;color:#666;">Emitido: '+new Date().toLocaleString('pt-BR')+'</div></div>'
     +'<div style="display:flex;gap:28px;margin-bottom:18px;font-size:13px;"><span><b>Pedidos:</b> '+pedidos.length+'</span><span><b>Pessoas:</b> '+uniq+'</span><span><b>Total:</b> <b>'+moeda(total)+'</b></span></div>'
-    +'<table style="width:100%;border-collapse:collapse;font-size:13px;"><thead><tr style="background:#222;color:#fff;"><th style="padding:8px 10px;border:1px solid #333">#</th><th style="padding:8px 10px;border:1px solid #333">Colaborador</th><th style="padding:8px 10px;border:1px solid #333;text-align:center">Setor</th><th style="padding:8px 10px;border:1px solid #333">Prato</th><th style="padding:8px 10px;border:1px solid #333">Acompanhamento</th><th style="padding:8px 10px;border:1px solid #333">Bebida</th><th style="padding:8px 10px;border:1px solid #333;text-align:right">Total</th></tr></thead><tbody>'+rows+'</tbody><tfoot><tr style="background:#222;color:#fff;"><td colspan="5" style="padding:9px 10px;border:1px solid #333;text-align:right;font-size:14px;font-weight:700">TOTAL GERAL</td><td style="padding:9px 10px;border:1px solid #333;text-align:center;font-size:13px;font-weight:700">'+pedidos.length+' pedido(s)</td><td style="padding:9px 10px;border:1px solid #333;text-align:right;font-size:14px;font-weight:700">'+moeda(total)+'</td></tr></tfoot></table>'
+    +'<table style="width:100%;border-collapse:collapse;font-size:13px;"><thead><tr style="background:#222;color:#fff;"><th style="padding:8px 10px;border:1px solid #333">#</th><th style="padding:8px 10px;border:1px solid #333">Nº Pedido</th><th style="padding:8px 10px;border:1px solid #333">Colaborador</th><th style="padding:8px 10px;border:1px solid #333;text-align:center">Setor</th><th style="padding:8px 10px;border:1px solid #333">Prato</th><th style="padding:8px 10px;border:1px solid #333">Acompanhamento</th><th style="padding:8px 10px;border:1px solid #333">Bebida</th><th style="padding:8px 10px;border:1px solid #333;text-align:right">Total</th></tr></thead><tbody>'+rows+'</tbody><tfoot><tr style="background:#222;color:#fff;"><td colspan="6" style="padding:9px 10px;border:1px solid #333;text-align:right;font-size:14px;font-weight:700">TOTAL GERAL</td><td style="padding:9px 10px;border:1px solid #333;text-align:center;font-size:13px;font-weight:700">'+pedidos.length+' pedido(s)</td><td style="padding:9px 10px;border:1px solid #333;text-align:right;font-size:14px;font-weight:700">'+moeda(total)+'</td></tr></tfoot></table>'
     +'<div style="margin-top:18px;text-align:center;font-size:11px;color:#888;">Documento não fiscal — SOMENTE O PARCEIRO PODE RETIRAR A REFEIÇÃO NO BALCÃO</div></div>';
 }
 
