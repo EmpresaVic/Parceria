@@ -741,46 +741,22 @@ tr:last-child td { border-bottom: none; }
 
 <script>
 /* =========================================================
-   TRAVA DE SEGURANÇA — SYNC GITHUB NUNCA EM AMBIENTE PÚBLICO
+   TRAVA DE SEGURANÇA — DESATIVADA (decisão consciente)
    =========================================================
    Este app permite configurar um Personal Access Token do GitHub para
-   sincronização automática. Isso só é seguro quando o arquivo roda
-   localmente (file://) ou numa máquina pessoal (localhost / IP de rede
-   local) — o token fica só no localStorage daquele navegador específico.
+   sincronização automática. Originalmente, em domínios públicos (GitHub
+   Pages, Netlify etc.) essa sincronização era bloqueada por completo,
+   porque o token fica salvo no localStorage do navegador e qualquer
+   pessoa com acesso físico à máquina (ou ao DevTools) poderia lê-lo.
 
-   Se este MESMO arquivo for hospedado publicamente (GitHub Pages,
-   Netlify, qualquer domínio público), qualquer visitante poderia abrir
-   o DevTools e ler um token eventualmente salvo ali. Por isso, em
-   domínios públicos, a sincronização com GitHub é DESATIVADA por
-   completo nesta sessão: a função fica inoperante e a UI correspondente
-   é escondida — independentemente de já existir ou não uma configuração
-   salva. Qualquer token herdado de uma configuração feita nesse domínio
-   também é removido automaticamente. O restante do app (pedidos, pratos,
-   backup local/download) continua funcionando normalmente.
+   Essa trava foi removida deliberadamente para permitir sync mesmo em
+   domínio público (necessário para acesso multi-loja). O risco
+   permanece: o token continua salvo em texto simples no localStorage de
+   cada navegador configurado. Mitigue usando um Personal Access Token
+   com escopo restrito só a este repositório, e revogue/troque o token
+   se a máquina for compartilhada ou o acesso for perdido.
    ========================================================= */
-var _AMBIENTE_PUBLICO = (function() {
-  var protocolo = window.location.protocol || '';
-  if(protocolo === 'file:') return false; // uso local direto do arquivo: sempre seguro
-  var h = window.location.hostname || '';
-  if(!h || h === 'localhost' || h === '127.0.0.1') return false; // ambiente local de desenvolvimento
-  if(/^(10\.|192\.168\.|172\.(1[6-9]|2[0-9]|3[0-1])\.)/.test(h)) return false; // IP de rede local privada
-  return true; // qualquer outro domínio (ex.: *.github.io) é tratado como público
-})();
-
-(function() {
-  if(!_AMBIENTE_PUBLICO) return;
-  try {
-    var raw = localStorage.getItem('mp_cfg');
-    if(raw) {
-      var c = JSON.parse(raw);
-      if(c && c.ghToken) {
-        c.ghToken = '';
-        localStorage.setItem('mp_cfg', JSON.stringify(c));
-        console.error('Token do GitHub removido automaticamente: este arquivo está sendo acessado por um domínio público (' + window.location.hostname + '). Tokens nunca devem ficar salvos nesse contexto. Configure a sincronização apenas ao abrir o arquivo localmente (file://) ou em rede privada.');
-      }
-    }
-  } catch(e) {}
-})();
+var _AMBIENTE_PUBLICO = false;
 
 /* =========================================================
    SheetJS CDN for Excel export
@@ -922,6 +898,22 @@ var GitHubSync = (function(){
       if(resp.status === 404) { callback(null, null); return; }
       if(!resp.ok) { resp.text().then(function(t){ callback(new Error('GitHub GET '+resp.status+': '+t), null); }); return; }
       resp.json().then(function(json) {
+        // A Contents API só devolve o campo "content" inline para arquivos de
+        // até ~1MB. Acima disso, content vem vazio mesmo o arquivo existindo
+        // (só sha/size/download_url ficam disponíveis) — nesse caso, busca o
+        // conteúdo pela Git Blobs API, que suporta arquivos até 100MB.
+        if((!json.content || !json.content.trim()) && json.sha) {
+          fetch('https://api.github.com/repos/' + c.owner + '/' + c.repo + '/git/blobs/' + json.sha, {
+            headers: headersAuth()
+          }).then(function(respBlob) {
+            if(!respBlob.ok) { respBlob.text().then(function(t){ callback(new Error('GitHub GET blob '+respBlob.status+': '+t), null); }); return; }
+            respBlob.json().then(function(blob) {
+              json.content = blob.content; // mesma codificação base64, só a fonte muda
+              callback(null, json);
+            });
+          }).catch(function(err) { callback(err, null); });
+          return;
+        }
         callback(null, json); // json.sha, json.content (base64), etc.
       });
     }).catch(function(err) { callback(err, null); });
