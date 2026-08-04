@@ -1,7 +1,7 @@
 {
   "app": "controle-refeicoes-parceria-plaza",
   "versaoFormato": 1,
-  "atualizadoEm": "2026-08-04T03:33:10.779Z",
+  "atualizadoEm": "2026-08-04T18:59:11.733Z",
   "chaves": {
     "mp2_pessoas": [
       {
@@ -330,21 +330,6 @@
         "setor": "MKT"
       },
       {
-        "id": "mpfpu15hz2x",
-        "nome": "Joao GCM",
-        "setor": "GCM"
-      },
-      {
-        "id": "mpfpu61iuit",
-        "nome": "Simone",
-        "setor": "MKT"
-      },
-      {
-        "id": "mpfpudl7jkx",
-        "nome": "Maria",
-        "setor": "ECO"
-      },
-      {
         "id": "mqvh437zkuk",
         "nome": "Felipe",
         "setor": "ECO"
@@ -648,44 +633,6 @@
         "acompFixoNomes": [],
         "acompAvulsoIds": [],
         "acompAvulsoNomes": []
-      },
-      {
-        "id": "mpfps4fvaf1",
-        "nome": "Frango Grelhado",
-        "valor": 25.5,
-        "foto": null,
-        "modalidadeAcomp": "max3",
-        "temAcompFixo": false,
-        "acompFixoIds": [],
-        "acompFixoNomes": [],
-        "acompAvulsoIds": [
-          "mpfpmpo2o64",
-          "mpfpmw9bkxj",
-          "mpfpn1nps3p",
-          "mpfpnizsb1l"
-        ],
-        "acompAvulsoNomes": [
-          "Arroz Branco",
-          "Feijao Carioca",
-          "Farofa",
-          "Batata Frita"
-        ]
-      },
-      {
-        "id": "mpfptqnmsnv",
-        "nome": "Calabresa Fatiada",
-        "valor": 25.5,
-        "foto": null,
-        "modalidadeAcomp": "max3",
-        "temAcompFixo": true,
-        "acompFixoIds": [
-          "mpfpt3hgjo3"
-        ],
-        "acompFixoNomes": [
-          "Arroz Branco + Feijao + Farofa + Fritas"
-        ],
-        "acompAvulsoIds": [],
-        "acompAvulsoNomes": []
       }
     ],
     "mp2_acomps": [
@@ -713,31 +660,6 @@
         "id": "mnsw0o3kmya",
         "nome": "Saladinha Express ( Alface com Cenoura Ralada )",
         "valor": 0
-      },
-      {
-        "id": "mpfpmpo2o64",
-        "nome": "Arroz Branco",
-        "valor": 0
-      },
-      {
-        "id": "mpfpmw9bkxj",
-        "nome": "Feijao Carioca",
-        "valor": 0
-      },
-      {
-        "id": "mpfpn1nps3p",
-        "nome": "Farofa",
-        "valor": 0
-      },
-      {
-        "id": "mpfpn7h28hv",
-        "nome": "Legumes Saute",
-        "valor": 0
-      },
-      {
-        "id": "mpfpnizsb1l",
-        "nome": "Batata Frita",
-        "valor": 0
       }
     ],
     "mp2_acompsFixos": [
@@ -755,11 +677,6 @@
         "id": "mnsvzliom91",
         "nome": "Purê de Batata",
         "desc": "Purê de Batata"
-      },
-      {
-        "id": "mpfpt3hgjo3",
-        "nome": "Arroz Branco + Feijao + Farofa + Fritas",
-        "desc": "Prato Executivo com acompanhamento fixo"
       }
     ],
     "mp2_bebidas": [
@@ -776,16 +693,6 @@
       {
         "id": "mnl4yhm8osq",
         "nome": "Copo de Água 200 ml",
-        "valor": 0
-      },
-      {
-        "id": "mpfpfhh1tdm",
-        "nome": "Pepsi Pet 200 ml",
-        "valor": 0
-      },
-      {
-        "id": "mpfpfoxzug4",
-        "nome": "Guarana Pet 200 ml",
         "valor": 0
       }
     ],
@@ -30601,223 +30508,6 @@
         "criadoEm": "2026-06-24T15:57:11.746Z"
       },
       {
-        "id": "mpfpus7o87g",
-        "data": "2026-05-21",
-        "pessoaId": "mpfpu15hz2x",
-        "pessoaNome": "Joao GCM",
-        "pessoaSetor": "GCM",
-        "pratoId": "mpfps4fvaf1",
-        "pratoNome": "Frango Grelhado",
-        "pratoValor": 25.5,
-        "acTotal": 0,
-        "totalPedido": 25.5,
-        "acomps": [],
-        "bebidas": [],
-        "obs": "bem passado",
-        "criadoEm": "2026-05-21T16:39:47.796Z"
-      },
-      {
-        "id": "mpfpvgspnmy",
-        "data": "2026-05-21",
-        "pessoaId": "mpfpudl7jkx",
-        "pessoaNome": "Maria",
-        "pessoaSetor": "ECO",
-        "pratoId": "mpfptqnmsnv",
-        "pratoNome": "Calabresa Fatiada",
-        "pratoValor": 25.5,
-        "acTotal": 0,
-        "totalPedido": 25.5,
-        "acomps": [
-          {
-            "nome": "Arroz Branco + Feijao + Farofa + Fritas",
-            "valor": 0,
-            "fixo": true
-          }
-        ],
-        "bebidas": [
-          {
-            "nome": "Guarana Pet 200 ml",
-            "valor": 0
-          }
-        ],
-        "obs": "bem passado",
-        "criadoEm": "2026-05-21T16:40:19.657Z"
-      },
-      {
-        "id": "mpfpvzqv2cg",
-        "data": "2026-05-21",
-        "pessoaId": "mpfpu61iuit",
-        "pessoaNome": "Simone",
-        "pessoaSetor": "MKT",
-        "pratoId": "mpfptqnmsnv",
-        "pratoNome": "Calabresa Fatiada",
-        "pratoValor": 25.5,
-        "acTotal": 0,
-        "totalPedido": 25.5,
-        "acomps": [
-          {
-            "nome": "Arroz Branco + Feijao + Farofa + Fritas",
-            "valor": 0,
-            "fixo": true
-          }
-        ],
-        "bebidas": [
-          {
-            "nome": "Pepsi Pet 200 ml",
-            "valor": 0
-          }
-        ],
-        "obs": "capricha",
-        "criadoEm": "2026-05-21T16:40:44.215Z"
-      },
-      {
-        "id": "mpfqpziusef",
-        "data": "2026-05-21",
-        "pessoaId": "mpfpu15hz2x",
-        "pessoaNome": "Joao GCM",
-        "pessoaSetor": "GCM",
-        "pratoId": "mpfps4fvaf1",
-        "pratoNome": "Frango Grelhado",
-        "pratoValor": 25.5,
-        "acTotal": 0,
-        "totalPedido": 25.5,
-        "acomps": [
-          {
-            "nome": "Feijao Carioca",
-            "valor": 0
-          },
-          {
-            "nome": "Farofa",
-            "valor": 0
-          },
-          {
-            "nome": "Batata Frita",
-            "valor": 0
-          }
-        ],
-        "bebidas": [
-          {
-            "nome": "Guarana Pet 200 ml",
-            "valor": 0
-          }
-        ],
-        "obs": "",
-        "criadoEm": "2026-05-21T17:04:03.606Z"
-      },
-      {
-        "id": "mpft1kca752",
-        "data": "2026-05-21",
-        "pessoaId": "mpfpu15hz2x",
-        "pessoaNome": "Joao GCM",
-        "pessoaSetor": "GCM",
-        "pratoId": "mpfps4fvaf1",
-        "pratoNome": "Frango Grelhado",
-        "pratoValor": 25.5,
-        "acTotal": 0,
-        "totalPedido": 25.5,
-        "acomps": [
-          {
-            "nome": "Arroz Branco",
-            "valor": 0
-          },
-          {
-            "nome": "Feijao Carioca",
-            "valor": 0
-          },
-          {
-            "nome": "Farofa",
-            "valor": 0
-          }
-        ],
-        "bebidas": [],
-        "obs": "bem passado",
-        "criadoEm": "2026-05-21T18:09:03.035Z"
-      },
-      {
-        "id": "mpft3jce480",
-        "data": "2026-05-21",
-        "pessoaId": "mpfpu15hz2x",
-        "pessoaNome": "Joao GCM",
-        "pessoaSetor": "GCM",
-        "pratoId": "mpfps4fvaf1",
-        "pratoNome": "Frango Grelhado",
-        "pratoValor": 25.5,
-        "acTotal": 0,
-        "totalPedido": 25.5,
-        "acomps": [
-          {
-            "nome": "Arroz Branco",
-            "valor": 0
-          },
-          {
-            "nome": "Feijao Carioca",
-            "valor": 0
-          },
-          {
-            "nome": "Batata Frita",
-            "valor": 0
-          }
-        ],
-        "bebidas": [
-          {
-            "nome": "Guarana Pet 200 ml",
-            "valor": 0
-          }
-        ],
-        "obs": "",
-        "criadoEm": "2026-05-21T18:10:35.054Z"
-      },
-      {
-        "id": "mpft49uk4la",
-        "data": "2026-05-21",
-        "pessoaId": "mpfpudl7jkx",
-        "pessoaNome": "Maria",
-        "pessoaSetor": "ECO",
-        "pratoId": "mpfptqnmsnv",
-        "pratoNome": "Calabresa Fatiada",
-        "pratoValor": 25.5,
-        "acTotal": 0,
-        "totalPedido": 25.5,
-        "acomps": [],
-        "bebidas": [],
-        "obs": "",
-        "criadoEm": "2026-05-21T18:11:09.404Z"
-      },
-      {
-        "id": "mpft83orpeq",
-        "data": "2026-05-21",
-        "pessoaId": "mpfpu61iuit",
-        "pessoaNome": "Simone",
-        "pessoaSetor": "MKT",
-        "pratoId": "mpfps4fvaf1",
-        "pratoNome": "Frango Grelhado",
-        "pratoValor": 25.5,
-        "acTotal": 0,
-        "totalPedido": 25.5,
-        "acomps": [
-          {
-            "nome": "Arroz Branco",
-            "valor": 0
-          },
-          {
-            "nome": "Feijao Carioca",
-            "valor": 0
-          },
-          {
-            "nome": "Batata Frita",
-            "valor": 0
-          }
-        ],
-        "bebidas": [
-          {
-            "nome": "Pepsi Pet 200 ml",
-            "valor": 0
-          }
-        ],
-        "obs": "",
-        "criadoEm": "2026-05-21T18:14:08.043Z"
-      },
-      {
         "id": "mqtlba5fhjd",
         "data": "2026-06-25",
         "pessoaId": "mpcn173hnct",
@@ -33652,6 +33342,462 @@
         "criadoEm": "2026-07-01T00:50:12.733Z"
       },
       {
+        "id": "mr3mdu7v01n",
+        "data": "2026-07-02",
+        "pessoaId": "mpcn0bbp6ws",
+        "pessoaNome": "Fabricio",
+        "pessoaSetor": "GCM",
+        "pratoId": "mnswa802jzd",
+        "pratoNome": "File de Frango a Milaneza",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [
+          {
+            "nome": "Batata Frita",
+            "valor": 0,
+            "fixo": true
+          },
+          {
+            "nome": "Arroz",
+            "valor": 0
+          },
+          {
+            "nome": "Saladinha Express ( Alface com Cenoura Ralada )",
+            "valor": 0
+          }
+        ],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Pepsi Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "",
+        "criadoEm": "2026-07-02T14:48:48.955Z"
+      },
+      {
+        "id": "mr3me7hepsc",
+        "data": "2026-07-02",
+        "pessoaId": "mnl20hqzmj1",
+        "pessoaNome": "João da Silva",
+        "pessoaSetor": "GCM",
+        "pratoId": "mnsw24snehy",
+        "pratoNome": "Tira de Carne",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [
+          {
+            "nome": "Batata Frita",
+            "valor": 0,
+            "fixo": true
+          },
+          {
+            "nome": "Arroz",
+            "valor": 0
+          },
+          {
+            "nome": "Feijão",
+            "valor": 0
+          },
+          {
+            "nome": "Farofa",
+            "valor": 0
+          }
+        ],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Pepsi Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "",
+        "criadoEm": "2026-07-02T14:49:06.146Z"
+      },
+      {
+        "id": "mr3mehfnwun",
+        "data": "2026-07-02",
+        "pessoaId": "mnl20hqzmj1",
+        "pessoaNome": "João da Silva",
+        "pessoaSetor": "GCM",
+        "pratoId": "mnsw24snehy",
+        "pratoNome": "Tira de Carne",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [
+          {
+            "nome": "Batata Frita",
+            "valor": 0,
+            "fixo": true
+          },
+          {
+            "nome": "Arroz",
+            "valor": 0
+          },
+          {
+            "nome": "Feijão",
+            "valor": 0
+          },
+          {
+            "nome": "Farofa",
+            "valor": 0
+          }
+        ],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Pepsi Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "",
+        "criadoEm": "2026-07-02T14:49:19.043Z"
+      },
+      {
+        "id": "mr3mf3p7ab5",
+        "data": "2026-07-02",
+        "pessoaId": "mnlzal10gg4",
+        "pessoaNome": "Mauro ramos",
+        "pessoaSetor": "GCM",
+        "pratoId": "mnsw6gok9gv",
+        "pratoNome": "Linguiça Suina Caracol",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [
+          {
+            "nome": "Batata Frita",
+            "valor": 0,
+            "fixo": true
+          },
+          {
+            "nome": "Arroz",
+            "valor": 0
+          },
+          {
+            "nome": "Legumes grelhados",
+            "valor": 0
+          }
+        ],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Pepsi Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "",
+        "criadoEm": "2026-07-02T14:49:47.899Z"
+      },
+      {
+        "id": "mr3mfh6yzsl",
+        "data": "2026-07-02",
+        "pessoaId": "mnlzal10gg4",
+        "pessoaNome": "Mauro ramos",
+        "pessoaSetor": "GCM",
+        "pratoId": "mnswa802jzd",
+        "pratoNome": "File de Frango a Milaneza",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [
+          {
+            "nome": "Legumes Sautê",
+            "valor": 0,
+            "fixo": true
+          },
+          {
+            "nome": "Arroz",
+            "valor": 0
+          },
+          {
+            "nome": "Saladinha Express ( Alface com Cenoura Ralada )",
+            "valor": 0
+          }
+        ],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Pepsi Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "",
+        "criadoEm": "2026-07-02T14:50:05.386Z"
+      },
+      {
+        "id": "mr3wxr3x968",
+        "data": "2026-07-02",
+        "pessoaId": "mpcmzwed4we",
+        "pessoaNome": "Lucas",
+        "pessoaSetor": "GCM",
+        "pratoId": "mnsw24snehy",
+        "pratoNome": "Tira de Carne",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [
+          {
+            "nome": "Legumes Sautê",
+            "valor": 0,
+            "fixo": true
+          },
+          {
+            "nome": "Arroz",
+            "valor": 0
+          },
+          {
+            "nome": "Feijão",
+            "valor": 0
+          },
+          {
+            "nome": "Farofa",
+            "valor": 0
+          }
+        ],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Pepsi Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "",
+        "criadoEm": "2026-07-02T19:44:14.205Z"
+      },
+      {
+        "id": "mr449wplfpc",
+        "data": "2026-07-02",
+        "pessoaId": "mnvw8kvoej3",
+        "pessoaNome": "Lucas",
+        "pessoaSetor": "ECO",
+        "pratoId": "mnsw24snehy",
+        "pratoNome": "Tira de Carne",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [
+          {
+            "nome": "Batata Frita",
+            "valor": 0,
+            "fixo": true
+          },
+          {
+            "nome": "Arroz",
+            "valor": 0
+          },
+          {
+            "nome": "Feijão",
+            "valor": 0
+          },
+          {
+            "nome": "Farofa",
+            "valor": 0
+          }
+        ],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Pepsi Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "",
+        "criadoEm": "2026-07-02T23:09:38.649Z"
+      },
+      {
+        "id": "mr44k7ia372",
+        "data": "2026-07-02",
+        "pessoaId": "mnvw8kvoej3",
+        "pessoaNome": "Lucas",
+        "pessoaSetor": "ECO",
+        "pratoId": "mnsw24snehy",
+        "pratoNome": "Tira de Carne",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [
+          {
+            "nome": "Batata Frita",
+            "valor": 0,
+            "fixo": true
+          },
+          {
+            "nome": "Arroz",
+            "valor": 0
+          },
+          {
+            "nome": "Feijão",
+            "valor": 0
+          },
+          {
+            "nome": "Farofa",
+            "valor": 0
+          }
+        ],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Pepsi Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "",
+        "criadoEm": "2026-07-02T23:17:39.202Z"
+      },
+      {
+        "id": "mr44kp0pwaw",
+        "data": "2026-07-02",
+        "pessoaId": "mnvw8kvoej3",
+        "pessoaNome": "Lucas",
+        "pessoaSetor": "ECO",
+        "pratoId": "mnsw24snehy",
+        "pratoNome": "Tira de Carne",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [
+          {
+            "nome": "Batata Frita",
+            "valor": 0,
+            "fixo": true
+          },
+          {
+            "nome": "Arroz",
+            "valor": 0
+          },
+          {
+            "nome": "Feijão",
+            "valor": 0
+          },
+          {
+            "nome": "Farofa",
+            "valor": 0
+          }
+        ],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Pepsi Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "",
+        "criadoEm": "2026-07-02T23:18:01.897Z"
+      },
+      {
+        "id": "mr44lou1hpo",
+        "data": "2026-07-02",
+        "pessoaId": "mnvw8kvoej3",
+        "pessoaNome": "Lucas",
+        "pessoaSetor": "ECO",
+        "pratoId": "mnsw3yn5y74",
+        "pratoNome": "File de Frango Grelhado",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [
+          {
+            "nome": "Purê de Batata",
+            "valor": 0,
+            "fixo": true
+          },
+          {
+            "nome": "Arroz",
+            "valor": 0
+          },
+          {
+            "nome": "Feijão",
+            "valor": 0
+          },
+          {
+            "nome": "Farofa",
+            "valor": 0
+          }
+        ],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Guaraná Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "",
+        "criadoEm": "2026-07-02T23:18:48.313Z"
+      },
+      {
+        "id": "mr44mg7tho3",
+        "data": "2026-07-02",
+        "pessoaId": "mnvw8kvoej3",
+        "pessoaNome": "Lucas",
+        "pessoaSetor": "ECO",
+        "pratoId": "mnsw6gok9gv",
+        "pratoNome": "Linguiça Suina Caracol",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [
+          {
+            "nome": "Batata Frita",
+            "valor": 0,
+            "fixo": true
+          },
+          {
+            "nome": "Arroz",
+            "valor": 0
+          },
+          {
+            "nome": "Feijão",
+            "valor": 0
+          },
+          {
+            "nome": "Legumes grelhados",
+            "valor": 0
+          }
+        ],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Pepsi Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "",
+        "criadoEm": "2026-07-02T23:19:23.801Z"
+      },
+      {
+        "id": "mr44n623lse",
+        "data": "2026-07-02",
+        "pessoaId": "mnvw8kvoej3",
+        "pessoaNome": "Lucas",
+        "pessoaSetor": "ECO",
+        "pratoId": "mnsw7h01hzb",
+        "pratoNome": "Picanha Suina",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [
+          {
+            "nome": "Batata Frita",
+            "valor": 0,
+            "fixo": true
+          },
+          {
+            "nome": "Arroz",
+            "valor": 0
+          },
+          {
+            "nome": "Feijão",
+            "valor": 0
+          },
+          {
+            "nome": "Farofa",
+            "valor": 0
+          }
+        ],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Guaraná Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "",
+        "criadoEm": "2026-07-02T23:19:57.291Z"
+      },
+      {
         "id": "mr280mx7n2f",
         "data": "2026-07-01",
         "pessoaId": "mpcnc005z72",
@@ -34117,801 +34263,6 @@
         ],
         "obs": "",
         "criadoEm": "2026-07-01T23:43:09.689Z"
-      },
-      {
-        "id": "mr3ki9pylew",
-        "data": "2026-06-28",
-        "pessoaId": "mpcmzwed4we",
-        "pessoaNome": "Lucas",
-        "pessoaSetor": "GCM",
-        "pratoId": "mnsw24snehy",
-        "pratoNome": "Tira de Carne",
-        "pratoValor": 25.5,
-        "acTotal": 0,
-        "totalPedido": 25.5,
-        "acomps": [
-          {
-            "nome": "Batata Frita",
-            "valor": 0,
-            "fixo": true
-          },
-          {
-            "nome": "Arroz",
-            "valor": 0
-          },
-          {
-            "nome": "Feijão",
-            "valor": 0
-          },
-          {
-            "nome": "Farofa",
-            "valor": 0
-          }
-        ],
-        "bebidas": [
-          {
-            "nome": "Refrigerante PET - Pepsi Caçulinha 200 ml",
-            "valor": 0
-          }
-        ],
-        "obs": "",
-        "criadoEm": "2026-07-02T13:56:16.438Z"
-      },
-      {
-        "id": "mr3kjbidl79",
-        "data": "2026-06-28",
-        "pessoaId": "mpcmzwed4we",
-        "pessoaNome": "Lucas",
-        "pessoaSetor": "GCM",
-        "pratoId": "mnsw24snehy",
-        "pratoNome": "Tira de Carne",
-        "pratoValor": 25.5,
-        "acTotal": 0,
-        "totalPedido": 25.5,
-        "acomps": [
-          {
-            "nome": "Batata Frita",
-            "valor": 0,
-            "fixo": true
-          },
-          {
-            "nome": "Arroz",
-            "valor": 0
-          },
-          {
-            "nome": "Feijão",
-            "valor": 0
-          },
-          {
-            "nome": "Farofa",
-            "valor": 0
-          }
-        ],
-        "bebidas": [
-          {
-            "nome": "Refrigerante PET - Pepsi Caçulinha 200 ml",
-            "valor": 0
-          }
-        ],
-        "obs": "",
-        "criadoEm": "2026-07-02T13:57:05.413Z"
-      },
-      {
-        "id": "mr3kjz8s737",
-        "data": "2026-06-28",
-        "pessoaId": "mpcmzwed4we",
-        "pessoaNome": "Lucas",
-        "pessoaSetor": "GCM",
-        "pratoId": "mnsw24snehy",
-        "pratoNome": "Tira de Carne",
-        "pratoValor": 25.5,
-        "acTotal": 0,
-        "totalPedido": 25.5,
-        "acomps": [
-          {
-            "nome": "Batata Frita",
-            "valor": 0,
-            "fixo": true
-          },
-          {
-            "nome": "Arroz",
-            "valor": 0
-          },
-          {
-            "nome": "Feijão",
-            "valor": 0
-          },
-          {
-            "nome": "Farofa",
-            "valor": 0
-          }
-        ],
-        "bebidas": [
-          {
-            "nome": "Refrigerante PET - Pepsi Caçulinha 200 ml",
-            "valor": 0
-          }
-        ],
-        "obs": "",
-        "criadoEm": "2026-07-02T13:57:36.172Z"
-      },
-      {
-        "id": "mr3kkpnqhtb",
-        "data": "2026-06-28",
-        "pessoaId": "mpcmzwed4we",
-        "pessoaNome": "Lucas",
-        "pessoaSetor": "GCM",
-        "pratoId": "mnsw98q762q",
-        "pratoNome": "File de Frango Grelhado",
-        "pratoValor": 25.5,
-        "acTotal": 0,
-        "totalPedido": 25.5,
-        "acomps": [
-          {
-            "nome": "Batata Frita",
-            "valor": 0,
-            "fixo": true
-          },
-          {
-            "nome": "Arroz",
-            "valor": 0
-          },
-          {
-            "nome": "Saladinha Express ( Alface com Cenoura Ralada )",
-            "valor": 0
-          }
-        ],
-        "bebidas": [
-          {
-            "nome": "Refrigerante PET - Guaraná Caçulinha 200 ml",
-            "valor": 0
-          }
-        ],
-        "obs": "",
-        "criadoEm": "2026-07-02T13:58:10.406Z"
-      },
-      {
-        "id": "mr3klawycev",
-        "data": "2026-06-28",
-        "pessoaId": "mpcmzwed4we",
-        "pessoaNome": "Lucas",
-        "pessoaSetor": "GCM",
-        "pratoId": "mnsw98q762q",
-        "pratoNome": "File de Frango Grelhado",
-        "pratoValor": 25.5,
-        "acTotal": 0,
-        "totalPedido": 25.5,
-        "acomps": [
-          {
-            "nome": "Batata Frita",
-            "valor": 0,
-            "fixo": true
-          },
-          {
-            "nome": "Arroz",
-            "valor": 0
-          },
-          {
-            "nome": "Saladinha Express ( Alface com Cenoura Ralada )",
-            "valor": 0
-          }
-        ],
-        "bebidas": [
-          {
-            "nome": "Refrigerante PET - Guaraná Caçulinha 200 ml",
-            "valor": 0
-          }
-        ],
-        "obs": "",
-        "criadoEm": "2026-07-02T13:58:37.954Z"
-      },
-      {
-        "id": "mr3kms52419",
-        "data": "2026-06-26",
-        "pessoaId": "mpcmzwed4we",
-        "pessoaNome": "Lucas",
-        "pessoaSetor": "GCM",
-        "pratoId": "mnsw24snehy",
-        "pratoNome": "Tira de Carne",
-        "pratoValor": 25.5,
-        "acTotal": 0,
-        "totalPedido": 25.5,
-        "acomps": [
-          {
-            "nome": "Batata Frita",
-            "valor": 0,
-            "fixo": true
-          },
-          {
-            "nome": "Arroz",
-            "valor": 0
-          },
-          {
-            "nome": "Feijão",
-            "valor": 0
-          },
-          {
-            "nome": "Farofa",
-            "valor": 0
-          }
-        ],
-        "bebidas": [
-          {
-            "nome": "Refrigerante PET - Pepsi Caçulinha 200 ml",
-            "valor": 0
-          }
-        ],
-        "obs": "",
-        "criadoEm": "2026-07-02T13:59:46.934Z"
-      },
-      {
-        "id": "mr3kndxer89",
-        "data": "2026-06-26",
-        "pessoaId": "mpcmzwed4we",
-        "pessoaNome": "Lucas",
-        "pessoaSetor": "GCM",
-        "pratoId": "mnsw24snehy",
-        "pratoNome": "Tira de Carne",
-        "pratoValor": 25.5,
-        "acTotal": 0,
-        "totalPedido": 25.5,
-        "acomps": [
-          {
-            "nome": "Batata Frita",
-            "valor": 0,
-            "fixo": true
-          },
-          {
-            "nome": "Arroz",
-            "valor": 0
-          },
-          {
-            "nome": "Feijão",
-            "valor": 0
-          },
-          {
-            "nome": "Farofa",
-            "valor": 0
-          }
-        ],
-        "bebidas": [
-          {
-            "nome": "Refrigerante PET - Pepsi Caçulinha 200 ml",
-            "valor": 0
-          }
-        ],
-        "obs": "",
-        "criadoEm": "2026-07-02T14:00:15.170Z"
-      },
-      {
-        "id": "mr3ko4820p8",
-        "data": "2026-06-26",
-        "pessoaId": "mpcmzwed4we",
-        "pessoaNome": "Lucas",
-        "pessoaSetor": "GCM",
-        "pratoId": "mnsw24snehy",
-        "pratoNome": "Tira de Carne",
-        "pratoValor": 25.5,
-        "acTotal": 0,
-        "totalPedido": 25.5,
-        "acomps": [
-          {
-            "nome": "Batata Frita",
-            "valor": 0,
-            "fixo": true
-          },
-          {
-            "nome": "Arroz",
-            "valor": 0
-          },
-          {
-            "nome": "Feijão",
-            "valor": 0
-          },
-          {
-            "nome": "Farofa",
-            "valor": 0
-          }
-        ],
-        "bebidas": [
-          {
-            "nome": "Refrigerante PET - Guaraná Caçulinha 200 ml",
-            "valor": 0
-          }
-        ],
-        "obs": "",
-        "criadoEm": "2026-07-02T14:00:49.250Z"
-      },
-      {
-        "id": "mr3konux8h9",
-        "data": "2026-06-26",
-        "pessoaId": "mpcmzwed4we",
-        "pessoaNome": "Lucas",
-        "pessoaSetor": "GCM",
-        "pratoId": "mnsw98q762q",
-        "pratoNome": "File de Frango Grelhado",
-        "pratoValor": 25.5,
-        "acTotal": 0,
-        "totalPedido": 25.5,
-        "acomps": [
-          {
-            "nome": "Batata Frita",
-            "valor": 0,
-            "fixo": true
-          },
-          {
-            "nome": "Arroz",
-            "valor": 0
-          },
-          {
-            "nome": "Saladinha Express ( Alface com Cenoura Ralada )",
-            "valor": 0
-          }
-        ],
-        "bebidas": [
-          {
-            "nome": "Refrigerante PET - Guaraná Caçulinha 200 ml",
-            "valor": 0
-          }
-        ],
-        "obs": "",
-        "criadoEm": "2026-07-02T14:01:14.697Z"
-      },
-      {
-        "id": "mr3mdu7v01n",
-        "data": "2026-07-02",
-        "pessoaId": "mpcn0bbp6ws",
-        "pessoaNome": "Fabricio",
-        "pessoaSetor": "GCM",
-        "pratoId": "mnswa802jzd",
-        "pratoNome": "File de Frango a Milaneza",
-        "pratoValor": 25.5,
-        "acTotal": 0,
-        "totalPedido": 25.5,
-        "acomps": [
-          {
-            "nome": "Batata Frita",
-            "valor": 0,
-            "fixo": true
-          },
-          {
-            "nome": "Arroz",
-            "valor": 0
-          },
-          {
-            "nome": "Saladinha Express ( Alface com Cenoura Ralada )",
-            "valor": 0
-          }
-        ],
-        "bebidas": [
-          {
-            "nome": "Refrigerante PET - Pepsi Caçulinha 200 ml",
-            "valor": 0
-          }
-        ],
-        "obs": "",
-        "criadoEm": "2026-07-02T14:48:48.955Z"
-      },
-      {
-        "id": "mr3me7hepsc",
-        "data": "2026-07-02",
-        "pessoaId": "mnl20hqzmj1",
-        "pessoaNome": "João da Silva",
-        "pessoaSetor": "GCM",
-        "pratoId": "mnsw24snehy",
-        "pratoNome": "Tira de Carne",
-        "pratoValor": 25.5,
-        "acTotal": 0,
-        "totalPedido": 25.5,
-        "acomps": [
-          {
-            "nome": "Batata Frita",
-            "valor": 0,
-            "fixo": true
-          },
-          {
-            "nome": "Arroz",
-            "valor": 0
-          },
-          {
-            "nome": "Feijão",
-            "valor": 0
-          },
-          {
-            "nome": "Farofa",
-            "valor": 0
-          }
-        ],
-        "bebidas": [
-          {
-            "nome": "Refrigerante PET - Pepsi Caçulinha 200 ml",
-            "valor": 0
-          }
-        ],
-        "obs": "",
-        "criadoEm": "2026-07-02T14:49:06.146Z"
-      },
-      {
-        "id": "mr3mehfnwun",
-        "data": "2026-07-02",
-        "pessoaId": "mnl20hqzmj1",
-        "pessoaNome": "João da Silva",
-        "pessoaSetor": "GCM",
-        "pratoId": "mnsw24snehy",
-        "pratoNome": "Tira de Carne",
-        "pratoValor": 25.5,
-        "acTotal": 0,
-        "totalPedido": 25.5,
-        "acomps": [
-          {
-            "nome": "Batata Frita",
-            "valor": 0,
-            "fixo": true
-          },
-          {
-            "nome": "Arroz",
-            "valor": 0
-          },
-          {
-            "nome": "Feijão",
-            "valor": 0
-          },
-          {
-            "nome": "Farofa",
-            "valor": 0
-          }
-        ],
-        "bebidas": [
-          {
-            "nome": "Refrigerante PET - Pepsi Caçulinha 200 ml",
-            "valor": 0
-          }
-        ],
-        "obs": "",
-        "criadoEm": "2026-07-02T14:49:19.043Z"
-      },
-      {
-        "id": "mr3mf3p7ab5",
-        "data": "2026-07-02",
-        "pessoaId": "mnlzal10gg4",
-        "pessoaNome": "Mauro ramos",
-        "pessoaSetor": "GCM",
-        "pratoId": "mnsw6gok9gv",
-        "pratoNome": "Linguiça Suina Caracol",
-        "pratoValor": 25.5,
-        "acTotal": 0,
-        "totalPedido": 25.5,
-        "acomps": [
-          {
-            "nome": "Batata Frita",
-            "valor": 0,
-            "fixo": true
-          },
-          {
-            "nome": "Arroz",
-            "valor": 0
-          },
-          {
-            "nome": "Legumes grelhados",
-            "valor": 0
-          }
-        ],
-        "bebidas": [
-          {
-            "nome": "Refrigerante PET - Pepsi Caçulinha 200 ml",
-            "valor": 0
-          }
-        ],
-        "obs": "",
-        "criadoEm": "2026-07-02T14:49:47.899Z"
-      },
-      {
-        "id": "mr3mfh6yzsl",
-        "data": "2026-07-02",
-        "pessoaId": "mnlzal10gg4",
-        "pessoaNome": "Mauro ramos",
-        "pessoaSetor": "GCM",
-        "pratoId": "mnswa802jzd",
-        "pratoNome": "File de Frango a Milaneza",
-        "pratoValor": 25.5,
-        "acTotal": 0,
-        "totalPedido": 25.5,
-        "acomps": [
-          {
-            "nome": "Legumes Sautê",
-            "valor": 0,
-            "fixo": true
-          },
-          {
-            "nome": "Arroz",
-            "valor": 0
-          },
-          {
-            "nome": "Saladinha Express ( Alface com Cenoura Ralada )",
-            "valor": 0
-          }
-        ],
-        "bebidas": [
-          {
-            "nome": "Refrigerante PET - Pepsi Caçulinha 200 ml",
-            "valor": 0
-          }
-        ],
-        "obs": "",
-        "criadoEm": "2026-07-02T14:50:05.386Z"
-      },
-      {
-        "id": "mr3wxr3x968",
-        "data": "2026-07-02",
-        "pessoaId": "mpcmzwed4we",
-        "pessoaNome": "Lucas",
-        "pessoaSetor": "GCM",
-        "pratoId": "mnsw24snehy",
-        "pratoNome": "Tira de Carne",
-        "pratoValor": 25.5,
-        "acTotal": 0,
-        "totalPedido": 25.5,
-        "acomps": [
-          {
-            "nome": "Legumes Sautê",
-            "valor": 0,
-            "fixo": true
-          },
-          {
-            "nome": "Arroz",
-            "valor": 0
-          },
-          {
-            "nome": "Feijão",
-            "valor": 0
-          },
-          {
-            "nome": "Farofa",
-            "valor": 0
-          }
-        ],
-        "bebidas": [
-          {
-            "nome": "Refrigerante PET - Pepsi Caçulinha 200 ml",
-            "valor": 0
-          }
-        ],
-        "obs": "",
-        "criadoEm": "2026-07-02T19:44:14.205Z"
-      },
-      {
-        "id": "mr449wplfpc",
-        "data": "2026-07-02",
-        "pessoaId": "mnvw8kvoej3",
-        "pessoaNome": "Lucas",
-        "pessoaSetor": "ECO",
-        "pratoId": "mnsw24snehy",
-        "pratoNome": "Tira de Carne",
-        "pratoValor": 25.5,
-        "acTotal": 0,
-        "totalPedido": 25.5,
-        "acomps": [
-          {
-            "nome": "Batata Frita",
-            "valor": 0,
-            "fixo": true
-          },
-          {
-            "nome": "Arroz",
-            "valor": 0
-          },
-          {
-            "nome": "Feijão",
-            "valor": 0
-          },
-          {
-            "nome": "Farofa",
-            "valor": 0
-          }
-        ],
-        "bebidas": [
-          {
-            "nome": "Refrigerante PET - Pepsi Caçulinha 200 ml",
-            "valor": 0
-          }
-        ],
-        "obs": "",
-        "criadoEm": "2026-07-02T23:09:38.649Z"
-      },
-      {
-        "id": "mr44k7ia372",
-        "data": "2026-07-02",
-        "pessoaId": "mnvw8kvoej3",
-        "pessoaNome": "Lucas",
-        "pessoaSetor": "ECO",
-        "pratoId": "mnsw24snehy",
-        "pratoNome": "Tira de Carne",
-        "pratoValor": 25.5,
-        "acTotal": 0,
-        "totalPedido": 25.5,
-        "acomps": [
-          {
-            "nome": "Batata Frita",
-            "valor": 0,
-            "fixo": true
-          },
-          {
-            "nome": "Arroz",
-            "valor": 0
-          },
-          {
-            "nome": "Feijão",
-            "valor": 0
-          },
-          {
-            "nome": "Farofa",
-            "valor": 0
-          }
-        ],
-        "bebidas": [
-          {
-            "nome": "Refrigerante PET - Pepsi Caçulinha 200 ml",
-            "valor": 0
-          }
-        ],
-        "obs": "",
-        "criadoEm": "2026-07-02T23:17:39.202Z"
-      },
-      {
-        "id": "mr44kp0pwaw",
-        "data": "2026-07-02",
-        "pessoaId": "mnvw8kvoej3",
-        "pessoaNome": "Lucas",
-        "pessoaSetor": "ECO",
-        "pratoId": "mnsw24snehy",
-        "pratoNome": "Tira de Carne",
-        "pratoValor": 25.5,
-        "acTotal": 0,
-        "totalPedido": 25.5,
-        "acomps": [
-          {
-            "nome": "Batata Frita",
-            "valor": 0,
-            "fixo": true
-          },
-          {
-            "nome": "Arroz",
-            "valor": 0
-          },
-          {
-            "nome": "Feijão",
-            "valor": 0
-          },
-          {
-            "nome": "Farofa",
-            "valor": 0
-          }
-        ],
-        "bebidas": [
-          {
-            "nome": "Refrigerante PET - Pepsi Caçulinha 200 ml",
-            "valor": 0
-          }
-        ],
-        "obs": "",
-        "criadoEm": "2026-07-02T23:18:01.897Z"
-      },
-      {
-        "id": "mr44lou1hpo",
-        "data": "2026-07-02",
-        "pessoaId": "mnvw8kvoej3",
-        "pessoaNome": "Lucas",
-        "pessoaSetor": "ECO",
-        "pratoId": "mnsw3yn5y74",
-        "pratoNome": "File de Frango Grelhado",
-        "pratoValor": 25.5,
-        "acTotal": 0,
-        "totalPedido": 25.5,
-        "acomps": [
-          {
-            "nome": "Purê de Batata",
-            "valor": 0,
-            "fixo": true
-          },
-          {
-            "nome": "Arroz",
-            "valor": 0
-          },
-          {
-            "nome": "Feijão",
-            "valor": 0
-          },
-          {
-            "nome": "Farofa",
-            "valor": 0
-          }
-        ],
-        "bebidas": [
-          {
-            "nome": "Refrigerante PET - Guaraná Caçulinha 200 ml",
-            "valor": 0
-          }
-        ],
-        "obs": "",
-        "criadoEm": "2026-07-02T23:18:48.313Z"
-      },
-      {
-        "id": "mr44mg7tho3",
-        "data": "2026-07-02",
-        "pessoaId": "mnvw8kvoej3",
-        "pessoaNome": "Lucas",
-        "pessoaSetor": "ECO",
-        "pratoId": "mnsw6gok9gv",
-        "pratoNome": "Linguiça Suina Caracol",
-        "pratoValor": 25.5,
-        "acTotal": 0,
-        "totalPedido": 25.5,
-        "acomps": [
-          {
-            "nome": "Batata Frita",
-            "valor": 0,
-            "fixo": true
-          },
-          {
-            "nome": "Arroz",
-            "valor": 0
-          },
-          {
-            "nome": "Feijão",
-            "valor": 0
-          },
-          {
-            "nome": "Legumes grelhados",
-            "valor": 0
-          }
-        ],
-        "bebidas": [
-          {
-            "nome": "Refrigerante PET - Pepsi Caçulinha 200 ml",
-            "valor": 0
-          }
-        ],
-        "obs": "",
-        "criadoEm": "2026-07-02T23:19:23.801Z"
-      },
-      {
-        "id": "mr44n623lse",
-        "data": "2026-07-02",
-        "pessoaId": "mnvw8kvoej3",
-        "pessoaNome": "Lucas",
-        "pessoaSetor": "ECO",
-        "pratoId": "mnsw7h01hzb",
-        "pratoNome": "Picanha Suina",
-        "pratoValor": 25.5,
-        "acTotal": 0,
-        "totalPedido": 25.5,
-        "acomps": [
-          {
-            "nome": "Batata Frita",
-            "valor": 0,
-            "fixo": true
-          },
-          {
-            "nome": "Arroz",
-            "valor": 0
-          },
-          {
-            "nome": "Feijão",
-            "valor": 0
-          },
-          {
-            "nome": "Farofa",
-            "valor": 0
-          }
-        ],
-        "bebidas": [
-          {
-            "nome": "Refrigerante PET - Guaraná Caçulinha 200 ml",
-            "valor": 0
-          }
-        ],
-        "obs": "",
-        "criadoEm": "2026-07-02T23:19:57.291Z"
       },
       {
         "id": "mr53fccbiuz",
@@ -50421,6 +49772,521 @@
         ],
         "obs": "",
         "criadoEm": "2026-08-03T23:46:52.849Z"
+      },
+      {
+        "id": "msesguipdbg",
+        "data": "2026-08-03",
+        "pessoaId": "mpcn0wfpfgi",
+        "pessoaNome": "Farias",
+        "pessoaSetor": "GCM",
+        "pratoId": "mnswbir0bvo",
+        "pratoNome": "File de Frango a Milanesa com Massa Fettutine e Molho Pomodoro",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Pepsi Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "",
+        "criadoEm": "2026-08-04T15:04:17.281Z"
+      },
+      {
+        "id": "mseth26vszw",
+        "data": "2026-08-04",
+        "pessoaId": "mpcn1izp53i",
+        "pessoaNome": "Leonard",
+        "pessoaSetor": "GCM",
+        "pratoId": "mnsw24snehy",
+        "pratoNome": "Tira de Carne",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [
+          {
+            "nome": "Batata Frita",
+            "valor": 0,
+            "fixo": true
+          },
+          {
+            "nome": "Arroz",
+            "valor": 0
+          },
+          {
+            "nome": "Feijão",
+            "valor": 0
+          },
+          {
+            "nome": "Farofa",
+            "valor": 0
+          }
+        ],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Guaraná Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "",
+        "criadoEm": "2026-08-04T15:32:26.839Z"
+      },
+      {
+        "id": "msetyo4e11m",
+        "data": "2026-08-04",
+        "pessoaId": "mpcn0kklpwq",
+        "pessoaNome": "Ivy",
+        "pessoaSetor": "GCM",
+        "pratoId": "mnsw24snehy",
+        "pratoNome": "Tira de Carne",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [
+          {
+            "nome": "Batata Frita",
+            "valor": 0,
+            "fixo": true
+          },
+          {
+            "nome": "Arroz",
+            "valor": 0
+          },
+          {
+            "nome": "Feijão",
+            "valor": 0
+          },
+          {
+            "nome": "Farofa",
+            "valor": 0
+          }
+        ],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Guaraná Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "",
+        "criadoEm": "2026-08-04T15:46:08.414Z"
+      },
+      {
+        "id": "msetz1t2tst",
+        "data": "2026-08-04",
+        "pessoaId": "mpcn0kklpwq",
+        "pessoaNome": "Ivy",
+        "pessoaSetor": "GCM",
+        "pratoId": "mnsw4yttpnw",
+        "pratoNome": "Calabresa Fatiada",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [
+          {
+            "nome": "Batata Frita",
+            "valor": 0,
+            "fixo": true
+          },
+          {
+            "nome": "Arroz",
+            "valor": 0
+          },
+          {
+            "nome": "Feijão",
+            "valor": 0
+          },
+          {
+            "nome": "Farofa",
+            "valor": 0
+          }
+        ],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Guaraná Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "",
+        "criadoEm": "2026-08-04T15:46:26.150Z"
+      },
+      {
+        "id": "msev4akmepq",
+        "data": "2026-08-04",
+        "pessoaId": "mnne78giak5",
+        "pessoaNome": "Jean",
+        "pessoaSetor": "GCM",
+        "pratoId": "mnswbir0bvo",
+        "pratoNome": "File de Frango a Milanesa com Massa Fettutine e Molho Pomodoro",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Guaraná Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "Tirar o amilanesa e colocar top side em tiras",
+        "criadoEm": "2026-08-04T16:18:30.406Z"
+      },
+      {
+        "id": "msev7f3hq6n",
+        "data": "2026-08-04",
+        "pessoaId": "mpcnc005z72",
+        "pessoaNome": "Denize",
+        "pessoaSetor": "GCM",
+        "pratoId": "mnswbir0bvo",
+        "pratoNome": "File de Frango a Milanesa com Massa Fettutine e Molho Pomodoro",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Guaraná Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "top side",
+        "criadoEm": "2026-08-04T16:20:56.237Z"
+      },
+      {
+        "id": "msev7ustgw2",
+        "data": "2026-08-04",
+        "pessoaId": "mpcnc005z72",
+        "pessoaNome": "Denize",
+        "pessoaSetor": "GCM",
+        "pratoId": "mnsw3yn5y74",
+        "pratoNome": "File de Frango Grelhado",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [
+          {
+            "nome": "Batata Frita",
+            "valor": 0,
+            "fixo": true
+          },
+          {
+            "nome": "Arroz",
+            "valor": 0
+          },
+          {
+            "nome": "Feijão",
+            "valor": 0
+          },
+          {
+            "nome": "Farofa",
+            "valor": 0
+          }
+        ],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Guaraná Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "",
+        "criadoEm": "2026-08-04T16:21:16.589Z"
+      },
+      {
+        "id": "msev89zyr18",
+        "data": "2026-08-04",
+        "pessoaId": "mpcnc005z72",
+        "pessoaNome": "Denize",
+        "pessoaSetor": "GCM",
+        "pratoId": "mnsw24snehy",
+        "pratoNome": "Tira de Carne",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [
+          {
+            "nome": "Batata Frita",
+            "valor": 0,
+            "fixo": true
+          },
+          {
+            "nome": "Arroz",
+            "valor": 0
+          },
+          {
+            "nome": "Feijão",
+            "valor": 0
+          },
+          {
+            "nome": "Farofa",
+            "valor": 0
+          }
+        ],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Guaraná Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "",
+        "criadoEm": "2026-08-04T16:21:36.286Z"
+      },
+      {
+        "id": "msevc6idufv",
+        "data": "2026-08-04",
+        "pessoaId": "mpcn2mf1g4q",
+        "pessoaNome": "Nunes",
+        "pessoaSetor": "GCM",
+        "pratoId": "mnsw24snehy",
+        "pratoNome": "Tira de Carne",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [
+          {
+            "nome": "Batata Frita",
+            "valor": 0,
+            "fixo": true
+          },
+          {
+            "nome": "Arroz",
+            "valor": 0
+          },
+          {
+            "nome": "Feijão",
+            "valor": 0
+          },
+          {
+            "nome": "Farofa",
+            "valor": 0
+          }
+        ],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Guaraná Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "",
+        "criadoEm": "2026-08-04T16:24:38.389Z"
+      },
+      {
+        "id": "msevci6tmb9",
+        "data": "2026-08-04",
+        "pessoaId": "mpcn2mf1g4q",
+        "pessoaNome": "Nunes",
+        "pessoaSetor": "GCM",
+        "pratoId": "mnsw3yn5y74",
+        "pratoNome": "File de Frango Grelhado",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [
+          {
+            "nome": "Batata Frita",
+            "valor": 0,
+            "fixo": true
+          },
+          {
+            "nome": "Arroz",
+            "valor": 0
+          },
+          {
+            "nome": "Feijão",
+            "valor": 0
+          },
+          {
+            "nome": "Farofa",
+            "valor": 0
+          }
+        ],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Guaraná Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "",
+        "criadoEm": "2026-08-04T16:24:53.525Z"
+      },
+      {
+        "id": "msewu34ccai",
+        "data": "2026-08-04",
+        "pessoaId": "ms4udsdqau0",
+        "pessoaNome": "Exposição de Veteramos - Exercito",
+        "pessoaSetor": "MKT",
+        "pratoId": "mnswa802jzd",
+        "pratoNome": "File de Frango a Milaneza",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [
+          {
+            "nome": "Batata Frita",
+            "valor": 0,
+            "fixo": true
+          },
+          {
+            "nome": "Arroz",
+            "valor": 0
+          },
+          {
+            "nome": "Saladinha Express ( Alface com Cenoura Ralada )",
+            "valor": 0
+          }
+        ],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Guaraná Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "",
+        "criadoEm": "2026-08-04T17:06:33.420Z"
+      },
+      {
+        "id": "mseyrmw2xe6",
+        "data": "2026-08-04",
+        "pessoaId": "ms4udsdqau0",
+        "pessoaNome": "Exposição de Veteramos - Exercito",
+        "pessoaSetor": "MKT",
+        "pratoId": "mnswa802jzd",
+        "pratoNome": "File de Frango a Milaneza",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [
+          {
+            "nome": "Batata Frita",
+            "valor": 0,
+            "fixo": true
+          },
+          {
+            "nome": "Arroz",
+            "valor": 0
+          },
+          {
+            "nome": "Saladinha Express ( Alface com Cenoura Ralada )",
+            "valor": 0
+          }
+        ],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Guaraná Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "",
+        "criadoEm": "2026-08-04T18:00:38.306Z"
+      },
+      {
+        "id": "mseyt2qpek7",
+        "data": "2026-08-04",
+        "pessoaId": "ms4udsdqau0",
+        "pessoaNome": "Exposição de Veteramos - Exercito",
+        "pessoaSetor": "MKT",
+        "pratoId": "mnsw24snehy",
+        "pratoNome": "Tira de Carne",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [
+          {
+            "nome": "Batata Frita",
+            "valor": 0,
+            "fixo": true
+          },
+          {
+            "nome": "Arroz",
+            "valor": 0
+          },
+          {
+            "nome": "Feijão",
+            "valor": 0
+          }
+        ],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Guaraná Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "",
+        "criadoEm": "2026-08-04T18:01:45.505Z"
+      },
+      {
+        "id": "mseze2fdcsd",
+        "data": "2026-08-04",
+        "pessoaId": "ms4udsdqau0",
+        "pessoaNome": "Exposição de Veteramos - Exercito",
+        "pessoaSetor": "MKT",
+        "pratoId": "mnsw6gok9gv",
+        "pratoNome": "Linguiça Suina Caracol",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [
+          {
+            "nome": "Batata Frita",
+            "valor": 0,
+            "fixo": true
+          },
+          {
+            "nome": "Arroz",
+            "valor": 0
+          },
+          {
+            "nome": "Feijão",
+            "valor": 0
+          }
+        ],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Guaraná Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "",
+        "criadoEm": "2026-08-04T18:18:04.873Z"
+      },
+      {
+        "id": "msf0ut0fqxu",
+        "data": "2026-08-04",
+        "pessoaId": "ms4udsdqau0",
+        "pessoaNome": "Exposição de Veteramos - Exercito",
+        "pessoaSetor": "MKT",
+        "pratoId": "mnsw7h01hzb",
+        "pratoNome": "Picanha Suina",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [
+          {
+            "nome": "Batata Frita",
+            "valor": 0,
+            "fixo": true
+          },
+          {
+            "nome": "Arroz",
+            "valor": 0
+          },
+          {
+            "nome": "Feijão",
+            "valor": 0
+          },
+          {
+            "nome": "Farofa",
+            "valor": 0
+          }
+        ],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Guaraná Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "",
+        "criadoEm": "2026-08-04T18:59:05.439Z"
       }
     ]
   }
