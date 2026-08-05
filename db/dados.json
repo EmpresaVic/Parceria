@@ -1,7 +1,7 @@
 {
   "app": "controle-refeicoes-parceria-plaza",
   "versaoFormato": 1,
-  "atualizadoEm": "2026-08-05T14:15:33.294Z",
+  "atualizadoEm": "2026-08-05T14:59:14.246Z",
   "chaves": {
     "mp2_pessoas": [
       {
@@ -50582,6 +50582,80 @@
         ],
         "obs": "",
         "criadoEm": "2026-08-05T14:15:26.075Z"
+      },
+      {
+        "id": "msg66l2q6n4",
+        "data": "2026-08-05",
+        "pessoaId": "mqb19ic0at2",
+        "pessoaNome": "francisco",
+        "pessoaSetor": "MKT",
+        "pratoId": "mnsw6gok9gv",
+        "pratoNome": "Linguiça Suina Caracol",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [
+          {
+            "nome": "Batata Frita",
+            "valor": 0,
+            "fixo": true
+          },
+          {
+            "nome": "Arroz",
+            "valor": 0
+          },
+          {
+            "nome": "Legumes grelhados",
+            "valor": 0
+          }
+        ],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Pepsi Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "",
+        "criadoEm": "2026-08-05T14:15:59.282Z"
+      },
+      {
+        "id": "msg7q1rpv7j",
+        "data": "2026-08-05",
+        "pessoaId": "mpcnc005z72",
+        "pessoaNome": "Denize",
+        "pessoaSetor": "GCM",
+        "pratoId": "mnsw24snehy",
+        "pratoNome": "Tira de Carne",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [
+          {
+            "nome": "Batata Frita",
+            "valor": 0,
+            "fixo": true
+          },
+          {
+            "nome": "Arroz",
+            "valor": 0
+          },
+          {
+            "nome": "Feijão",
+            "valor": 0
+          },
+          {
+            "nome": "Farofa",
+            "valor": 0
+          }
+        ],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Pepsi Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "",
+        "criadoEm": "2026-08-05T14:59:06.997Z"
       }
     ]
   }
