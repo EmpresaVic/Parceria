@@ -1,7 +1,7 @@
 {
   "app": "controle-refeicoes-parceria-plaza",
   "versaoFormato": 1,
-  "atualizadoEm": "2026-08-06T00:49:32.212Z",
+  "atualizadoEm": "2026-08-06T15:29:22.265Z",
   "chaves": {
     "mp2_pessoas": [
       {
@@ -51264,6 +51264,40 @@
         ],
         "obs": "",
         "criadoEm": "2026-08-06T00:49:24.971Z"
+      },
+      {
+        "id": "msho8nlzu49",
+        "data": "2026-08-06",
+        "pessoaId": "ms4udsdqau0",
+        "pessoaNome": "Exposição de Veteramos - Exercito",
+        "pessoaSetor": "MKT",
+        "pratoId": "mnsw24snehy",
+        "pratoNome": "Tira de Carne",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [
+          {
+            "nome": "Batata Frita",
+            "valor": 0,
+            "fixo": true
+          },
+          {
+            "nome": "Arroz",
+            "valor": 0
+          },
+          {
+            "nome": "Feijão",
+            "valor": 0
+          },
+          {
+            "nome": "Farofa",
+            "valor": 0
+          }
+        ],
+        "bebidas": [],
+        "obs": "",
+        "criadoEm": "2026-08-06T15:29:15.144Z"
       }
     ]
   }
