@@ -1,7 +1,7 @@
 {
   "app": "controle-refeicoes-parceria-plaza",
   "versaoFormato": 1,
-  "atualizadoEm": "2026-08-06T00:48:26.423Z",
+  "atualizadoEm": "2026-08-06T00:49:32.212Z",
   "chaves": {
     "mp2_pessoas": [
       {
@@ -51151,6 +51151,119 @@
         ],
         "obs": "",
         "criadoEm": "2026-08-06T00:48:19.052Z"
+      },
+      {
+        "id": "msgssjyj5mm",
+        "data": "2026-08-05",
+        "pessoaId": "mnvw8kvoej3",
+        "pessoaNome": "Lucas",
+        "pessoaSetor": "ECO",
+        "pratoId": "mnsw6gok9gv",
+        "pratoNome": "Linguiça Suina Caracol",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [
+          {
+            "nome": "Batata Frita",
+            "valor": 0,
+            "fixo": true
+          },
+          {
+            "nome": "Arroz",
+            "valor": 0
+          },
+          {
+            "nome": "Feijão",
+            "valor": 0
+          }
+        ],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Guaraná Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "",
+        "criadoEm": "2026-08-06T00:48:55.819Z"
+      },
+      {
+        "id": "msgssvrphzh",
+        "data": "2026-08-05",
+        "pessoaId": "mpcnewrxhra",
+        "pessoaNome": "Joao Soares",
+        "pessoaSetor": "ECO",
+        "pratoId": "mnsw7h01hzb",
+        "pratoNome": "Picanha Suina",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [
+          {
+            "nome": "Batata Frita",
+            "valor": 0,
+            "fixo": true
+          },
+          {
+            "nome": "Arroz",
+            "valor": 0
+          },
+          {
+            "nome": "Feijão",
+            "valor": 0
+          },
+          {
+            "nome": "Farofa",
+            "valor": 0
+          }
+        ],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Guaraná Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "",
+        "criadoEm": "2026-08-06T00:49:11.125Z"
+      },
+      {
+        "id": "msgst6gb116",
+        "data": "2026-08-05",
+        "pessoaId": "mnvw8kvoej3",
+        "pessoaNome": "Lucas",
+        "pessoaSetor": "ECO",
+        "pratoId": "mnsw7h01hzb",
+        "pratoNome": "Picanha Suina",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [
+          {
+            "nome": "Batata Frita",
+            "valor": 0,
+            "fixo": true
+          },
+          {
+            "nome": "Arroz",
+            "valor": 0
+          },
+          {
+            "nome": "Feijão",
+            "valor": 0
+          },
+          {
+            "nome": "Farofa",
+            "valor": 0
+          }
+        ],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Guaraná Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "",
+        "criadoEm": "2026-08-06T00:49:24.971Z"
       }
     ]
   }
