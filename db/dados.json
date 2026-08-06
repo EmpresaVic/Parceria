@@ -1,7 +1,7 @@
 {
   "app": "controle-refeicoes-parceria-plaza",
   "versaoFormato": 1,
-  "atualizadoEm": "2026-08-06T15:52:38.981Z",
+  "atualizadoEm": "2026-08-06T15:59:09.265Z",
   "chaves": {
     "mp2_pessoas": [
       {
@@ -51376,6 +51376,79 @@
         ],
         "obs": "",
         "criadoEm": "2026-08-06T15:52:31.659Z"
+      },
+      {
+        "id": "mshp2x9fpux",
+        "data": "2026-08-06",
+        "pessoaId": "mpcn1izp53i",
+        "pessoaNome": "Leonard",
+        "pessoaSetor": "GCM",
+        "pratoId": "mnsw24snehy",
+        "pratoNome": "Tira de Carne",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [
+          {
+            "nome": "Batata Frita",
+            "valor": 0,
+            "fixo": true
+          },
+          {
+            "nome": "Arroz",
+            "valor": 0
+          },
+          {
+            "nome": "Feijão",
+            "valor": 0
+          },
+          {
+            "nome": "Farofa",
+            "valor": 0
+          }
+        ],
+        "bebidas": [
+          {
+            "nome": "Copo de Água 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "",
+        "criadoEm": "2026-08-06T15:52:47.332Z"
+      },
+      {
+        "id": "mshpayo4h4e",
+        "data": "2026-08-06",
+        "pessoaId": "mpcn0bbp6ws",
+        "pessoaNome": "Fabricio",
+        "pessoaSetor": "GCM",
+        "pratoId": "mnsw3yn5y74",
+        "pratoNome": "File de Frango Grelhado",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [
+          {
+            "nome": "Batata Frita",
+            "valor": 0,
+            "fixo": true
+          },
+          {
+            "nome": "Arroz",
+            "valor": 0
+          },
+          {
+            "nome": "Feijão",
+            "valor": 0
+          },
+          {
+            "nome": "Farofa",
+            "valor": 0
+          }
+        ],
+        "bebidas": [],
+        "obs": "",
+        "criadoEm": "2026-08-06T15:59:02.404Z"
       }
     ]
   }
