@@ -1,7 +1,7 @@
 {
   "app": "controle-refeicoes-parceria-plaza",
   "versaoFormato": 1,
-  "atualizadoEm": "2026-08-08T17:13:48.424Z",
+  "atualizadoEm": "2026-08-08T19:07:54.405Z",
   "chaves": {
     "mp2_pessoas": [
       {
@@ -53032,6 +53032,41 @@
         ],
         "obs": "",
         "criadoEm": "2026-08-08T17:13:41.081Z"
+      },
+      {
+        "id": "mskqxe8wq0o",
+        "data": "2026-08-08",
+        "pessoaId": "ms4udsdqau0",
+        "pessoaNome": "Exposição de Veteramos - Exercito",
+        "pessoaSetor": "MKT",
+        "pratoId": "mnsw98q762q",
+        "pratoNome": "File de Frango Grelhado",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [
+          {
+            "nome": "Purê de Batata",
+            "valor": 0,
+            "fixo": true
+          },
+          {
+            "nome": "Arroz",
+            "valor": 0
+          },
+          {
+            "nome": "Saladinha Express ( Alface com Cenoura Ralada )",
+            "valor": 0
+          }
+        ],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Guaraná Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "",
+        "criadoEm": "2026-08-08T19:07:47.168Z"
       }
     ]
   }
