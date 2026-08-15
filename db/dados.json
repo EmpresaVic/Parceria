@@ -1,7 +1,7 @@
 {
   "app": "controle-refeicoes-parceria-plaza",
   "versaoFormato": 1,
-  "atualizadoEm": "2026-08-15T23:47:45.687Z",
+  "atualizadoEm": "2026-08-15T23:49:22.196Z",
   "chaves": {
     "mp2_pessoas": [
       {
@@ -56519,6 +56519,66 @@
         ],
         "obs": "",
         "criadoEm": "2026-08-15T23:47:38.775Z"
+      },
+      {
+        "id": "msv114lzcv9",
+        "data": "2026-08-15",
+        "pessoaId": "msuw4vws43r",
+        "pessoaNome": "Baladacar - Evangelismo",
+        "pessoaSetor": "MKT",
+        "pratoId": "mnswc415kg0",
+        "pratoNome": "Salada Montana Inteira",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Guaraná Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "",
+        "criadoEm": "2026-08-15T23:48:19.223Z"
+      },
+      {
+        "id": "msv12brzdvu",
+        "data": "2026-08-15",
+        "pessoaId": "msuw4vws43r",
+        "pessoaNome": "Baladacar - Evangelismo",
+        "pessoaSetor": "MKT",
+        "pratoId": "mnsw3yn5y74",
+        "pratoNome": "File de Frango Grelhado",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [
+          {
+            "nome": "Batata Frita",
+            "valor": 0,
+            "fixo": true
+          },
+          {
+            "nome": "Arroz",
+            "valor": 0
+          },
+          {
+            "nome": "Feijão",
+            "valor": 0
+          },
+          {
+            "nome": "Farofa",
+            "valor": 0
+          }
+        ],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Guaraná Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "",
+        "criadoEm": "2026-08-15T23:49:15.167Z"
       }
     ]
   }
