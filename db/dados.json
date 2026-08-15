@@ -1,7 +1,7 @@
 {
   "app": "controle-refeicoes-parceria-plaza",
   "versaoFormato": 1,
-  "atualizadoEm": "2026-08-15T17:13:48.578Z",
+  "atualizadoEm": "2026-08-15T21:31:23.827Z",
   "chaves": {
     "mp2_pessoas": [
       {
@@ -413,6 +413,11 @@
         "id": "ms93wc6qaj9",
         "nome": "leonardi",
         "setor": "GCM"
+      },
+      {
+        "id": "msuw4vws43r",
+        "nome": "Baladacar - Evangelismo",
+        "setor": "MKT"
       }
     ],
     "mp2_pratos": [
