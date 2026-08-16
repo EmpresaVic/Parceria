@@ -1,7 +1,7 @@
 {
   "app": "controle-refeicoes-parceria-plaza",
   "versaoFormato": 1,
-  "atualizadoEm": "2026-08-16T12:49:25.806Z",
+  "atualizadoEm": "2026-08-16T16:00:22.365Z",
   "chaves": {
     "mp2_pessoas": [
       {
@@ -56723,6 +56723,40 @@
         ],
         "obs": "",
         "criadoEm": "2026-08-15T23:53:12.390Z"
+      },
+      {
+        "id": "msvzr1bsm7n",
+        "data": "2026-08-16",
+        "pessoaId": "mq8bgsi9x9r",
+        "pessoaNome": "lucas",
+        "pessoaSetor": "GCM",
+        "pratoId": "mnsw24snehy",
+        "pratoNome": "Tira de Carne",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [
+          {
+            "nome": "Arroz",
+            "valor": 0
+          },
+          {
+            "nome": "Feijão",
+            "valor": 0
+          },
+          {
+            "nome": "Farofa",
+            "valor": 0
+          }
+        ],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Pepsi Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "",
+        "criadoEm": "2026-08-16T16:00:14.968Z"
       }
     ]
   }
