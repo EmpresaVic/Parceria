@@ -1,7 +1,7 @@
 {
   "app": "controle-refeicoes-parceria-plaza",
   "versaoFormato": 1,
-  "atualizadoEm": "2026-08-15T23:52:52.929Z",
+  "atualizadoEm": "2026-08-16T12:49:25.806Z",
   "chaves": {
     "mp2_pessoas": [
       {
@@ -56692,6 +56692,37 @@
         ],
         "obs": "",
         "criadoEm": "2026-08-15T23:52:45.950Z"
+      },
+      {
+        "id": "msv17etisr0",
+        "data": "2026-08-15",
+        "pessoaId": "msuw4vws43r",
+        "pessoaNome": "Baladacar - Evangelismo",
+        "pessoaSetor": "MKT",
+        "pratoId": "mnswa802jzd",
+        "pratoNome": "File de Frango a Milaneza",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [
+          {
+            "nome": "Batata Frita",
+            "valor": 0,
+            "fixo": true
+          },
+          {
+            "nome": "Arroz",
+            "valor": 0
+          }
+        ],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Pepsi Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "",
+        "criadoEm": "2026-08-15T23:53:12.390Z"
       }
     ]
   }
