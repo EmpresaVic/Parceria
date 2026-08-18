@@ -1,7 +1,7 @@
 {
   "app": "controle-refeicoes-parceria-plaza",
   "versaoFormato": 1,
-  "atualizadoEm": "2026-08-18T18:42:13.220Z",
+  "atualizadoEm": "2026-08-18T20:33:08.509Z",
   "chaves": {
     "mp2_pessoas": [
       {
@@ -57455,6 +57455,45 @@
         ],
         "obs": "",
         "criadoEm": "2026-08-18T18:42:05.988Z"
+      },
+      {
+        "id": "msz4dj36yf4",
+        "data": "2026-08-18",
+        "pessoaId": "mpcn1izp53i",
+        "pessoaNome": "Leonard",
+        "pessoaSetor": "GCM",
+        "pratoId": "mnsw24snehy",
+        "pratoNome": "Tira de Carne",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [
+          {
+            "nome": "Batata Frita",
+            "valor": 0,
+            "fixo": true
+          },
+          {
+            "nome": "Arroz",
+            "valor": 0
+          },
+          {
+            "nome": "Feijão",
+            "valor": 0
+          },
+          {
+            "nome": "Farofa",
+            "valor": 0
+          }
+        ],
+        "bebidas": [
+          {
+            "nome": "Copo de Água 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "",
+        "criadoEm": "2026-08-18T20:33:01.410Z"
       }
     ]
   }
