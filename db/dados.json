@@ -1,7 +1,7 @@
 {
   "app": "controle-refeicoes-parceria-plaza",
   "versaoFormato": 1,
-  "atualizadoEm": "2026-08-19T16:18:55.989Z",
+  "atualizadoEm": "2026-08-19T16:40:50.804Z",
   "chaves": {
     "mp2_pessoas": [
       {
@@ -57823,6 +57823,41 @@
         ],
         "obs": "",
         "criadoEm": "2026-08-19T16:18:48.581Z"
+      },
+      {
+        "id": "mt0binc4u2s",
+        "data": "2026-08-19",
+        "pessoaId": "mqb19ic0at2",
+        "pessoaNome": "francisco",
+        "pessoaSetor": "MKT",
+        "pratoId": "mnswa802jzd",
+        "pratoNome": "File de Frango a Milaneza",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [
+          {
+            "nome": "Batata Frita",
+            "valor": 0,
+            "fixo": true
+          },
+          {
+            "nome": "Arroz",
+            "valor": 0
+          },
+          {
+            "nome": "Saladinha Express ( Alface com Cenoura Ralada )",
+            "valor": 0
+          }
+        ],
+        "bebidas": [
+          {
+            "nome": "Copo de Água 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "",
+        "criadoEm": "2026-08-19T16:40:43.684Z"
       }
     ]
   }
