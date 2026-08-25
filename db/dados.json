@@ -1,7 +1,7 @@
 {
   "app": "controle-refeicoes-parceria-plaza",
   "versaoFormato": 1,
-  "atualizadoEm": "2026-08-25T15:18:46.686Z",
+  "atualizadoEm": "2026-08-25T15:29:29.106Z",
   "chaves": {
     "mp2_pessoas": [
       {
@@ -59493,6 +59493,45 @@
         ],
         "obs": "",
         "criadoEm": "2026-08-25T15:18:39.577Z"
+      },
+      {
+        "id": "mt8tlzjkfyb",
+        "data": "2026-08-25",
+        "pessoaId": "mpcrl9wbwb2",
+        "pessoaNome": "denise",
+        "pessoaSetor": "GCM",
+        "pratoId": "mnsw3yn5y74",
+        "pratoNome": "File de Frango Grelhado",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [
+          {
+            "nome": "Batata Frita",
+            "valor": 0,
+            "fixo": true
+          },
+          {
+            "nome": "Arroz",
+            "valor": 0
+          },
+          {
+            "nome": "Feijão",
+            "valor": 0
+          },
+          {
+            "nome": "Farofa",
+            "valor": 0
+          }
+        ],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Pepsi Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "",
+        "criadoEm": "2026-08-25T15:29:21.968Z"
       }
     ]
   }
