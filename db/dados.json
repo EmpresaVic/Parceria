@@ -1,7 +1,7 @@
 {
   "app": "controle-refeicoes-parceria-plaza",
   "versaoFormato": 1,
-  "atualizadoEm": "2026-08-29T15:26:44.879Z",
+  "atualizadoEm": "2026-08-29T15:43:31.711Z",
   "chaves": {
     "mp2_pessoas": [
       {
@@ -428,11 +428,6 @@
         "id": "mt7c83ulf3d",
         "nome": "francisco",
         "setor": "MKT"
-      },
-      {
-        "id": "mtej9vl3gja",
-        "nome": "Cleiton",
-        "setor": "GCM"
       }
     ],
     "mp2_pratos": [
@@ -61141,6 +61136,84 @@
         ],
         "obs": "",
         "criadoEm": "2026-08-29T15:21:03.760Z"
+      },
+      {
+        "id": "mteja56vcbs",
+        "data": "2026-08-29",
+        "pessoaId": "mph2g44ytlq",
+        "pessoaNome": "cleiton",
+        "pessoaSetor": "GCM",
+        "pratoId": "mnsw24snehy",
+        "pratoNome": "Tira de Carne",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [
+          {
+            "nome": "Batata Frita",
+            "valor": 0,
+            "fixo": true
+          },
+          {
+            "nome": "Arroz",
+            "valor": 0
+          },
+          {
+            "nome": "Feijão",
+            "valor": 0
+          },
+          {
+            "nome": "Farofa",
+            "valor": 0
+          }
+        ],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Pepsi Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "",
+        "criadoEm": "2026-08-29T15:26:50.311Z"
+      },
+      {
+        "id": "mtejvggojo9",
+        "data": "2026-08-29",
+        "pessoaId": "ms4udsdqau0",
+        "pessoaNome": "Exposição de Veteramos - Exercito",
+        "pessoaSetor": "MKT",
+        "pratoId": "mnsw24snehy",
+        "pratoNome": "Tira de Carne",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [
+          {
+            "nome": "Batata Frita",
+            "valor": 0,
+            "fixo": true
+          },
+          {
+            "nome": "Arroz",
+            "valor": 0
+          },
+          {
+            "nome": "Feijão",
+            "valor": 0
+          },
+          {
+            "nome": "Farofa",
+            "valor": 0
+          }
+        ],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Pepsi Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "",
+        "criadoEm": "2026-08-29T15:43:24.696Z"
       }
     ]
   }
