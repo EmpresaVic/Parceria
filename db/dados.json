@@ -1,7 +1,7 @@
 {
   "app": "controle-refeicoes-parceria-plaza",
   "versaoFormato": 1,
-  "atualizadoEm": "2026-08-30T13:52:14.766Z",
+  "atualizadoEm": "2026-08-30T14:17:25.151Z",
   "chaves": {
     "mp2_pessoas": [
       {
@@ -61701,6 +61701,45 @@
         ],
         "obs": "",
         "criadoEm": "2026-08-29T20:04:13.317Z"
+      },
+      {
+        "id": "mtfw8kdxwvz",
+        "data": "2026-08-30",
+        "pessoaId": "mpcn510d2ge",
+        "pessoaNome": "Ney",
+        "pessoaSetor": "GCM",
+        "pratoId": "mnsw24snehy",
+        "pratoNome": "Tira de Carne",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [
+          {
+            "nome": "Batata Frita",
+            "valor": 0,
+            "fixo": true
+          },
+          {
+            "nome": "Arroz",
+            "valor": 0
+          },
+          {
+            "nome": "Feijão",
+            "valor": 0
+          },
+          {
+            "nome": "Farofa",
+            "valor": 0
+          }
+        ],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Guaraná Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "",
+        "criadoEm": "2026-08-30T14:17:17.877Z"
       }
     ]
   }
