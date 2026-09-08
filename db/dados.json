@@ -1,7 +1,7 @@
 {
   "app": "controle-refeicoes-parceria-plaza",
   "versaoFormato": 1,
-  "atualizadoEm": "2026-09-08T14:53:53.558Z",
+  "atualizadoEm": "2026-09-08T15:52:57.536Z",
   "chaves": {
     "mp2_pessoas": [
       {
@@ -65293,6 +65293,41 @@
         ],
         "obs": "",
         "criadoEm": "2026-09-08T14:53:46.748Z"
+      },
+      {
+        "id": "mtsum3kamq0",
+        "data": "2026-09-08",
+        "pessoaId": "mpcn8r8lkc9",
+        "pessoaNome": "Francisco",
+        "pessoaSetor": "GCM",
+        "pratoId": "mnswa802jzd",
+        "pratoNome": "File de Frango a Milaneza",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [
+          {
+            "nome": "Legumes Sautê",
+            "valor": 0,
+            "fixo": true
+          },
+          {
+            "nome": "Arroz",
+            "valor": 0
+          },
+          {
+            "nome": "Saladinha Express ( Alface com Cenoura Ralada )",
+            "valor": 0
+          }
+        ],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Pepsi Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "FEIJAOOOO EXTRAAAA POR FAVOR",
+        "criadoEm": "2026-09-08T15:52:50.314Z"
       }
     ]
   }
