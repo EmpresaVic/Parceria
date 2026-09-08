@@ -1,7 +1,7 @@
 {
   "app": "controle-refeicoes-parceria-plaza",
   "versaoFormato": 1,
-  "atualizadoEm": "2026-09-08T14:52:25.582Z",
+  "atualizadoEm": "2026-09-08T14:53:53.558Z",
   "chaves": {
     "mp2_pessoas": [
       {
@@ -65233,6 +65233,66 @@
         ],
         "obs": "",
         "criadoEm": "2026-09-08T14:52:18.676Z"
+      },
+      {
+        "id": "mtssh0gsko8",
+        "data": "2026-09-08",
+        "pessoaId": "mpie2h129cl",
+        "pessoaNome": "vieira",
+        "pessoaSetor": "GCM",
+        "pratoId": "mnswbir0bvo",
+        "pratoNome": "File de Frango a Milanesa com Massa Fettutine e Molho Pomodoro",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Pepsi Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "Tirar o frango e colocar tiras de carne",
+        "criadoEm": "2026-09-08T14:52:53.788Z"
+      },
+      {
+        "id": "mtssi5bw5m0",
+        "data": "2026-09-08",
+        "pessoaId": "mpie2h129cl",
+        "pessoaNome": "vieira",
+        "pessoaSetor": "GCM",
+        "pratoId": "mnsw3yn5y74",
+        "pratoNome": "File de Frango Grelhado",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [
+          {
+            "nome": "Legumes Sautê",
+            "valor": 0,
+            "fixo": true
+          },
+          {
+            "nome": "Arroz",
+            "valor": 0
+          },
+          {
+            "nome": "Feijão",
+            "valor": 0
+          },
+          {
+            "nome": "Farofa",
+            "valor": 0
+          }
+        ],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Guaraná Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "",
+        "criadoEm": "2026-09-08T14:53:46.748Z"
       }
     ]
   }
