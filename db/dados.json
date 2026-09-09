@@ -1,7 +1,7 @@
 {
   "app": "controle-refeicoes-parceria-plaza",
   "versaoFormato": 1,
-  "atualizadoEm": "2026-09-09T16:58:02.669Z",
+  "atualizadoEm": "2026-09-09T22:01:32.747Z",
   "chaves": {
     "mp2_pessoas": [
       {
@@ -428,6 +428,11 @@
         "id": "mt7c83ulf3d",
         "nome": "francisco",
         "setor": "MKT"
+      },
+      {
+        "id": "mtun7yl1dj7",
+        "nome": "MARCOS",
+        "setor": "GCM"
       }
     ],
     "mp2_pratos": [
