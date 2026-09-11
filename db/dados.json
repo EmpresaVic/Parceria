@@ -1,7 +1,7 @@
 {
   "app": "controle-refeicoes-parceria-plaza",
   "versaoFormato": 1,
-  "atualizadoEm": "2026-09-11T14:52:42.439Z",
+  "atualizadoEm": "2026-09-11T15:11:49.059Z",
   "chaves": {
     "mp2_pessoas": [
       {
@@ -66398,6 +66398,27 @@
         ],
         "obs": "",
         "criadoEm": "2026-09-11T14:52:34.289Z"
+      },
+      {
+        "id": "mtx3gqwqx0z",
+        "data": "2026-09-11",
+        "pessoaId": "mnne78giak5",
+        "pessoaNome": "Jean",
+        "pessoaSetor": "GCM",
+        "pratoId": "mnswbir0bvo",
+        "pratoNome": "File de Frango a Milanesa com Massa Fettutine e Molho Pomodoro",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Pepsi Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "Tirar o amilanesa e colocar o top side em tiras",
+        "criadoEm": "2026-09-11T15:11:41.882Z"
       }
     ]
   }
