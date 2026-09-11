@@ -1,7 +1,7 @@
 {
   "app": "controle-refeicoes-parceria-plaza",
   "versaoFormato": 1,
-  "atualizadoEm": "2026-09-11T15:11:49.059Z",
+  "atualizadoEm": "2026-09-11T15:50:46.091Z",
   "chaves": {
     "mp2_pessoas": [
       {
@@ -66419,6 +66419,45 @@
         ],
         "obs": "Tirar o amilanesa e colocar o top side em tiras",
         "criadoEm": "2026-09-11T15:11:41.882Z"
+      },
+      {
+        "id": "mtx4uu4dtcx",
+        "data": "2026-09-11",
+        "pessoaId": "mpcn2mf1g4q",
+        "pessoaNome": "Nunes",
+        "pessoaSetor": "GCM",
+        "pratoId": "mnsw24snehy",
+        "pratoNome": "Tira de Carne",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [
+          {
+            "nome": "Batata Frita",
+            "valor": 0,
+            "fixo": true
+          },
+          {
+            "nome": "Arroz",
+            "valor": 0
+          },
+          {
+            "nome": "Feijão",
+            "valor": 0
+          },
+          {
+            "nome": "Farofa",
+            "valor": 0
+          }
+        ],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Pepsi Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "",
+        "criadoEm": "2026-09-11T15:50:38.845Z"
       }
     ]
   }
