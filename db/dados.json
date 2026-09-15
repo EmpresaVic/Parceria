@@ -1,7 +1,7 @@
 {
   "app": "controle-refeicoes-parceria-plaza",
   "versaoFormato": 1,
-  "atualizadoEm": "2026-09-14T16:06:26.886Z",
+  "atualizadoEm": "2026-09-15T14:37:17.830Z",
   "chaves": {
     "mp2_pessoas": [
       {
@@ -67163,6 +67163,45 @@
         ],
         "obs": "",
         "criadoEm": "2026-09-14T16:06:19.124Z"
+      },
+      {
+        "id": "mu2rzr9g23p",
+        "data": "2026-09-15",
+        "pessoaId": "mpcn8r8lkc9",
+        "pessoaNome": "Francisco",
+        "pessoaSetor": "GCM",
+        "pratoId": "mnsw6gok9gv",
+        "pratoNome": "Linguiça Suina Caracol",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [
+          {
+            "nome": "Purê de Batata",
+            "valor": 0,
+            "fixo": true
+          },
+          {
+            "nome": "Arroz",
+            "valor": 0
+          },
+          {
+            "nome": "Feijão",
+            "valor": 0
+          },
+          {
+            "nome": "Saladinha Express ( Alface com Cenoura Ralada )",
+            "valor": 0
+          }
+        ],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Guaraná Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "No lugar do pure por farofaaaaaaa",
+        "criadoEm": "2026-09-15T14:37:10.468Z"
       }
     ]
   }
