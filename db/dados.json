@@ -1,19 +1,9 @@
 {
   "app": "controle-refeicoes-parceria-plaza",
   "versaoFormato": 1,
-  "atualizadoEm": "2026-09-19T16:38:56.087Z",
+  "atualizadoEm": "2026-09-20T15:30:36.006Z",
   "chaves": {
     "mp2_pessoas": [
-      {
-        "id": "mnl20hqzmj1",
-        "nome": "João da Silva",
-        "setor": "GCM"
-      },
-      {
-        "id": "mnlzal10gg4",
-        "nome": "Mauro ramos",
-        "setor": "GCM"
-      },
       {
         "id": "mnne78giak5",
         "nome": "Jean",
@@ -28,11 +18,6 @@
         "id": "mnvw8kvoej3",
         "nome": "Lucas",
         "setor": "ECO"
-      },
-      {
-        "id": "mpcmzpm5ad8",
-        "nome": "Max",
-        "setor": "GCM"
       },
       {
         "id": "mpcmzwed4we",
@@ -90,28 +75,8 @@
         "setor": "GCM"
       },
       {
-        "id": "mpcn8yi5o49",
-        "nome": "Thais",
-        "setor": "GCM"
-      },
-      {
         "id": "mpcn95xp6ky",
         "nome": "Luis",
-        "setor": "GCM"
-      },
-      {
-        "id": "mpcn9mcd6gl",
-        "nome": "Rafaela",
-        "setor": "GCM"
-      },
-      {
-        "id": "mpcn9y9x3md",
-        "nome": "Viviane",
-        "setor": "GCM"
-      },
-      {
-        "id": "mpcna9v1rng",
-        "nome": "Elizete",
         "setor": "GCM"
       },
       {
@@ -185,11 +150,6 @@
         "setor": "GCM"
       },
       {
-        "id": "mpcrj4rfbkq",
-        "nome": "paulo henrique",
-        "setor": "GCM"
-      },
-      {
         "id": "mpcrk5a4gpd",
         "nome": "eduardo",
         "setor": "GCM"
@@ -200,18 +160,8 @@
         "setor": "GCM"
       },
       {
-        "id": "mph23wj5n7o",
-        "nome": "tais",
-        "setor": "MKT"
-      },
-      {
         "id": "mph24atlulx",
         "nome": "elizete",
-        "setor": "MKT"
-      },
-      {
-        "id": "mph24my1hf9",
-        "nome": "rafaela",
         "setor": "MKT"
       },
       {
@@ -235,28 +185,8 @@
         "setor": "GCM"
       },
       {
-        "id": "mpie907m0rm",
-        "nome": "yamato",
-        "setor": "GCM"
-      },
-      {
         "id": "mppp6mht1y3",
         "nome": "RICARDO",
-        "setor": "GCM"
-      },
-      {
-        "id": "mppp6rop298",
-        "nome": "MELISSa",
-        "setor": "GCM"
-      },
-      {
-        "id": "mpshp9azj8o",
-        "nome": "reginaldo",
-        "setor": "GCM"
-      },
-      {
-        "id": "mpt1qq8muyn",
-        "nome": "SALVADOR",
         "setor": "GCM"
       },
       {
@@ -275,18 +205,8 @@
         "setor": "GCM"
       },
       {
-        "id": "mptw7ttbods",
-        "nome": "c.gala",
-        "setor": "GCM"
-      },
-      {
         "id": "mpu075g606l",
         "nome": "rodrigo meu cao e show",
-        "setor": "MKT"
-      },
-      {
-        "id": "mq5cdqnawj0",
-        "nome": "Gabriela Sales",
         "setor": "MKT"
       },
       {
@@ -325,11 +245,6 @@
         "setor": "ECO"
       },
       {
-        "id": "mqff7495dea",
-        "nome": "Simone",
-        "setor": "MKT"
-      },
-      {
         "id": "mqvh437zkuk",
         "nome": "Felipe",
         "setor": "ECO"
@@ -348,11 +263,6 @@
         "id": "mr0rx6kjnbj",
         "nome": "vieira",
         "setor": "GCM"
-      },
-      {
-        "id": "mr0s9u771qh",
-        "nome": "derick",
-        "setor": "MKT"
       },
       {
         "id": "ms0hxcgwe7p",
@@ -432,6 +342,11 @@
       {
         "id": "mtun7yl1dj7",
         "nome": "MARCOS",
+        "setor": "GCM"
+      },
+      {
+        "id": "mu8z33ubpon",
+        "nome": "gean",
         "setor": "GCM"
       }
     ],
@@ -68637,6 +68552,144 @@
         ],
         "obs": "",
         "criadoEm": "2026-09-19T16:38:48.999Z"
+      },
+      {
+        "id": "mu8mo4f4kw2",
+        "data": "2026-09-19",
+        "pessoaId": "mpcrl9wbwb2",
+        "pessoaNome": "denise",
+        "pessoaSetor": "GCM",
+        "pratoId": "mnsw3yn5y74",
+        "pratoNome": "File de Frango Grelhado",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [
+          {
+            "nome": "Purê de Batata",
+            "valor": 0,
+            "fixo": true
+          },
+          {
+            "nome": "Arroz",
+            "valor": 0
+          },
+          {
+            "nome": "Feijão",
+            "valor": 0
+          },
+          {
+            "nome": "Farofa",
+            "valor": 0
+          }
+        ],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Guaraná Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "",
+        "criadoEm": "2026-09-19T16:54:46.624Z"
+      },
+      {
+        "id": "mu8yppblig4",
+        "data": "2026-09-19",
+        "pessoaId": "mnne78giak5",
+        "pessoaNome": "Jean",
+        "pessoaSetor": "GCM",
+        "pratoId": "mnsw24snehy",
+        "pratoNome": "Tira de Carne",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [
+          {
+            "nome": "Batata Frita",
+            "valor": 0,
+            "fixo": true
+          },
+          {
+            "nome": "Arroz",
+            "valor": 0
+          },
+          {
+            "nome": "Feijão",
+            "valor": 0
+          },
+          {
+            "nome": "Farofa",
+            "valor": 0
+          }
+        ],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Guaraná Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "",
+        "criadoEm": "2026-09-19T22:31:55.761Z"
+      },
+      {
+        "id": "mu8yq67dw09",
+        "data": "2026-09-19",
+        "pessoaId": "mnne78giak5",
+        "pessoaNome": "Jean",
+        "pessoaSetor": "GCM",
+        "pratoId": "mnswbir0bvo",
+        "pratoNome": "File de Frango a Milanesa com Massa Fettutine e Molho Pomodoro",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Guaraná Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "",
+        "criadoEm": "2026-09-19T22:32:17.641Z"
+      },
+      {
+        "id": "mu9z3kxggfl",
+        "data": "2026-09-20",
+        "pessoaId": "mpcmzwed4we",
+        "pessoaNome": "Lucas",
+        "pessoaSetor": "GCM",
+        "pratoId": "mnsw24snehy",
+        "pratoNome": "Tira de Carne",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [
+          {
+            "nome": "Batata Frita",
+            "valor": 0,
+            "fixo": true
+          },
+          {
+            "nome": "Arroz",
+            "valor": 0
+          },
+          {
+            "nome": "Feijão",
+            "valor": 0
+          },
+          {
+            "nome": "Farofa",
+            "valor": 0
+          }
+        ],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Guaraná Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "",
+        "criadoEm": "2026-09-20T15:30:29.429Z"
       }
     ]
   }
