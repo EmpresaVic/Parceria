@@ -1,7 +1,7 @@
 {
   "app": "controle-refeicoes-parceria-plaza",
   "versaoFormato": 1,
-  "atualizadoEm": "2026-09-23T16:10:48.747Z",
+  "atualizadoEm": "2026-09-23T16:29:46.282Z",
   "chaves": {
     "mp2_pessoas": [
       {
@@ -69934,6 +69934,84 @@
         ],
         "obs": "",
         "criadoEm": "2026-09-23T16:10:41.796Z"
+      },
+      {
+        "id": "mueav4wr2ec",
+        "data": "2026-09-23",
+        "pessoaId": "mpcn2mf1g4q",
+        "pessoaNome": "Nunes",
+        "pessoaSetor": "GCM",
+        "pratoId": "mnsw4yttpnw",
+        "pratoNome": "Calabresa Fatiada",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [
+          {
+            "nome": "Batata Frita",
+            "valor": 0,
+            "fixo": true
+          },
+          {
+            "nome": "Arroz",
+            "valor": 0
+          },
+          {
+            "nome": "Feijão",
+            "valor": 0
+          },
+          {
+            "nome": "Farofa",
+            "valor": 0
+          }
+        ],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Pepsi Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "",
+        "criadoEm": "2026-09-23T16:10:55.515Z"
+      },
+      {
+        "id": "muebj82449p",
+        "data": "2026-09-23",
+        "pessoaId": "mpcn0kklpwq",
+        "pessoaNome": "Ivy",
+        "pessoaSetor": "GCM",
+        "pratoId": "mnsw24snehy",
+        "pratoNome": "Tira de Carne",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [
+          {
+            "nome": "Legumes Sautê",
+            "valor": 0,
+            "fixo": true
+          },
+          {
+            "nome": "Arroz",
+            "valor": 0
+          },
+          {
+            "nome": "Feijão",
+            "valor": 0
+          },
+          {
+            "nome": "Farofa",
+            "valor": 0
+          }
+        ],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Pepsi Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "",
+        "criadoEm": "2026-09-23T16:29:39.340Z"
       }
     ]
   }
