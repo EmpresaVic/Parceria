@@ -1,7 +1,7 @@
 {
   "app": "controle-refeicoes-parceria-plaza",
   "versaoFormato": 1,
-  "atualizadoEm": "2026-09-24T23:45:50.986Z",
+  "atualizadoEm": "2026-09-24T23:47:19.373Z",
   "chaves": {
     "mp2_pessoas": [
       {
@@ -70502,6 +70502,84 @@
         ],
         "obs": "",
         "criadoEm": "2026-09-24T23:45:44.415Z"
+      },
+      {
+        "id": "mug6kbmu6j7",
+        "data": "2026-09-24",
+        "pessoaId": "mpcnewrxhra",
+        "pessoaNome": "Joao Soares",
+        "pessoaSetor": "ECO",
+        "pratoId": "mnsw24snehy",
+        "pratoNome": "Tira de Carne",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [
+          {
+            "nome": "Batata Frita",
+            "valor": 0,
+            "fixo": true
+          },
+          {
+            "nome": "Arroz",
+            "valor": 0
+          },
+          {
+            "nome": "Feijão",
+            "valor": 0
+          },
+          {
+            "nome": "Farofa",
+            "valor": 0
+          }
+        ],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Pepsi Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "",
+        "criadoEm": "2026-09-24T23:46:04.902Z"
+      },
+      {
+        "id": "mug6lrgup9p",
+        "data": "2026-09-24",
+        "pessoaId": "mpcnewrxhra",
+        "pessoaNome": "Joao Soares",
+        "pessoaSetor": "ECO",
+        "pratoId": "mnsw3yn5y74",
+        "pratoNome": "File de Frango Grelhado",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [
+          {
+            "nome": "Batata Frita",
+            "valor": 0,
+            "fixo": true
+          },
+          {
+            "nome": "Arroz",
+            "valor": 0
+          },
+          {
+            "nome": "Feijão",
+            "valor": 0
+          },
+          {
+            "nome": "Farofa",
+            "valor": 0
+          }
+        ],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Guaraná Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "",
+        "criadoEm": "2026-09-24T23:47:12.078Z"
       }
     ]
   }
