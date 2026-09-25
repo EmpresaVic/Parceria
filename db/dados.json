@@ -1,7 +1,7 @@
 {
   "app": "controle-refeicoes-parceria-plaza",
   "versaoFormato": 1,
-  "atualizadoEm": "2026-09-25T14:46:39.426Z",
+  "atualizadoEm": "2026-09-25T15:02:00.757Z",
   "chaves": {
     "mp2_pessoas": [
       {
@@ -70706,6 +70706,41 @@
         ],
         "obs": "",
         "criadoEm": "2026-09-25T14:46:32.322Z"
+      },
+      {
+        "id": "muh3a0ujw1m",
+        "data": "2026-09-25",
+        "pessoaId": "mnne78giak5",
+        "pessoaNome": "Jean",
+        "pessoaSetor": "GCM",
+        "pratoId": "mnsw6gok9gv",
+        "pratoNome": "Linguiça Suina Caracol",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [
+          {
+            "nome": "Legumes Sautê",
+            "valor": 0,
+            "fixo": true
+          },
+          {
+            "nome": "Arroz",
+            "valor": 0
+          },
+          {
+            "nome": "Feijão",
+            "valor": 0
+          }
+        ],
+        "bebidas": [
+          {
+            "nome": "Copo de Água 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "",
+        "criadoEm": "2026-09-25T15:01:51.691Z"
       }
     ]
   }
