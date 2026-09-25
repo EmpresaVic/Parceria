@@ -1,7 +1,7 @@
 {
   "app": "controle-refeicoes-parceria-plaza",
   "versaoFormato": 1,
-  "atualizadoEm": "2026-09-25T14:29:06.257Z",
+  "atualizadoEm": "2026-09-25T14:46:39.426Z",
   "chaves": {
     "mp2_pessoas": [
       {
@@ -70650,6 +70650,62 @@
         ],
         "obs": "",
         "criadoEm": "2026-09-25T14:28:57.091Z"
+      },
+      {
+        "id": "muh248ddj8o",
+        "data": "2026-09-25",
+        "pessoaId": "mqb19ic0at2",
+        "pessoaNome": "francisco",
+        "pessoaSetor": "MKT",
+        "pratoId": "mnswa802jzd",
+        "pratoNome": "File de Frango a Milaneza",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [
+          {
+            "nome": "Legumes Sautê",
+            "valor": 0,
+            "fixo": true
+          },
+          {
+            "nome": "Arroz",
+            "valor": 0
+          },
+          {
+            "nome": "Saladinha Express ( Alface com Cenoura Ralada )",
+            "valor": 0
+          }
+        ],
+        "bebidas": [
+          {
+            "nome": "Copo de Água 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "",
+        "criadoEm": "2026-09-25T14:29:21.889Z"
+      },
+      {
+        "id": "muh2qbgitmc",
+        "data": "2026-09-25",
+        "pessoaId": "mpcn173hnct",
+        "pessoaNome": "Valentin",
+        "pessoaSetor": "GCM",
+        "pratoId": "mnswbir0bvo",
+        "pratoNome": "File de Frango a Milanesa com Massa Fettutine e Molho Pomodoro",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Guaraná Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "",
+        "criadoEm": "2026-09-25T14:46:32.322Z"
       }
     ]
   }
