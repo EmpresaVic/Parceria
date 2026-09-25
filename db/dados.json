@@ -1,7 +1,7 @@
 {
   "app": "controle-refeicoes-parceria-plaza",
   "versaoFormato": 1,
-  "atualizadoEm": "2026-09-25T15:02:00.757Z",
+  "atualizadoEm": "2026-09-25T15:51:40.551Z",
   "chaves": {
     "mp2_pessoas": [
       {
@@ -70741,6 +70741,33 @@
         ],
         "obs": "",
         "criadoEm": "2026-09-25T15:01:51.691Z"
+      },
+      {
+        "id": "muh51x83bmt",
+        "data": "2026-09-25",
+        "pessoaId": "mpcn0wfpfgi",
+        "pessoaNome": "Farias",
+        "pessoaSetor": "GCM",
+        "pratoId": "mnsw4yttpnw",
+        "pratoNome": "Calabresa Fatiada",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [
+          {
+            "nome": "Legumes Sautê",
+            "valor": 0,
+            "fixo": true
+          }
+        ],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Pepsi Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "",
+        "criadoEm": "2026-09-25T15:51:32.979Z"
       }
     ]
   }
