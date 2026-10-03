@@ -1,7 +1,7 @@
 {
   "app": "controle-refeicoes-parceria-plaza",
   "versaoFormato": 1,
-  "atualizadoEm": "2026-10-03T16:58:58.695Z",
+  "atualizadoEm": "2026-10-03T18:05:18.288Z",
   "chaves": {
     "mp2_pessoas": [
       {
@@ -74033,6 +74033,45 @@
         ],
         "obs": "",
         "criadoEm": "2026-10-03T16:58:51.698Z"
+      },
+      {
+        "id": "muspckzfolm",
+        "data": "2026-10-03",
+        "pessoaId": "mnnki57fbjg",
+        "pessoaNome": "Dalila",
+        "pessoaSetor": "GCM",
+        "pratoId": "mnsw4yttpnw",
+        "pratoNome": "Calabresa Fatiada",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [
+          {
+            "nome": "Batata Frita",
+            "valor": 0,
+            "fixo": true
+          },
+          {
+            "nome": "Arroz",
+            "valor": 0
+          },
+          {
+            "nome": "Feijão",
+            "valor": 0
+          },
+          {
+            "nome": "Farofa",
+            "valor": 0
+          }
+        ],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Guaraná Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "",
+        "criadoEm": "2026-10-03T18:05:10.587Z"
       }
     ]
   }
