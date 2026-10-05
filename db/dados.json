@@ -1,7 +1,7 @@
 {
   "app": "controle-refeicoes-parceria-plaza",
   "versaoFormato": 1,
-  "atualizadoEm": "2026-10-05T14:48:15.563Z",
+  "atualizadoEm": "2026-10-05T15:34:32.059Z",
   "chaves": {
     "mp2_pessoas": [
       {
@@ -74739,6 +74739,54 @@
         ],
         "obs": "",
         "criadoEm": "2026-10-05T14:48:08.597Z"
+      },
+      {
+        "id": "muvd7d715qm",
+        "data": "2026-10-05",
+        "pessoaId": "mu8z33ubpon",
+        "pessoaNome": "gean",
+        "pessoaSetor": "GCM",
+        "pratoId": "mnsw24snehy",
+        "pratoNome": "Tira de Carne",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [
+          {
+            "nome": "Batata Frita",
+            "valor": 0,
+            "fixo": true
+          }
+        ],
+        "bebidas": [
+          {
+            "nome": "Copo de Água 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "",
+        "criadoEm": "2026-10-05T14:48:30.349Z"
+      },
+      {
+        "id": "muveuepm14e",
+        "data": "2026-10-05",
+        "pessoaId": "mpcn510d2ge",
+        "pessoaNome": "Ney",
+        "pessoaSetor": "GCM",
+        "pratoId": "mnswbir0bvo",
+        "pratoNome": "File de Frango a Milanesa com Massa Fettutine e Molho Pomodoro",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Guaraná Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "",
+        "criadoEm": "2026-10-05T15:34:25.018Z"
       }
     ]
   }
