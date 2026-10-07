@@ -1,7 +1,7 @@
 {
   "app": "controle-refeicoes-parceria-plaza",
   "versaoFormato": 1,
-  "atualizadoEm": "2026-10-07T16:09:09.483Z",
+  "atualizadoEm": "2026-10-07T16:10:12.983Z",
   "chaves": {
     "mp2_pessoas": [
       {
@@ -75674,6 +75674,66 @@
         ],
         "obs": "",
         "criadoEm": "2026-10-07T16:09:02.493Z"
+      },
+      {
+        "id": "muyaz13yn2c",
+        "data": "2026-10-07",
+        "pessoaId": "mpcn0wfpfgi",
+        "pessoaNome": "Farias",
+        "pessoaSetor": "GCM",
+        "pratoId": "mnsw24snehy",
+        "pratoNome": "Tira de Carne",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [
+          {
+            "nome": "Batata Frita",
+            "valor": 0,
+            "fixo": true
+          },
+          {
+            "nome": "Arroz",
+            "valor": 0
+          },
+          {
+            "nome": "Feijão",
+            "valor": 0
+          },
+          {
+            "nome": "Farofa",
+            "valor": 0
+          }
+        ],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Pepsi Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "",
+        "criadoEm": "2026-10-07T16:09:20.734Z"
+      },
+      {
+        "id": "muyazzr11ui",
+        "data": "2026-10-07",
+        "pessoaId": "mph2ho3uqhx",
+        "pessoaNome": "farias",
+        "pessoaSetor": "GCM",
+        "pratoId": "mnswbir0bvo",
+        "pratoNome": "File de Frango a Milanesa com Massa Fettutine e Molho Pomodoro",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Guaraná Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "",
+        "criadoEm": "2026-10-07T16:10:05.629Z"
       }
     ]
   }
