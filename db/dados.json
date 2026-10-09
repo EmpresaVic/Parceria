@@ -1,7 +1,7 @@
 {
   "app": "controle-refeicoes-parceria-plaza",
   "versaoFormato": 1,
-  "atualizadoEm": "2026-10-09T16:10:13.048Z",
+  "atualizadoEm": "2026-10-09T16:21:42.671Z",
   "chaves": {
     "mp2_pessoas": [
       {
@@ -76474,6 +76474,76 @@
         ],
         "obs": "",
         "criadoEm": "2026-10-09T16:10:05.660Z"
+      },
+      {
+        "id": "mv15wsh7jm5",
+        "data": "2026-10-09",
+        "pessoaId": "mupxouvhz5b",
+        "pessoaNome": "IDENTIDADE",
+        "pessoaSetor": "MKT",
+        "pratoId": "mnsw6gok9gv",
+        "pratoNome": "Linguiça Suina Caracol",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [
+          {
+            "nome": "Legumes Sautê",
+            "valor": 0,
+            "fixo": true
+          },
+          {
+            "nome": "Arroz",
+            "valor": 0
+          }
+        ],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Pepsi Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "",
+        "criadoEm": "2026-10-09T16:10:56.683Z"
+      },
+      {
+        "id": "mv16ahjezyr",
+        "data": "2026-10-09",
+        "pessoaId": "mpcnc005z72",
+        "pessoaNome": "Denize",
+        "pessoaSetor": "GCM",
+        "pratoId": "mnsw24snehy",
+        "pratoNome": "Tira de Carne",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [
+          {
+            "nome": "Batata Frita",
+            "valor": 0,
+            "fixo": true
+          },
+          {
+            "nome": "Arroz",
+            "valor": 0
+          },
+          {
+            "nome": "Feijão",
+            "valor": 0
+          },
+          {
+            "nome": "Farofa",
+            "valor": 0
+          }
+        ],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Pepsi Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "",
+        "criadoEm": "2026-10-09T16:21:35.690Z"
       }
     ]
   }
