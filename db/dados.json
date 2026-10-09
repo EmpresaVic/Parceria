@@ -1,7 +1,7 @@
 {
   "app": "controle-refeicoes-parceria-plaza",
   "versaoFormato": 1,
-  "atualizadoEm": "2026-10-09T20:07:24.866Z",
+  "atualizadoEm": "2026-10-09T20:38:35.611Z",
   "chaves": {
     "mp2_pessoas": [
       {
@@ -76830,6 +76830,45 @@
         ],
         "obs": "",
         "criadoEm": "2026-10-09T20:07:17.719Z"
+      },
+      {
+        "id": "mv1fgu5hedv",
+        "data": "2026-10-09",
+        "pessoaId": "mnne78giak5",
+        "pessoaNome": "Jean",
+        "pessoaSetor": "GCM",
+        "pratoId": "mnsw6gok9gv",
+        "pratoNome": "Linguiça Suina Caracol",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [
+          {
+            "nome": "Batata Frita",
+            "valor": 0,
+            "fixo": true
+          },
+          {
+            "nome": "Arroz",
+            "valor": 0
+          },
+          {
+            "nome": "Feijão",
+            "valor": 0
+          },
+          {
+            "nome": "Legumes grelhados",
+            "valor": 0
+          }
+        ],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Pepsi Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "",
+        "criadoEm": "2026-10-09T20:38:28.517Z"
       }
     ]
   }
