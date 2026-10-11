@@ -1,7 +1,7 @@
 {
   "app": "controle-refeicoes-parceria-plaza",
   "versaoFormato": 1,
-  "atualizadoEm": "2026-10-11T17:54:23.438Z",
+  "atualizadoEm": "2026-10-11T18:01:20.010Z",
   "chaves": {
     "mp2_pessoas": [
       {
@@ -78331,6 +78331,76 @@
         ],
         "obs": "",
         "criadoEm": "2026-10-11T17:54:16.555Z"
+      },
+      {
+        "id": "mv44hvm34jk",
+        "data": "2026-10-11",
+        "pessoaId": "mupxouvhz5b",
+        "pessoaNome": "IDENTIDADE",
+        "pessoaSetor": "MKT",
+        "pratoId": "mnsw24snehy",
+        "pratoNome": "Tira de Carne",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [
+          {
+            "nome": "Batata Frita",
+            "valor": 0,
+            "fixo": true
+          },
+          {
+            "nome": "Arroz",
+            "valor": 0
+          },
+          {
+            "nome": "Feijão",
+            "valor": 0
+          },
+          {
+            "nome": "Farofa",
+            "valor": 0
+          }
+        ],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Guaraná Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "",
+        "criadoEm": "2026-10-11T17:54:39.819Z"
+      },
+      {
+        "id": "mv44qagqcoo",
+        "data": "2026-10-11",
+        "pessoaId": "mv3ybrpsllw",
+        "pessoaNome": "Baladacar",
+        "pessoaSetor": "MKT",
+        "pratoId": "mnsw98q762q",
+        "pratoNome": "File de Frango Grelhado",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [
+          {
+            "nome": "Batata Frita",
+            "valor": 0,
+            "fixo": true
+          },
+          {
+            "nome": "Saladinha Express ( Alface com Cenoura Ralada )",
+            "valor": 0
+          }
+        ],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Guaraná Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "",
+        "criadoEm": "2026-10-11T18:01:12.314Z"
       }
     ]
   }
