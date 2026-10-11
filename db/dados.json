@@ -1,7 +1,7 @@
 {
   "app": "controle-refeicoes-parceria-plaza",
   "versaoFormato": 1,
-  "atualizadoEm": "2026-10-11T17:21:06.906Z",
+  "atualizadoEm": "2026-10-11T17:22:28.182Z",
   "chaves": {
     "mp2_pessoas": [
       {
@@ -78041,6 +78041,66 @@
         ],
         "obs": "",
         "criadoEm": "2026-10-11T17:20:59.862Z"
+      },
+      {
+        "id": "mv43bpl1o4s",
+        "data": "2026-10-11",
+        "pessoaId": "mv3ybrpsllw",
+        "pessoaNome": "Baladacar",
+        "pessoaSetor": "MKT",
+        "pratoId": "mnswbir0bvo",
+        "pratoNome": "File de Frango a Milanesa com Massa Fettutine e Molho Pomodoro",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Pepsi Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "",
+        "criadoEm": "2026-10-11T17:21:52.453Z"
+      },
+      {
+        "id": "mv43cbr99j4",
+        "data": "2026-10-11",
+        "pessoaId": "mv3ybrpsllw",
+        "pessoaNome": "Baladacar",
+        "pessoaSetor": "MKT",
+        "pratoId": "mnsw4yttpnw",
+        "pratoNome": "Calabresa Fatiada",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [
+          {
+            "nome": "Batata Frita",
+            "valor": 0,
+            "fixo": true
+          },
+          {
+            "nome": "Arroz",
+            "valor": 0
+          },
+          {
+            "nome": "Feijão",
+            "valor": 0
+          },
+          {
+            "nome": "Farofa",
+            "valor": 0
+          }
+        ],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Pepsi Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "",
+        "criadoEm": "2026-10-11T17:22:21.189Z"
       }
     ]
   }
