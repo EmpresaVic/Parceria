@@ -1,7 +1,7 @@
 {
   "app": "controle-refeicoes-parceria-plaza",
   "versaoFormato": 1,
-  "atualizadoEm": "2026-10-11T16:08:26.978Z",
+  "atualizadoEm": "2026-10-11T16:09:40.578Z",
   "chaves": {
     "mp2_pessoas": [
       {
@@ -77721,6 +77721,105 @@
         ],
         "obs": "",
         "criadoEm": "2026-10-11T16:08:20.131Z"
+      },
+      {
+        "id": "mv40php70i4",
+        "data": "2026-10-11",
+        "pessoaId": "mv3ybrpsllw",
+        "pessoaNome": "Baladacar",
+        "pessoaSetor": "MKT",
+        "pratoId": "mnswbir0bvo",
+        "pratoNome": "File de Frango a Milanesa com Massa Fettutine e Molho Pomodoro",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Pepsi Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "",
+        "criadoEm": "2026-10-11T16:08:36.571Z"
+      },
+      {
+        "id": "mv40q7k4q0v",
+        "data": "2026-10-11",
+        "pessoaId": "mv3ybrpsllw",
+        "pessoaNome": "Baladacar",
+        "pessoaSetor": "MKT",
+        "pratoId": "mnsw24snehy",
+        "pratoNome": "Tira de Carne",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [
+          {
+            "nome": "Batata Frita",
+            "valor": 0,
+            "fixo": true
+          },
+          {
+            "nome": "Arroz",
+            "valor": 0
+          },
+          {
+            "nome": "Feijão",
+            "valor": 0
+          },
+          {
+            "nome": "Farofa",
+            "valor": 0
+          }
+        ],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Pepsi Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "",
+        "criadoEm": "2026-10-11T16:09:10.084Z"
+      },
+      {
+        "id": "mv40qpqrroq",
+        "data": "2026-10-11",
+        "pessoaId": "mv3ybrpsllw",
+        "pessoaNome": "Baladacar",
+        "pessoaSetor": "MKT",
+        "pratoId": "mnsw24snehy",
+        "pratoNome": "Tira de Carne",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [
+          {
+            "nome": "Batata Frita",
+            "valor": 0,
+            "fixo": true
+          },
+          {
+            "nome": "Arroz",
+            "valor": 0
+          },
+          {
+            "nome": "Feijão",
+            "valor": 0
+          },
+          {
+            "nome": "Farofa",
+            "valor": 0
+          }
+        ],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Pepsi Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "",
+        "criadoEm": "2026-10-11T16:09:33.651Z"
       }
     ]
   }
