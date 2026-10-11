@@ -1,7 +1,7 @@
 {
   "app": "controle-refeicoes-parceria-plaza",
   "versaoFormato": 1,
-  "atualizadoEm": "2026-10-11T22:52:06.822Z",
+  "atualizadoEm": "2026-10-11T23:03:08.868Z",
   "chaves": {
     "mp2_pessoas": [
       {
@@ -78570,6 +78570,32 @@
         ],
         "obs": "",
         "criadoEm": "2026-10-11T22:51:59.516Z"
+      },
+      {
+        "id": "mv4fiffghgf",
+        "data": "2026-10-11",
+        "pessoaId": "mv3ybrpsllw",
+        "pessoaNome": "Baladacar",
+        "pessoaSetor": "MKT",
+        "pratoId": "mnsw6gok9gv",
+        "pratoNome": "Linguiça Suina Caracol",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [
+          {
+            "nome": "Batata Frita",
+            "valor": 0,
+            "fixo": true
+          },
+          {
+            "nome": "Arroz",
+            "valor": 0
+          }
+        ],
+        "bebidas": [],
+        "obs": "",
+        "criadoEm": "2026-10-11T23:03:01.276Z"
       }
     ]
   }
