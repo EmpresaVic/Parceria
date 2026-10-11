@@ -1,7 +1,7 @@
 {
   "app": "controle-refeicoes-parceria-plaza",
   "versaoFormato": 1,
-  "atualizadoEm": "2026-10-11T13:33:18.418Z",
+  "atualizadoEm": "2026-10-11T15:02:04.522Z",
   "chaves": {
     "mp2_pessoas": [
       {
@@ -352,6 +352,11 @@
       {
         "id": "mupxouvhz5b",
         "nome": "IDENTIDADE",
+        "setor": "MKT"
+      },
+      {
+        "id": "mv3ybrpsllw",
+        "nome": "Baladacar",
         "setor": "MKT"
       }
     ],
@@ -77498,6 +77503,27 @@
         ],
         "obs": "",
         "criadoEm": "2026-10-11T13:33:11.487Z"
+      },
+      {
+        "id": "mv3v603b7zz",
+        "data": "2026-10-11",
+        "pessoaId": "mpcn0wfpfgi",
+        "pessoaNome": "Farias",
+        "pessoaSetor": "GCM",
+        "pratoId": "mnswbir0bvo",
+        "pratoNome": "File de Frango a Milanesa com Massa Fettutine e Molho Pomodoro",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Pepsi Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "",
+        "criadoEm": "2026-10-11T13:33:29.207Z"
       }
     ]
   }
