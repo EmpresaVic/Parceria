@@ -1,7 +1,7 @@
 {
   "app": "controle-refeicoes-parceria-plaza",
   "versaoFormato": 1,
-  "atualizadoEm": "2026-10-13T00:36:17.965Z",
+  "atualizadoEm": "2026-10-13T15:58:42.710Z",
   "chaves": {
     "mp2_pessoas": [
       {
@@ -79372,6 +79372,162 @@
         ],
         "obs": "",
         "criadoEm": "2026-10-13T00:36:10.623Z"
+      },
+      {
+        "id": "mv5yadmsbmn",
+        "data": "2026-10-12",
+        "pessoaId": "mnvw8kvoej3",
+        "pessoaNome": "Lucas",
+        "pessoaSetor": "ECO",
+        "pratoId": "mnsw24snehy",
+        "pratoNome": "Tira de Carne",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [
+          {
+            "nome": "Batata Frita",
+            "valor": 0,
+            "fixo": true
+          },
+          {
+            "nome": "Arroz",
+            "valor": 0
+          },
+          {
+            "nome": "Feijão",
+            "valor": 0
+          },
+          {
+            "nome": "Farofa",
+            "valor": 0
+          }
+        ],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Pepsi Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "",
+        "criadoEm": "2026-10-13T00:36:24.580Z"
+      },
+      {
+        "id": "mv5yamocfdi",
+        "data": "2026-10-12",
+        "pessoaId": "mnvw8kvoej3",
+        "pessoaNome": "Lucas",
+        "pessoaSetor": "ECO",
+        "pratoId": "mnsw24snehy",
+        "pratoNome": "Tira de Carne",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [
+          {
+            "nome": "Batata Frita",
+            "valor": 0,
+            "fixo": true
+          },
+          {
+            "nome": "Arroz",
+            "valor": 0
+          },
+          {
+            "nome": "Feijão",
+            "valor": 0
+          },
+          {
+            "nome": "Farofa",
+            "valor": 0
+          }
+        ],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Guaraná Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "",
+        "criadoEm": "2026-10-13T00:36:36.300Z"
+      },
+      {
+        "id": "mv5yawyk3t1",
+        "data": "2026-10-12",
+        "pessoaId": "mnvw8kvoej3",
+        "pessoaNome": "Lucas",
+        "pessoaSetor": "ECO",
+        "pratoId": "mnsw3yn5y74",
+        "pratoNome": "File de Frango Grelhado",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [
+          {
+            "nome": "Batata Frita",
+            "valor": 0,
+            "fixo": true
+          },
+          {
+            "nome": "Arroz",
+            "valor": 0
+          },
+          {
+            "nome": "Feijão",
+            "valor": 0
+          },
+          {
+            "nome": "Farofa",
+            "valor": 0
+          }
+        ],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Guaraná Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "",
+        "criadoEm": "2026-10-13T00:36:49.628Z"
+      },
+      {
+        "id": "mv6v8b8crw8",
+        "data": "2026-10-13",
+        "pessoaId": "mpcn2mf1g4q",
+        "pessoaNome": "Nunes",
+        "pessoaSetor": "GCM",
+        "pratoId": "mnsw3yn5y74",
+        "pratoNome": "File de Frango Grelhado",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [
+          {
+            "nome": "Batata Frita",
+            "valor": 0,
+            "fixo": true
+          },
+          {
+            "nome": "Arroz",
+            "valor": 0
+          },
+          {
+            "nome": "Feijão",
+            "valor": 0
+          },
+          {
+            "nome": "Farofa",
+            "valor": 0
+          }
+        ],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Pepsi Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "",
+        "criadoEm": "2026-10-13T15:58:35.484Z"
       }
     ]
   }
