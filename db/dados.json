@@ -1,7 +1,7 @@
 {
   "app": "controle-refeicoes-parceria-plaza",
   "versaoFormato": 1,
-  "atualizadoEm": "2026-10-13T15:58:42.710Z",
+  "atualizadoEm": "2026-10-13T16:29:05.328Z",
   "chaves": {
     "mp2_pessoas": [
       {
@@ -357,6 +357,11 @@
       {
         "id": "mv3ybrpsllw",
         "nome": "Baladacar",
+        "setor": "MKT"
+      },
+      {
+        "id": "mv6wbdjhcmf",
+        "nome": "Camera Municipal - Bognar",
         "setor": "MKT"
       }
     ],
@@ -79528,6 +79533,45 @@
         ],
         "obs": "",
         "criadoEm": "2026-10-13T15:58:35.484Z"
+      },
+      {
+        "id": "mv6v8rl827i",
+        "data": "2026-10-13",
+        "pessoaId": "mpcn2mf1g4q",
+        "pessoaNome": "Nunes",
+        "pessoaSetor": "GCM",
+        "pratoId": "mnsw7h01hzb",
+        "pratoNome": "Picanha Suina",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [
+          {
+            "nome": "Batata Frita",
+            "valor": 0,
+            "fixo": true
+          },
+          {
+            "nome": "Arroz",
+            "valor": 0
+          },
+          {
+            "nome": "Feijão",
+            "valor": 0
+          },
+          {
+            "nome": "Farofa",
+            "valor": 0
+          }
+        ],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Pepsi Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "",
+        "criadoEm": "2026-10-13T15:58:56.684Z"
       }
     ]
   }
