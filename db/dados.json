@@ -1,7 +1,7 @@
 {
   "app": "controle-refeicoes-parceria-plaza",
   "versaoFormato": 1,
-  "atualizadoEm": "2026-10-17T23:57:48.768Z",
+  "atualizadoEm": "2026-10-17T23:58:47.574Z",
   "chaves": {
     "mp2_pessoas": [
       {
@@ -81791,6 +81791,33 @@
         ],
         "obs": "",
         "criadoEm": "2026-10-17T23:57:39.168Z"
+      },
+      {
+        "id": "mvd254608tn",
+        "data": "2026-10-17",
+        "pessoaId": "msuw4vws43r",
+        "pessoaNome": "Baladacar - Evangelismo",
+        "pessoaSetor": "MKT",
+        "pratoId": "mnsw3yn5y74",
+        "pratoNome": "File de Frango Grelhado",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [
+          {
+            "nome": "Batata Frita",
+            "valor": 0,
+            "fixo": true
+          }
+        ],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Guaraná Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "so o frango e fritassssssss",
+        "criadoEm": "2026-10-17T23:58:40.728Z"
       }
     ]
   }
