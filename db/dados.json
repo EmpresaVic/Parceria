@@ -1,7 +1,7 @@
 {
   "app": "controle-refeicoes-parceria-plaza",
   "versaoFormato": 1,
-  "atualizadoEm": "2026-10-18T00:04:23.800Z",
+  "atualizadoEm": "2026-10-18T00:05:49.685Z",
   "chaves": {
     "mp2_pessoas": [
       {
@@ -81917,6 +81917,80 @@
         ],
         "obs": "",
         "criadoEm": "2026-10-18T00:04:16.848Z"
+      },
+      {
+        "id": "mvd2cwc0cw4",
+        "data": "2026-10-17",
+        "pessoaId": "msuw4vws43r",
+        "pessoaNome": "Baladacar - Evangelismo",
+        "pessoaSetor": "MKT",
+        "pratoId": "mnswa802jzd",
+        "pratoNome": "File de Frango a Milaneza",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [
+          {
+            "nome": "Batata Frita",
+            "valor": 0,
+            "fixo": true
+          },
+          {
+            "nome": "Arroz",
+            "valor": 0
+          },
+          {
+            "nome": "Saladinha Express ( Alface com Cenoura Ralada )",
+            "valor": 0
+          }
+        ],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Guaraná Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "",
+        "criadoEm": "2026-10-18T00:04:43.824Z"
+      },
+      {
+        "id": "mvd2e4vt1sj",
+        "data": "2026-10-17",
+        "pessoaId": "msuw4vws43r",
+        "pessoaNome": "Baladacar - Evangelismo",
+        "pessoaSetor": "MKT",
+        "pratoId": "mnsw24snehy",
+        "pratoNome": "Tira de Carne",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [
+          {
+            "nome": "Batata Frita",
+            "valor": 0,
+            "fixo": true
+          },
+          {
+            "nome": "Arroz",
+            "valor": 0
+          },
+          {
+            "nome": "Feijão",
+            "valor": 0
+          },
+          {
+            "nome": "Farofa",
+            "valor": 0
+          }
+        ],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Guaraná Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "",
+        "criadoEm": "2026-10-18T00:05:41.561Z"
       }
     ]
   }
