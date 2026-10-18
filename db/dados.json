@@ -1,7 +1,7 @@
 {
   "app": "controle-refeicoes-parceria-plaza",
   "versaoFormato": 1,
-  "atualizadoEm": "2026-10-17T23:58:47.574Z",
+  "atualizadoEm": "2026-10-18T00:00:11.063Z",
   "chaves": {
     "mp2_pessoas": [
       {
@@ -81818,6 +81818,27 @@
         ],
         "obs": "so o frango e fritassssssss",
         "criadoEm": "2026-10-17T23:58:40.728Z"
+      },
+      {
+        "id": "mvd26w9kku4",
+        "data": "2026-10-17",
+        "pessoaId": "msuw4vws43r",
+        "pessoaNome": "Baladacar - Evangelismo",
+        "pessoaSetor": "MKT",
+        "pratoId": "mnswbir0bvo",
+        "pratoNome": "File de Frango a Milanesa com Massa Fettutine e Molho Pomodoro",
+        "pratoValor": 25.5,
+        "acTotal": 0,
+        "totalPedido": 25.5,
+        "acomps": [],
+        "bebidas": [
+          {
+            "nome": "Refrigerante PET - Guaraná Caçulinha 200 ml",
+            "valor": 0
+          }
+        ],
+        "obs": "",
+        "criadoEm": "2026-10-18T00:00:03.800Z"
       }
     ]
   }
