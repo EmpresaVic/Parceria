@@ -1,7 +1,7 @@
 {
   "app": "controle-refeicoes-parceria-plaza",
   "versaoFormato": 1,
-  "atualizadoEm": "2026-10-21T21:05:01.640Z",
+  "atualizadoEm": "2026-10-21T21:06:08.635Z",
   "chaves": {
     "mp2_pessoas": [
       {
@@ -57,11 +57,6 @@
       {
         "id": "mpcn95xp6ky",
         "nome": "Luis",
-        "setor": "GCM"
-      },
-      {
-        "id": "mpcnc005z72",
-        "nome": "Denize",
         "setor": "GCM"
       },
       {
@@ -245,16 +240,6 @@
         "setor": "MKT"
       },
       {
-        "id": "mtun7yl1dj7",
-        "nome": "MARCOS",
-        "setor": "GCM"
-      },
-      {
-        "id": "mu8z33ubpon",
-        "nome": "gean",
-        "setor": "GCM"
-      },
-      {
         "id": "mupxouvhz5b",
         "nome": "IDENTIDADE",
         "setor": "MKT"
@@ -278,6 +263,11 @@
         "id": "mvilavgcjjb",
         "nome": "gean",
         "setor": "GCM"
+      },
+      {
+        "id": "mvilq29oqq7",
+        "nome": "lucas",
+        "setor": "ECO"
       }
     ],
     "mp2_pratos": [
