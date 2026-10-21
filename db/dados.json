@@ -1,24 +1,9 @@
 {
   "app": "controle-refeicoes-parceria-plaza",
   "versaoFormato": 1,
-  "atualizadoEm": "2026-10-21T20:55:18.050Z",
+  "atualizadoEm": "2026-10-21T21:05:01.640Z",
   "chaves": {
     "mp2_pessoas": [
-      {
-        "id": "mnne78giak5",
-        "nome": "Jean",
-        "setor": "GCM"
-      },
-      {
-        "id": "mnnki57fbjg",
-        "nome": "Dalila",
-        "setor": "GCM"
-      },
-      {
-        "id": "mnvw8kvoej3",
-        "nome": "Lucas",
-        "setor": "ECO"
-      },
       {
         "id": "mpcmzwed4we",
         "nome": "Lucas",
@@ -95,11 +80,6 @@
         "setor": "GCM"
       },
       {
-        "id": "mpcne15heer",
-        "nome": "Sonia Zumba",
-        "setor": "MKT"
-      },
-      {
         "id": "mpcneh5x5h0",
         "nome": "Nelson",
         "setor": "MKT"
@@ -108,11 +88,6 @@
         "id": "mpcnewrxhra",
         "nome": "Joao Soares",
         "setor": "ECO"
-      },
-      {
-        "id": "mpcnf3fpd3v",
-        "nome": "Matheus de Almeida",
-        "setor": "MKT"
       },
       {
         "id": "mpcnfgwllmc",
@@ -127,16 +102,6 @@
       {
         "id": "mpcrl9wbwb2",
         "nome": "denise",
-        "setor": "GCM"
-      },
-      {
-        "id": "mph24atlulx",
-        "nome": "elizete",
-        "setor": "MKT"
-      },
-      {
-        "id": "mph2g44ytlq",
-        "nome": "cleiton",
         "setor": "GCM"
       },
       {
@@ -273,11 +238,6 @@
         "id": "msuw4vws43r",
         "nome": "Baladacar - Evangelismo",
         "setor": "MKT"
-      },
-      {
-        "id": "mt5x7kgj9gq",
-        "nome": "julio",
-        "setor": "GCM"
       },
       {
         "id": "mt7c83ulf3d",
